@@ -1,0 +1,23 @@
+footer{
+	background: #2b4871;
+    -webkit-background-image: linear-gradient(#4b5f74,#3b3c49,#213544);
+	-moz-background-image: linear-gradient(#4b5f74,#3b3c49,#213544);
+	-ms-background-image: linear-gradient(#4b5f74,#3b3c49,#213544);
+	background-image: linear-gradient(#4b5f74,#3b3c49,#213544);
+}
+
+footer > section{
+	color:white;
+}
+
+#footer-pane-info-1{
+	background: #3d3e4e;
+}
+#footer-pane-info-2{
+	background: #394a5d;
+}
+
+footer > img.img-fluid{
+	max-width: 24px !important;
+	min-width: 20px !important;
+}

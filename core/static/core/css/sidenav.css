@@ -1,0 +1,42 @@
+/* CSS DOCUMENT SIDENAV */
+
+
+section{
+    width:100%;
+}
+
+.aside{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 17rem;
+    height: 100vh;
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    flex-direction: column;
+    background: #f9f9f8;
+    z-index: 1050;
+    transition: all 0.3s;
+}
+.aside.active{
+    margin-left: -17rem !important;
+}
+.section-lateral-aside{
+    background:transparent; 
+    width:100%;
+    padding-left:17rem;
+    transition: all 0.3s;
+}
+.section-lateral-aside.active{
+    padding-left:0px !important;
+}
+
+@media (max-width:700px) {
+    .section-lateral-aside{padding-left:13rem;}
+    .aside{width:13rem;}
+}
+@media (max-width:500px) {
+    .section-lateral-aside{padding-left:12rem;}
+    .aside{width:12rem;}
+}

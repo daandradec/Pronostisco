@@ -1,0 +1,184 @@
+/* CSS DOCUMENT */
+
+/* configuración del wizard vertical */
+.wizard-container-vertical{
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+.wizard-nav-vertical{
+	height: 100%;
+}
+.wizard-container-vertical > div.wizard-nav-vertical{
+	position: relative;
+}
+.nav-tabs{
+    border-bottom: none !important;
+}
+/* ##########################  */
+
+
+/* Configuracion del nav-tabs disposicion vertical */
+.wizard-nav-vertical .nav-tabs{
+	height: 100% !important;
+}
+.wizard-nav-vertical .nav-tabs > li a{
+	width: 72px;
+    height: 72px;
+    margin: auto auto !important;
+    border-radius: 100%;
+    padding: 0;
+}
+.wizard-nav-vertical .nav-tabs > li{
+	width: 100% !important;
+	height: 25% !important;
+}
+/* ##########################  */
+
+
+
+/* Efectos y colores */
+li.active > a:hover{
+    box-shadow: 0px 0px 5px #5bc0de !important; 
+}
+.wizard-container-vertical li.active span.round-tab i{
+    color: #5bc0de !important;
+}
+li.active > a > span.round-tab{
+    border: 2px solid #5bc0de !important;
+}
+span.round-tab i{
+    color: #e5bb3b;
+}
+/* ##########################  */
+
+/* otros */
+.connecting-line-vertical {
+    width: 5px;
+    background: #e0e0e0;
+    position: absolute;
+    height: 78%;
+    margin: auto 0;
+    left: 49%;
+    right: 0;
+    top: 5%;
+    z-index: 1;
+}
+
+span.round-tab {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 25px;
+}
+
+.wizard-container-vertical li:after {
+    content: " ";
+    position: absolute;
+    left: 15%;
+
+    opacity: 0;
+    margin: 0 auto;
+    bottom: 130px;
+    border: 5px solid transparent;
+    border-bottom-color: #5bc0de;
+    transition: 0.1s ease-in-out;
+    transform: rotate(90deg);
+}
+
+.wizard-container-vertical li.active:after {
+    content: " ";
+    position: absolute;
+    left: 15%;
+
+    opacity: 1;
+    margin: 0 auto;
+    bottom: 130px;
+    border: 10px solid transparent;
+    border-bottom-color: #5bc0de;
+    transform: rotate(90deg);
+}
+
+@media( max-width : 585px ){
+	.wizard-container-vertical li:after{
+		left: 0%;
+		bottom: 127px;
+	}
+    .wizard-container-vertical li.active:after {
+        left: 0%;
+        bottom: 127px;
+    }
+}
+@media( max-width : 485px ){
+    .wizard-container-vertical {
+        width: 90%;
+    }
+    span.round-tab {
+        font-size: 16px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard-container-vertical .nav-tabs > li a {
+        width: 51px;
+        height: 51px;
+        line-height: 51px;
+    }
+	
+	.wizard-container-vertical li:after{
+        bottom: 137px;
+	}
+    .wizard-container-vertical li.active:after {
+        bottom: 137px;
+    }
+}
+
+@media(max-height: 900px){
+	.wizard-container-vertical li:after{bottom: 120px;}
+	.wizard-container-vertical li.active:after{bottom: 120px;}
+}
+@media(max-height: 850px){
+	.wizard-container-vertical li:after{bottom: 110px;}
+	.wizard-container-vertical li.active:after{bottom: 110px;}
+}
+@media(max-height: 800px){
+	.wizard-container-vertical {width: 90%;}
+    span.round-tab {
+        font-size: 16px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+    .wizard-container-vertical .nav-tabs > li a {
+        width: 51px;
+        height: 51px;
+        line-height: 51px;
+    }
+	.wizard-container-vertical li:after{bottom: 110px;}
+	.wizard-container-vertical li.active:after{bottom: 110px;}
+}
+@media(max-height: 750px){
+	.wizard-container-vertical li:after{bottom: 95px;}
+	.wizard-container-vertical li.active:after{bottom: 95px;}
+}
+@media(max-height: 700px){
+	.wizard-container-vertical li:after{bottom: 90px;}
+	.wizard-container-vertical li.active:after{bottom: 90px;}
+}
+@media(max-height: 650px){
+	.wizard-container-vertical li:after{bottom: 80px;}
+	.wizard-container-vertical li.active:after{bottom: 80px;}
+}
+@media(max-height: 600px){
+	.wizard-container-vertical li:after{bottom: 70px;}
+	.wizard-container-vertical li.active:after{bottom: 70px;}
+}

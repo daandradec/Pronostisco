@@ -1,0 +1,43 @@
+nav{
+	/*-webkit-background-image: linear-gradient(to bottom right,#26425e,#2d2e40,#2e3047,#3e426d,#224b7d);
+	-moz-background-image: linear-gradient(to bottom right,#26425e,#2d2e40,#2e3047,#3e426d,#224b7d);
+	background-image: linear-gradient(to bottom right,#26425e,#2d2e40,#2e3047,#3e426d,#224b7d);*/
+	-webkit-background-image: linear-gradient(to bottom right,#4b5f74,#4c4d58,#45465c,#4c5572,#4b5f74);
+	-moz-background-image: linear-gradient(to bottom right,#4b5f74,#4c4d58,#45465c,#4c5572,#4b5f74);
+	-ms-background-image: linear-gradient(to bottom right,#4b5f74,#4c4d58,#45465c,#4c5572,#4b5f74);
+	background-image: linear-gradient(to bottom right,#4b5f74,#4c4d58,#45465c,#4c5572,#4b5f74);
+}
+
+nav > a{color: white !important;}
+.nav-link{color: white !important;}
+#button-collapse{background: : white !important;}
+
+.navbar-brand{
+	margin-left: 30% !important;
+	margin-right: 0% !important;
+}
+@media (max-width:1680px){
+	.navbar-brand{
+		margin-left: 27% !important;
+		margin-right: 3% !important;
+	}
+}
+@media (max-width:1440px) {
+	.navbar-brand{
+		margin-left: 25% !important;
+		margin-right: 5% !important;
+	}	
+}
+@media (max-width:1200px) {
+	.navbar-brand{
+		margin-left: 20% !important;
+		margin-right: 10% !important;
+	}	
+}
+
+@media (max-width:1124px) {
+	.navbar-brand{
+		margin-left: 2% !important;
+		margin-right: 0% !important;
+	}	
+}

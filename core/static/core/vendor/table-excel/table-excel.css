@@ -1,0 +1,66 @@
+tbody{
+	font-family: 'Bree-Serif';
+	font-weight: 400;
+	font-size: 105%;
+}
+
+thead > tr > th{
+	font-family: 'Jelle';
+	font-weight: 200 !important;
+	font-size: 110%;
+	text-align:center;
+	color:#534f4f;
+	text-shadow: 0px 0px 2px #cdcdcd;
+	border-top: none !important;
+	-webkit-background-image: linear-gradient(to bottom,#e8e8e8,#d9d0d9,#e5f3de);
+	-moz-background-image: linear-gradient(to bottom,#e8e8e8,#d9d0d9,#e5f3de);
+	background-image: linear-gradient(to bottom,#e8e8e8,#d9d0d9,#e5f3de);
+}
+
+tbody > tr> td{
+	text-align: center;
+}
+
+td{
+	background-color: white;
+	min-height:30px !important;
+	height: 30px !important;
+	width: 180px;
+	padding: 0 !important;
+	border-color: #2f3136 !important;
+	cursor: text;
+}
+
+thead > tr > th:first-child , tbody > tr> td:first-child{
+	width: 103px;
+	border-left: none;
+	border-right: none;
+	background-image: none;
+	background-color: #767373;
+	color:#f3f3f3;
+}
+thead > tr > th:first-child{font-size: 100%;font-weight:100 !important;border-color:#8c8989;}
+
+tbody > tr> td:first-child{font-weight: bold;font-size: 110%;}
+
+td:hover:not(:first-child){
+	-webkit-box-shadow: 0 0 4px 1px #bee9ac inset;
+	-moz-box-shadow: 0 0 4px 1px #bee9ac inset;
+	box-shadow: 0 0 4px 1px #bee9ac inset;
+}
+
+.input-text-excel{
+	width:100%;
+	text-align: center;
+	border: 1px solid #ced4da;
+}
+
+button.btn-danger{
+	padding: 4px 2px !important;
+	margin-top: 1px;
+	-webkit-background: linear-gradient(to top,#7c121d,#a92734,#dc3545) !important;
+	-moz-background: linear-gradient(to top,#7c121d,#a92734,#dc3545) !important;
+	background: linear-gradient(to top,#7c121d,#a92734,#dc3545) !important;
+	border: none !important;
+	color: #e8e8e8 !important;
+}

@@ -1,0 +1,277 @@
+@font-face{
+  font-family: 'Alegreya';
+  font-style: normal;  
+  src: url('Alegreya/Alegreya-Medium.ttf');
+}
+@font-face{
+  font-family: 'Alegreya-Sans';
+  font-style: normal;  
+  src: url('Alegreya-Sans/AlegreyaSans-Medium.ttf');
+}
+@font-face{
+  font-family: 'Arvo';
+  font-style: normal;  
+  src: url('Arvo/tDbD2oWUg0MKqScQ7Q.woff2');
+}
+@font-face{
+  font-family: 'Bree-Serif';
+  font-style: normal;  
+  src: url('Bree-Serif/BreeSerif-Regular.ttf');
+}
+@font-face{
+  font-family: 'Exo2';
+  font-style: normal;  
+  src: url('Exo2/7cHmv4okm5zmbtYsK-4E4Q.woff2');
+}
+@font-face{
+  font-family: 'Jelle';
+  font-style: normal;  
+  src: url('Jelle/Jellee-Roman.ttf');
+}
+@font-face{
+  font-family: 'Lato';
+  font-style: normal;  
+  src: url('Lato/Lato-Regular.ttf');
+}
+@font-face{
+  font-family: 'Montserrat';
+  font-style: normal;  
+  src: url('Montserrat/Montserrat-Medium.ttf');
+}
+@font-face{
+  font-family: 'Odibee';
+  font-style: normal;  
+  src: url('Odibee/OdibeeSans-Regular.ttf');
+}
+@font-face{
+  font-family: 'Quicksand';
+  font-style: normal;  
+  src: url('Quicksand/Quicksand-Medium.ttf');
+}
+@font-face{
+  font-family: 'Raleway';
+  font-style: normal;  
+  src: url('Raleway/Raleway-Medium.ttf');
+}
+@font-face{
+  font-family: 'Roboto';
+  font-style: normal;  
+  src: url('Roboto/Roboto-Medium.ttf');
+}
+@font-face{
+  font-family: 'Shrik';
+  font-style: normal;  
+  src: url('Shrik/Shrikhand-Regular.ttf');
+}
+@font-face{
+  font-family: 'Signika';
+  font-style: normal;  
+  src: url('Signika/Shrikhand-Regular.ttf');
+}
+@font-face {
+  font-family: 'Titillium-Web';
+  font-style: normal;  
+  src: url('Titillium_Web/NaPecZTIAOhVxoMyOr9n_E7fdM3mDbRS.woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face{
+  font-family: 'Varela';
+  font-style: normal;
+  src: url('Varela/w8gdH283Tvk__Lua32TysjIfpcuPP9g.woff2');
+}
+
+
+/* ######################################   */
+
+.font-alegreya{
+  font-family: 'Alegreya';
+  font-weight: 450;
+}
+.font-alegreya-sans{
+  font-family: 'Alegreya-Sans';
+  font-weight: 450;
+}
+.font-arvo{
+  font-family: 'Arvo';
+  font-weight: 450;
+}
+.font-bree-serif{
+  font-family: 'Bree-Serif';
+  font-weight: 450;
+}
+.font-exo2{
+  font-family: 'Exo2';
+  font-weight: 450;
+}
+.font-jelle{
+  font-family: 'Jelle';
+  font-weight: 450;
+}
+.font-lato{
+  font-family: 'Lato';
+  font-weight: 450;
+}
+.font-montserrat{
+  font-family: 'Montserrat';
+  font-weight: 450;
+}
+.font-odibee{
+  font-family: 'Odibee';
+  font-weight: 450;
+}
+.font-quicksand{
+  font-family: 'Quicksand';
+  font-weight: 450;
+}
+.font-raleway{
+  font-family: 'Raleway';
+  font-weight: 450;
+}
+.font-roboto{
+  font-family: 'Roboto';
+  font-weight: 450;
+}
+.font-serif{
+  font-family: 'sans-serif';
+  font-weight: 450;
+}
+.font-shrik{
+  font-family: 'Shrik';
+  font-weight: 450;
+}
+.font-signika{
+  font-family: 'Signika';
+  font-weight: 450;
+}
+.font-titillium{
+  font-family: 'Titillium-Web';
+  font-weight: 450;
+}
+.font-titillium-shadow{
+  font-family: 'Titillium-Web';
+  font-weight: 500;
+  text-shadow: 0px 0px 1px black;
+}
+.font-varela{
+  font-family: 'Varela';
+}
+
+
+/* ######### */
+.font-size-87{
+  font-size: 87%;
+}
+.font-size-90{
+  font-size: 90%;
+}
+.font-size-100{
+  font-size: 100%;
+}
+.font-sz-120{
+  font-size: 120%;
+}
+.font-sz-140{
+  font-size: 140%;
+}
+/* #######   font-size pixels */
+.font-size-12px{font-size: 12px;}
+.font-size-13px{font-size: 13px;}
+.font-size-14px{font-size: 14px;}
+.font-size-15px{font-size: 15px;}
+.font-size-16px{font-size: 16px;}
+.font-size-17px{font-size: 17px;}
+.font-size-18px{font-size: 18px;}
+.font-size-19px{font-size: 19px;}
+.font-size-20px{font-size: 20px;}
+.font-size-21px{font-size: 21px;}
+.font-size-22px{font-size: 22px;}
+.font-size-23px{font-size: 23px;}
+.font-size-24px{font-size: 24px;}
+.font-size-25px{font-size: 25px;}
+.font-size-26px{font-size: 26px;}
+.font-size-27px{font-size: 27px;}
+.font-size-28px{font-size: 28px;}
+.font-size-29px{font-size: 29px;}
+.font-size-30px{font-size: 30px;}
+.font-size-35px{font-size: 35px;}
+
+.font-size-12px-2c{font-size: 12px;}
+.font-size-13px-2c{font-size: 13px;}
+.font-size-14px-2c{font-size: 14px;}
+.font-size-15px-2c{font-size: 15px;}
+.font-size-16px-2c{font-size: 16px;}
+.font-size-17px-2c{font-size: 17px;}
+.font-size-18px-2c{font-size: 18px;}
+.font-size-19px-2c{font-size: 19px;}
+.font-size-20px-2c{font-size: 20px;}
+.font-size-21px-2c{font-size: 21px;}
+.font-size-22px-2c{font-size: 22px;}
+.font-size-23px-2c{font-size: 23px;}
+.font-size-24px-2c{font-size: 24px;}
+.font-size-25px-2c{font-size: 25px;}
+.font-size-26px-2c{font-size: 26px;}
+.font-size-27px-2c{font-size: 27px;}
+.font-size-28px-2c{font-size: 28px;}
+.font-size-29px-2c{font-size: 29px;}
+.font-size-30px-2c{font-size: 30px;}
+
+.font-size-12px-3c{font-size: 12px;}
+.font-size-13px-3c{font-size: 13px;}
+.font-size-14px-3c{font-size: 14px;}
+.font-size-15px-3c{font-size: 15px;}
+.font-size-16px-3c{font-size: 16px;}
+.font-size-17px-3c{font-size: 17px;}
+.font-size-18px-3c{font-size: 18px;}
+.font-size-19px-3c{font-size: 19px;}
+.font-size-20px-3c{font-size: 20px;}
+.font-size-21px-3c{font-size: 21px;}
+.font-size-22px-3c{font-size: 22px;}
+.font-size-23px-3c{font-size: 23px;}
+.font-size-24px-3c{font-size: 24px;}
+.font-size-25px-3c{font-size: 25px;}
+.font-size-26px-3c{font-size: 26px;}
+.font-size-27px-3c{font-size: 27px;}
+.font-size-28px-3c{font-size: 28px;}
+.font-size-29px-3c{font-size: 29px;}
+.font-size-30px-3c{font-size: 30px;}
+
+@media (max-width: 1200px){
+  .font-size-35px{font-size: 30px;}
+  .font-size-20px-3c{font-size:17px;}
+  .font-size-17px-2c{font-size: 15px;}
+  .font-size-16px-2c{font-size: 14px;}
+}
+@media (max-width: 1090px){
+  .font-size-20px-3c{font-size:14px;}
+  .font-size-17px-2c{font-size: 13px;}
+  .font-size-16px-2c{font-size: 12px;}
+}
+@media (max-width: 800px){
+  .font-size-20px-3c{font-size:11px;}
+}
+
+/* ###########  */
+.font-responsive{
+  font-size: 1em;
+}
+.font-responsive-sm{font-size: 1em;}
+.font-responsive-1-5-sm{font-size: 1.45em;}
+.font-responsive-2-sm{font-size: 2em;}
+
+@media (max-width: 1400px){
+  .font-responsive{font-size:90%;}
+  .font-responsive-1-5-sm{font-size: 85%;}
+}
+@media (max-width: 1200px){
+  .font-responsive{font-size:85%;}
+
+}
+@media (max-width: 1090px){
+  .font-responsive{font-size:80%;}
+}
+@media (max-width: 800px){
+  .font-responsive{font-size:65%;}
+  .font-responsive-sm{font-size:80%;}
+  .font-responsive-1-5-sm{font-size: 75%;}
+  .font-responsive-2-sm{font-size:70%;}
+}

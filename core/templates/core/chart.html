@@ -1,0 +1,77 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Graficos{% endblock %}
+
+{% block styles %}
+    {% load static %}  
+    <link rel="stylesheet" href="{% static 'core/css/chart.css' %}">
+    <style> 
+        canvas{
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <section class="center mb-4">
+        <div class="card" style="width: 80%;">
+          <div class="card-header">
+            <span>
+              GRAFICA COMPLETA <i class="fas fa-chart-area"></i>
+            </span>
+          </div>
+          <div class="card-body">
+            <canvas id="line-chart-01"></canvas>    
+          </div>
+        </div>              
+    </section>
+
+    <section class="center mt-3">
+        <div class="card" style="width: 80%;">
+          <div class="card-header">
+            <span>
+              GRAFICA POR PERIODOS <i class="fas fa-chart-line"></i>  
+            </span>                  
+          </div>
+          <div class="card-body">
+            <canvas id="line-chart-02"></canvas>  
+          </div>
+        </div>  
+    </section>
+      
+    <section class="center mt-5" style="margin-bottom: 140px;">                      
+        <button class="btn btn-success btn-lg ml-1" id="button-post-data">VALIDAR <i class="fas fa-check-circle"></i></button>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    {% load static %}
+    <script type="text/javascript">
+      var TOKEN = "{{csrf}}"
+
+      data_request_django = "{{data|escapejs|safe}}"
+      var data_django = JSON.parse(data_request_django)
+      data_request_django = data_django.join(";")
+
+      django_x_label_chart_01 = data_django[0].length > 7 ? "MESES TOTALES" : "DIAS TOTALES"
+      django_list_data_chart_01 = [].concat.apply([], data_django)
+      django_list_labels_chart_01 = Array.from(Array(django_list_data_chart_01.length).keys()).map(x => ++x)
+
+      django_x_label_chart_02 = data_django[0].length > 7 ? "AÑOS" : "SEMANAS"
+      django_list_data_chart_02 = data_django 
+      django_list_labels_chart_02 = Array.from(Array(data_django[0].length).keys()).map(x => ++x)
+    </script>
+    
+    <script>
+      $('#button-post-data').on('click',function(){
+        post("/methods",{content: data_request_django});
+      })
+    </script>
+
+    <script src="{% static 'core/vendor/chartjs-2.7.3/utils.js' %}"></script>
+    <script src="{% static 'core/vendor/chartjs-2.7.3/Chart.min.js' %}"></script>
+    <script src="{% static 'core/vendor/chartjs-2.7.3/line-chart-01.js' %}"></script>
+    <script src="{% static 'core/vendor/chartjs-2.7.3/line-chart-02.js' %}"></script>    
+{% endblock %}

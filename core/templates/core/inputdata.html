@@ -1,0 +1,126 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Entrada de Datos{% endblock %}
+
+{% block styles %}
+    {% load static %}   
+    <link rel="stylesheet" href="{% static 'core/css/inputdata.css' %}">
+    <link rel="stylesheet" href="{% static 'core/vendor/table-excel/table-excel.css' %}">  
+{% endblock %}
+
+{% block content %}
+
+    <section class="mt-2 d-flex">
+        <div class="hr-line-32"></div>
+        <h2 class="font-montserrat text-md-center text-sm-left">Selecciona el periodo de tiempo <i class="fas fa-calendar-alt"></i></h2>
+        <div class="hr-line-32"></div>
+        </section>
+
+        <section class="mt-2 mb-4">
+        <ul class="nav nav-tabs" id="nav-tab" role="tablist">
+
+            <li role="presentation" class="active ml-4">
+            <a href="#table1" id="navtab1" data-toggle="tab" role="tab" aria-controls="table1" class="font-quicksand font-size-20px-3c">Semana/Dia</a>
+            </li>
+            <li role="presentation">
+            <a href="#table2" id="navtab2" data-toggle="tab" role="tab" aria-controls="table2" class="font-quicksand font-size-20px-3c">Año/Mes</a>
+            </li> 
+        </ul>
+        </section>
+
+        <section style="width:95%;margin: 0 auto;" id="table-excel">
+            <div class="tab-content">
+            <!-- Table 1 -->
+                <div class="tab-pane active" id="table1" role="tabpanel">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>                          
+                                    <th>Semana / Dia</th>
+                                    <th>Lunes</th>
+                                    <th>Martes</th>
+                                    <th>Miercoles</th>
+                                    <th>Jueves</th>
+                                    <th>Viernes</th>
+                                    <th>Sabado</th>
+                                    <th>Domingo</th>                      
+                                </tr>                
+                                </thead>
+                            <tbody>
+                                <tr>
+                                    <td><button class="btn btn-danger btn-sm float-left" onclick="removeRow(this)"><i class="fas fa-times"></i></button>1</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>                    
+                                </tr>                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        
+            <!-- Table 2 -->
+            <div class="tab-pane" id="table2" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>                          
+                            <th>Año / Mes</th>
+                            <th>Enero</th>
+                            <th>Febrero</th>
+                            <th>Marzo</th>
+                            <th>Abril</th>
+                            <th>Mayo</th>
+                            <th>Junio</th>
+                            <th>Julio</th>
+                            <th>Agosto</th>
+                            <th>Septiembre</th>
+                            <th>Octubre</th>
+                            <th>Noviembre</th>
+                            <th>Diciembre</th>                     
+                            </tr>                
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td><button class="btn btn-danger btn-sm float-left" onclick="removeRow(this)"><i class="fas fa-times"></i></button>1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>       
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>   
+                            <td></td>          
+                            </tr>                    
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <button class="btn btn-secondary btn-block" id="button-table-excel"><i class="fas fa-plus"></i></button>  
+    </section>
+
+    <section style="width: 100%;margin-top: 80px;" class="text-center">
+        <button class="btn btn-success font-lato font-sz-120" id="button-send-table">ENVIAR</button>  
+    </section>        
+
+{% endblock %}
+
+{% block scripts %}
+    {% load static %}
+    <script>
+        var TOKEN = "{{csrf}}"
+    </script>
+    <script src="{% static 'core/vendor/table-excel/table-excel.js' %}"></script>
+    <script src="{% static 'core/vendor/table-excel/table-excel-request-data.js' %}"></script>
+{% endblock %}

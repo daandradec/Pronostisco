@@ -1,0 +1,10 @@
+#drag-cloud{
+	width: 100%;
+	height:90%;
+	border: 3px dashed #706b73;
+	padding: 30px 0px;
+}
+i.fa-cloud-upload-alt{
+	font-size:30px;
+	color:#706b73;
+}

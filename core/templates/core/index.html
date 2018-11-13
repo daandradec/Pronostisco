@@ -69,6 +69,7 @@
 {% endblock %}
 
 {% block modal %}
+    {% load static %}  
     <div class="modal fade" id="modalExample" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
         <div class="modal-dialog" role="document" style="width: 80% !important;max-width: 80% !important;">
             <div class="modal-content">
@@ -80,9 +81,9 @@
             </div>
             <div class="modal-body">
                 <section class="text-center">
-                    <img src="{% static 'core/img/example.png' %}" width="100%">   
+                    <img src="{% static 'core/img/example.PNG' %}" width="100%">   
                     <p class="text-muted"><small>Ejemplo de Entrada 1</small></p>
-                    <img src="{% static 'core/img/example_2.png' %}" width="60%">
+                    <img src="{% static 'core/img/example_2.PNG' %}" width="60%">
                     <p class="text-muted"><small>Ejemplo de Entrada 2</small></p>
                 </section>
                 

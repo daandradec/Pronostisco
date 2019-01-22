@@ -2,43 +2,175 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.middleware.csrf import get_token
+from core.forecasts import *
 # Create your views here.
 import pandas
 import xlrd
+import xlwt
 
 def index(request):
+    if 'data' in request.session:
+        del request.session['data']
+    return render(request,'core/home.html')
+
+def simple_pronos_input_data(request):
+    csrf_token = get_token(request)
     message = None
+    
     if 'error' in request.session:
         message = request.session['error']
-        del request.session['error']        
-    return render(request,'core/index.html',{'aside_navigation':[True,False,False,False],'session_message':message})
+        del request.session['error']
 
-def inputdata(request):
-    csrf_token = get_token(request)
-    return render(request,'core/inputdata.html',{'aside_navigation':[True,False,False,False],'csrf':csrf_token})
+    if 'data' in request.session:
+        data = request.session['data']
+        return render(request,'core/inputdatapronosimple.html',{'session_message':message,'data':data,'csrf':csrf_token})
 
-def methods(request):
-    data = get_data_from_request(request.POST.get('content',''))
-    csrf_token = get_token(request)
-    return render(request,'core/methods.html',{'aside_navigation':[True,True,True,False],'data':data,'csrf':csrf_token})
+    return render(request,'core/inputdatapronosimple.html',{'session_message':message,'csrf':csrf_token})
 
-def chart(request):
-    # if no existe el archivo redirijir al index
+def simple_pronos_graph_data(request):
     if request.method == "POST":
         csrf_token = get_token(request)
         if 'file_input' in request.FILES:
-            data = read_file(request.FILES['file_input'])
-            if len(data) <= 7:
-                return render(request,'core/chart.html',{'aside_navigation':[True,True,False,False],'data':data,'csrf':csrf_token})
+            data = read_file(request.FILES['file_input'])   
+            lineal_forecasts,x,y,y_square,xy,lineal_correlation,expo_forecasts,ln_x,ln_xy,expo_correlation,cuadra_forecasts,cuadra_correlation,movil_forecast_2,movil_averages,movil_averages_adjust,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation = getSimpleForecasts(data)
+            y = [int(yi) for yi in y]
+            if len(data) <= 7 and len(data) >= 1:
+                first_or_create_session(request, data)
+                return render(request,'core/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
+                'lineal_corre':lineal_correlation,'expo':expo_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_forecasts,
+                'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
+                'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation,
+                'lineal_data':zip(x,y,y_square,xy),'expo_data':zip(x,y,y_square,ln_x,ln_xy),'movil_data':zip(x,y,movil_averages,movil_averages_adjust)})
             else:
-                request.session['error'] = "El limite Maximo de Filas es 7"
-                return HttpResponseRedirect('/')
+                request.session['error'] = "El limite Maximo de Filas es 7 y el Minimo 1"
+                return HttpResponseRedirect('/pronosticos-simple/input-data')
         else:
             data = get_data_from_request(request.POST.get('content',''))
-            return render(request,'core/chart.html',{'aside_navigation':[True,True,False,False],'data':data,'csrf':csrf_token})            
+            lineal_forecasts,x,y,y_square,xy,lineal_correlation,expo_forecasts,ln_x,ln_xy,expo_correlation,cuadra_forecasts,cuadra_correlation,movil_forecast_2,movil_averages,movil_averages_adjust,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation = getSimpleForecasts(data)
+            y = [int(yi) for yi in y]
+            first_or_create_session(request, data)
+            return render(request,'core/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
+            'lineal_corre':lineal_correlation,'expo':expo_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_forecasts,
+            'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
+            'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation,
+            'lineal_data':zip(x,y,y_square,xy),'expo_data':zip(x,y,y_square,ln_x,ln_xy),'movil_data':zip(x,y,movil_averages,movil_averages_adjust)})         
     else:
-        return HttpResponseRedirect('/')
+        if 'data' in request.session:
+            csrf_token = get_token(request)
+            data = request.session['data']
+            lineal_forecasts,x,y,y_square,xy,lineal_correlation,expo_forecasts,ln_x,ln_xy,expo_correlation,cuadra_forecasts,cuadra_correlation,movil_forecast_2,movil_averages,movil_averages_adjust,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation = getSimpleForecasts(data)
+            y = [int(yi) for yi in y]
+            return render(request,'core/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
+            'lineal_corre':lineal_correlation,'expo':expo_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_forecasts,
+            'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
+            'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation,
+            'lineal_data':zip(x,y,y_square,xy),'expo_data':zip(x,y,y_square,ln_x,ln_xy),'movil_data':zip(x,y,movil_averages,movil_averages_adjust)})         
+        return HttpResponseRedirect('/pronosticos-simple/input-data')    
+
+def alpha_pronos_input_data(request):
+    csrf_token = get_token(request)
+    message = None
     
+    if 'error' in request.session:
+        message = request.session['error']
+        del request.session['error']
+
+    if 'data' in request.session:
+        data = request.session['data']
+        return render(request,'core/inputdatapronoalpha.html',{'session_message':message,'data':data,'csrf':csrf_token})
+
+    return render(request,'core/inputdatapronoalpha.html',{'session_message':message,'csrf':csrf_token})
+
+def alpha_pronos_graph_data(request):
+    if request.method == "POST":
+        csrf_token = get_token(request)
+        if 'file_input' in request.FILES:
+            data = read_file(request.FILES['file_input'])     
+            if len(data) <= 7 and len(data) > 2:
+                lineal_business_forecasts,lineal_correlation,expo_business_forecasts,expo_correlation,cuadra_business_forecasts,cuadra_correlation,movil_forecast_2,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation,winters_forecast,winters_correlation,jenkin_forecast,jenkin_correlation,simulated_forecast,simulated_correlation = getBusinessForecasts(data)
+                first_or_create_session(request, data)
+                return render(request,'core/graphicspronoalpha.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_business_forecasts,
+                'lineal_corre':lineal_correlation,'expo':expo_business_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_business_forecasts,
+                'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
+                'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation
+                ,'winters':winters_forecast,'winters_corre':winters_correlation,'jenkin':jenkin_forecast,'jenkin_corre':jenkin_correlation,'simu':simulated_forecast,'simu_corre':simulated_correlation})
+            elif len(data) >= 1:
+                lineal_business_forecasts,lineal_correlation,expo_business_forecasts,expo_correlation,cuadra_business_forecasts,cuadra_correlation,movil_forecast_2,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation = getSimpleForecasts(data)
+                first_or_create_session(request, data)
+                return render(request,'core/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_business_forecasts,
+                'lineal_corre':lineal_correlation,'expo':expo_business_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_business_forecasts,
+                'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
+                'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation})
+            else:
+                request.session['error'] = "El limite Maximo de Filas es 7 y el Minimo 2"
+                return HttpResponseRedirect('/pronosticos-alpha/input-data')
+        else:
+            data = get_data_from_request(request.POST.get('content',''))
+            if len(data) <= 7 and len(data) > 2:
+                lineal_business_forecasts,lineal_correlation,expo_business_forecasts,expo_correlation,cuadra_business_forecasts,cuadra_correlation,movil_forecast_2,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation,winters_forecast,winters_correlation,jenkin_forecast,jenkin_correlation,simulated_forecast,simulated_correlation = getBusinessForecasts(data)
+                first_or_create_session(request, data)
+                return render(request,'core/graphicspronoalpha.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_business_forecasts,
+                'lineal_corre':lineal_correlation,'expo':expo_business_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_business_forecasts,
+                'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
+                'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation
+                ,'winters':winters_forecast,'winters_corre':winters_correlation,'jenkin':jenkin_forecast,'jenkin_corre':jenkin_correlation,'simu':simulated_forecast,'simu_corre':simulated_correlation})                        
+            else:
+                lineal_business_forecasts,lineal_correlation,expo_business_forecasts,expo_correlation,cuadra_business_forecasts,cuadra_correlation,movil_forecast_2,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation = getSimpleForecasts(data)
+                first_or_create_session(request, data)
+                return render(request,'core/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_business_forecasts,
+                'lineal_corre':lineal_correlation,'expo':expo_business_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_business_forecasts,
+                'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
+                'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation})
+
+    else:
+        if 'data' in request.session:
+            csrf_token = get_token(request)
+            data = request.session['data']
+            lineal_business_forecasts,lineal_correlation,expo_business_forecasts,expo_correlation,cuadra_business_forecasts,cuadra_correlation,movil_forecast_2,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation,winters_forecast,winters_correlation,jenkin_forecast,jenkin_correlation,simulated_forecast,simulated_correlation = getBusinessForecasts(data)
+            return render(request,'core/graphicspronoalpha.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_business_forecasts,
+            'lineal_corre':lineal_correlation,'expo':expo_business_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_business_forecasts,
+            'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
+            'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation
+            ,'winters':winters_forecast,'winters_corre':winters_correlation,'jenkin':jenkin_forecast,'jenkin_corre':jenkin_correlation,'simu':simulated_forecast,'simu_corre':simulated_correlation})
+        return HttpResponseRedirect('/pronosticos-alpha/input-data')    
+
+def alpha_pronos_download_data(request):
+    content = get_data_from_request(request.POST.get('content',''))
+    compare = get_data_from_request(request.POST.get('compare',''))
+    period = request.POST.get('period','')
+    year_label = request.POST.get('yearlabel','')
+    prono_label = request.POST.get('pronolabel','')
+    corre_label = request.POST.get('correlabel','')
+    corre = request.POST.get('corre','')
+
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="' + prono_label + '.xls' + '"'
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet("sheet1",cell_overwrite_ok=True)
+    font_style = xlwt.XFStyle()
+
+    col = 1
+    ws.write(0, 0, period, font_style)
+    ws.write(1, 0, prono_label, font_style)
+    for data in content[0]:
+        ws.write(0, col, col, font_style)
+        ws.write(1, col, data, font_style)
+        col += 1
+    ws.write(2, 0, year_label, font_style)
+    col = 1
+    for data in compare[0]:
+        ws.write(2, col, data, font_style)
+        col += 1
+    ws.write(4, 0, corre_label, font_style)
+    ws.write(4, 1, corre, font_style)
+
+    wb.save(response)
+    return response
+
+def first_or_create_session(request, data):
+    if 'data' in request.session:
+        del request.session['data']
+    request.session['data'] = data
 
 def read_file(file):
     if file.name.endswith('.csv'):

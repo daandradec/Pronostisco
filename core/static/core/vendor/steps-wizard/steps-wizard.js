@@ -14,6 +14,8 @@ $(document).ready(function () {
     b.each(function(n,element){      
         $(element).on('click',function(e){
             e.preventDefault();
+            if(typeof data_request_django === 'undefined')
+                return;
             post($(this).attr("href"),{content: data_request_django});
         })
     })

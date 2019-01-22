@@ -1,10 +1,12 @@
-window.addEventListener("load",createChar,false);
+var chart2;
+
+window.addEventListener("load",createChar02,false);
 window.chartColorsList = [window.chartColors.red,window.chartColors.orange,window.chartColors.yellow,
 	window.chartColors.green,window.chartColors.blue,window.chartColors.purple,window.chartColors.grey]
 
-function createChar(){
+function createChar02(){
 	var canvas = document.getElementById('line-chart-02').getContext('2d');
-	var chart = new Chart(canvas,getChartConfiguration(django_list_labels_chart_02, django_list_data_chart_02))
+	chart2 = new Chart(canvas,getChartConfiguration(django_list_labels_chart_02, django_list_data_chart_02))
 }
 
 function getChartConfiguration(labels,data){
@@ -24,7 +26,7 @@ function getChartConfiguration(labels,data){
 		                },
 		                scaleLabel: {
 		                	display: true,
-		                	labelString:'PESOS',
+		                	labelString:tag_graphics,
 		                	fontSize: 16,
 		                }
 		            }],
@@ -54,7 +56,7 @@ function getChartConfiguration(labels,data){
 	for(var i = 0;i < data.length; ++i){
 		config.data.datasets.push(
 			{
-				label: singular_label_chart_02 + (i+1)+" Dinero:",
+				label: singular_label_chart_02 + (i+1)+" "+(getCurrentLanguage() == 'ES' ? 'Demanda': 'DEMAND'),
 				backgroundColor: window.chartColorsList[i],
 				borderColor: window.chartColorsList[i],
 				pointRadius: 7,

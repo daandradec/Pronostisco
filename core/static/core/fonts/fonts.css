@@ -66,7 +66,7 @@
 @font-face{
   font-family: 'Signika';
   font-style: normal;  
-  src: url('Signika/Shrikhand-Regular.ttf');
+  src: url('Signika/Signika-Regular.ttf');
 }
 @font-face {
   font-family: 'Titillium-Web';
@@ -237,17 +237,107 @@
 
 @media (max-width: 1200px){
   .font-size-35px{font-size: 30px;}
+  .font-size-30px-3c{font-size:27px;}
+  .font-size-29px-3c{font-size:26px;}
+  .font-size-28px-3c{font-size:25x;}
+  .font-size-27px-3c{font-size:24px;}
+  .font-size-26px-3c{font-size:23px;}
+  .font-size-25px-3c{font-size:22px;}
+  .font-size-24px-3c{font-size:21px;}
+  .font-size-23px-3c{font-size:20px;}
+  .font-size-22px-3c{font-size:19px;}
+  .font-size-21px-3c{font-size:18px;}
   .font-size-20px-3c{font-size:17px;}
+  .font-size-19px-3c{font-size:16px;}
+  .font-size-18px-3c{font-size:15px;}
+  .font-size-17px-3c{font-size:14px;}
+  .font-size-16px-3c{font-size:13px;}
+  .font-size-15px-3c{font-size:12px;}
+  .font-size-14px-3c{font-size:11px;}
+  .font-size-13px-3c{font-size:10px;}
+  .font-size-12px-3c{font-size:9px;}
+
+  .font-size-30px-2c{font-size: 28px;}
+  .font-size-29px-2c{font-size: 27px;}
+  .font-size-28px-2c{font-size: 26px;}
+  .font-size-27px-2c{font-size: 25px;}
+  .font-size-26px-2c{font-size: 24px;}
+  .font-size-25px-2c{font-size: 23px;}
+  .font-size-24px-2c{font-size: 22px;}
+  .font-size-23px-2c{font-size: 21px;}
+  .font-size-22px-2c{font-size: 20px;}
+  .font-size-21px-2c{font-size: 19px;}
+  .font-size-20px-2c{font-size: 18px;}
+  .font-size-19px-2c{font-size: 17px;}
+  .font-size-18px-2c{font-size: 16px;}
   .font-size-17px-2c{font-size: 15px;}
   .font-size-16px-2c{font-size: 14px;}
+  .font-size-15px-2c{font-size: 13px;}
+  .font-size-14px-2c{font-size: 12px;}
+  .font-size-13px-2c{font-size: 11px;}
+  .font-size-12px-2c{font-size: 10px;}
 }
 @media (max-width: 1090px){
+  .font-size-30px-3c{font-size:24px;}
+  .font-size-29px-3c{font-size:23px;}
+  .font-size-28px-3c{font-size:22px;}
+  .font-size-27px-3c{font-size:21px;}
+  .font-size-26px-3c{font-size:20px;}
+  .font-size-25px-3c{font-size:19px;}
+  .font-size-24px-3c{font-size:18px;}
+  .font-size-23px-3c{font-size:17px;}
+  .font-size-22px-3c{font-size:16px;}
+  .font-size-21px-3c{font-size:15px;}
   .font-size-20px-3c{font-size:14px;}
+  .font-size-19px-3c{font-size:13px;}
+  .font-size-18px-3c{font-size:12px;}
+  .font-size-17px-3c{font-size:11px;}
+  .font-size-16px-3c{font-size:10px;}
+  .font-size-15px-3c{font-size:9px;}
+  .font-size-14px-3c{font-size:8px;}
+  .font-size-13px-3c{font-size:7px;}
+  .font-size-12px-3c{font-size:6px;}
+
+  .font-size-30px-2c{font-size: 26px;}
+  .font-size-29px-2c{font-size: 25px;}
+  .font-size-28px-2c{font-size: 24px;}
+  .font-size-27px-2c{font-size: 23px;}
+  .font-size-26px-2c{font-size: 22px;}
+  .font-size-25px-2c{font-size: 21px;}
+  .font-size-24px-2c{font-size: 20px;}
+  .font-size-23px-2c{font-size: 19px;}
+  .font-size-22px-2c{font-size: 18px;}
+  .font-size-21px-2c{font-size: 17px;}
+  .font-size-20px-2c{font-size: 16px;}
+  .font-size-19px-2c{font-size: 15px;}
+  .font-size-18px-2c{font-size: 14px;}
   .font-size-17px-2c{font-size: 13px;}
   .font-size-16px-2c{font-size: 12px;}
+  .font-size-15px-2c{font-size: 11px;}
+  .font-size-14px-2c{font-size: 10px;}
+  .font-size-13px-2c{font-size: 9px;}
+  .font-size-12px-2c{font-size: 8px;}
 }
 @media (max-width: 800px){
+  .font-size-30px-3c{font-size:21px;}
+  .font-size-29px-3c{font-size:20px;}
+  .font-size-28px-3c{font-size:19px;}
+  .font-size-27px-3c{font-size:18px;}
+  .font-size-26px-3c{font-size:17px;}
+  .font-size-25px-3c{font-size:16px;}
+  .font-size-24px-3c{font-size:15px;}
+  .font-size-23px-3c{font-size:14px;}
+  .font-size-22px-3c{font-size:13px;}
+  .font-size-21px-3c{font-size:12px;}
   .font-size-20px-3c{font-size:11px;}
+  .font-size-19px-3c{font-size:13px;}
+  .font-size-18px-3c{font-size:12px;}
+  .font-size-17px-3c{font-size:11px;}
+  .font-size-16px-3c{font-size:10px;}
+  .font-size-15px-3c{font-size:9px;}
+  .font-size-14px-3c{font-size:8px;}
+  .font-size-13px-3c{font-size:7px;}
+  .font-size-12px-3c{font-size:6px;}
 }
 
 /* ###########  */

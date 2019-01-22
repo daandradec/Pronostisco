@@ -20,21 +20,7 @@ function postRequestData(){
         array.push(data);
     }
     final_array.push(array);
-    post('/chart', {content: final_array.join(";")});
-    /*
-    console.log(window.location.hostname);
-    console.log(window.location.href.substr(0,window.location.href.indexOf('//')+2))
-    console.log(window.location.href)
-    console.log(window.location.port)
-    console.log(TOKEN)
-    */
-   /* Obligatorio recibir respuesta
-    $.ajax({ 
-        type: "POST",
-        url: "http://127.0.0.1:8000/chart",
-        data: {csrfmiddlewaretoken: TOKEN,content: "mensaje"}
-    });
-    */
+    post(POST_ROUTE, {content: final_array.join(";")});
 }
 
 

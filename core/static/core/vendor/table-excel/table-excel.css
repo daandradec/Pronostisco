@@ -6,15 +6,16 @@ tbody{
 
 thead > tr > th{
 	font-family: 'Jelle';
-	font-weight: 200 !important;
+	font-weight: 150 !important;
 	font-size: 110%;
 	text-align:center;
-	color:#534f4f;
-	text-shadow: 0px 0px 2px #cdcdcd;
+	color:#767373;
+
+	
+	border-color: #bdc2ca !important;
 	border-top: none !important;
-	-webkit-background-image: linear-gradient(to bottom,#e8e8e8,#d9d0d9,#e5f3de);
-	-moz-background-image: linear-gradient(to bottom,#e8e8e8,#d9d0d9,#e5f3de);
-	background-image: linear-gradient(to bottom,#e8e8e8,#d9d0d9,#e5f3de);
+	border-bottom: none !important;
+	background: rgb(245, 242, 242);
 }
 
 tbody > tr> td{
@@ -25,42 +26,34 @@ td{
 	background-color: white;
 	min-height:30px !important;
 	height: 30px !important;
-	width: 180px;
+	width: 180px; /* para que el input funcione bien */
 	padding: 0 !important;
-	border-color: #2f3136 !important;
+	border-color: #bdc2ca !important;
 	cursor: text;
 }
 
 thead > tr > th:first-child , tbody > tr> td:first-child{
 	width: 103px;
-	border-left: none;
-	border-right: none;
-	background-image: none;
-	background-color: #767373;
-	color:#f3f3f3;
+	background: rgb(245, 242, 242);
+	color:#767373;
 }
-thead > tr > th:first-child{font-size: 100%;font-weight:100 !important;border-color:#8c8989;}
+thead > tr > th:first-child{font-size: 100%;font-weight:100 !important;min-width:65px !important;}
 
-tbody > tr> td:first-child{font-weight: bold;font-size: 110%;}
+tbody > tr> td:first-child{font-size: 110%;font-weight: bold;}
 
 td:hover:not(:first-child){
-	-webkit-box-shadow: 0 0 4px 1px #bee9ac inset;
-	-moz-box-shadow: 0 0 4px 1px #bee9ac inset;
-	box-shadow: 0 0 4px 1px #bee9ac inset;
+	-webkit-box-shadow: 0 0 3px 1px #8ec6f5 inset;
+	-moz-box-shadow: 0 0 3px 1px #8ec6f5 inset;
+	-ms-box-shadow: 0 0 3px 1px #8ec6f5 inset;
+	box-shadow: 0 0 3px 1px #8ec6f5 inset;
 }
 
 .input-text-excel{
-	width:100%;
+	width:100%;	
 	text-align: center;
 	border: 1px solid #ced4da;
+	padding-bottom: 3px !important;
 }
 
-button.btn-danger{
-	padding: 4px 2px !important;
-	margin-top: 1px;
-	-webkit-background: linear-gradient(to top,#7c121d,#a92734,#dc3545) !important;
-	-moz-background: linear-gradient(to top,#7c121d,#a92734,#dc3545) !important;
-	background: linear-gradient(to top,#7c121d,#a92734,#dc3545) !important;
-	border: none !important;
-	color: #e8e8e8 !important;
-}
+@media(max-width:760px){ thead > tr > th{font-size:100%;} thead > tr > th:first-child{font-size:90%;}}
+@media(max-width:640px){ thead > tr > th{font-size:90%;} }

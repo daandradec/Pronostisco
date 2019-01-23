@@ -36,7 +36,7 @@ def getSimpleForecasts(data):
     lineal_correlation = calculate_correlation(x,lineal_forecasts)
 
     """ -----Metodo Exponencial----- """
-    ln_x = numpy.array([ math.log(xi) for xi in x ])
+    ln_x = numpy.array([ math.log(xi) if xi > 0 else math.log(0.001) for xi in x ])
     ln_xy = numpy.multiply(ln_x,y)
     sum_ln_x = numpy.sum(ln_x)
     sum_ln_xy = numpy.sum(ln_xy)
@@ -115,7 +115,7 @@ def getBusinessForecasts(data):
 
     """ -----Metodo Exponencial----- """
     
-    ln_x = numpy.array( [ [math.log(xz) for xz in xi] for xi in x ] )
+    ln_x = numpy.array( [ [math.log(xz) if xz > 0 else math.log(0.001) for xz in xi] for xi in x ] )
     ln_xy = numpy.array([ numpy.multiply(xi,y) for xi in ln_x ])
     sum_ln_x = numpy.array([ numpy.sum(xi) for xi in ln_x ])
     sum_ln_xy = numpy.array([ numpy.sum(xi) for xi in ln_xy ])

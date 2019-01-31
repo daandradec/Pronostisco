@@ -31,7 +31,6 @@ function startEventModal(){
         tbody = document.querySelector("table[forecast-table] tbody")
         tbody.innerHTML=""
         for(i = 0;i < dataGraph.length;++i){
-            console.log(dataGraph[i])
             tbody.innerHTML += "<tr><td class='font-quicksand' style='color:#52524e;'>"+(i+1)+"</td><td class='font-quicksand' style='color:#52524e;'>"+dataGraph[i]+"</td></tr>"
         }
 

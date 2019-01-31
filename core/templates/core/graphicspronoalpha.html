@@ -50,12 +50,15 @@
     </section>
 
     <section class="center my-4">
-        <div class="card" style="width: 95%;">
+        <div class="card" style="width: 90%;">
             <div class="card-header">
                 <span language="true">GRÁFICA DEL MEJOR PRONÓSTICO PARA SUS VENTAS <i class="fas fa-chart-area"></i></span>
             </div>
             <div class="card-body">
                 <canvas id="line-chart-03"></canvas>    
+            </div>
+            <div class="card-footer">
+                <p class="float-right mt-2 mr-3 font-size-20px-2c font-weight-bold text-muted">Nivel de Certeza: <span best_corre="true">0.95</span></p>
             </div>
         </div>        
     </section>
@@ -148,7 +151,7 @@
                 
                     <div class="card" style="width: 100%;">
                         <div class="card-header">
-                            <span language="true" title-line-chart="9">SUAVIZACIÓN EXPONENCIAL SIMPLE <i class="fas fa-chart-area"></i></span>
+                            <span language="true" title-line-chart="9">PROMEDIO MÓVIL COMPUESTO <i class="fas fa-chart-area"></i></span>
                         </div>
                         <div class="card-body">
                             <canvas id="line-chart-09"></canvas>    
@@ -164,7 +167,7 @@
                 
                     <div class="card" style="width: 100%;">
                         <div class="card-header">
-                            <span language="true" title-line-chart="10">SUAVIZACIÓN EXPONENCIAL DOBLE <i class="fas fa-chart-area"></i></span>
+                            <span language="true" title-line-chart="10">PROMEDIO MÓVIL PONDERADO <i class="fas fa-chart-area"></i></span>
                         </div>
                         <div class="card-body">
                             <canvas id="line-chart-10"></canvas>    
@@ -174,15 +177,13 @@
                         </div>                        
                     </div> 
 
-                </div>
+                </div>                                
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
                 
                     <div class="card" style="width: 100%;">
                         <div class="card-header">
-                            <span title-line-chart="11">
-                            WINTERS <i class="fas fa-chart-area"></i>
-                            </span>
+                            <span language="true" title-line-chart="11">SUAVIZACIÓN EXPONENCIAL SIMPLE <i class="fas fa-chart-area"></i></span>
                         </div>
                         <div class="card-body">
                             <canvas id="line-chart-11"></canvas>    
@@ -198,9 +199,7 @@
                 
                     <div class="card" style="width: 100%;">
                         <div class="card-header">
-                            <span title-line-chart="12">
-                            BOX & JENNKIN <i class="fas fa-chart-area"></i>
-                            </span>
+                            <span language="true" title-line-chart="12">SUAVIZACIÓN EXPONENCIAL DOBLE <i class="fas fa-chart-area"></i></span>
                         </div>
                         <div class="card-body">
                             <canvas id="line-chart-12"></canvas>    
@@ -210,19 +209,55 @@
                         </div>                        
                     </div> 
 
-                </div>  
+                </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
                 
                     <div class="card" style="width: 100%;">
                         <div class="card-header">
-                            <span title-line-chart="13" language="true">SIMULADO <i class="fas fa-chart-area"></i></span>
+                            <span title-line-chart="13">
+                            WINTERS <i class="fas fa-chart-area"></i>
+                            </span>
                         </div>
                         <div class="card-body">
                             <canvas id="line-chart-13"></canvas>    
                         </div>
                         <div class="card-footer">
                             <button class="text-center btn btn-danger btn-block" btn-line-chart="13" btn-flag-chart="1"><strong language="true">VER DETALLES</strong></button>
+                        </div>                        
+                    </div> 
+
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                
+                    <div class="card" style="width: 100%;">
+                        <div class="card-header">
+                            <span title-line-chart="14">
+                            BOX & JENNKIN <i class="fas fa-chart-area"></i>
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="line-chart-14"></canvas>    
+                        </div>
+                        <div class="card-footer">
+                            <button class="text-center btn btn-danger btn-block" btn-line-chart="14" btn-flag-chart="1"><strong language="true">VER DETALLES</strong></button>
+                        </div>                        
+                    </div> 
+
+                </div>  
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                
+                    <div class="card" style="width: 100%;">
+                        <div class="card-header">
+                            <span title-line-chart="15" language="true">SIMULADO <i class="fas fa-chart-area"></i></span>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="line-chart-15"></canvas>    
+                        </div>
+                        <div class="card-footer">
+                            <button class="text-center btn btn-danger btn-block" btn-line-chart="15" btn-flag-chart="1"><strong language="true">VER DETALLES</strong></button>
                         </div>                        
                     </div> 
 
@@ -250,21 +285,35 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <canvas id="line-chart-14"></canvas>
+                    <canvas id="line-chart-20"></canvas>
                     <br>
                     <!--<p>La correlacion con el ultimo año fue de : <span id="correlation">0.95</span></p>-->
                     <table class="table">
                         <thead class="bg-info">
                             <tr> <!-- style="color:#6a6c6f;" -->
-                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Correlacion con el ultimo año</th>
+                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
                             </tr>
                         </thead>
                         <tbody class="bg-light">
                             <tr>
-                                <td id="correlation" class="hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95</td>
+                                <td id="correlation" class="hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
                             </tr>
                         </tbody>
                     </table>
+                    <br>
+                    <div style="width:100%;;max-height:500px;overflow-y: auto;display:block;">
+                        <table class="table mx-auto" style="width:50%;" forecast-table="true">
+                            <thead>
+                                <tr class="bg-dark">
+                                    <th class="text-white font-size-22px-2c" fore-title="true">Indice</th>
+                                    <th class="text-white font-size-22px-2c" language="true">Pronostico</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-light">                                                     
+                            </tbody>
+                        </table>                    
+                    </div>
+                    <br>
                     <div class="text-center">
                         <button class="btn btn-primary my-2" onclick="downloadChart()" language="true">Descargar Imagen</button>
                         <a href="/pronosticos-alpha/download" link-post='true' line-chart='0' class="btn btn-success" language="true">Descargar Excel</a>
@@ -304,6 +353,10 @@
         var movil_2_corre = JSON.parse("{{movil_corre_2|escapejs|safe}}")
         var movil_3 = JSON.parse("{{movil_3|escapejs|safe}}")
         var movil_3_corre = JSON.parse("{{movil_corre_3|escapejs|safe}}")
+        var movil_composed = JSON.parse("{{movil_composed|escapejs|safe}}")
+        var movil_composed_corre = JSON.parse("{{movil_composed_corre|escapejs|safe}}")
+        var movil_pondered = JSON.parse("{{movil_pondered|escapejs|safe}}")
+        var movil_pondered_corre = JSON.parse("{{movil_pondered_corre|escapejs|safe}}")                
         var simple_soft = JSON.parse("{{simple_soft|escapejs|safe}}")
         var simple_soft_corre = JSON.parse("{{simple_soft_corre|escapejs|safe}}")
         var double_soft = JSON.parse("{{double_soft|escapejs|safe}}")
@@ -314,11 +367,11 @@
         var jenkin_corre = JSON.parse("{{jenkin_corre|escapejs|safe}}")
         var simu = JSON.parse("{{simu|escapejs|safe}}")
         var simu_corre = JSON.parse("{{simu_corre|escapejs|safe}}")
-        var best_corre = Math.max(lineal_corre,expo_corre,cuadra_corre,movil_2_corre,movil_3_corre,
+        var best_corre = Math.max(lineal_corre,expo_corre,cuadra_corre,movil_2_corre,movil_3_corre,movil_composed_corre,movil_pondered_corre,
         simple_soft_corre,double_soft_corre,winters_corre,jenkin_corre,simu_corre)
         var best_forecast = get_best_forecast(best_corre,
-            [simu_corre,jenkin_corre,winters_corre,double_soft_corre,simple_soft_corre,movil_3_corre,movil_2_corre,cuadra_corre,expo_corre,lineal_corre],
-            [simu,jenkin,winters,double_soft,simple_soft,movil_3,movil_2,cuadra,expo,lineal])
+            [simu_corre,jenkin_corre,winters_corre,double_soft_corre,simple_soft_corre,movil_pondered_corre,movil_composed_corre,movil_3_corre,movil_2_corre,cuadra_corre,expo_corre,lineal_corre],
+            [simu,jenkin,winters,double_soft,simple_soft,movil_pondered,movil_composed,movil_3,movil_2,cuadra,expo,lineal])
 
         django_x_label_chart_01 = get_language_text( (data_django[0].length > 7), ["MESES TOTALES","DIAS TOTALES","TOTAL MONTHS","TOTAL DAYS"])
         django_list_data_chart_01 = [].concat.apply([], data_django)
@@ -333,7 +386,9 @@
         prono_label = getCurrentLanguage() == 'ES' ? 'Pronostico' : 'Forecast'
         corre_label = getCurrentLanguage() == 'ES' ? 'Correlacion' : 'Correlation'
 
-        django_x_label_chart_03 = get_language_text( (data_django[0].length > 7), ["MESES","DIAS","MONTHS","DAYS"])
+        forecasts_labels_x = get_language_text( (data_django[0].length > 7), ["MESES","DIAS","MONTHS","DAYS"])
+
+        django_x_label_chart_03 = forecasts_labels_x
         django_list_data_chart_03 = best_forecast
         django_list_labels_chart_03 = django_list_labels_chart_02
         
@@ -352,20 +407,26 @@
         django_list_data_chart_08 = movil_3
         django_list_labels_chart_08 = django_list_labels_chart_02
 
-        django_list_data_chart_09 = simple_soft
+        django_list_data_chart_09 = movil_composed
         django_list_labels_chart_09 = django_list_labels_chart_02
 
-        django_list_data_chart_10 = double_soft
+        django_list_data_chart_10 = movil_pondered
         django_list_labels_chart_10 = django_list_labels_chart_02
 
-        django_list_data_chart_11 = winters
+        django_list_data_chart_11 = simple_soft
         django_list_labels_chart_11 = django_list_labels_chart_02
 
-        django_list_data_chart_12 = jenkin
+        django_list_data_chart_12 = double_soft
         django_list_labels_chart_12 = django_list_labels_chart_02
 
-        django_list_data_chart_13 = simu
-        django_list_labels_chart_13 = django_list_labels_chart_02      
+        django_list_data_chart_13 = winters
+        django_list_labels_chart_13 = django_list_labels_chart_02
+
+        django_list_data_chart_14 = jenkin
+        django_list_labels_chart_14 = django_list_labels_chart_02
+
+        django_list_data_chart_15 = simu
+        django_list_labels_chart_15 = django_list_labels_chart_02      
 
         function get_language_text(condition,texts){
             switch(getCurrentLanguage()){
@@ -387,13 +448,14 @@
     </script>
 
     <script>
-        var chart1,chart3,chart4,chart5,chart6,chart7,chart8,chart9,chart10,chart11,chart12,chart13
+        var chart1,chart3,chart4,chart5,chart6,chart7,chart8,chart9,chart10,chart11,chart12,chart13,chart14,chart15;
         window.addEventListener("load",createChars,false);
 
         function createChars(){
 
             chart1 = createCharWithLabel('line-chart-01', django_list_labels_chart_01, django_list_data_chart_01,django_x_label_chart_01);
             chart3 = createChar('line-chart-03', django_list_labels_chart_03, django_list_data_chart_03,data_django_last_row);
+            $("span[best_corre]").html(best_corre+'%')
             chart4 = createChar('line-chart-04', django_list_labels_chart_04, django_list_data_chart_04,data_django_last_row);
             chart5 = createChar('line-chart-05', django_list_labels_chart_05, django_list_data_chart_05,data_django_last_row);
             chart6 = createChar('line-chart-06', django_list_labels_chart_06, django_list_data_chart_06,data_django_last_row);
@@ -404,6 +466,8 @@
             chart11 = createChar('line-chart-11', django_list_labels_chart_11, django_list_data_chart_11,data_django_last_row);
             chart12 = createChar('line-chart-12', django_list_labels_chart_12, django_list_data_chart_12,data_django_last_row);
             chart13 = createChar('line-chart-13', django_list_labels_chart_13, django_list_data_chart_13,data_django_last_row);
+            chart14 = createChar('line-chart-14', django_list_labels_chart_14, django_list_data_chart_14,data_django_last_row);
+            chart15 = createChar('line-chart-15', django_list_labels_chart_15, django_list_data_chart_15,data_django_last_row);                        
         }
     </script>
     <script>

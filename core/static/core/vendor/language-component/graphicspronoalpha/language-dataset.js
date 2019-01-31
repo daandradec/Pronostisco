@@ -20,6 +20,13 @@ language_dataset = [
     ["Ver Detalles","See Details"],
     ["PROMEDIO MÓVIL N=3","MOBILE AVERAGE N=3"],
     ["Ver Detalles","See Details"],
+
+    ["PROMEDIO MÓVIL COMPUESTO","COMPOSED MOBILE AVERAGE"],
+    ["Ver Detalles","See Details"],
+    ["PROMEDIO MÓVIL PONDERADO","PONDERED MOBILE AVERAGE N=3"],
+    ["Ver Detalles","See Details"],
+    
+
     ["SUAVIZACIÓN EXPONENCIAL SIMPLE","SINGLE EXPONENTIAL SOFTENER"],
     ["Ver Detalles","See Details"],
     ["SUAVIZACIÓN EXPONENCIAL DOBLE","DOUBLE EXPONENTIAL SOFTENING"],
@@ -38,7 +45,8 @@ language_dataset = [
 
     ["Copyright © 2018 Todos los derechos reservados","Copyright © 2018 All rights reserved"],
 
-    ["Nivel de Correlacion con el ultimo año","Level of correlation with the last year"],
+    ["Nivel de Certeza","Level of Certainty"],
+    ["Pronóstico","Forecast"],
     ["Descargar Imagen","Download Image"],
     ["Descargar Excel","Download Excel"],    
 ]

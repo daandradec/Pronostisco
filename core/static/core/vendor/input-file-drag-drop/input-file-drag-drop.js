@@ -33,7 +33,7 @@ function drop_complete(e){
         cloud_drag_drop.style.border = "3px dashed #7abd54"
         drop_complete_flag = true;   
         $("#drag-cloud-button").prop("disabled",false);     
-        $("#label_output_file").html(this.files[0].name);
+        $("#label_output_file").html(e.dataTransfer.files[0].name);
     }else{
         alert("Por favor ingrese un archivo de excel");
         $("#label_output_file").html("");

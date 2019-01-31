@@ -50,12 +50,15 @@
     </section>
 
     <section class="center my-4">
-        <div class="card" style="width: 95%;">
+        <div class="card" style="width: 90%;">
             <div class="card-header">
                 <span language="true">GRÁFICA DEL MEJOR PRONÓSTICO PARA SUS VENTAS <i class="fas fa-chart-area"></i></span>
             </div>
             <div class="card-body">
                 <canvas id="line-chart-03"></canvas>    
+            </div>
+            <div class="card-footer">
+                <p class="float-right mt-2 mr-3 font-size-20px-2c font-weight-bold text-muted">Nivel de Certeza: <span best_corre="true">0.95</span></p>
             </div>
         </div>        
     </section>
@@ -199,21 +202,35 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <canvas id="line-chart-14"></canvas>
+                    <canvas id="line-chart-20"></canvas>
                     <br>
                     <!--<p>La correlacion con el ultimo año fue de : <span id="correlation">0.95</span></p>-->
                     <table class="table">
                         <thead class="bg-info">
                             <tr> <!-- style="color:#6a6c6f;" -->
-                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Correlacion con el ultimo año</th>
+                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
                             </tr>
                         </thead>
                         <tbody class="bg-light">
                             <tr>
-                                <td id="correlation" class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95</td>
+                                <td id="correlation" class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
                             </tr>
                         </tbody>
                     </table>
+                    <br>
+                    <div style="width:100%;;max-height:500px;overflow-y: auto;display:block;">
+                        <table class="table mx-auto" style="width:50%;" forecast-table="true">
+                            <thead>
+                                <tr class="bg-dark">
+                                    <th class="text-white font-size-22px-2c" fore-title="true">Indice</th>
+                                    <th class="text-white font-size-22px-2c" language="true">Pronostico</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-light">                                                     
+                            </tbody>
+                        </table>                    
+                    </div>
+                    <br>                    
                     <div class="text-center">
                         <button class="btn btn-primary my-2" onclick="downloadChart()" language="true">Descargar Imagen</button>
                         <a href="/pronosticos-alpha/download" link-post='true' line-chart='0' class="btn btn-success" language="true">Descargar Excel</a>
@@ -247,37 +264,58 @@
                     <table class="table">
                         <thead class="bg-info">
                             <tr> <!-- style="color:#6a6c6f;" -->
-                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Correlacion con el ultimo año</th>
+                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
                             </tr>
                         </thead>
                         <tbody class="bg-light">
                             <tr>
-                                <td class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95</td>
+                                <td class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
                             </tr>
                         </tbody>
                     </table>
                     <br>
+                    <div class="table-responsive-sm">
+                        <table class="table">
+                            <thead>
+                                <tr class="bg-warning">
+                                    <th class="font-alegreya-sans font-size-28px-3c font-weight-bold">a</th>
+                                    <th class="font-alegreya-sans font-size-28px-3c font-weight-bold">b</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-light">
+                                <tr>
+                                    <td class="hov-scale c-pointer font-quicksand font-size-24px-3c">{{a_lineal}}</td>
+                                    <td class="hov-scale c-pointer font-quicksand font-size-24px-3c">{{b_lineal}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
                     <p class="text-center font-weight-light text-muted font-size-18px-2c" language="true">Variables del metodo lineal</p>
-                    <table class="mx-auto table table-striped table-hover table-sm">
-                        <thead>
-                            <tr class="bg-light">
-                                <th class="text-secondary font-size-20px-2c">X</th>
-                                <th class="text-secondary font-size-20px-2c">Y</th>
-                                <th class="text-secondary font-size-20px-2c">Y^2</th>
-                                <th class="text-secondary font-size-20px-2c">X*Y</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for x1,x2,x3,x4 in lineal_data %}
-                            <tr>                                
-                                <td class="font-quicksand" style="color:#52524e;">{{x1}}</td>
-                                <td class="font-quicksand" style="color:#52524e;">{{x2}}</td>
-                                <td class="font-quicksand" style="color:#52524e;">{{x3}}</td>
-                                <td class="font-quicksand" style="color:#52524e;">{{x4}}</td>                                
-                            </tr>
-                            {% endfor %}                            
-                        </tbody>
-                    </table>
+                    <div class="table-responsive-sm">
+                        <table class="mx-auto table table-striped table-hover table-sm">
+                            <thead>
+                                <tr class="bg-light">
+                                    <th class="text-secondary font-size-20px-2c">X</th>
+                                    <th class="text-secondary font-size-20px-2c">Y</th>
+                                    <th class="text-secondary font-size-20px-2c">Y^2</th>
+                                    <th class="text-secondary font-size-20px-2c">X*Y</th>
+                                    <th class="text-secondary font-size-20px-2c">Forecast</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x1,x2,x3,x4,x5 in lineal_data %}
+                                <tr>                                
+                                    <td class="font-quicksand" style="color:#52524e;">{{x1}}</td>
+                                    <td class="font-quicksand" style="color:#52524e;">{{x2}}</td>
+                                    <td class="font-quicksand" style="color:#52524e;">{{x3}}</td>
+                                    <td class="font-quicksand" style="color:#52524e;">{{x4}}</td>  
+                                    <td class="font-quicksand" style="color:#52524e;">{{x5}}</td>                                
+                                </tr>
+                                {% endfor %}                            
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="text-center">
                         <button class="btn btn-primary my-2" onclick="downloadChartLine()" language="true">Descargar Imagen</button>
                         <a href="/pronosticos-alpha/download" link-post='true' line-chart='0' class="btn btn-success" language="true">Descargar Excel</a>
@@ -311,15 +349,32 @@
                     <table class="table">
                         <thead class="bg-info">
                             <tr> <!-- style="color:#6a6c6f;" -->
-                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Correlacion con el ultimo año</th>
+                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
                             </tr>
                         </thead>
                         <tbody class="bg-light">
                             <tr>
-                                <td class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95</td>
+                                <td class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
                             </tr>
                         </tbody>
                     </table>
+                    <br>
+                    <div class="table-responsive-sm">
+                        <table class="table">
+                            <thead>
+                                <tr class="bg-warning">
+                                    <th class="font-alegreya-sans font-size-28px-3c font-weight-bold">a</th>
+                                    <th class="font-alegreya-sans font-size-28px-3c font-weight-bold">b</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-light">
+                                <tr>
+                                    <td class="hov-scale c-pointer font-quicksand font-size-24px-3c">{{a_expo}}</td>
+                                    <td class="hov-scale c-pointer font-quicksand font-size-24px-3c">{{b_expo}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                    
                     <br>
                     <p class="text-center font-weight-light text-muted font-size-18px-2c" language="true">Variables del metodo Exponencial</p>
                     <div class="table-responsive-sm">
@@ -331,16 +386,18 @@
                                     <th class="text-secondary font-size-20px-2c">Y^2</th>
                                     <th class="text-secondary font-size-20px-2c">LN(X)</th>
                                     <th class="text-secondary font-size-20px-2c">LN(X)*Y</th>
+                                    <th class="text-secondary font-size-20px-2c">Forecast</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for x1,x2,x3,x4,x5 in expo_data %}
+                                {% for x1,x2,x3,x4,x5,x6 in expo_data %}
                                 <tr>                                
                                     <td class="font-quicksand" style="color:#52524e;">{{x1}}</td>
                                     <td class="font-quicksand" style="color:#52524e;">{{x2}}</td>
                                     <td class="font-quicksand" style="color:#52524e;">{{x3}}</td>
                                     <td class="font-quicksand" style="color:#52524e;">{{x4}}</td>
-                                    <td class="font-quicksand" style="color:#52524e;">{{x5}}</td>                                
+                                    <td class="font-quicksand" style="color:#52524e;">{{x5}}</td>   
+                                    <td class="font-quicksand" style="color:#52524e;">{{x6}}</td>                                
                                 </tr>
                                 {% endfor %}                            
                             </tbody>
@@ -380,12 +437,12 @@
                     <table class="table">
                         <thead class="bg-info">
                             <tr> <!-- style="color:#6a6c6f;" -->
-                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Correlacion con el ultimo año</th>
+                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
                             </tr>
                         </thead>
                         <tbody class="bg-light">
                             <tr>
-                                <td class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95</td>
+                                <td class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -395,18 +452,20 @@
                         <thead>
                             <tr class="bg-light">
                                 <th class="text-secondary font-size-20px-2c">X</th>
-                                <th class="text-secondary font-size-20px-2c">Mes</th>
+                                <th class="text-secondary font-size-20px-2c">{% if data.0|length > 7 %}Mes{% else %}Dia{% endif %}</th>
                                 <th class="text-secondary font-size-20px-2c" language="true">Promedio</th>
                                 <th class="text-secondary font-size-20px-2c"><span language="true">Promedio</span><br><span language="true">Ajustado</span></th>
+                                <th class="text-secondary font-size-20px-2c">Forecast</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for x1,x2,x3,x4 in movil_data %}
+                            {% for x1,x2,x3,x4,x5 in movil_data %}
                             <tr>                                
                                 <td class="font-quicksand" style="color:#52524e;">{{x1}}</td>
                                 <td class="font-quicksand" style="color:#52524e;">{{x2}}</td>
                                 <td class="font-quicksand" style="color:#52524e;">{{x3}}</td>
-                                <td class="font-quicksand" style="color:#52524e;">{{x4}}</td>                                
+                                <td class="font-quicksand" style="color:#52524e;">{{x4}}</td>
+                                <td class="font-quicksand" style="color:#52524e;">{{x5}}</td>                                
                             </tr>
                             {% endfor %}                            
                         </tbody>
@@ -474,7 +533,10 @@
         prono_label = getCurrentLanguage() == 'ES' ? 'Pronostico' : 'Forecast'
         corre_label = getCurrentLanguage() == 'ES' ? 'Correlacion' : 'Correlation'        
 
-        django_x_label_chart_03 = get_language_text( (data_django[0].length > 7), ["MESES","DIAS","MONTHS","DAYS"])
+
+        forecasts_labels_x = get_language_text( (data_django[0].length > 7), ["MESES","DIAS","MONTHS","DAYS"])
+
+        django_x_label_chart_03 = forecasts_labels_x
         django_list_data_chart_03 = best_forecast
         django_list_labels_chart_03 = Array.from(Array(django_list_data_chart_03.length).keys()).map(x => ++x)
         django_list_graph_compare = (best_index_forecast > 1) ? django_list_data_chart_01 : data_django_last_row
@@ -530,6 +592,7 @@
 
             chart1 = createCharWithLabel('line-chart-01', django_list_labels_chart_01, django_list_data_chart_01,django_x_label_chart_01);
             chart3 = createChar('line-chart-03', django_list_labels_chart_03, django_list_data_chart_03,django_list_graph_compare);
+            $("span[best_corre]").html(best_corre+'%')
             chart4 = createChar('line-chart-04', django_list_labels_chart_04, django_list_data_chart_04,django_list_data_chart_01);
             chart5 = createChar('line-chart-05', django_list_labels_chart_05, django_list_data_chart_05,django_list_data_chart_01);
             chart6 = createChar('line-chart-06', django_list_labels_chart_06, django_list_data_chart_06,django_list_data_chart_01);

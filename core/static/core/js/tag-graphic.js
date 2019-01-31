@@ -33,6 +33,10 @@ function destroyCharts(){
         chart12.destroy()
     if(typeof chart13 !== 'undefined')
         chart13.destroy()
+    if(typeof chart14 !== 'undefined')
+        chart14.destroy()
+    if(typeof chart15 !== 'undefined')
+        chart15.destroy()                
 }
 
 window.addEventListener("load",tagLoad,false)

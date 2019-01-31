@@ -7,7 +7,7 @@ YEARS_COLUMNS = 13;
 columns = YEARS_COLUMNS;
 
 MAX_LIMIT_ROWS = 7;
-MIN_LIMIT_ROWS = 2;
+MIN_LIMIT_ROWS = 1;
 
 function awake(){
 	//$('body *:not(td)').on('click',function(e){closeActiveCells();},true);

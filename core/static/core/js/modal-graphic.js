@@ -5,7 +5,7 @@ function modal_chart(id_modal,id_canvas,target){
     flag = parseInt($(target).attr('btn-flag-chart'))
     // modificar textos y demas
     $("h5.modal-title").html(getTitle($(target).attr('btn-line-chart')))
-    $("td.corre").html(getCorrelationVariable(number))
+    $("td.corre").html(getCorrelationVariable(number)+'%')
     var a = $("a[link-post][line-chart]")
     a.attr('line-chart',$(target).attr('btn-line-chart'))
     a.attr('flag-chart',$(target).attr('btn-flag-chart'))
@@ -25,10 +25,20 @@ function startEventModal(){
         if(chart !== undefined)
             chart.destroy()
         
-        chart = createChar('line-chart-14', getListLabelVariable(number), getListDataVariable(number),flag ? data_django_last_row : django_list_data_chart_01);
+
+        dataGraph = getListDataVariable(number)
+        $("th[fore-title]").html(forecasts_labels_x)
+        tbody = document.querySelector("table[forecast-table] tbody")
+        tbody.innerHTML=""
+        for(i = 0;i < dataGraph.length;++i){
+            console.log(dataGraph[i])
+            tbody.innerHTML += "<tr><td class='font-quicksand' style='color:#52524e;'>"+(i+1)+"</td><td class='font-quicksand' style='color:#52524e;'>"+dataGraph[i]+"</td></tr>"
+        }
+
+        chart = createChar('line-chart-20', getListLabelVariable(number), dataGraph , flag ? data_django_last_row : django_list_data_chart_01);
         // modificar textos y demas
         $("h5.modal-title").html(getTitle($(this).attr('btn-line-chart')))
-        $("#correlation").html(getCorrelationVariable(number))
+        $("#correlation").html(getCorrelationVariable(number)+'%')
         var a = $("a[link-post][line-chart]")
         a.attr('line-chart',$(this).attr('btn-line-chart'))
         a.attr('flag-chart',$(this).attr('btn-flag-chart'))
@@ -92,6 +102,10 @@ function getListLabelVariable(number){
         return django_list_labels_chart_12
         case 13:
         return django_list_labels_chart_13
+        case 14:
+        return django_list_labels_chart_14
+        case 15:
+        return django_list_labels_chart_15                
     }
 }
 function getListDataVariable(number){
@@ -116,6 +130,10 @@ function getListDataVariable(number){
         return django_list_data_chart_12
         case 13:
         return django_list_data_chart_13
+        case 14:
+        return django_list_data_chart_14
+        case 15:
+        return django_list_data_chart_15                
     }
 }
 
@@ -132,14 +150,22 @@ function getCorrelationVariable(number){
         case 8:
         return movil_3_corre
         case 9:
+        if(typeof movil_composed_corre !== 'undefined')
+            return movil_composed_corre
         return simple_soft_corre
         case 10:
+        if(typeof movil_pondered_corre !== 'undefined')
+            return movil_pondered_corre                
         return double_soft_corre
         case 11:
-        return winters_corre
+        return simple_soft_corre
         case 12:
-        return jenkin_corre
+        return double_soft_corre
         case 13:
+        return winters_corre
+        case 14:
+        return jenkin_corre
+        case 15:
         return simu_corre
     }   
 }

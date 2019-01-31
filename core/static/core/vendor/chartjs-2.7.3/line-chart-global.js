@@ -49,10 +49,10 @@ function getChartConfigurationX(labels,data,data_django_last_row){
 		                	fontSize: 16,
 		                }
 		            }]
-		        },
+				},/*
 		        legend: {
 						display: false
-				},
+				},*/
 		        hover: {
 					mode: 'nearest',
 					intersect: true
@@ -103,10 +103,10 @@ function getChartConfigurationZ(labels,data,x_label){
 		                	fontSize: 16,
 		                }
 		            }]
-		        },
+				},/*
 		        legend: {
 						display: false
-				},
+				},*/
 		    }
 	}
 }

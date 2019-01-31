@@ -34,21 +34,22 @@ language_dataset = [
 
     ["Copyright © 2018 Todos los derechos reservados","Copyright © 2018 All rights reserved"],
 
-    ["Nivel de Correlacion con el ultimo año","Level of correlation with the last year"],
+    ["Nivel de Certeza","Level of Certainty"],
+    ["Pronóstico","Forecast"],
     ["Descargar Imagen","Download Image"],
     ["Descargar Excel","Download Excel"],
 
-    ["Nivel de Correlacion con el ultimo año","Level of correlation with the last year"],
+    ["Nivel de Certeza","Level of Certainty"],
     ["Variables del metodo lineal","Variables of the linear method"],
     ["Descargar Imagen","Download Image"],
     ["Descargar Excel","Download Excel"],
 
-    ["Nivel de Correlacion con el ultimo año","Level of correlation with the last year"],
+    ["Nivel de Certeza","Level of Certainty"],
     ["Variables del metodo Exponencial","Variables of the Exponential method"],
     ["Descargar Imagen","Download Image"],
     ["Descargar Excel","Download Excel"],
 
-    ["Nivel de Correlacion con el ultimo año","Level of correlation with the last year"],
+    ["Nivel de Certeza","Level of Certainty"],
     ["Variables del Promedio Movil","Variables of the Average Movil"],
     ["Promedio","Average"],
     ["Promedio","Adjust"],

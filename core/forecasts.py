@@ -27,9 +27,9 @@ def getSimpleForecasts(data):
     """---Metodo Lineal---"""
     xy = numpy.multiply(x,y)
     sum_xy = numpy.sum(xy)
-    a = calculate_a_lineal_method(sum_x,sum_y,sum_y_square,sum_xy,n)
-    b = calculate_b_lineal_method(sum_x,sum_y,sum_y_square,sum_xy,n)
-    a_b = (a,b)
+    a_lineal = calculate_a_lineal_method(sum_x,sum_y,sum_y_square,sum_xy,n)
+    b_lineal = calculate_b_lineal_method(sum_x,sum_y,sum_y_square,sum_xy,n)
+    a_b = (a_lineal,b_lineal)
 
     lineal_forecasts = calculate_lineal_method(y,a_b)
     lineal_forecasts = [math.ceil(x) for x in lineal_forecasts]
@@ -41,9 +41,9 @@ def getSimpleForecasts(data):
     sum_ln_x = numpy.sum(ln_x)
     sum_ln_xy = numpy.sum(ln_xy)
 
-    a = exponential(calculate_a_exponential_method(sum_y,sum_y_square,sum_ln_x,sum_ln_xy,n))
-    b = exponential(calculate_b_exponential_method(sum_y,sum_y_square,sum_ln_x,sum_ln_xy,n))
-    a_b = (a,b)
+    a_expo = exponential(calculate_a_exponential_method(sum_y,sum_y_square,sum_ln_x,sum_ln_xy,n))
+    b_expo = exponential(calculate_b_exponential_method(sum_y,sum_y_square,sum_ln_x,sum_ln_xy,n))
+    a_b = (a_expo,b_expo)
 
     exponential_forecasts = calculate_exponential_method(y,a_b)
     exponential_forecasts = [math.ceil(x) for x in exponential_forecasts]
@@ -71,14 +71,14 @@ def getSimpleForecasts(data):
     x_movil = numpy.array(data,dtype=numpy.float64).reshape(-1)
     movil_averages = [ 0.5*(x_movil[i]+x_movil[i-1]) for i in range(1,len(x_movil)) ]
     movil_averages_adjust = [math.ceil(x) for x in movil_averages]
-    movil_forecast_2 = [x_movil[0]] + movil_averages
+    movil_forecast_2 = [x_movil[0]] + movil_averages_adjust
     movil_correlation_2 = calculate_correlation(x,movil_forecast_2)
 
     movil_averages = [x_movil[0]] + movil_averages
     movil_averages_adjust = [math.ceil(x_movil[0])] + movil_averages_adjust
 
     """ -----Promedio Movil n=3 ----- """
-    movil_forecast_3 = [x_movil[0],x_movil[1]] + [ math.ceil( (x_movil[i]+x_movil[i-1]+x_movil[i-2])/3 ) for i in range(2,len(x_movil)) ]
+    movil_forecast_3 = [math.ceil(x_movil[0]),math.ceil(x_movil[1])] + [ math.ceil( (x_movil[i]+x_movil[i-1]+x_movil[i-2])/3 ) for i in range(2,len(x_movil)) ]
     movil_correlation_3 = calculate_correlation(x,movil_forecast_3)
 
     """ -----Suavizacion Exponencial Simple ----- """
@@ -86,7 +86,15 @@ def getSimpleForecasts(data):
     """ -----Suavizacion Exponencial Doble ----- """
     double_softener_forecast,double_softener_correlation = get_best_double_softener_simple(data)
 
-    return (lineal_forecasts,x,y,y_square,xy,lineal_correlation,exponential_forecasts,ln_x,ln_xy,exponential_correlation,cuadra_forecasts,
+    lineal_correlation *= 100
+    exponential_correlation *= 100
+    cuadra_correlation *= 100
+    movil_correlation_2 *= 100
+    movil_correlation_3 *= 100
+    simple_softener_correlation *= 100
+    double_softener_correlation *= 100
+
+    return (lineal_forecasts,x,y,y_square,xy,a_lineal,b_lineal,lineal_correlation,exponential_forecasts,ln_x,ln_xy,a_expo,b_expo,exponential_correlation,cuadra_forecasts,
     cuadra_correlation,movil_forecast_2,movil_averages,movil_averages_adjust,movil_correlation_2,movil_forecast_3,movil_correlation_3,
     simple_softener_forecast,simple_softener_correlation,
     double_softener_forecast,double_softener_correlation)
@@ -169,10 +177,10 @@ def getBusinessForecasts(data):
     movil_correlation_3 = calculate_correlation(data[-1],movil_forecast_3)
 
     # promedio movil compuesto
-    movil_forecast_composed = [(x1*x2)/2 for x1,x2 in zip(movil_forecast_2,movil_forecast_3)]
+    movil_forecast_composed = [ math.ceil( (x1+x2)/2 ) for x1,x2 in zip(movil_forecast_2,movil_forecast_3)]
     movil_composed_correlation = calculate_correlation(data[-1],movil_forecast_composed)
     # promedio movil ponderado
-    movil_forecast_pondered = [(x1*0.7)+(x2*0.3) for x1,x2 in zip(movil_forecast_2,movil_forecast_3)]
+    movil_forecast_pondered = [ math.ceil( (x1*0.7)+(x2*0.3) ) for x1,x2 in zip(movil_forecast_2,movil_forecast_3)]
     movil_pondered_correlation = calculate_correlation(data[-1],movil_forecast_pondered)
 
     """ -----Suavizacion Exponencial Simple ----- """
@@ -190,9 +198,22 @@ def getBusinessForecasts(data):
     """ ---- Simulated ---- """
     simulated_forecast,simulated_correlation = get_best_simulated_forecast(x,data)
     
-    
+    lineal_correlation *= 100
+    expo_correlation *= 100
+    cuadra_correlation *= 100
+    movil_correlation_2 *= 100
+    movil_correlation_3 *= 100
+    movil_composed_correlation *= 100
+    movil_pondered_correlation *= 100
+    simple_softener_correlation *= 100
+    double_softener_correlation *= 100
+    winters_correlation *= 100
+    jenkin_correlation *= 100
+    simulated_correlation *= 100
+
     return (lineal_business_forecasts,lineal_correlation,expo_business_forecasts,expo_correlation,
     cuadra_business_forecasts,cuadra_correlation,movil_forecast_2,movil_correlation_2,movil_forecast_3,movil_correlation_3,
+    movil_forecast_composed,movil_composed_correlation,movil_forecast_pondered,movil_pondered_correlation,
     simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation,
     winters_forecast,winters_correlation,jenkin_forecast,jenkin_correlation,simulated_forecast,simulated_correlation)
 

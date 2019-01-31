@@ -5,7 +5,7 @@ function createDownload(id,canvas_id){
     a.click();
 }
 function downloadChart(){
-    createDownload("link-download",'line-chart-14')
+    createDownload("link-download",'line-chart-20')
 }
 
 function downloadChartLine(){

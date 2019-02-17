@@ -101,7 +101,8 @@ section.header-section > div > img{
 
 .body-section > main div.main-div-col-1{
     width:50%;
-    height:500px;
+    /*height:500px;*/
+    min-height: 500px;
 }
 .body-section > main div.main-div-col-2{
     width:45%;

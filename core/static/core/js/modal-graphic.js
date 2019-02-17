@@ -1,4 +1,4 @@
-var chart,chart_lin,chart_expo,chart_movil;
+var chart,chart_lin,chart_expo,chart_movil,chart_full_modal;
 
 function modal_chart(id_modal,id_canvas,target){
     number = parseInt($(target).attr('btn-line-chart'))
@@ -7,11 +7,48 @@ function modal_chart(id_modal,id_canvas,target){
     $("h5.modal-title").html(getTitle($(target).attr('btn-line-chart')))
     $("td.corre").html(getCorrelationVariable(number)+'%')
     var a = $("a[link-post][line-chart]")
-    a.attr('line-chart',$(target).attr('btn-line-chart'))
-    a.attr('flag-chart',$(target).attr('btn-flag-chart'))
+    a.attr('line-chart',number)
+    a.attr('flag-chart',flag)
     // habilitar modal
     $(id_modal).modal('show')
     return createChar(id_canvas, getListLabelVariable(number), getListDataVariable(number),flag ? data_django_last_row : django_list_data_chart_01);
+}
+
+function modal_chart_extended(number,flag){
+    // habilitar modal
+    $('#modalExample').modal('show')
+    // crear canvas
+    if(chart !== undefined)
+        chart.destroy()
+    
+
+    dataGraph = getListDataVariable(number)        
+    table_insertion_flag = parseInt($("table[forecast-table]").attr('forecast-alpha'));
+    if(table_insertion_flag){
+        tbody = document.querySelector("table[forecast-table] tbody tr")
+        tbody.innerHTML="<td class='text-white font-size-22px-2c bg-dark' language='true'>Pronostico</td>"
+        thead = document.querySelector("table[forecast-table] thead tr")
+        thead.innerHTML="<th class='text-white font-size-22px-2c bg-dark' fore-title='true'>Indice</th>"
+        for(i = 0;i < dataGraph.length;++i){
+            tbody.innerHTML += "<td class='font-quicksand bg-light' style='color:#52524e;'>"+dataGraph[i]+"</td>"
+            thead.innerHTML += "<td class='font-quicksand bg-light' style='color:#52524e;'>"+(i+1)+"</td>"
+        }
+    }else{
+        tbody = document.querySelector("table[forecast-table] tbody")
+        tbody.innerHTML=""            
+        for(i = 0;i < dataGraph.length;++i)
+            tbody.innerHTML += "<tr><td class='font-quicksand' style='color:#52524e;'>"+(i+1)+"</td><td class='font-quicksand' style='color:#52524e;'>"+dataGraph[i]+"</td></tr>"
+    }
+    
+    $("th[fore-title]").html(forecasts_labels_x)
+
+    chart = createChar('line-chart-20', getListLabelVariable(number), dataGraph , flag ? data_django_last_row : django_list_data_chart_01);
+    // modificar textos y demas
+    $("h5.modal-title").html(getTitle(number))
+    $("#correlation").html(getCorrelationVariable(number)+'%')
+    var a = $("a[link-post][line-chart]")
+    a.attr('line-chart',number)
+    a.attr('flag-chart',flag)
 }
 
 function startEventModal(){
@@ -19,28 +56,7 @@ function startEventModal(){
         number = parseInt($(this).attr('btn-line-chart'))
         flag = parseInt($(this).attr('btn-flag-chart'))
 
-        // habilitar modal
-        $('#modalExample').modal('show')
-        // crear canvas
-        if(chart !== undefined)
-            chart.destroy()
-        
-
-        dataGraph = getListDataVariable(number)
-        $("th[fore-title]").html(forecasts_labels_x)
-        tbody = document.querySelector("table[forecast-table] tbody")
-        tbody.innerHTML=""
-        for(i = 0;i < dataGraph.length;++i){
-            tbody.innerHTML += "<tr><td class='font-quicksand' style='color:#52524e;'>"+(i+1)+"</td><td class='font-quicksand' style='color:#52524e;'>"+dataGraph[i]+"</td></tr>"
-        }
-
-        chart = createChar('line-chart-20', getListLabelVariable(number), dataGraph , flag ? data_django_last_row : django_list_data_chart_01);
-        // modificar textos y demas
-        $("h5.modal-title").html(getTitle($(this).attr('btn-line-chart')))
-        $("#correlation").html(getCorrelationVariable(number)+'%')
-        var a = $("a[link-post][line-chart]")
-        a.attr('line-chart',$(this).attr('btn-line-chart'))
-        a.attr('flag-chart',$(this).attr('btn-flag-chart'))
+        modal_chart_extended(number,flag);
     })
     $("button[btn-modal-index='1']").on('click',function(){   
         if(chart_lin !== undefined)
@@ -59,6 +75,21 @@ function startEventModal(){
             chart_movil.destroy()
 
         chart_movil = modal_chart('#modal_movil','line-chart-17',this)
+    })
+
+    $("div[graph_full_modal]").on('click',function(){
+        number = parseInt($(this).attr('graph_full_modal'))
+        if(chart_full_modal !== undefined)
+            chart_full_modal.destroy()
+        switch(number){
+            case 1:
+                chart_full_modal = createChar('line-chart-30',django_list_labels_chart_01, django_list_data_chart_01)
+            break;
+            case 2:
+                chart_full_modal = createChar02X('line-chart-30')
+            break;
+        }        
+        $('#modalFull').modal('show')
     })
 }
 /*

@@ -180,7 +180,7 @@ def getBusinessForecasts(data):
     movil_forecast_composed = [ math.ceil( (x1+x2)/2 ) for x1,x2 in zip(movil_forecast_2,movil_forecast_3)]
     movil_composed_correlation = calculate_correlation(data[-1],movil_forecast_composed)
     # promedio movil ponderado
-    movil_forecast_pondered = [ math.ceil( (x1*0.7)+(x2*0.3) ) for x1,x2 in zip(movil_forecast_2,movil_forecast_3)]
+    movil_forecast_pondered = [ math.ceil( (x1*0.3)+(x2*0.7) ) for x1,x2 in zip(movil_forecast_2,movil_forecast_3)]
     movil_pondered_correlation = calculate_correlation(data[-1],movil_forecast_pondered)
 
     """ -----Suavizacion Exponencial Simple ----- """
@@ -328,7 +328,7 @@ def get_best_simple_softener_simple(data):
         general_average = average([average(data[len(data)-2]) , average(data[len(data)-1])])
         data_simple = [x for x in data[len(data)-2]]
     else:
-        general_average = average(data[len(data)-1])
+        general_average = average(data[len(data)-1])        
         data_simple = []
     forecasts = []
     for sigma in numpy.arange(0.1,1,0.1,dtype=numpy.float64):
@@ -338,16 +338,15 @@ def get_best_simple_softener_simple(data):
 
 def calculate_simple_softener_simple_forecast(sigma,general_average,data_simple,last_row_data):
     value = general_average
-
     while(len(data_simple) > 0):
-        value = (sigma*data_simple[0]) + (1 - sigma)*(value) 
+        value = (sigma*data_simple[0]) + (1 - sigma)*(value)         
         data_simple.pop(0)
     
     forecast = []
     for x in last_row_data:
-        value = (sigma*x) + (1 - sigma)*(value) 
+        value = (sigma*x) + (1 - sigma)*(value)            
         forecast.append( math.ceil(value) )
-
+    forecast = [math.ceil(general_average)]+forecast[1:]    
     return forecast,calculate_correlation(last_row_data,forecast)
     
 def get_best_double_softener_simple(data):
@@ -361,7 +360,7 @@ def get_best_double_softener_simple(data):
         increments_average = (average(data[0]))  / len(data[0])
     forecasts = []
     for sigma in numpy.arange(0.1,1,0.1,dtype=numpy.float64):
-        forecasts.append( calculate_double_softener_simple_forecast(sigma,general_average,increments_average,data_simple[1:],data[len(data)-1]) )
+        forecasts.append( calculate_double_softener_simple_forecast(sigma,general_average,increments_average,data_simple[1:],data[len(data)-1]) )        
     forecasts = sorted(forecasts,key=itemgetter(1), reverse=True)
 
     return get_clean_simple_softener(forecasts)
@@ -378,7 +377,7 @@ def calculate_double_softener_simple_forecast(sigma,general_average,increments_a
     
     forecast = []
     for i in range(1,len(last_row_data)+1):
-        forecast.append(math.ceil( value + i*value2 ))
+        forecast.append(math.ceil( value + i*value2 ))    
     return forecast,calculate_correlation(last_row_data,forecast)
 
 
@@ -450,11 +449,11 @@ def get_best_winters_method(x,data):
     #sum_pre_last_row_data = sum(pre_last_row_data)
     #sum_last_row_data = sum(last_row_data)
 
-    seasonality = second_increment - increments_average*(n*2)
+    seasonality = second_increment - increments_average*(n*2)    
     ct_1 = [pre_last_row_data[i]/(seasonality+(increments_average*i)) for i in range(len(pre_last_row_data))]
-    ct_2 = [last_row_data[i]/(seasonality+(increments_average*i)) for i in range(len(last_row_data))]
-    ct_average = [(ct1+ct2)/2 for ct1,ct2 in zip(ct_1,ct_2)]
-    forecast = [math.ceil(  (second_increment + (increments_average*i) )*ct_average[i] ) for i in range(n)]
+    ct_2 = [last_row_data[i]/(seasonality+(increments_average*i)) for i in range(len(last_row_data))]    
+    ct_average = [(ct1+ct2)/2 for ct1,ct2 in zip(ct_1,ct_2)]    
+    forecast = [math.ceil(  (second_increment + (increments_average*i) )*ct_average[i] ) for i in range(n)]    
     return forecast,calculate_correlation(last_row_data,forecast)
 
 
@@ -472,7 +471,8 @@ def get_best_boxjenkins_method(x,data):
     var = sum(at_square) / (n-1)
     estimator = covar/var
     
-    forecast = [math.ceil(last_average)]+[math.ceil( last_average + (estimator*x) ) for x in at_1]
+    forecast = [math.ceil(last_row_data[0])]+[math.ceil( last_average + (estimator*x) ) for x in at_1]
+    #forecast = [math.ceil(last_average)]+[math.ceil( last_average + (estimator*x) ) for x in at_1]
     
     return forecast,calculate_correlation(last_row_data,forecast)
 
@@ -486,7 +486,8 @@ def get_best_simulated_forecast(x,data):
     final_forecast = last_row_data
     timer = time.time()
     random.seed()
-    while(time.time()-timer < 5.0 and final_correlation < 0.95):
+
+    while(time.time()-timer < 5.0 and final_correlation < 0.99):
         rand_matrix = [ [random.random() for _ in range(n)] for _ in range(n)]
         sum_rand = [sum(x) for x in rand_matrix]
         pend_rand = [x-n2 for x in sum_rand]
@@ -497,5 +498,4 @@ def get_best_simulated_forecast(x,data):
         if correlation > final_correlation:
             final_correlation = correlation
             final_forecast = forecast.copy()
-
     return final_forecast,final_correlation

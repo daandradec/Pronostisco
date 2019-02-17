@@ -13,7 +13,7 @@ function getChartConfigurationX(labels,data,data_django_last_row){
 		        labels: labels,
 		        datasets: [
 			        {
-			            label: getCurrentLanguage() == 'ES' ? 'Demanda': 'DEMAND',
+			            label: getCurrentLanguage() == 'ES' ? 'Pronóstico': 'Forecast',
 			            backgroundColor: window.chartColors.green,
 						borderColor: window.chartColors.green,
 						pointRadius: 5,
@@ -76,7 +76,7 @@ function getChartConfigurationZ(labels,data,x_label){
 		        labels: labels,
 		        datasets: [
 			        {
-			            label: getCurrentLanguage() == 'ES' ? 'Demanda': 'DEMAND',
+			            label: getCurrentLanguage() == 'ES' ? 'Demanda': 'Demand',
 			            backgroundColor: window.chartColors.green,
 						borderColor: window.chartColors.green,
 						pointRadius: 5,

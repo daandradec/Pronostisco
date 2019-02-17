@@ -8,6 +8,11 @@ function createChar02(){
 	var canvas = document.getElementById('line-chart-02').getContext('2d');
 	chart2 = new Chart(canvas,getChartConfiguration(django_list_labels_chart_02, django_list_data_chart_02))
 }
+function createChar02X(id){
+	var canvas = document.getElementById(id).getContext('2d');
+	chart2 = new Chart(canvas,getChartConfiguration(django_list_labels_chart_02, django_list_data_chart_02))
+	return chart2;
+}
 
 function getChartConfiguration(labels,data){
 

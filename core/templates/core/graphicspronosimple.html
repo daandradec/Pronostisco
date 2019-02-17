@@ -26,7 +26,7 @@
                         <div class="card-header">
                             <span language="true">GRÁFICA COMPLETA <i class="fas fa-chart-area"></i></span>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" graph_full_modal="1" style="cursor:pointer;">
                             <canvas id="line-chart-01"></canvas>    
                         </div>
                     </div> 
@@ -39,7 +39,7 @@
                         <div class="card-header">
                             <span language="true">GRÁFICA POR PERIODOS <i class="fas fa-chart-area"></i></span>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" graph_full_modal="2" style="cursor:pointer;">
                             <canvas id="line-chart-02"></canvas>    
                         </div>
                     </div> 
@@ -52,12 +52,13 @@
     <section class="center my-4">
         <div class="card" style="width: 90%;">
             <div class="card-header">
-                <span language="true">GRÁFICA DEL MEJOR PRONÓSTICO PARA SUS VENTAS <i class="fas fa-chart-area"></i></span>
+                <span language="true">GRÁFICA DEL MEJOR PRONÓSTICO<i class="fas fa-chart-area"></i></span>
             </div>
             <div class="card-body">
                 <canvas id="line-chart-03"></canvas>    
             </div>
             <div class="card-footer">
+                <button class="btn btn btn-outline-info mt-2 ml-3 float-left d-inline-block font-weight-bold" button-best-forecast="true">FORECAST</button>
                 <p class="float-right mt-2 mr-3 font-size-20px-2c font-weight-bold text-muted">Nivel de Certeza: <span best_corre="true">0.95</span></p>
             </div>
         </div>        
@@ -218,8 +219,8 @@
                         </tbody>
                     </table>
                     <br>
-                    <div style="width:100%;;max-height:500px;overflow-y: auto;display:block;">
-                        <table class="table mx-auto" style="width:50%;" forecast-table="true">
+                    <div style="width:100%;;max-height:700px;overflow-y: auto;display:block;">
+                        <table class="table mx-auto" style="width:50%;" forecast-table="true" forecast-alpha="0">
                             <thead>
                                 <tr class="bg-dark">
                                     <th class="text-white font-size-22px-2c" fore-title="true">Indice</th>
@@ -481,6 +482,23 @@
     </div>
 {% endblock %} 
 
+{% block modal_graph_complete %}
+    <div class="modal fade" id="modalFull" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
+        <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
+            <div class="modal-content">
+                <div class="modal-header">                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="line-chart-30"></canvas>                    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block scripts %}
     {% load static %}
     <script src="{% static 'core/vendor/language-component/graphicspronosimple/language-dataset.js' %}"></script>
@@ -529,7 +547,7 @@
         django_list_labels_chart_02 = Array.from(Array(data_django[0].length).keys()).map(x => ++x)
 
         data_django_last_row = data_django[data_django.length-1]
-        year_label = getCurrentLanguage() == 'ES' ? 'Ultimo Año' : 'LAST YEAR'
+        year_label = getCurrentLanguage() == 'ES' ? 'Datos históricos' : 'Historical facts'
         prono_label = getCurrentLanguage() == 'ES' ? 'Pronostico' : 'Forecast'
         corre_label = getCurrentLanguage() == 'ES' ? 'Correlacion' : 'Correlation'        
 
@@ -607,7 +625,37 @@
             $('#modalExample').modal('hide')      
             $('#modal_lin').modal('hide')      
             $('#modal_expo').modal('hide')      
-            $('#modal_movil').modal('hide')      
+            $('#modal_movil').modal('hide')  
+            $('#modalFull').modal('hide')
+
+            $("button[button-best-forecast]").on('click',function(){
+                    var number = 6 - best_index_forecast + 4
+                    switch(number){
+                        case 4:
+                            if(chart_lin !== undefined){chart_lin.destroy()}
+                            chart_lin = modal_chart('#modal_lin','line-chart-15',this)
+                        break;
+                        case 5:
+                            if(chart_expo !== undefined){chart_expo.destroy()}                        
+                            chart_expo = modal_chart('#modal_expo','line-chart-16',this)                
+                        break;
+                        case 7:
+                            if(chart_movil !== undefined){chart_movil.destroy()}
+                            chart_movil = modal_chart('#modal_movil','line-chart-17',this)                
+                        break;
+
+                        case 9:
+                            modal_chart_extended(number,1);                
+                        break;
+                        case 10:
+                            modal_chart_extended(number,1);
+                        break;
+
+                        default:
+                            modal_chart_extended(number,0);
+                        break;
+                    }
+            })
         });      
     </script>  
 {% endblock %}

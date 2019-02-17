@@ -86,7 +86,7 @@ function startEventModal(){
                 chart_full_modal = createChar('line-chart-30',django_list_labels_chart_01, django_list_data_chart_01)
             break;
             case 2:
-                chart_full_modal = createChar02X('line-chart-30')
+                chart_full_modal = new Chart(document.getElementById('line-chart-30').getContext('2d'),getChartConfiguration(django_list_labels_chart_02, django_list_data_chart_02))
             break;
         }        
         $('#modalFull').modal('show')

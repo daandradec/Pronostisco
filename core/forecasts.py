@@ -490,7 +490,8 @@ def get_best_simulated_forecast(x,data):
     while(time.time()-timer < 5.0 and final_correlation < 0.99):
         rand_matrix = [ [random.random() for _ in range(n)] for _ in range(n)]
         sum_rand = [sum(x) for x in rand_matrix]
-        pend_rand = [x-n2 for x in sum_rand]
+        pend_rand = [abs(x-n2) for x in sum_rand]
+
 
         forecast = [math.ceil( (pend*avg_desv[1]) + avg_desv[0]) for avg_desv,pend in zip(avgs_desvstd,pend_rand)]
         correlation = calculate_correlation(last_row_data,forecast)

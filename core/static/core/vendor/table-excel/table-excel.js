@@ -1,9 +1,11 @@
 counter_table_days = 2;
 counter_table_years = 2;
+counter_table_months = 2;
 flag_counter = false;
 
 DAYS_COLUMNS = 8;
 YEARS_COLUMNS = 13;
+MONTHS_COLUMNS = 5;
 columns = YEARS_COLUMNS;
 
 MAX_LIMIT_ROWS = 7;
@@ -23,8 +25,10 @@ function awake(){
 
 	nav_tab_button_days = document.getElementById("navtab2");
 	nav_tab_button_years = document.getElementById("navtab1");	
+	nav_tab_button_months = document.getElementById("navtab3");	
 	nav_tab_button_days.addEventListener("mouseup",setTableDays,false);
 	nav_tab_button_years.addEventListener("mouseup",setTableYears,false);
+	nav_tab_button_months.addEventListener("mouseup",setTableMonths,false);
 
 }
 
@@ -94,27 +98,52 @@ function addNewCell(){
 }
 
 function incrementCounterRow(){
-	if(flag_counter)
-		++counter_table_days
-	else
-		++counter_table_years
+	switch(flag_counter){
+		case 0:
+			++counter_table_years
+			break;
+		case 1:
+			++counter_table_days
+			break;
+		case 2:
+			++counter_table_months;
+			break;
+	}
 }
 function decrementCounterRow(){
-	if(flag_counter)
-		--counter_table_days
-	else
-		--counter_table_years
+	switch(flag_counter){
+		case 0:
+			--counter_table_years
+			break;
+		case 1:
+			--counter_table_days
+			break;
+		case 2:
+			--counter_table_months;
+			break;
+	}
 }
 function getCurrentCounter(){
-	return flag_counter ? counter_table_days : counter_table_years
+	switch(flag_counter){
+		case 0:
+			return counter_table_years
+		case 1:
+			return counter_table_days
+		case 2:
+			return counter_table_months
+	}
 }
 function setTableDays() {
-	flag_counter = true;
+	flag_counter = 1;
 	columns = DAYS_COLUMNS;
 }
 function setTableYears(){
-	flag_counter = false;
+	flag_counter = 0;
 	columns = YEARS_COLUMNS;
+}
+function setTableMonths(){
+	flag_counter = 2;
+	columns = MONTHS_COLUMNS;
 }
 
 function removeRow(button){

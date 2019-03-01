@@ -40,6 +40,11 @@ language_dataset = [
     ["Viernes","Friday"],
     ["Sábado","Saturday"],
     ["Domingo","Sunday"],
+    ["Mes & Semana","Month & Week"],
+    ["Semana 1","Week 1"],
+    ["Semana 2","Week 2"],
+    ["Semana 3","Week 3"],
+    ["Semana 4","Week 4"],
 
     ["CREAR ENTRADA DE DATOS","CREATE DATA ENTRY"],
 

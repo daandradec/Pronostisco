@@ -20,9 +20,9 @@ function modal_chart_extended(number,flag){
     // crear canvas
     if(chart !== undefined)
         chart.destroy()
-    
 
-    dataGraph = getListDataVariable(number)        
+
+    dataGraph = getListDataVariable(number)
     table_insertion_flag = parseInt($("table[forecast-table]").attr('forecast-alpha'));
     if(table_insertion_flag){
         tbody = document.querySelector("table[forecast-table] tbody tr")
@@ -35,11 +35,11 @@ function modal_chart_extended(number,flag){
         }
     }else{
         tbody = document.querySelector("table[forecast-table] tbody")
-        tbody.innerHTML=""            
+        tbody.innerHTML=""
         for(i = 0;i < dataGraph.length;++i)
             tbody.innerHTML += "<tr><td class='font-quicksand' style='color:#52524e;'>"+(i+1)+"</td><td class='font-quicksand' style='color:#52524e;'>"+dataGraph[i]+"</td></tr>"
     }
-    
+
     $("th[fore-title]").html(forecasts_labels_x)
 
     chart = createChar('line-chart-20', getListLabelVariable(number), dataGraph , flag ? data_django_last_row : django_list_data_chart_01);
@@ -58,19 +58,19 @@ function startEventModal(){
 
         modal_chart_extended(number,flag);
     })
-    $("button[btn-modal-index='1']").on('click',function(){   
+    $("button[btn-modal-index='1']").on('click',function(){
         if(chart_lin !== undefined)
             chart_lin.destroy()
 
         chart_lin = modal_chart('#modal_lin','line-chart-15',this)
     })
-    $("button[btn-modal-index='2']").on('click',function(){   
+    $("button[btn-modal-index='2']").on('click',function(){
         if(chart_expo !== undefined)
             chart_expo.destroy()
 
         chart_expo = modal_chart('#modal_expo','line-chart-16',this)
     })
-    $("button[btn-modal-index='3']").on('click',function(){    
+    $("button[btn-modal-index='3']").on('click',function(){
         if(chart_movil !== undefined)
             chart_movil.destroy()
 
@@ -88,7 +88,7 @@ function startEventModal(){
             case 2:
                 chart_full_modal = new Chart(document.getElementById('line-chart-30').getContext('2d'),getChartConfiguration(django_list_labels_chart_02, django_list_data_chart_02))
             break;
-        }        
+        }
         $('#modalFull').modal('show')
     })
 }
@@ -99,7 +99,7 @@ function enableModal(modalIndex){
             $('#modalExample').modal('show')
             break;
         case 1:
-            $('#modal_lin').modal('show')   
+            $('#modal_lin').modal('show')
             break;
         case 2:
             $('#modalExample').modal('show')
@@ -107,7 +107,7 @@ function enableModal(modalIndex){
         case 3:
             $('#modalExample').modal('show')
             break;
-        
+
     }
 }*/
 function getListLabelVariable(number){
@@ -135,7 +135,7 @@ function getListLabelVariable(number){
         case 14:
         return django_list_labels_chart_14
         case 15:
-        return django_list_labels_chart_15                
+        return django_list_labels_chart_15
     }
 }
 function getListDataVariable(number){
@@ -163,7 +163,7 @@ function getListDataVariable(number){
         case 14:
         return django_list_data_chart_14
         case 15:
-        return django_list_data_chart_15                
+        return django_list_data_chart_15
     }
 }
 
@@ -185,7 +185,7 @@ function getCorrelationVariable(number){
         return simple_soft_corre
         case 10:
         if(typeof movil_pondered_corre !== 'undefined')
-            return movil_pondered_corre                
+            return movil_pondered_corre
         return double_soft_corre
         case 11:
         return simple_soft_corre
@@ -197,7 +197,7 @@ function getCorrelationVariable(number){
         return jenkin_corre
         case 15:
         return simu_corre
-    }   
+    }
 }
 
 function getTitle(id){

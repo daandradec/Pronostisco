@@ -1,0 +1,17 @@
+canvas{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+i.fa-chart-area{
+    /*color: #7b7e82 !important;*/
+    color: white;
+    margin-left: 4px;
+}
+
+.card-header > span{
+    /*color: #707377 !important;*/
+    color: white;
+    font-weight: bold;
+}

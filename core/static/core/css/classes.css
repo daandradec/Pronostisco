@@ -6,6 +6,20 @@
 	text-align: center;
 }
 
+.center-vertical{
+	display: flex;
+	vertical-align: middle;
+	align-items: center;
+}
+
+.div-spacer-140{height:140px}
+.div-spacer-130{height:130px}
+
+.disabled{
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
 .hr-line{
 	display: block;
 	width: 80%;
@@ -16,6 +30,15 @@
 }
 .hr-line-32{
 	width: 32%;
-	margin-top: 30px;
+	margin-top: 20px;
 	border-top: 1px solid #b2b2b2;
 }
+.display-only-smm{display: none;}
+
+@media(max-width:576px){
+	.display-only-smm{display:block;}
+}
+
+.hov-scale{transition: transform 0.5s;}
+.hov-scale:hover{transform: scale(1.25);}
+.c-pointer:hover{cursor:pointer}

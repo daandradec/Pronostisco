@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/vendor/bootstrap-4.1.3/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/vendor/fontawesome-free/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/fonts/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/classes.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/home/home.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/home/home-media.css' %}">
+
+</head>
+<body>
+    {% load get_request_parameters %}
+    {% get_current_parameters as parameters %}
+    {% load static %}
+    <nav class="center fixed-top">
+        <div class="d-flex navbar-div">
+            <a href="{% url 'index' %}{{parameters}}" class="navbar-brand-fixed">PRONOS<span style="color:#8ec6f5;">AURICO</span></a>
+            <ul class="list-inline center">
+                <li><a href="{% url 'index' %}{{parameters}}">HOME</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{% static 'core/img/español.png' %}" style="width:20px;margin-top: -3px !important;" language-image="true"></a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <button class="dropdown-item" style="cursor:pointer;" language="true" onclick="changeLanguage('ES')">Español <img src="{% static 'core/img/español.png' %}" width="32px"></button>
+                        <button class="dropdown-item" style="cursor:pointer;" language="true" onclick="changeLanguage('EN')">Ingles <img src="{% static 'core/img/ingles.png' %}" width="32px"></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="nav-collapse-div">
+            <button data-toggle="collapse" collapse="#div-list-01-collapse" class="btn">
+                <i class="fas fa-angle-double-down font-size-12px;"></i>
+            </button>
+        </div>
+
+        <div id="div-list-01-collapse">
+            <ul>
+                <li><a href="">HOME</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{% static 'core/img/español.png' %}" style="width:20px;margin-top: -3px !important;" language-image="true"></a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <button class="dropdown-item" style="cursor:pointer;" language="true" onclick="changeLanguage('ES')">Español <img src="{% static 'core/img/español.png' %}" width="32px"></button>
+                        <button class="dropdown-item" style="cursor:pointer;" language="true" onclick="changeLanguage('EN')">Ingles <img src="{% static 'core/img/ingles.png' %}" width="32px"></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+    </nav>
+
+    <header style="background-image:url({% static 'core/img/background-00.png' %});">
+        <div>
+
+            <div class="div-spacer-140">&nbsp;</div>
+
+            <nav>
+                <div id="header-nav-collapse-div">
+                    <button style="width:100%;height:50px;" data-toggle="collapse" collapse="#nav-list-02-collapse" class="btn btn-info">
+                        <i class="fas fa-angle-double-down font-size-20px"></i>
+                    </button>
+                </div>
+
+                <div>
+                    <ul class="list-inline center-vertical" id="nav-list-02-collapse">
+                        <li class="header-nav-list-separator"></li>
+                        <li class="header-nav-list-item"><a href="{% url 'simplepronosinputdata' %}{{parameters}}" language="true">PRONÓSTICOS SIMPLES</a></li>
+                        <li class="header-nav-list-separator"></li>
+                        <li class="header-nav-list-item"><a href="{% url 'alphapronosinputdata' %}{{parameters}}" language="true">PRONÓSTICOS ESTILO ALPHA</a></li>
+                        <li class="header-nav-list-separator"></li>
+                    </ul>
+                </div>
+
+            </nav>
+
+            <div class="text-center header-div">
+                <h1 class="font-signika" language="true">Bienvenido a PRONOSAURICO</h1>
+                <h4 language="true">Un sitio único en donde usted podrá realizar predicciones de </h4>
+                <h4 language="true">ventas para su negocio</h4>
+            </div>
+
+            <section class="header-section">
+                <div class="text-center">
+                    <img src="{% static 'core/img/grafico-00.PNG' %}" class="img-thumbnail">
+                    <img src="{% static 'core/img/grafico-01.PNG' %}" class="img-thumbnail">
+                    <img src="{% static 'core/img/grafico-00.PNG' %}" class="img-thumbnail">
+                </div>
+            </section>
+
+        </div>
+    </header>
+
+    <section class="body-section">
+        <main>
+            <hr>
+            <div class="main-div-col-1 rounded d-inline-block" style="background-image:url({% static 'core/img/background-01.jpg' %});background-size: 100% 100%;"></div>
+            <div class="main-div-col-2 d-inline-block">
+                <h4 language="true">1. Información antes de usar nuestra página</h4>
+                <p class="text-justify font-size-17px" language="true">Sea cual sea el pronostico no le garantizamos la veracidad completa de los resultados dado que siempre todo en esta vida será probabilístico, así que no haga nada arriesgado que comprometa su capital.</p>
+                <br><br>
+                <h4 language="true">2. Idioma</h4>
+                <p class="text-justify font-size-17px" language="true">Por el momento solo se encuentra disponible para el idioma español e ingles, si desea que se agreguen otros idiomas puede escribir al correo dado en la zona de contacto y haremos lo posible.</p>
+                <br><br>
+                <h4 language="true">3. Por último</h4>
+                <p class="text-justify font-size-17px" language="true">Le estamos muy agradecidos por elegirnos para hacer sus pronósticos y demás servicios para su negocio, esperamos que le sea útil.</p>
+                <br><br>
+            </div>
+        </main>
+        <hr>
+    </section>
+
+    <footer style="background-image:url({% static 'core/img/background-03.png' %});">
+
+        <div class="div-spacer-130">&nbsp;</div>
+
+        <section class="text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <h4 class="font-alegreya">PRONOSAURICO</h4>
+                        <p class="font-alegreya-sans font-size-18px" language="true">Una gran alternativa para hacer tus pronósticos</p>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 offset-xl-1 offset-lg-1">
+                        <h4 class="font-alegreya" language="true">Nuestros Métodos</h4>
+                        <ul>
+                            <li><a href="{% url 'simplepronosinputdata' %}{{parameters}}" class="font-alegreya-sans font-size-18px" language="true">Pronósticos simples</a></li>
+                            <li><a href="{% url 'alphapronosinputdata' %}{{parameters}}" class="font-alegreya-sans font-size-18px" language="true">Pronósticos estilo alpha</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 offset-xl-1 offset-lg-1">
+                        <h4 class="font-alegreya" language="true">Contacto</h4>
+                        <p class="font-alegreya-sans font-size-18px">
+                            <img src="{% static 'core/img/gmail.png' %}" class="img-fluid">
+                            <strong language="true">Correo:</strong> pronostisco@gmail.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div style="height:25px">&nbsp;</div>
+
+        <section class="text-center font-exo2 font-size-13px" style="color:white;position:absolute;bottom:5px;width:100%;" language="true"> &nbsp; Copyright © 2018 Todos los derechos reservados </section>
+    </footer>
+
+	<script src="{% static 'core/vendor/jquery-3.3.1/jquery.min.js' %}"></script>
+    <script src="{% static 'core/vendor/popper-1.14.3/popper.min.js' %}"></script>
+    <script src="{% static 'core/vendor/bootstrap-4.1.3/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
+    <script src="{% static 'core/vendor/language-component/home/language-dataset.js' %}"></script>
+
+    <script>
+        function init(){
+            $("button[data-toggle=collapse]").on('click',function(){
+                //console.log($($(this).attr("collapse")).css("display"));
+                //$($(this).attr("collapse")).attr('style', 'display: block !important;');
+                $($(this).attr("collapse")).toggleClass('d-block');
+            });
+
+            $(window).resize(function(){
+                if($(window).width() > 772){
+                    var list = $("header nav ul")
+                    if( list.css("display") == "block"){
+                        list.removeClass("d-block");
+                        list.attr('style','display: flex;');
+                    }
+                }
+                if($(window).width() > 722){
+                    var list = $("#div-list-01-collapse");
+                    if( list.css("display") == "block"){
+                        list.removeClass("d-block");
+                        list.attr('style','display: none;');
+                    }
+                }
+            })
+        }
+        window.addEventListener('load',init,false);
+    </script>
+</body>
+</html>

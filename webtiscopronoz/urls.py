@@ -22,10 +22,17 @@ urlpatterns = [
     # CORE URLS
 
     path('',core_views.index,name="index"),
-    path('input-data',core_views.inputdata,name="inputdata"),
-    path('chart',core_views.chart,name="chart"),
-    path('methods',core_views.methods,name="methods"),
-
+    path('pronosticos-simple/input-data',core_views.simple_pronos_input_data,name="simplepronosinputdata"),
+    path('pronosticos-simple/graphics',core_views.simple_pronos_graph_data,name="simplepronosgraph"),
+    path('pronosticos-alpha/input-data',core_views.alpha_pronos_input_data,name="alphapronosinputdata"),
+    path('pronosticos-alpha/graphics',core_views.alpha_pronos_graph_data,name="alphapronosgraph"),
+    path('pronosticos-alpha/download',core_views.alpha_pronos_download_data,name="alphapronosdownload"),
     # Admin URLS
-    path('admin/', admin.site.urls),
+    ##path('admin/', admin.site.urls),
 ]
+"""
+path('input-data',core_views.inputdata,name="inputdata"),
+path('chart',core_views.chart,name="chart"),
+path('methods',core_views.methods,name="methods"),
+path('beta',core_views.methods_beta, name="methodsbeta"),
+"""

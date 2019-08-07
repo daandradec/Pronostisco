@@ -1,23 +1,13 @@
 footer{
-	background: #2b4871;
-    -webkit-background-image: linear-gradient(#4b5f74,#3b3c49,#213544);
-	-moz-background-image: linear-gradient(#4b5f74,#3b3c49,#213544);
-	-ms-background-image: linear-gradient(#4b5f74,#3b3c49,#213544);
-	background-image: linear-gradient(#4b5f74,#3b3c49,#213544);
+	background:#1e232a;
+	min-height:390px;
+	position:relative;
 }
 
-footer > section{
-	color:white;
+footer > section h4{
+	color:orange;
+	margin-bottom:15px;
 }
 
-#footer-pane-info-1{
-	background: #3d3e4e;
-}
-#footer-pane-info-2{
-	background: #394a5d;
-}
-
-footer > img.img-fluid{
-	max-width: 24px !important;
-	min-width: 20px !important;
-}
+footer > section a{color:white;}
+footer > section a:hover{color:#8ec6f5;}

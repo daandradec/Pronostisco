@@ -1,0 +1,15 @@
+<div class="card" style="width: 100%;">
+    <div class="card-header">
+        <span language="true" title-line-chart="{{idTitleLine}}">{{title}} <i class="fas fa-chart-area"></i></span>
+    </div>
+    <div class="card-body">
+        <canvas id="{{idChart}}"></canvas>    
+    </div>
+    <div class="card-footer">
+    {% if btnModalIndex %}
+        <button class="text-center btn btn-danger btn-block" btn-line-chart="{{btnLineChart}}" btn-flag-chart="{{btnFlagChart}}" btn-modal-index="{{btnModalIndex}}"><strong language="true">VER DETALLES</strong></button>
+    {% else %}
+        <button class="text-center btn btn-danger btn-block" btn-line-chart="{{btnLineChart}}" btn-flag-chart="{{btnFlagChart}}"><strong language="true">VER DETALLES</strong></button>
+    {% endif %}
+    </div>                        
+</div> 

@@ -1,0 +1,64 @@
+{% load get_request_parameters %}
+{% get_current_parameters as parameters %}
+{% load static %} 
+
+
+<section class="mt-4 mb-5">
+
+    <div class="text-center my-4">
+        <h5 class="font-alegreya-sans font-size-24px my-3" style="color:#898989;" language="true">Bienvenido Usuario, en esta sección tendrá la posibilidad de hacer el ingreso de sus registros de venta para poder hacer el pronostico</h5>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row">
+            {% include "core/ForecastPages/MediaImage/MediaImage.html" %}
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 center mt-2">
+                {% include "core/DragCloudFile/DragCloudFile.html" %}       
+            </div>
+
+            <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 center mt-2">
+                {% include "core/ForecastPages/InstructionMessage/InstructionMessage.html" %}                
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% include "core/SessionMessage/Sessionmessage.html" %}
+
+{% include "core/ForecastPages/ActivateTable/ActivateTable.html" %}
+
+<section id="section-table" style="display:none;" class="mb-5 mt-5">
+    <section class="mt-4 mb-4">
+    
+        <ul class="nav nav-tabs" id="nav-tab" role="tablist">
+            <li role="presentation" class="ml-5 d-flex section-nav-brand">
+                <div class="hr-line-32"></div>
+                <h4 style="height:100%;padding-top:3px;color:#939393;text-shadow: 0px 0px 1px #8ec6f5;" class="font-quicksand font-size-28px ml-1" language="true">PERIODO DE TIEMPO</h4>
+                <div class="hr-line-32 display-only-smm"></div>
+            </li>
+            <li role="presentation" class="active">
+                <a href="#table1" id="navtab1" data-toggle="tab" role="tab" aria-controls="table1" class="font-quicksand font-size-20px"><span language="true">Año/Mes</span></a>
+            </li> 
+            <li role="presentation">
+                <a href="#table2" id="navtab2" data-toggle="tab" role="tab" aria-controls="table2" class="font-quicksand font-size-20px"><span language="true">Semana/Dia</span></a>
+            </li>
+            <li role="presentation">
+                <a href="#table3" id="navtab3" data-toggle="tab" role="tab" aria-controls="table3" class="font-quicksand font-size-20px"><span language="true">Mes/Semana</span></a>
+            </li>
+        </ul>
+    </section>
+
+    <section style="width:95%;margin: 0 auto;" id="table-excel">
+        <div class="tab-content">
+            {% include "core/ForecastPages/TablePeriods/TablePeriods.html" %}
+        </div>
+
+        <button class="btn btn-secondary btn-block mt-2" id="button-table-excel"><i class="fas fa-plus"></i></button>  
+        
+        <section style="margin-top:30px;" class="text-center">
+            <button class="btn btn-info font-alegreya-sans font-size-20px" id="button-send-table" style="width:35%;border-radius:24px;" language="true">CREAR ENTRADA DE DATOS<i class="fas fa-arrow-alt-circle-right ml-2"></i></button>  
+        </section>  
+
+    </section>
+</section>

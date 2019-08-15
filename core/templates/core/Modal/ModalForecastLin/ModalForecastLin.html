@@ -1,0 +1,65 @@
+<div class="modal-body">
+    <canvas id="line-chart-15"></canvas>
+    <br>
+    
+    <table class="table">
+        <thead class="bg-info">
+            <tr> 
+                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
+            </tr>
+        </thead>
+        <tbody class="bg-light">
+            <tr>
+                <td class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <div class="table-responsive-sm">
+        <table class="table">
+            <thead>
+                <tr class="bg-warning">
+                    <th class="font-alegreya-sans font-size-28px-3c font-weight-bold">a</th>
+                    <th class="font-alegreya-sans font-size-28px-3c font-weight-bold">b</th>
+                </tr>
+            </thead>
+            <tbody class="bg-light">
+                <tr>
+                    <td class="hov-scale c-pointer font-quicksand font-size-24px-3c">{{a_lineal}}</td>
+                    <td class="hov-scale c-pointer font-quicksand font-size-24px-3c">{{b_lineal}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <p class="text-center font-weight-light text-muted font-size-18px-2c" language="true">Variables del metodo lineal</p>
+    <div class="table-responsive-sm">
+        <table class="mx-auto table table-striped table-hover table-sm">
+            <thead>
+                <tr class="bg-light">
+                    <th class="text-secondary font-size-20px-2c">X</th>
+                    <th class="text-secondary font-size-20px-2c">Y</th>
+                    <th class="text-secondary font-size-20px-2c">Y^2</th>
+                    <th class="text-secondary font-size-20px-2c">X*Y</th>
+                    <th class="text-secondary font-size-20px-2c">Forecast</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x1,x2,x3,x4,x5 in lineal_data %}
+                <tr>                                
+                    <td class="font-quicksand" style="color:#52524e;">{{x1}}</td>
+                    <td class="font-quicksand" style="color:#52524e;">{{x2}}</td>
+                    <td class="font-quicksand" style="color:#52524e;">{{x3}}</td>
+                    <td class="font-quicksand" style="color:#52524e;">{{x4}}</td>  
+                    <td class="font-quicksand" style="color:#52524e;">{{x5}}</td>                                
+                </tr>
+                {% endfor %}                            
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary my-2" onclick="downloadChartLine()" language="true">Descargar Imagen</button>
+        <a href="/pronosticos-alpha/download" link-post='true' line-chart='0' class="btn btn-success" language="true">Descargar Excel</a>
+    </div>            
+    <a href="#" id="link-download-line" style="visibility:hidden;"></a>
+</div>

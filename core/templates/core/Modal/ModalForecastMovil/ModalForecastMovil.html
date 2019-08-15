@@ -1,0 +1,44 @@
+<canvas id="line-chart-17"></canvas>
+<br>
+<!--<p>La correlacion con el ultimo año fue de : <span id="correlation">0.95</span></p>-->
+<table class="table">
+    <thead class="bg-info">
+        <tr> <!-- style="color:#6a6c6f;" -->
+            <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
+        </tr>
+    </thead>
+    <tbody class="bg-light">
+        <tr>
+            <td class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<p class="text-center font-weight-light text-muted font-size-18px-2c" language="true">Variables del Promedio Movil</p>
+<table class="mx-auto table table-striped table-hover table-sm">
+    <thead>
+        <tr class="bg-light">
+            <th class="text-secondary font-size-20px-2c">X</th>
+            <th class="text-secondary font-size-20px-2c">{% if data.0|length > 7 %}Mes{% else %}Dia{% endif %}</th>
+            <th class="text-secondary font-size-20px-2c" language="true">Promedio</th>
+            <th class="text-secondary font-size-20px-2c"><span language="true">Promedio</span><br><span language="true">Ajustado</span></th>
+            <th class="text-secondary font-size-20px-2c">Forecast</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x1,x2,x3,x4,x5 in movil_data %}
+        <tr>                                
+            <td class="font-quicksand" style="color:#52524e;">{{x1}}</td>
+            <td class="font-quicksand" style="color:#52524e;">{{x2}}</td>
+            <td class="font-quicksand" style="color:#52524e;">{{x3}}</td>
+            <td class="font-quicksand" style="color:#52524e;">{{x4}}</td>
+            <td class="font-quicksand" style="color:#52524e;">{{x5}}</td>                                
+        </tr>
+        {% endfor %}                            
+    </tbody>
+</table>
+<div class="text-center">
+    <button class="btn btn-primary my-2" onclick="downloadChartMovil()" language="true">Descargar Imagen</button>
+    <a href="/pronosticos-alpha/download" link-post='true' line-chart='0' class="btn btn-success" language="true">Descargar Excel</a>
+</div>            
+<a href="#" id="link-download-movil" style="visibility:hidden;"></a>

@@ -1,67 +1,38 @@
-{% extends 'core/app.html' %}
+{% extends 'core/App/app.html' %}
 
 {% block title %}Graficos{% endblock %}
 
 {% block styles %}
     {% load static %}   
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/pronosimple/graphicspronosimple.css' %}">
 {% endblock %}
 
-{% block navigator %}
-    <p style="margin: 0 0 !important;padding: 0 0 !important;">
-        <a href="{% url 'simplepronosinputdata' %}{{parameters}}" language="true">Entrada de Datos</a> <i class="fas fa-angle-double-right"></i> <a href="" class="active" language="true">Pronósticos</a>
-    </p>
-{% endblock %}
-
 {% block content %}
+    {% include 'core/Navbar/Navbar.html' %}
+    {% include "core/ForecastPages/Header/Header.html" %}
+
     <section class="my-4">
 
-        {% include 'core/tag-block.html' %}
+        {% include 'core/ForecastPages/tag-block.html' %}
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 my-1">
-
-                    <div class="card" style="width: 100%;">
-                        <div class="card-header">
-                            <span language="true">GRÁFICA COMPLETA <i class="fas fa-chart-area"></i></span>
-                        </div>
-                        <div class="card-body" graph_full_modal="1" style="cursor:pointer;">
-                            <canvas id="line-chart-01"></canvas>    
-                        </div>
-                    </div> 
-
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecastSimple.html' with idChart="line-chart-01" title="GRÁFICA COMPLETA" graphFullModal="1" %}
                 </div>
-
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 my-1">
-                
-                    <div class="card" style="width: 100%;">
-                        <div class="card-header">
-                            <span language="true">GRÁFICA POR PERIODOS <i class="fas fa-chart-area"></i></span>
-                        </div>
-                        <div class="card-body" graph_full_modal="2" style="cursor:pointer;">
-                            <canvas id="line-chart-02"></canvas>    
-                        </div>
-                    </div> 
-
-                </div>                
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecastSimple.html' with idChart="line-chart-02" title="GRÁFICA POR PERIODOS" graphFullModal="2" %}
+                </div>  
             </div>
         </div>
+
     </section>
 
     <section class="center my-4">
-        <div class="card" style="width: 90%;">
-            <div class="card-header">
-                <span language="true">GRÁFICA DEL MEJOR PRONÓSTICO<i class="fas fa-chart-area"></i></span>
-            </div>
-            <div class="card-body">
-                <canvas id="line-chart-03"></canvas>    
-            </div>
-            <div class="card-footer">
-                <button class="btn btn btn-outline-info mt-2 ml-3 float-left d-inline-block font-weight-bold" button-best-forecast="true">FORECAST</button>
-                <p class="float-right mt-2 mr-3 font-size-20px-2c font-weight-bold text-muted">Nivel de Certeza: <span best_corre="true">0.95</span></p>
-            </div>
-        </div>        
+       {% include 'core/ForecastPages/ChartForecast/ChartBestForecast.html' %}
     </section>
 
     <section class="my-4">
@@ -69,118 +40,33 @@
             <div class="row">
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
-
-                    <div class="card" style="width: 100%;">
-                        <div class="card-header">
-                            <span language="true" title-line-chart="4">MÉTODO LINEAL <i class="fas fa-chart-area"></i></span>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="line-chart-04"></canvas>    
-                        </div>
-                        <div class="card-footer">
-                            <button class="text-center btn btn-danger btn-block" btn-line-chart="4" btn-flag-chart="0" btn-modal-index="1"><strong language="true">VER DETALLES</strong></button>
-                        </div>                        
-                    </div> 
-
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-04" idTitleLine="4" title="MÉTODO LINEAL" btnLineChart="4" btnFlagChart="0" btnModalIndex="1" %}
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
-                
-                    <div class="card" style="width: 100%;">
-                        <div class="card-header">
-                            <span language="true" title-line-chart="5">MÉTODO EXPONENCIAL <i class="fas fa-chart-area"></i></span>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="line-chart-05"></canvas>    
-                        </div>
-                        <div class="card-footer">
-                            <button class="text-center btn btn-danger btn-block" btn-line-chart="5" btn-flag-chart="0" btn-modal-index="2"><strong language="true">VER DETALLES</strong></button>
-                        </div>                         
-                    </div> 
-
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-05" idTitleLine="5" title="MÉTODO EXPONENCIAL" btnLineChart="5" btnFlagChart="0" btnModalIndex="2" %}
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
-                
-                    <div class="card" style="width: 100%;">
-                        <div class="card-header">
-                            <span language="true" title-line-chart="6">MÉTODO CUADRÁTICO <i class="fas fa-chart-area"></i></span>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="line-chart-06"></canvas>    
-                        </div>
-                        <div class="card-footer">
-                            <button class="text-center btn btn-danger btn-block" btn-line-chart="6" btn-flag-chart="0"><strong language="true">VER DETALLES</strong></button>
-                        </div>                          
-                    </div> 
-
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-06" idTitleLine="6" title="MÉTODO CUADRÁTICO" btnLineChart="6" btnFlagChart="0" %}
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
-                
-                    <div class="card" style="width: 100%;">
-                        <div class="card-header">
-                            <span language="true" title-line-chart="7">PROMEDIO MÓVIL N=2 <i class="fas fa-chart-area"></i></span>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="line-chart-07"></canvas>    
-                        </div>
-                        <div class="card-footer">
-                            <button class="text-center btn btn-danger btn-block" btn-line-chart="7" btn-flag-chart="0" btn-modal-index="3"><strong language="true">VER DETALLES</strong></button>
-                        </div>                         
-                    </div> 
-
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-07" idTitleLine="7" title="PROMEDIO MÓVIL N=2" btnLineChart="7" btnFlagChart="0" btnModalIndex="3" %}
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
-                
-                    <div class="card" style="width: 100%;">
-                        <div class="card-header">
-                            <span language="true" title-line-chart="8">PROMEDIO MÓVIL N=3 <i class="fas fa-chart-area"></i></span>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="line-chart-08"></canvas>    
-                        </div>
-                        <div class="card-footer">
-                            <button class="text-center btn btn-danger btn-block" btn-line-chart="8" btn-flag-chart="0"><strong language="true">VER DETALLES</strong></button>
-                        </div>                          
-                    </div> 
-
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-08" idTitleLine="8" title="PROMEDIO MÓVIL N=3" btnLineChart="8" btnFlagChart="0" %}
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
-                
-                    <div class="card" style="width: 100%;">
-                        <div class="card-header">
-                            <span language="true" title-line-chart="9">SUAVIZACIÓN EXPONENCIAL SIMPLE <i class="fas fa-chart-area"></i></span>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="line-chart-09"></canvas> 
-                        </div>
-                        <div class="card-footer">
-                            <button class="text-center btn btn-danger btn-block" btn-line-chart="9" btn-flag-chart="1"><strong language="true">VER DETALLES</strong></button>
-                        </div>                          
-                    </div> 
-
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-09" idTitleLine="9" title="SUAVIZACIÓN EXPONENCIAL SIMPLE" btnLineChart="9" btnFlagChart="1" %}
                 </div>
 
                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
-                
-                    <div class="card" style="width: 100%;">
-                        <div class="card-header">
-                            <span language="true" title-line-chart="10">SUAVIZACIÓN EXPONENCIAL DOBLE <i class="fas fa-chart-area"></i></span>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="line-chart-10"></canvas>    
-                        </div>
-                        <div class="card-footer">
-                            <button class="text-center btn btn-danger btn-block" btn-line-chart="10" btn-flag-chart="1"><strong language="true">VER DETALLES</strong></button>
-                        </div>  
-                    </div> 
-
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-10" idTitleLine="10" title="SUAVIZACIÓN EXPONENCIAL DOBLE" btnLineChart="10" btnFlagChart="1" %}
                 </div>
-                                                                                              
-
+                                                                                             
             </div>
         </div>
     </section>
@@ -188,6 +74,8 @@
 {% endblock %}
 
 {% block modal %}
+    {% include "core/Modal/Modal.html" with modalId="modalExample" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecast/ModalForecastBody.html" %}
+    <!--
     <div class="modal fade" id="modalExample" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
         <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
             <div class="modal-content">
@@ -205,10 +93,10 @@
                 <div class="modal-body">
                     <canvas id="line-chart-20"></canvas>
                     <br>
-                    <!--<p>La correlacion con el ultimo año fue de : <span id="correlation">0.95</span></p>-->
+                    
                     <table class="table">
                         <thead class="bg-info">
-                            <tr> <!-- style="color:#6a6c6f;" -->
+                            <tr> 
                                 <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
                             </tr>
                         </thead>
@@ -241,9 +129,12 @@
             </div>
         </div>
     </div>
+    -->
 {% endblock %} 
 
 {% block modal_fore_lin %}
+    {% include "core/Modal/Modal.html" with modalId="modal_lin" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecastLin/ModalForecastLin.html" %}
+    <!--
     <div class="modal fade" id="modal_lin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
         <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
             <div class="modal-content">
@@ -261,10 +152,10 @@
                 <div class="modal-body">
                     <canvas id="line-chart-15"></canvas>
                     <br>
-                    <!--<p>La correlacion con el ultimo año fue de : <span id="correlation">0.95</span></p>-->
+                    
                     <table class="table">
                         <thead class="bg-info">
-                            <tr> <!-- style="color:#6a6c6f;" -->
+                            <tr> 
                                 <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
                             </tr>
                         </thead>
@@ -326,9 +217,12 @@
             </div>
         </div>
     </div>
+    -->
 {% endblock %} 
 
 {% block modal_fore_expo %}
+    {% include "core/Modal/Modal.html" with modalId="modal_expo" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecastExpo/ModalForecastExpo.html" %}
+    <!--
     <div class="modal fade" id="modal_expo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
         <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
             <div class="modal-content">
@@ -346,10 +240,10 @@
                 <div class="modal-body">
                     <canvas id="line-chart-16"></canvas>
                     <br>
-                    <!--<p>La correlacion con el ultimo año fue de : <span id="correlation">0.95</span></p>-->
+                    
                     <table class="table">
                         <thead class="bg-info">
-                            <tr> <!-- style="color:#6a6c6f;" -->
+                            <tr>
                                 <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
                             </tr>
                         </thead>
@@ -414,9 +308,12 @@
             </div>
         </div>
     </div>
+    -->
 {% endblock %} 
 
 {% block modal_fore_movil %}
+    {% include "core/Modal/Modal.html" with modalId="modal_movil" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecastMovil/ModalForecastMovil.html" %}
+    <!--
     <div class="modal fade" id="modal_movil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
         <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
             <div class="modal-content">
@@ -433,11 +330,10 @@
                 </div>
                 <div class="modal-body">
                     <canvas id="line-chart-17"></canvas>
-                    <br>
-                    <!--<p>La correlacion con el ultimo año fue de : <span id="correlation">0.95</span></p>-->
+                    <br>                    
                     <table class="table">
                         <thead class="bg-info">
-                            <tr> <!-- style="color:#6a6c6f;" -->
+                            <tr>
                                 <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
                             </tr>
                         </thead>
@@ -480,16 +376,18 @@
             </div>
         </div>
     </div>
+    -->
 {% endblock %} 
 
 {% block modal_graph_complete %}
+    <!--
     <div class="modal fade" id="modalFull" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
         <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
             <div class="modal-content">
                 <div class="modal-header">                    
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                    </button>
+                    </button>                    
                 </div>
                 <div class="modal-body">
                     <canvas id="line-chart-30"></canvas>                    
@@ -497,10 +395,13 @@
             </div>
         </div>
     </div>
+    -->
+    {% include "core/Modal/Modal.html" with modalId="modalFull" modalBasePath="core/Modal/" modalHeaderPath="ModalHeader.html" modalBodyPath="ModalGraphComplete/ModalGraphComplete.html" %}
 {% endblock %}
 
 {% block scripts %}
     {% load static %}
+    <script src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
     <script src="{% static 'core/vendor/language-component/graphicspronosimple/language-dataset.js' %}"></script>
     <script src="{% static 'core/js/tag-graphic.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/utils.js' %}"></script>

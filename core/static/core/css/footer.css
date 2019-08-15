@@ -1,7 +1,8 @@
 footer{
 	background:#1e232a;
-	min-height:390px;
 	position:relative;
+	padding-top: 100px;
+	padding-bottom: 85px;
 }
 
 footer > section h4{

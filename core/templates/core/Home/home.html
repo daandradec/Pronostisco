@@ -1,0 +1,73 @@
+{% extends 'core/App/app.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block styles %}
+    {% load static %}   
+    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/home/home.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/home/home-media.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    {% include 'core/Navbar/Navbar.html' %}
+    {% include 'core/Home/Header/Header.html' %}
+
+    <section class="body-section">
+        <main>
+            <hr>
+            <div class="main-div-col-1 rounded d-inline-block" style="background-image:url({% static 'core/img/background-01.jpg' %});background-size: 100% 100%;"></div>
+            <div class="main-div-col-2 d-inline-block">
+                <h4 language="true">1. Información antes de usar nuestra página</h4>
+                <p class="text-justify font-size-17px" language="true">Sea cual sea el pronostico no le garantizamos la veracidad completa de los resultados dado que siempre todo en esta vida será probabilístico, así que no haga nada arriesgado que comprometa su capital.</p>
+                <br><br>
+                <h4 language="true">2. Idioma</h4>
+                <p class="text-justify font-size-17px" language="true">Por el momento solo se encuentra disponible para el idioma español e ingles, si desea que se agreguen otros idiomas puede escribir al correo dado en la zona de contacto y haremos lo posible.</p>
+                <br><br>
+                <h4 language="true">3. Por último</h4>
+                <p class="text-justify font-size-17px" language="true">Le estamos muy agradecidos por elegirnos para hacer sus pronósticos y demás servicios para su negocio, esperamos que le sea útil.</p>
+                <br><br>
+            </div>
+        </main>
+        <hr>
+    </section>
+
+    {% include 'core/Footer/Footer.html' %}
+
+{% endblock content %}
+
+{% block scripts %}
+    <script type="application/javascript" src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
+    <script type="application/javascript" src="{% static 'core/vendor/language-component/home/language-dataset.js' %}"></script>
+
+    <script>
+        function init(){
+            $("button[data-toggle=collapse]").on('click',function(){
+                //console.log($($(this).attr("collapse")).css("display"));
+                //$($(this).attr("collapse")).attr('style', 'display: block !important;');
+                $($(this).attr("collapse")).toggleClass('d-block');
+            });
+
+            $(window).resize(function(){
+                if($(window).width() > 772){
+                    var list = $("header nav ul")
+                    if( list.css("display") == "block"){
+                        list.removeClass("d-block");
+                        list.attr('style','display: flex;');
+                    }
+                }
+                if($(window).width() > 722){
+                    var list = $("#div-list-01-collapse");
+                    if( list.css("display") == "block"){
+                        list.removeClass("d-block");
+                        list.attr('style','display: none;');
+                    }
+                }
+            })
+        }
+        window.addEventListener('load',init,false);
+    </script>
+{% endblock scripts %}

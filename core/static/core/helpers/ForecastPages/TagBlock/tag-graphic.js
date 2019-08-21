@@ -1,6 +1,7 @@
 
 var tag_graphics;
 
+/* AÑADIR FUNCIONALIDAD AL BOTON DEL TAG BLOCK PARA MODIFICAR SU TAG*/
 function tagLoad(){
     tag_graphics = getCurrentLanguage() == 'ES' ? "Unidades" : "Units"
 

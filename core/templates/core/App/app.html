@@ -14,12 +14,13 @@
     <link rel="stylesheet" href="{% static 'core/vendor/fontawesome-free/css/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'core/fonts/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/classes.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/footer/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/navbar/navbar.css' %}">    
     {% block styles %}{% endblock styles %}
 </head>
 <body>
-    {% load get_request_parameters %}
-    {% get_current_parameters as parameters %}
-    
 
     <section style="background:white;">
         {% block content %}{% endblock content %}

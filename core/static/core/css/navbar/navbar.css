@@ -2,9 +2,7 @@ nav{
     height:50px;
     width:100%;
 }
-nav.fixed-top{
-    /*min-width: 350px;*/
-}
+
 
 nav.fixed-top > div.navbar-div{
     width:70%;

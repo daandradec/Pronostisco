@@ -1,3 +1,5 @@
+{% load get_request_parameters %}
+{% get_current_parameters as parameters %}
 {% load static %}
 <footer style="background-image:url({% static 'core/img/background-03.png' %});">
 
@@ -26,8 +28,8 @@
             </div>
         </section>
 
-        <div class="position-absolute w-100 bg-primary mp-0" style="bottom:0px;" language="true"> 
-            <p class="font-exo2 font-size-13px text-center text-white mp-0">
+        <div class="position-absolute w-100 mp-0" style="bottom:0px;"> 
+            <p class="font-exo2 font-size-13px text-center text-white mp-0" language="true">
                 Copyright © 2018 Todos los derechos reservados
             </p>
         </div>

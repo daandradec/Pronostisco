@@ -18,6 +18,7 @@ language_dataset = [
     ["PERIODO DE TIEMPO","TIME FRAME"],
     ["Año/Mes","Year/Month"],
     ["Semana/Dia","Week/Day"],
+    ["Mes/Semana","Month/Week"],
     
     ["Año / Mes","Year / Month"],
     ["Enero","January"],
@@ -40,7 +41,7 @@ language_dataset = [
     ["Viernes","Friday"],
     ["Sábado","Saturday"],
     ["Domingo","Sunday"],
-    ["Mes & Semana","Month & Week"],
+    ["Mes / Semana","Month / Week"],
     ["Semana 1","Week 1"],
     ["Semana 2","Week 2"],
     ["Semana 3","Week 3"],

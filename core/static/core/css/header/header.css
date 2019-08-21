@@ -14,8 +14,5 @@ header > div > div a{
 header > div > div a.active{color: #17a2b8;}
 header > div > div a.active:hover{color: #1190a3;}
 
-.card-header{
-    background:rgba(16, 117, 131, 0.85);
-}
 
 

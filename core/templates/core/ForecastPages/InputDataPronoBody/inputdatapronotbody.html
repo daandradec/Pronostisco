@@ -1,8 +1,4 @@
-{% load get_request_parameters %}
-{% get_current_parameters as parameters %}
 {% load static %} 
-
-
 <section class="mt-4 mb-5">
 
     <div class="text-center my-4">
@@ -13,7 +9,7 @@
         <div class="row">
             {% include "core/ForecastPages/MediaImage/MediaImage.html" %}
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 center mt-2">
-                {% include "core/DragCloudFile/DragCloudFile.html" %}       
+                {% include "core/DragCloudFile/DragCloudFile.html" with redirectRoute=redirectRoute %}       
             </div>
 
             <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 center mt-2">
@@ -35,7 +31,7 @@
             <li role="presentation" class="ml-5 d-flex section-nav-brand">
                 <div class="hr-line-32"></div>
                 <h4 style="height:100%;padding-top:3px;color:#939393;text-shadow: 0px 0px 1px #8ec6f5;" class="font-quicksand font-size-28px ml-1" language="true">PERIODO DE TIEMPO</h4>
-                <div class="hr-line-32 display-only-smm"></div>
+                <div class="hr-line-32 display-only-sm"></div>
             </li>
             <li role="presentation" class="active">
                 <a href="#table1" id="navtab1" data-toggle="tab" role="tab" aria-controls="table1" class="font-quicksand font-size-20px"><span language="true">Año/Mes</span></a>

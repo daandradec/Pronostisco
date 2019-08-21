@@ -3,10 +3,8 @@
 {% block title %}Graficos{% endblock %}
 
 {% block styles %}
-    {% load static %}   
-    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/header/header.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/pronosimple/graphicspronosimple.css' %}">
 {% endblock %}
 
@@ -16,7 +14,7 @@
 
     <section class="my-4">
 
-        {% include 'core/ForecastPages/tag-block.html' %}
+        {% include 'core/ForecastPages/TagBlock/tag-block.html' %}
 
         <div class="container-fluid">
             <div class="row">
@@ -71,331 +69,26 @@
         </div>
     </section>
 
+    {% include 'core/Footer/Footer.html' %}
 {% endblock %}
 
 {% block modal %}
     {% include "core/Modal/Modal.html" with modalId="modalExample" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecast/ModalForecastBody.html" %}
-    <!--
-    <div class="modal fade" id="modalExample" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
-        <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
-            <div class="modal-content">
-                <div class="modal-header" style="background-image:url({% static 'core/img/background-04.png' %});">
-                    
-                    <div class="w-100 pl-5">
-                        <h5 class="modal-title font-lato font-size-27px-3c font-weight-bold" id="exampleModalLabel" style="color:orange;text-shadow: 1px 0px 1px #684900;"></h5>
-                    </div>
-                    
-                    
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <canvas id="line-chart-20"></canvas>
-                    <br>
-                    
-                    <table class="table">
-                        <thead class="bg-info">
-                            <tr> 
-                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-light">
-                            <tr>
-                                <td id="correlation" class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <div style="width:100%;;max-height:700px;overflow-y: auto;display:block;">
-                        <table class="table mx-auto" style="width:50%;" forecast-table="true" forecast-alpha="0">
-                            <thead>
-                                <tr class="bg-dark">
-                                    <th class="text-white font-size-22px-2c" fore-title="true">Indice</th>
-                                    <th class="text-white font-size-22px-2c" language="true">Pronostico</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-light">                                                     
-                            </tbody>
-                        </table>                    
-                    </div>
-                    <br>                    
-                    <div class="text-center">
-                        <button class="btn btn-primary my-2" onclick="downloadChart()" language="true">Descargar Imagen</button>
-                        <a href="/pronosticos-alpha/download" link-post='true' line-chart='0' class="btn btn-success" language="true">Descargar Excel</a>
-                    </div>            
-                    <a href="#" id="link-download" style="visibility:hidden;"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
 {% endblock %} 
 
 {% block modal_fore_lin %}
     {% include "core/Modal/Modal.html" with modalId="modal_lin" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecastLin/ModalForecastLin.html" %}
-    <!--
-    <div class="modal fade" id="modal_lin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
-        <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
-            <div class="modal-content">
-                <div class="modal-header" style="background-image:url({% static 'core/img/background-04.png' %});">
-                    
-                    <div class="w-100 pl-5">
-                        <h5 class="modal-title font-lato font-size-27px-3c font-weight-bold" id="exampleModalLabel" style="color:orange;text-shadow: 1px 0px 1px #684900;"></h5>
-                    </div>
-                    
-                    
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <canvas id="line-chart-15"></canvas>
-                    <br>
-                    
-                    <table class="table">
-                        <thead class="bg-info">
-                            <tr> 
-                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-light">
-                            <tr>
-                                <td class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <div class="table-responsive-sm">
-                        <table class="table">
-                            <thead>
-                                <tr class="bg-warning">
-                                    <th class="font-alegreya-sans font-size-28px-3c font-weight-bold">a</th>
-                                    <th class="font-alegreya-sans font-size-28px-3c font-weight-bold">b</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-light">
-                                <tr>
-                                    <td class="hov-scale c-pointer font-quicksand font-size-24px-3c">{{a_lineal}}</td>
-                                    <td class="hov-scale c-pointer font-quicksand font-size-24px-3c">{{b_lineal}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <br>
-                    <p class="text-center font-weight-light text-muted font-size-18px-2c" language="true">Variables del metodo lineal</p>
-                    <div class="table-responsive-sm">
-                        <table class="mx-auto table table-striped table-hover table-sm">
-                            <thead>
-                                <tr class="bg-light">
-                                    <th class="text-secondary font-size-20px-2c">X</th>
-                                    <th class="text-secondary font-size-20px-2c">Y</th>
-                                    <th class="text-secondary font-size-20px-2c">Y^2</th>
-                                    <th class="text-secondary font-size-20px-2c">X*Y</th>
-                                    <th class="text-secondary font-size-20px-2c">Forecast</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for x1,x2,x3,x4,x5 in lineal_data %}
-                                <tr>                                
-                                    <td class="font-quicksand" style="color:#52524e;">{{x1}}</td>
-                                    <td class="font-quicksand" style="color:#52524e;">{{x2}}</td>
-                                    <td class="font-quicksand" style="color:#52524e;">{{x3}}</td>
-                                    <td class="font-quicksand" style="color:#52524e;">{{x4}}</td>  
-                                    <td class="font-quicksand" style="color:#52524e;">{{x5}}</td>                                
-                                </tr>
-                                {% endfor %}                            
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-primary my-2" onclick="downloadChartLine()" language="true">Descargar Imagen</button>
-                        <a href="/pronosticos-alpha/download" link-post='true' line-chart='0' class="btn btn-success" language="true">Descargar Excel</a>
-                    </div>            
-                    <a href="#" id="link-download-line" style="visibility:hidden;"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
 {% endblock %} 
 
 {% block modal_fore_expo %}
     {% include "core/Modal/Modal.html" with modalId="modal_expo" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecastExpo/ModalForecastExpo.html" %}
-    <!--
-    <div class="modal fade" id="modal_expo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
-        <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
-            <div class="modal-content">
-                <div class="modal-header" style="background-image:url({% static 'core/img/background-04.png' %});">
-                    
-                    <div class="w-100 pl-5">
-                        <h5 class="modal-title font-lato font-size-27px-3c font-weight-bold" id="exampleModalLabel" style="color:orange;text-shadow: 1px 0px 1px #684900;"></h5>
-                    </div>
-                    
-                    
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <canvas id="line-chart-16"></canvas>
-                    <br>
-                    
-                    <table class="table">
-                        <thead class="bg-info">
-                            <tr>
-                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-light">
-                            <tr>
-                                <td class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <div class="table-responsive-sm">
-                        <table class="table">
-                            <thead>
-                                <tr class="bg-warning">
-                                    <th class="font-alegreya-sans font-size-28px-3c font-weight-bold">a</th>
-                                    <th class="font-alegreya-sans font-size-28px-3c font-weight-bold">b</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-light">
-                                <tr>
-                                    <td class="hov-scale c-pointer font-quicksand font-size-24px-3c">{{a_expo}}</td>
-                                    <td class="hov-scale c-pointer font-quicksand font-size-24px-3c">{{b_expo}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>                    
-                    <br>
-                    <p class="text-center font-weight-light text-muted font-size-18px-2c" language="true">Variables del metodo Exponencial</p>
-                    <div class="table-responsive-sm">
-                        <table class="mx-auto table table-striped table-hover table-sm">
-                            <thead>
-                                <tr class="bg-light">
-                                    <th class="text-secondary font-size-20px-2c">X</th>
-                                    <th class="text-secondary font-size-20px-2c">Y</th>
-                                    <th class="text-secondary font-size-20px-2c">Y^2</th>
-                                    <th class="text-secondary font-size-20px-2c">LN(X)</th>
-                                    <th class="text-secondary font-size-20px-2c">LN(X)*Y</th>
-                                    <th class="text-secondary font-size-20px-2c">Forecast</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for x1,x2,x3,x4,x5,x6 in expo_data %}
-                                <tr>                                
-                                    <td class="font-quicksand" style="color:#52524e;">{{x1}}</td>
-                                    <td class="font-quicksand" style="color:#52524e;">{{x2}}</td>
-                                    <td class="font-quicksand" style="color:#52524e;">{{x3}}</td>
-                                    <td class="font-quicksand" style="color:#52524e;">{{x4}}</td>
-                                    <td class="font-quicksand" style="color:#52524e;">{{x5}}</td>   
-                                    <td class="font-quicksand" style="color:#52524e;">{{x6}}</td>                                
-                                </tr>
-                                {% endfor %}                            
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="text-center">
-                        <button class="btn btn-primary my-2" onclick="downloadChartExpo()" language="true">Descargar Imagen</button>
-                        <a href="/pronosticos-alpha/download" link-post='true' line-chart='0' class="btn btn-success" language="true">Descargar Excel</a>
-                    </div>            
-                    <a href="#" id="link-download-expo" style="visibility:hidden;"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
 {% endblock %} 
 
 {% block modal_fore_movil %}
     {% include "core/Modal/Modal.html" with modalId="modal_movil" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecastMovil/ModalForecastMovil.html" %}
-    <!--
-    <div class="modal fade" id="modal_movil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
-        <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
-            <div class="modal-content">
-                <div class="modal-header" style="background-image:url({% static 'core/img/background-04.png' %});">
-                    
-                    <div class="w-100 pl-5">
-                        <h5 class="modal-title font-lato font-size-27px-3c font-weight-bold" id="exampleModalLabel" style="color:orange;text-shadow: 1px 0px 1px #684900;"></h5>
-                    </div>
-                    
-                    
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <canvas id="line-chart-17"></canvas>
-                    <br>                    
-                    <table class="table">
-                        <thead class="bg-info">
-                            <tr>
-                                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-light">
-                            <tr>
-                                <td class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <br>
-                    <p class="text-center font-weight-light text-muted font-size-18px-2c" language="true">Variables del Promedio Movil</p>
-                    <table class="mx-auto table table-striped table-hover table-sm">
-                        <thead>
-                            <tr class="bg-light">
-                                <th class="text-secondary font-size-20px-2c">X</th>
-                                <th class="text-secondary font-size-20px-2c">{% if data.0|length > 7 %}Mes{% else %}Dia{% endif %}</th>
-                                <th class="text-secondary font-size-20px-2c" language="true">Promedio</th>
-                                <th class="text-secondary font-size-20px-2c"><span language="true">Promedio</span><br><span language="true">Ajustado</span></th>
-                                <th class="text-secondary font-size-20px-2c">Forecast</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for x1,x2,x3,x4,x5 in movil_data %}
-                            <tr>                                
-                                <td class="font-quicksand" style="color:#52524e;">{{x1}}</td>
-                                <td class="font-quicksand" style="color:#52524e;">{{x2}}</td>
-                                <td class="font-quicksand" style="color:#52524e;">{{x3}}</td>
-                                <td class="font-quicksand" style="color:#52524e;">{{x4}}</td>
-                                <td class="font-quicksand" style="color:#52524e;">{{x5}}</td>                                
-                            </tr>
-                            {% endfor %}                            
-                        </tbody>
-                    </table>
-                    <div class="text-center">
-                        <button class="btn btn-primary my-2" onclick="downloadChartMovil()" language="true">Descargar Imagen</button>
-                        <a href="/pronosticos-alpha/download" link-post='true' line-chart='0' class="btn btn-success" language="true">Descargar Excel</a>
-                    </div>            
-                    <a href="#" id="link-download-movil" style="visibility:hidden;"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
 {% endblock %} 
 
 {% block modal_graph_complete %}
-    <!--
-    <div class="modal fade" id="modalFull" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
-        <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
-            <div class="modal-content">
-                <div class="modal-header">                    
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>                    
-                </div>
-                <div class="modal-body">
-                    <canvas id="line-chart-30"></canvas>                    
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
     {% include "core/Modal/Modal.html" with modalId="modalFull" modalBasePath="core/Modal/" modalHeaderPath="ModalHeader.html" modalBodyPath="ModalGraphComplete/ModalGraphComplete.html" %}
 {% endblock %}
 
@@ -403,19 +96,23 @@
     {% load static %}
     <script src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
     <script src="{% static 'core/vendor/language-component/graphicspronosimple/language-dataset.js' %}"></script>
-    <script src="{% static 'core/js/tag-graphic.js' %}"></script>
+    <script src="{% static 'core/vendor/language-component/dist/getLanguageText.js' %}"></script>
+    <script src="{% static 'core/helpers/ForecastPages/TagBlock/tag-graphic.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/utils.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/Chart.min.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/line-chart-global.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/line-chart-02.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/download-chart.js' %}"></script>
-    <script src="{% static 'core/js/modal-graphic.js' %}"></script>
-    <script src="{% static 'core/js/link-to-post-link.js' %}"></script>
-
+    <script src="{% static 'core/helpers/Modal/modal-graphic.js' %}"></script>
+    <script src="{% static 'core/js/Http/link-to-post-link.js' %}"></script>
+    <script src="{% static 'core/helpers/ForecastPages/ActivateTable/show-table.js' %}"></script>
+    
+    
     <script>
         var TOKEN = "{{csrf}}"
         var data_request_django = "{{data|escapejs|safe}}"
-        var data_django = JSON.parse(data_request_django) // borrar despues
+        var data_django = JSON.parse(data_request_django)
+        var data_django_last_row = data_django[data_django.length-1]
         //data_request_django = JSON.parse(data_request_django).join(";")
         var lineal = JSON.parse("{{lineal|escapejs|safe}}")
         var lineal_corre = JSON.parse("{{lineal_corre|escapejs|safe}}")
@@ -447,7 +144,6 @@
         django_list_data_chart_02 = data_django
         django_list_labels_chart_02 = Array.from(Array(data_django[0].length).keys()).map(x => ++x)
 
-        data_django_last_row = data_django[data_django.length-1]
         year_label = getCurrentLanguage() == 'ES' ? 'Datos históricos' : 'Historical facts'
         prono_label = getCurrentLanguage() == 'ES' ? 'Pronostico' : 'Forecast'
         corre_label = getCurrentLanguage() == 'ES' ? 'Nivel de Certeza' : 'Level of certainty'     
@@ -482,19 +178,6 @@
         django_list_labels_chart_10 = Array.from(Array(django_list_data_chart_10.length).keys()).map(x => ++x)
 
 
-        function get_language_text(condition,condition2,texts){
-            switch(getCurrentLanguage()){
-                case 'ES':
-                    return condition ? texts[0] : condition2 ? texts[1] : texts[2]
-                    break
-                case 'EN':
-                    return condition ? texts[3] : condition2 ? texts[4] : texts[5]
-                    break
-                default:
-                    return condition ? texts[0] : condition2 ? texts[1] : texts[2]
-                    break
-            }
-        } 
         function get_best_index_forecast(best_corre,list_correlations){
             return list_correlations.indexOf(best_corre)
         }
@@ -503,60 +186,6 @@
         }
     </script>
 
-    <script>
-        var chart1,chart3,chart4,chart5,chart6,chart7,chart8,chart9,chart10,chart11,chart12,chart13
-        window.addEventListener("load",createChars,false);
-
-        function createChars(){
-
-            chart1 = createCharWithLabel('line-chart-01', django_list_labels_chart_01, django_list_data_chart_01,django_x_label_chart_01);
-            chart3 = createChar('line-chart-03', django_list_labels_chart_03, django_list_data_chart_03,django_list_graph_compare);
-            $("span[best_corre]").html(best_corre+'%')
-            chart4 = createChar('line-chart-04', django_list_labels_chart_04, django_list_data_chart_04,django_list_data_chart_01);
-            chart5 = createChar('line-chart-05', django_list_labels_chart_05, django_list_data_chart_05,django_list_data_chart_01);
-            chart6 = createChar('line-chart-06', django_list_labels_chart_06, django_list_data_chart_06,django_list_data_chart_01);
-            chart7 = createChar('line-chart-07', django_list_labels_chart_07, django_list_data_chart_07,django_list_data_chart_01);
-            chart8 = createChar('line-chart-08', django_list_labels_chart_08, django_list_data_chart_08,django_list_data_chart_01);
-            chart9 = createChar('line-chart-09', django_list_labels_chart_09, django_list_data_chart_09,data_django_last_row);
-            chart10 = createChar('line-chart-10', django_list_labels_chart_10, django_list_data_chart_10,data_django_last_row);
-        }
-    </script>  
-    <script>
-        $(document).ready(function(){
-            $('#modalExample').modal('hide')      
-            $('#modal_lin').modal('hide')      
-            $('#modal_expo').modal('hide')      
-            $('#modal_movil').modal('hide')  
-            $('#modalFull').modal('hide')
-
-            $("button[button-best-forecast]").on('click',function(){
-                    var number = 6 - best_index_forecast + 4
-                    switch(number){
-                        case 4:
-                            if(chart_lin !== undefined){chart_lin.destroy()}
-                            chart_lin = modal_chart('#modal_lin','line-chart-15',this)
-                        break;
-                        case 5:
-                            if(chart_expo !== undefined){chart_expo.destroy()}                        
-                            chart_expo = modal_chart('#modal_expo','line-chart-16',this)                
-                        break;
-                        case 7:
-                            if(chart_movil !== undefined){chart_movil.destroy()}
-                            chart_movil = modal_chart('#modal_movil','line-chart-17',this)                
-                        break;
-
-                        case 9:
-                            modal_chart_extended(number,1);                
-                        break;
-                        case 10:
-                            modal_chart_extended(number,1);
-                        break;
-
-                        default:
-                            modal_chart_extended(number,0);
-                        break;
-                    }
-            })
-        });      
-    </script>  
+    <script src="{% static 'core/helpers/ForecastPages/PronoSimple/chartCreation.js' %}"></script>
+    <script src="{% static 'core/js/Triggers/bestModalForecastModal.js' %}"></script>
 {% endblock %}

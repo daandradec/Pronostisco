@@ -1,5 +1,6 @@
 var chart,chart_lin,chart_expo,chart_movil,chart_full_modal;
 
+/* CREAR GRAFICA Y ABRIR MODAL CON LA INFORMACION DINAMICA */
 function modal_chart(id_modal,id_canvas,target){
     number = parseInt($(target).attr('btn-line-chart'))
     flag = parseInt($(target).attr('btn-flag-chart'))
@@ -14,6 +15,7 @@ function modal_chart(id_modal,id_canvas,target){
     return createChar(id_canvas, getListLabelVariable(number), getListDataVariable(number),flag ? data_django_last_row : django_list_data_chart_01);
 }
 
+/* CREANDO MODAL Y RELLENANDO LAS TABLAS DINAMICAS CON LOS PRONOSTICOS */
 function modal_chart_extended(number,flag){
     // habilitar modal
     $('#modalExample').modal('show')
@@ -51,6 +53,7 @@ function modal_chart_extended(number,flag){
     a.attr('flag-chart',flag)
 }
 
+/* INICIALIZAR EVENTOS DE BOTONES QUE ACTIVARAN LOS MODALS LLAMANDO LAS FUNCIONES MODAL_CHART() */
 function startEventModal(){
     $("button[btn-line-chart]:not([btn-modal-index])").on('click',function(){
         number = parseInt($(this).attr('btn-line-chart'))
@@ -92,24 +95,7 @@ function startEventModal(){
         $('#modalFull').modal('show')
     })
 }
-/*
-function enableModal(modalIndex){
-    switch(modalIndex){
-        case 0:
-            $('#modalExample').modal('show')
-            break;
-        case 1:
-            $('#modal_lin').modal('show')
-            break;
-        case 2:
-            $('#modalExample').modal('show')
-            break;
-        case 3:
-            $('#modalExample').modal('show')
-            break;
 
-    }
-}*/
 function getListLabelVariable(number){
     switch(number){
         case 4:

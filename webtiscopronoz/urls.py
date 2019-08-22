@@ -27,6 +27,7 @@ urlpatterns = [
     path('pronosticos-alpha/input-data',core_views.alpha_pronos_input_data,name="alphapronosinputdata"),
     path('pronosticos-alpha/graphics',core_views.alpha_pronos_graph_data,name="alphapronosgraph"),
     path('pronosticos-alpha/download',core_views.alpha_pronos_download_data,name="alphapronosdownload"),
+    path('mrp/inputd-data', core_views.mrp_input_data, name="mrpinputdata")
     # Admin URLS
     ##path('admin/', admin.site.urls),
 ]

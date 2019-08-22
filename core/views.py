@@ -210,3 +210,9 @@ def get_data_from_request(data_request):
     for content in content_list:
         temp.append([int(x) for x in content.split(',')])
     return temp
+
+
+# MRP
+
+def mrp_input_data(request):
+    return render(request, 'core/Mrp/mrpinputdata.html')

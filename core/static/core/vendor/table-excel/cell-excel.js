@@ -1,9 +1,9 @@
 function startCells(){
     document.body.addEventListener('click',function(){closeActiveCells()},true);
-    selectAllTdQuery();
+    selectAllTdQueryCellExcel();
 }
 
-function selectAllTdQuery(){
+function selectAllTdQueryCellExcel(){
     td_query = document.querySelectorAll("td[cell-excel=true]");
     for(var i = 0; i < td_query.length;++i)
         td_query[i].addEventListener("click",writeCell,true);

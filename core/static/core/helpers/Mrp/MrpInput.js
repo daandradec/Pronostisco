@@ -10,6 +10,8 @@ var materia_counter = 1;
 function startMrpInput(){
     $("#nombre-producto").on("keyup", function(){
         state.producto.title = this.value;
+        saveSelectsStates();
+        selectAllSelectsAndSetOptions();
     })
 
     $("#compo").on("click", function(){
@@ -17,22 +19,25 @@ function startMrpInput(){
         var key = "compo_"+componentes_counter+"_1";
         saveSelectsStates();
         document.querySelector("table[mrptrigger=compo] tbody").innerHTML += 
-        "<tr componente_id='"+componentes_counter+"' flag_component='true' >"+
-            "<td class='w-20'>"+componentes_counter+"</td>"+
+        "<tr componente_id='"+componentes_counter+"' flag_component='true'>" +
+            "<td class='w-20 position-relative'>" +
+            "<button type='button' class='close position-absolute' style='top:0px;right:5px;' onclick='removeRow(this)'>" +
+            "<span aria-hidden='true'>&times;</span></button>"+
+            componentes_counter+"</td>"+
             "<td class='w-40' cell-excel='true'>"+title+"</td>"+
-            "<td class='w-40'>"+
+            "<td class='w-40 pt-2'>"+
                 last_tr +
-                "<select class='w-55-100-md' select-mrp key='"+key+"' >"+
+                "<select class='w-55-100-md' select-mrp key='"+key+"' id='"+componentes_counter+"'>"+
                     generateOptions(componentes_counter) +
                 "</select>"+
                 last_tr_footer +
                 last_tr_button_footer_compo +
             "</td>"+
         "</tr>";
-        selectAllTdQuery();
+        selectAllTdQueryCellExcel(); // añadir evento click a las celdas de la tabla
         createComponent(key, componentes_counter, title, state.producto.key);
-        selectAllSelectsAndSetOptions();
-        initializeMrpParentEvents();
+        selectAllSelectsAndSetOptions(); // actualizado de los selects
+        initializeMrpParentEvents(); // listeners evento boton padre
         ++componentes_counter; 
     })
 
@@ -42,21 +47,24 @@ function startMrpInput(){
         saveSelectsStates();
         document.querySelector("table[mrptrigger=mater] tbody").innerHTML += 
         "<tr materia_id='"+materia_counter+"' flag_component='false'>"+
-            "<td class='w-20'>"+materia_counter+"</td>"+
+            "<td class='w-20 position-relative'>" + 
+            "<button type='button' class='close position-absolute' style='top:0px;right:5px;' onclick='removeRow(this)'>" +
+            "<span aria-hidden='true'>&times;</span></button>"+            
+            materia_counter+"</td>"+
             "<td class='w-40' cell-excel='true'>"+title+"</td>"+
             "<td class='w-40'>"+
                 last_tr +
-                "<select class='w-55-100-md' select-mrp key='"+key+"' >"+
+                "<select class='w-55-100-md' select-mrp key='"+key+"' id='"+materia_counter+"'>"+
                     generateOptions(-1) +
                 "</select>"+
                 last_tr_footer +
                 last_tr_button_footer_mater +
             "</td>"+
         "</tr>";
-        selectAllTdQuery();
+        selectAllTdQueryCellExcel(); // añadir evento click a las celdas de la tabla
         createMater(key, materia_counter, title, state.producto.key);
-        selectAllSelectsAndSetOptions();
-        initializeMrpMaterParentEvents();
+        selectAllSelectsAndSetOptions(); // actualizado de los selects
+        initializeMrpMaterParentEvents(); // listeners evento boton padre
         ++materia_counter;
     })
 
@@ -72,13 +80,12 @@ function initializeMrpParentEvents(){
         var id = $(this.parentElement.parentElement.parentElement).attr("componente_id");
         forms_area.innerHTML += 
             form_literal_parent_header +
-                "<select class='w-55-100-md' select-mrp key='compo_"+id+"_"+(forms_area.children.length+1)+"'>" +
+                "<select class='w-55-100-md' select-mrp key='compo_"+id+"_"+(forms_area.children.length+1)+"' id='"+id+"'>" +
                     generateOptions(parseInt(id)) +
                 "</select>"+ 
             form_literal_parent_footer;
         
-        selectAllSelectsAndSetOptions();
-        addParentComponent(id, state.producto.key);
+        selectAllSelectsAndSetOptions();        
         switchOffForms();
     });   
 }
@@ -91,7 +98,7 @@ function initializeMrpMaterParentEvents(){
         var id = $(this.parentElement.parentElement.parentElement).attr("materia_id");
         forms_area.innerHTML += 
             form_literal_parent_header +
-                "<select class='w-55-100-md' select-mrp key='mater_"+id+"_"+(forms_area.children.length+1)+"'>" +
+                "<select class='w-55-100-md' select-mrp key='mater_"+id+"_"+(forms_area.children.length+1)+"' id='"+id+"'>" +
                     generateOptions(-1) +
                 "</select>"+ 
             form_literal_parent_footer;
@@ -143,6 +150,7 @@ const form_literal_parent_header =
     "<form class='mp-0' noSubmit>"+
         "<div class='container-fluid mp-0'><div class='row mp-0'>"+
             "<div class='col-12 col-lg-7'>"+
+                "<button class='btn d-inline-block p-0 mr-1' onclick='removeRowSelect(this)' style='width:25px;height:25px;margin-top:-5px;'><i class='fas fa-cut' style='color:red'></i></button>"+
                 "<label class='mr-0-sm mr-md-2'>Padre: </label>";
             
 

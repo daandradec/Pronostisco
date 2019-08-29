@@ -12,4 +12,5 @@ function removeRow(button){
         deleteMateria(id);
         $(tr).remove();
     } 
+    updateTree("DELETE", undefined);
 }

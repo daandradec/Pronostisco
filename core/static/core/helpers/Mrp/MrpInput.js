@@ -38,6 +38,7 @@ function startMrpInput(){
         createComponent(key, componentes_counter, title, state.producto.key);
         selectAllSelectsAndSetOptions(); // actualizado de los selects
         initializeMrpParentEvents(); // listeners evento boton padre
+        updateTree("CREATE", {name:title, children: [], key: key});
         ++componentes_counter; 
     })
 
@@ -65,6 +66,7 @@ function startMrpInput(){
         createMater(key, materia_counter, title, state.producto.key);
         selectAllSelectsAndSetOptions(); // actualizado de los selects
         initializeMrpMaterParentEvents(); // listeners evento boton padre
+        updateTree("CREATE", {name:title, children: [], key: key});
         ++materia_counter;
     })
 
@@ -87,6 +89,9 @@ function initializeMrpParentEvents(){
         
         selectAllSelectsAndSetOptions();        
         switchOffForms();
+
+        addParentComponent(parseInt(id), state.producto.key);
+        updateTree("SELECT", undefined); 
     });   
 }
 function initializeMrpMaterParentEvents(){
@@ -105,6 +110,9 @@ function initializeMrpMaterParentEvents(){
         
         selectAllSelectsAndSetOptions()
         switchOffForms();
+
+        addParentComponent(parseInt(id), state.producto.key);
+        updateTree("SELECT", undefined);   
     }); 
 }
 

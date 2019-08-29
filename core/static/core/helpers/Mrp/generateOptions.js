@@ -54,7 +54,8 @@ function handleSelectChange(select){
         }else{
             const id = parseInt(tr.getAttribute("materia_id")); 
             alterParentEdgesComponents(id, "tr[materia_id='"+id+"'] select", addParentMaterExtended);
-        }         
+        }        
+        updateTree("SELECT", undefined);        
     }
 }
 

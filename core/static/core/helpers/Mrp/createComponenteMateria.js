@@ -3,7 +3,8 @@ function createComponent(key, componente_id, componente_title, parent){
         id: componente_id,
         title: componente_title,
         key: key,
-        edges: [parent]
+        edges: [parent],
+        amount: {[parent]: 1}
     });
 }
 
@@ -12,6 +13,7 @@ function createMater(key, materia_id, materia_title, parent){
         id: materia_id,
         title: materia_title,
         key: key,
-        edges: [parent]
+        edges: [parent],
+        amount: {[parent]: 1}
     })
 }

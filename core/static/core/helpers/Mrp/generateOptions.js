@@ -29,7 +29,7 @@ function selectAllSelectsAndSetOptions(){
         selects[i].innerHTML = generateOptions(id);
         $(selects[i]).val(default_value[0].value);        
     }        
-
+    handleInputNumberChange();
 }
 
 function saveSelectsStates(){
@@ -59,6 +59,30 @@ function handleSelectChange(select){
     }
 }
 
+function handleInputNumberChange(){
+    const inputs = document.querySelectorAll("input[type=number]");
+    for(var i = 0; i< inputs.length; ++i){
+        inputs[i].onchange = function(e){
+            const tr = this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+            const flag = JSON.parse( tr.getAttribute("flag_component") ); 
+            const form = this.parentElement.parentElement.children[0];
+            const value_select_associated = parseInt(form.children[form.children.length-1].value);   
+            
+            if(flag){
+                const id = parseInt(tr.getAttribute("componente_id"));            
+                const key = value_select_associated === 0 ? state.producto.key : state.componentes[getIndexWithBinarySearchJson(value_select_associated, state.componentes)].key;        
+                state.componentes[id-1].amount[key] = generateNewNumberValue("tr[componente_id='"+id+"'] select", value_select_associated);
+            }else{
+                const id = parseInt(tr.getAttribute("materia_id")); 
+                const key = value_select_associated === 0 ? state.producto.key : state.materia[getIndexWithBinarySearchJson(value_select_associated, state.materia)].key;                        
+                state.materia[id-1].amount[key] = generateNewNumberValue("tr[materia_id='"+id+"'] select", value_select_associated);
+            }  
+            console.log(state);      
+            //updateTree("SELECT", undefined);             
+        }
+    }
+}
+
 function alterParentEdgesComponents(id, literal_string_selectsquery, callBackFunction){
     const selects = document.querySelectorAll(literal_string_selectsquery);
     const values = getSelectListValues(selects);
@@ -80,4 +104,17 @@ function getKeyFromValues(values){
         list.push(key);
     }
     return list;
+}
+
+function generateNewNumberValue(literal_string_selectsquery, value_select_associated){
+    const selects = document.querySelectorAll(literal_string_selectsquery);
+    const values = getSelectListValues(selects);
+    var number_value = 0;
+    for(var i = 0; i < values.length; ++i){
+        if(values[i] === value_select_associated){
+            const form = selects[i].parentElement.parentElement.children[1];
+            number_value += parseInt(form.children[form.children.length-1].value);
+        }
+    }
+    return number_value;
 }

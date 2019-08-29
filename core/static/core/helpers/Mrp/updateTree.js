@@ -33,8 +33,9 @@ function updateTree(operationEvent, payload){
             constructAllNewTree();
             break;
     }
-    console.log(tree_mrp)
-    //D3Tree(tree_mrp);
+    
+    D3Tree(tree_mrp);
+    console.log(state);
 }
 
 function constructAllNewTree(){
@@ -44,12 +45,13 @@ function constructAllNewTree(){
     const materia_copy = JSON.parse(JSON.stringify(state.materia));
 
     keys_counter = generateJsonKeysParents(componentes_copy);     
+    const copy_keys_counter = JSON.parse(JSON.stringify(keys_counter));
 
-    takeAllRootChildrens(componentes_copy, state.producto.key, tree_mrp.children);
-    takeAllChildChildrens(componentes_copy);
+    takeAllRootChildrensExtended(componentes_copy, state.producto.key, tree_mrp.children, keys_counter);
+    takeAllChildChildrens(componentes_copy, keys_counter);
     
     takeAllRootChildrens(materia_copy, state.producto.key, tree_mrp.children);
-    takeAllChildChildrens(materia_copy);
+    takeAllMateriaChildChildrens(materia_copy, copy_keys_counter);
 }
 
 function takeAllRootChildrens(list, key, list_to_push_children){
@@ -70,43 +72,72 @@ function takeAllRootChildrens(list, key, list_to_push_children){
 }
 
 function takeAllRootChildrensExtended(list, key, list_to_push_children, keys_counter){
-    console.log(key);
-    while(true){
-        var flag = true;        
-        for(var i = 0; i < list.length; ++i){
-            const item = list[i];
-            wasDeletedElementExtended(item, key, list_to_push_children, keys_counter)
-            //if(!item.edges.length){
-            if(keys_counter[item.key] < 1){
-                list.splice(i, 1);
-                flag = false;
-                break;
-            }
+    //console.log("####################")
+    //console.log(key);
+    //console.log(JSON.stringify(keys_counter));
+    //console.log(JSON.stringify(tree_mrp));
+    //console.log(JSON.stringify(list));
+    for(var i = 0; i < list.length; ++i){
+        const item = list[i];
+        wasDeletedElementExtended(item, key, list_to_push_children, keys_counter)        
+        if(keys_counter[item.key] < 1){
+            list.splice(i, 1);            
+            --i;            
         }
-        if(flag)
-            break;
-    }  
+    }
+    //console.log(key);
+    //console.log(JSON.stringify(keys_counter));
+    //console.log(JSON.stringify(tree_mrp));
+    //console.log(JSON.stringify(list));
+    //console.log("###########################")
+}
+function takeAllRootMateriaChildrensExtended(list, key, list_to_push_children, keys_counter){
+    for(var i = 0; i < list.length; ++i){
+        const item = list[i];
+        wasDeletedMateriaElementExtended(item, key, list_to_push_children, keys_counter)        
+        if(!item.edges.length){
+            list.splice(i, 1);            
+            --i;            
+        }
+    }
 }
 
-function takeAllChildChildrens(list){
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%")
+function takeAllChildChildrens(list, keys_counter){
     var super_children_list = [];    
-    var own_keys_counter = JSON.parse(JSON.stringify(keys_counter));
-
+    
     for(var i = 0; i < tree_mrp.children.length; ++i){
         const child_item = tree_mrp.children[i];
-        takeAllRootChildrensExtended(list, child_item.key, tree_mrp.children[i].children, own_keys_counter);
+        takeAllRootChildrensExtended(list, child_item.key, tree_mrp.children[i].children, keys_counter);
         super_children_list.push(tree_mrp.children[i].children);
     }
 
-    // procesar informacion iteracion por iteracion, primero analizar el caso de componente con loop
     
     while(list.length && super_children_list.length){
         const list_childrens = super_children_list.shift();
-        console.log(JSON.stringify(super_children_list))
         for(var i = 0; i < list_childrens.length; ++i){
             const child_item = list_childrens[i];            
-            takeAllRootChildrensExtended(list, child_item.key, list_childrens[i].children, own_keys_counter);
+            takeAllRootChildrensExtended(list, child_item.key, list_childrens[i].children, keys_counter);
+            super_children_list.push(list_childrens[i].children);
+        }
+    }
+    
+}
+
+function takeAllMateriaChildChildrens(list, keys_counter){
+    var super_children_list = [];    
+    
+    for(var i = 0; i < tree_mrp.children.length; ++i){
+        const child_item = tree_mrp.children[i];
+        takeAllRootMateriaChildrensExtended(list, child_item.key, tree_mrp.children[i].children, keys_counter);
+        super_children_list.push(tree_mrp.children[i].children);
+    }
+
+    
+    while(list.length && super_children_list.length){
+        const list_childrens = super_children_list.shift();
+        for(var i = 0; i < list_childrens.length; ++i){
+            const child_item = list_childrens[i];            
+            takeAllRootMateriaChildrensExtended(list, child_item.key, list_childrens[i].children, keys_counter);
             super_children_list.push(list_childrens[i].children);
         }
     }
@@ -130,11 +161,20 @@ function wasDeletedElementExtended(item, key, list_to_push_children, keys_counte
     for(var j = 0; j < item.edges.length; ++j){
         if(item.edges[j] === key){
             list_to_push_children.push({name:item.title, children: [], key: item.key}); // AÑADIR AL ARBOL
-            //if(keys_counter[key] > 1)
-            //    --keys_counter[key];
-            //else
-            //    item.edges.splice(j, 1);
             --keys_counter[item.key];
+            break;
+        }
+    }
+}
+function wasDeletedMateriaElementExtended(item, key, list_to_push_children, keys_counter){
+    for(var j = 0; j < item.edges.length; ++j){
+        if(item.edges[j] === key){
+            list_to_push_children.push({name:item.title, children: [], key: item.key}); // AÑADIR AL ARBOL
+            --keys_counter[key];
+            if(keys_counter[key] < 1){
+                item.edges.splice(j, 1);
+                --j;
+            }
             break;
         }
     }

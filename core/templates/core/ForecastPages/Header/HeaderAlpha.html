@@ -1,0 +1,15 @@
+{% load get_request_parameters %}
+{% get_current_parameters as parameters %}
+<header>
+    <div style="width:100%;height:100%;position:relative;">
+        <div style="position:absolute;bottom:3px;width:100%;" class="text-center">
+            <p style="margin: 0 0 !important;padding: 0 0 !important;">
+                {% if inputDataFlag  %}
+                    <a href="{% url 'alphapronosinputdata' %}{{parameters}}" class="active" language="true">Entrada de Datos</a> <i class="fas fa-angle-double-right"></i> <a href="{% url 'alphapronosgraph' %}{{parameters}}" class="{% if not data %}disabled{% endif %}" language="true">Pronósticos</a>
+                {% else %}
+                    <a href="{% url 'alphapronosinputdata' %}{{parameters}}" language="true">Entrada de Datos</a> <i class="fas fa-angle-double-right"></i> <a href="" class="active" language="true">Pronósticos</a>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</header>

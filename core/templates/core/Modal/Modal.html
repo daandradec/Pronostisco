@@ -1,0 +1,24 @@
+<div class="modal fade" id="{{modalId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background: rgba(0,0,0,0.75) !important;">
+    <div class="modal-dialog modal-dialog-centered center" role="document" style="width: 90% !important;max-width: 90% !important;">
+        <div class="modal-content">
+            
+                        
+            {% if modalHeaderPath %}                
+                {% with headPath=modalBasePath|add:modalHeaderPath %}
+                    {% include ""|add:headPath %}
+                {% endwith %}                
+            {% endif %}
+            {% if modalBodyPath %}                
+                {% with bodyPath=modalBasePath|add:modalBodyPath %}
+                    {% include ""|add:bodyPath %}
+                {% endwith %}            
+            {% endif %}
+            {% if modalFooterPath %}
+                {% with footerPath=modalBasePath|add:modalFooterPath %}
+                    {% include ""|add:footerPath %}
+                {% endwith %}
+            {% endif %}
+            
+        </div>
+    </div>
+</div>            

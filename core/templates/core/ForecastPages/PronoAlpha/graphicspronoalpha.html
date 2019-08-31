@@ -1,0 +1,226 @@
+{% extends 'core/App/app.html' %}
+
+{% block title %}Graficos{% endblock %}
+
+{% block styles %}
+    {% load static %}   
+    <link rel="stylesheet" href="{% static 'core/css/header/header.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/pronoalpha/graphicspronoalpha.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'core/Navbar/Navbar.html' %}
+    {% include "core/ForecastPages/Header/HeaderAlpha.html" %}
+
+
+    <section class="my-4">
+
+        {% include 'core/ForecastPages/TagBlock/tag-block.html' %}
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 my-1">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecastSimple.html' with idChart="line-chart-01" title="GRÁFICA COMPLETA" graphFullModal="1" %}
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 my-1">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecastSimple.html' with idChart="line-chart-02" title="GRÁFICA POR PERIODOS" graphFullModal="2" %}
+                </div>  
+            </div>
+        </div>
+
+    </section>
+
+    <section class="center my-4">
+       {% include 'core/ForecastPages/ChartForecast/ChartBestForecastAlpha.html' %}
+    </section>
+
+    <section class="my-4">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-04" idTitleLine="4" title="MÉTODO LINEAL" btnLineChart="4" btnFlagChart="1" %}
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-05" idTitleLine="5" title="MÉTODO EXPONENCIAL" btnLineChart="5" btnFlagChart="1" %}
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-06" idTitleLine="6" title="MÉTODO CUADRÁTICO" btnLineChart="6" btnFlagChart="1" %}
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-07" idTitleLine="7" title="PROMEDIO MÓVIL N=2" btnLineChart="7" btnFlagChart="1" %}
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-08" idTitleLine="8" title="PROMEDIO MÓVIL N=3" btnLineChart="8" btnFlagChart="1" %}
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-09" idTitleLine="9" title="PROMEDIO MOVIL COMPUESTO" btnLineChart="9" btnFlagChart="1" %}
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-10" idTitleLine="10" title="PROMEDIO MOVIL PONDERADO" btnLineChart="10" btnFlagChart="1" %}
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-11" idTitleLine="11" title="SUAVIZACIÓN EXPONENCIAL SIMPLE" btnLineChart="11" btnFlagChart="1" %}
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-12" idTitleLine="12" title="SUAVIZACIÓN EXPONENCIAL DOBLE" btnLineChart="12" btnFlagChart="1" %}
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-13" idTitleLine="13" title="WINTERS" btnLineChart="13" btnFlagChart="1" %}
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-14" idTitleLine="14" title="BOX & JENNKIN" btnLineChart="14" btnFlagChart="1" %}
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 my-4">
+                    {% include 'core/ForecastPages/ChartForecast/ChartForecast.html' with idChart="line-chart-15" idTitleLine="15" title="SIMULADO" btnLineChart="15" btnFlagChart="1" %}
+                </div>                                                                                                                                        
+
+            </div>
+        </div>
+    </section>
+    
+    {% include 'core/Footer/Footer.html' %}
+{% endblock %}
+
+{% block modal %}
+    {% include "core/Modal/Modal.html" with modalId="modalExample" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecast/ModalForecastBody.html" %}
+{% endblock %} 
+
+{% block modal_graph_complete %}
+    {% include "core/Modal/Modal.html" with modalId="modalFull" modalBasePath="core/Modal/" modalHeaderPath="ModalHeader.html" modalBodyPath="ModalGraphComplete/ModalGraphComplete.html" %}
+{% endblock %}
+
+{% block scripts %}
+    {% load static %}
+    <script src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
+    <script src="{% static 'core/vendor/language-component/graphicspronoalpha/language-dataset.js' %}"></script>
+    <script src="{% static 'core/vendor/language-component/dist/getLanguageText.js' %}"></script>
+    <script src="{% static 'core/helpers/ForecastPages/TagBlock/tag-graphic.js' %}"></script>    
+    <script src="{% static 'core/vendor/chartjs-2.7.3/utils.js' %}"></script>
+    <script src="{% static 'core/vendor/chartjs-2.7.3/Chart.min.js' %}"></script>
+    <script src="{% static 'core/vendor/chartjs-2.7.3/line-chart-global.js' %}"></script>
+    <script src="{% static 'core/vendor/chartjs-2.7.3/line-chart-02.js' %}"></script>
+    <script src="{% static 'core/vendor/chartjs-2.7.3/download-chart.js' %}"></script>
+    <script src="{% static 'core/helpers/Modal/modal-graphic.js' %}"></script>
+    <script src="{% static 'core/js/Http/link-to-post-link.js' %}"></script>
+
+    <script>
+        var TOKEN = "{{csrf}}"
+        var data_request_django = "{{data|escapejs|safe}}"
+        var data_django = JSON.parse(data_request_django)
+        var data_django_last_row = data_django[data_django.length-1]
+        //data_request_django = JSON.parse(data_request_django).join(";")
+        var lineal = JSON.parse("{{lineal|escapejs|safe}}")
+        var lineal_corre = JSON.parse("{{lineal_corre|escapejs|safe}}")
+        var expo = JSON.parse("{{expo|escapejs|safe}}")
+        var expo_corre = JSON.parse("{{expo_corre|escapejs|safe}}")
+        var cuadra = JSON.parse("{{cuadra|escapejs|safe}}")
+        var cuadra_corre = JSON.parse("{{cuadra_corre|escapejs|safe}}")
+        var movil_2 = JSON.parse("{{movil_2|escapejs|safe}}")
+        var movil_2_corre = JSON.parse("{{movil_corre_2|escapejs|safe}}")
+        var movil_3 = JSON.parse("{{movil_3|escapejs|safe}}")
+        var movil_3_corre = JSON.parse("{{movil_corre_3|escapejs|safe}}")
+        var movil_composed = JSON.parse("{{movil_composed|escapejs|safe}}")
+        var movil_composed_corre = JSON.parse("{{movil_composed_corre|escapejs|safe}}")
+        var movil_pondered = JSON.parse("{{movil_pondered|escapejs|safe}}")
+        var movil_pondered_corre = JSON.parse("{{movil_pondered_corre|escapejs|safe}}")                
+        var simple_soft = JSON.parse("{{simple_soft|escapejs|safe}}")
+        var simple_soft_corre = JSON.parse("{{simple_soft_corre|escapejs|safe}}")
+        var double_soft = JSON.parse("{{double_soft|escapejs|safe}}")
+        var double_soft_corre = JSON.parse("{{double_soft_corre|escapejs|safe}}")
+        var winters = JSON.parse("{{winters|escapejs|safe}}")
+        var winters_corre = JSON.parse("{{winters_corre|escapejs|safe}}")
+        var jenkin = JSON.parse("{{jenkin|escapejs|safe}}")
+        var jenkin_corre = JSON.parse("{{jenkin_corre|escapejs|safe}}")
+        var simu = JSON.parse("{{simu|escapejs|safe}}")
+        var simu_corre = JSON.parse("{{simu_corre|escapejs|safe}}")
+        
+        var flag_language = getCurrentLanguage() == 'ES'
+
+        var best_corre = Math.max(lineal_corre,expo_corre,cuadra_corre,movil_2_corre,movil_3_corre,movil_composed_corre,movil_pondered_corre,
+        simple_soft_corre,double_soft_corre,winters_corre,jenkin_corre,simu_corre)
+
+        var dict_best_forecast = get_best_forecast(best_corre,
+            [simu_corre,jenkin_corre,winters_corre,double_soft_corre,simple_soft_corre,movil_pondered_corre,movil_composed_corre,movil_3_corre,movil_2_corre,cuadra_corre,expo_corre,lineal_corre],
+            [simu,jenkin,winters,double_soft,simple_soft,movil_pondered,movil_composed,movil_3,movil_2,cuadra,expo,lineal],
+            [["SIMULADO","SIMULATED"],["BOX & JENNKIN","BOX & JENNKIN"],["WINTERS","WINTERS"],["SUAVIZACIÓN EXPONENCIAL DOBLE","DOUBLE EXPONENTIAL SOFTENING"],
+            ["SUAVIZACIÓN EXPONENCIAL SIMPLE","SINGLE EXPONENTIAL SOFTENER"],["PROMEDIO MÓVIL PONDERADO","PONDERED MOBILE AVERAGE"],["PROMEDIO MÓVIL COMPUESTO","COMPOSED MOBILE AVERAGE"],
+            ["PROMEDIO MÓVIL N=3","MOBILE AVERAGE N=3"],["PROMEDIO MÓVIL N=2","MOBILE AVERAGE N=2"],["MÉTODO CUADRÁTICO","QUADRAPHIC METHOD"],["MÉTODO EXPONENCIAL","EXPOSITIONAL METHOD"],
+            ["MÉTODO LINEAL","LINEAR METHOD"]],flag_language)
+        best_forecast = dict_best_forecast["forecast"]
+        best_name_forecast = dict_best_forecast["name"]
+
+        django_x_label_chart_01 = get_language_text( (data_django[0].length > 7), (data_django[0].length > 4), ["MESES TOTALES","DIAS TOTALES","SEMANAS TOTALES","TOTAL MONTHS","TOTAL DAYS","TOTAL WEEKS"])
+        django_list_data_chart_01 = [].concat.apply([], data_django)
+        django_list_labels_chart_01 = Array.from(Array(django_list_data_chart_01.length).keys()).map(x => ++x)
+
+        django_x_label_chart_02 = get_language_text( (data_django[0].length > 7), (data_django[0].length > 4), ["AÑOS","SEMANAS","MESES","YEARS","WEEKS","MONTHS"])
+        django_list_data_chart_02 = data_django
+        django_list_labels_chart_02 = Array.from(Array(data_django[0].length).keys()).map(x => ++x)
+        
+        year_label =  flag_language ? 'Datos históricos' : 'Historical facts'
+        prono_label = flag_language ? 'Pronostico' : 'Forecast'
+        corre_label = flag_language ? 'Nivel de Certeza' : 'Level of certainty'
+
+        forecasts_labels_x = get_language_text( (data_django[0].length > 7), (data_django[0].length > 4), ["MESES","DIAS","SEMANAS","MONTHS","DAYS","WEEKS"])
+
+        django_x_label_chart_03 = forecasts_labels_x
+        django_list_data_chart_03 = best_forecast
+        django_list_labels_chart_03 = django_list_labels_chart_02
+        
+        django_list_data_chart_04 = lineal
+        django_list_labels_chart_04 = django_list_labels_chart_02
+
+        django_list_data_chart_05 = expo
+        django_list_labels_chart_05 = django_list_labels_chart_02
+
+        django_list_data_chart_06 = cuadra
+        django_list_labels_chart_06 = django_list_labels_chart_02
+        
+        django_list_data_chart_07 = movil_2
+        django_list_labels_chart_07 = django_list_labels_chart_02
+
+        django_list_data_chart_08 = movil_3
+        django_list_labels_chart_08 = django_list_labels_chart_02
+
+        django_list_data_chart_09 = movil_composed
+        django_list_labels_chart_09 = django_list_labels_chart_02
+
+        django_list_data_chart_10 = movil_pondered
+        django_list_labels_chart_10 = django_list_labels_chart_02
+
+        django_list_data_chart_11 = simple_soft
+        django_list_labels_chart_11 = django_list_labels_chart_02
+
+        django_list_data_chart_12 = double_soft
+        django_list_labels_chart_12 = django_list_labels_chart_02
+
+        django_list_data_chart_13 = winters
+        django_list_labels_chart_13 = django_list_labels_chart_02
+
+        django_list_data_chart_14 = jenkin
+        django_list_labels_chart_14 = django_list_labels_chart_02
+
+        django_list_data_chart_15 = simu
+        django_list_labels_chart_15 = django_list_labels_chart_02      
+
+        function get_best_forecast(best_corre,list_correlations,list_forecasts,names_forecasts,flag_language){
+            var index = list_correlations.indexOf(best_corre)
+            return {"forecast" : list_forecasts[index],"name":names_forecasts[index][flag_language & 1]}
+        }
+    </script>
+
+    <script src="{% static 'core/helpers/ForecastPages/PronoAlpha/chartCreation.js' %}"></script>
+    <script src="{% static 'core/helpers/ForecastPages/PronoAlpha/fillTableBestForecast.js' %}"></script>
+{% endblock %}

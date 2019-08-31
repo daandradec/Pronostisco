@@ -1,0 +1,124 @@
+<section>
+    <!-- VISTA 1 -->
+    <div class="py-5 px-3 bg-mid-lig-white-gray position-relative" style="min-height:700px;z-index:100;" tab-index="1">
+
+        {% include "core/Shadow/Shadow.html" with location="top:8px" blur="8px" spread="3px" color="gray" %}
+
+        <div class="center" style="min-height:700px;">
+            <div>
+                <div class="d-flex mb-4">
+                    <h2 class="font-signika font-size-50px-3c text-muted mp-0 c-default hvr-wobble-horizontal"> 
+                        No tienes una sesion de producto activa
+                    </h2>
+                    <div class="center">
+                    <button class="rounded-circle c-pointer ml-4 mt-1 p-0" style="border:none;background:transparent;" type="button" data-toggle="modal" data-target="#modalExample">
+                        <i class="fas fa-question-circle font-size-23px color-dark-gray"></i>
+                    </button>                    
+                    </div>
+                </div>
+                <button class="btn btn-secondary px-5 py-1 rounded" tab-index="2">
+                    <span class="font-alegreya-sans font-size-25px-2c text-white">
+                        COMENZAR MRP
+                    </span>
+                </button>
+                <br>
+            </div>
+        </div>
+
+        {% include "core/Shadow/Shadow.html" with location="bottom:5px" blur="8px" spread="3px" color="#423f3f" %}
+
+    </div>
+
+
+
+    <!-- VISTA 2 -->
+    <div class="px-2 d-none" style="min-height:550px;opacity:0;" tab-index="2">
+
+        <div class="text-center my-4">
+            <h5 class="font-alegreya-sans font-size-24px" style="color:#898989;" language="true">Bienvenido Usuario, para el MRP ingrese toda la información solicitada y cree su arbol de producto </h5>
+        </div>
+
+        <div class="card bg-semi-white">
+            <div class="card-body">
+                <form class="form-inline w-100" noSubmit>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 center">
+                                <label for="producto" class="font-alegreya-sans font-size-30px-3c color-dark-gray pb-1"> Nombre del producto: </label>
+                            </div>
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 center">
+                                <input type="text" name="producto" id="nombre-producto" class="form-control font-size-20px-2c w-100 py-3" value="Producto">
+                            </div>
+                            <div class="d-flex-no-md col-md-4 center-vertical">
+                                <i class="fas fa-box text-muted font-size-18px ml-5"></i>
+                            </div>
+                        </div>
+                    </div> 
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <h2 class="font-signika font-italic font-size-25px font-weight-semi-bold text-muted">Arbol MRP</h2>
+            <div class="d3-tree">
+                <div id="tree-container"></div>
+            </div>        
+        </div>
+
+
+        {% include "core/Mrp/MrpSectionInputData/MrpItemZone/MrpItemZone.html" with title="Componentes" button_text="Componente" btn_class="btn-info" button_id="compo" %}
+        {% include "core/Mrp/MrpSectionInputData/MrpItemZone/MrpItemZone.html" with title="Materia Prima" button_text="Materia Prima" btn_class="btn-secondary btn-secondary-gradient" button_id="mater" %}
+        <br><br><br><br><br><br>
+        <div class="text-center">
+            <button class="btn btn-success button-green-darken-1 w-20-50-sm" tab-index="3">
+                <span class="font-size-20px-2c font-weight-bold">
+                    CONFIRMAR
+                    <i class="fas fa-check"></i>
+                </span>
+            </button>
+        </div>
+        <br>
+    </div>
+
+    <!-- VISTA 3 -->
+    <div class="px-2 d-none" style="min-height:550px;opacity:0;" tab-index="3">
+
+        <div class="text-center my-4">
+            <h5 class="font-alegreya-sans font-size-24px" style="color:#898989;" language="true">A continuación ingrese en las tablas los datos que disponga (si no tiene el dato se tomara como Cero) </h5>
+        </div>
+
+        <div>
+            <h4 class="font-quicksand color-light-light-gray text-center">Periodo de Tiempo</h4>
+            <div class="center">
+                <button class="btn-primary btn-selectable" selector-left><i class="fas fa-angle-left"></i></button>
+                <p class="font-quicksand text-muted mx-3 mt-3" selector>Mes/Semana</p>              
+                <button class="btn-primary btn-selectable" selector-right><i class="fas fa-angle-right"></i></button>
+            </div>        
+        </div>
+
+        <br><br><br>
+
+        {% include "core/Mrp/MrpSectionInputData/MrpTable/MrpTable.html" with name="PRONOSTICOS DE DEMANDA" %}
+        <br><br><br>
+        {% include "core/Mrp/MrpSectionInputData/MrpTable/MrpTableGeneral.html" with name="REGISTRO DE INFORMACIÓN GENERAL" %}
+        <br><br><br>
+        {% include "core/Mrp/MrpSectionInputData/MrpTable/MrpTable.html" with name="RECEPCIONES PROGRAMADAS" %}
+        <br><br><br><br><br><br>
+
+        <div class="center">
+            <button class="btn btn-danger button-color-orange-lighten-1 w-20-50-sm" tab-index="2">
+                <span class="font-size-20px-2c font-weight-bold">
+                    <i class="fas fa-angle-left"></i>
+                    REGRESAR
+                </span>
+            </button>        
+            <button class="btn btn-success button-green-darken-1 w-20-50-sm">
+                <span class="font-size-20px-2c font-weight-bold">
+                    CONFIRMAR
+                    <i class="fas fa-check"></i>
+                </span>
+            </button>
+        </div>
+        <br>
+    </div>
+</section>

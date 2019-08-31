@@ -1,10 +1,10 @@
-tbody{
+table[table-excel] tbody{
 	font-family: 'Bree-Serif';
 	font-weight: 400;
 	font-size: 105%;
 }
 
-thead > tr > th{
+table[table-excel] thead > tr > th{
 	font-family: 'Jelle';
 	font-weight: 150 !important;
 	font-size: 110%;
@@ -18,11 +18,11 @@ thead > tr > th{
 	background: rgb(245, 242, 242);
 }
 
-tbody > tr> td{
+table[table-excel] tbody > tr> td{
 	text-align: center;
 }
 
-td{
+table[table-excel] td{
 	background-color: white;
 	min-height:30px !important;
 	height: 30px !important;
@@ -32,16 +32,16 @@ td{
 	cursor: text;
 }
 
-thead > tr > th:first-child , tbody > tr> td:first-child{
+table[table-excel] thead > tr > th:first-child , table[table-excel] tbody > tr> td:first-child{
 	width: 103px;
 	background: rgb(245, 242, 242);
 	color:#767373;
 }
-thead > tr > th:first-child{font-size: 100%;font-weight:100 !important;min-width:65px !important;}
+table[table-excel] thead > tr > th:first-child{font-size: 100%;font-weight:100 !important;min-width:65px !important;}
 
-tbody > tr> td:first-child{font-size: 110%;font-weight: bold;}
+table[table-excel] tbody > tr> td:first-child{font-size: 110%;font-weight: bold;}
 
-td:hover:not(:first-child){
+table[table-excel] td:hover:not(:first-child){
 	-webkit-box-shadow: 0 0 3px 1px #8ec6f5 inset;
 	-moz-box-shadow: 0 0 3px 1px #8ec6f5 inset;
 	-ms-box-shadow: 0 0 3px 1px #8ec6f5 inset;
@@ -55,5 +55,5 @@ td:hover:not(:first-child){
 	padding-bottom: 3px !important;
 }
 
-@media(max-width:760px){ thead > tr > th{font-size:100%;} thead > tr > th:first-child{font-size:90%;}}
-@media(max-width:640px){ thead > tr > th{font-size:90%;} }
+@media(max-width:760px){ table[table-excel] thead > tr > th{font-size:100%;} table[table-excel] thead > tr > th:first-child{font-size:90%;}}
+@media(max-width:640px){ table[table-excel] thead > tr > th{font-size:90%;} }

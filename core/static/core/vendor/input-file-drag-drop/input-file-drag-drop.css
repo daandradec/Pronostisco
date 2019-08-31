@@ -8,3 +8,7 @@ i.fa-cloud-upload-alt{
 	font-size:30px;
 	color:#706b73;
 }
+
+#drag-cloud input[type=file]{
+	display: none !important;
+}

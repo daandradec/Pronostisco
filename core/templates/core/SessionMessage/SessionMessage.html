@@ -1,0 +1,10 @@
+{% if session_message %}
+    <section class="mt-3 mb-3">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{session_message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </section>   
+{% endif %}

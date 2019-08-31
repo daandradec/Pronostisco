@@ -1,0 +1,36 @@
+<div class="modal-body">
+    <canvas id="line-chart-20"></canvas>
+    <br>
+    
+    <table class="table">
+        <thead class="bg-info">
+            <tr> 
+                <th class="font-alegreya-sans font-size-26px-3c text-white" language="true">Nivel de Certeza</th>
+            </tr>
+        </thead>
+        <tbody class="bg-light">
+            <tr>
+                <td id="correlation" class="corre hov-scale c-pointer font-quicksand font-size-24px-3c" style="color:#435165;">0.95 <span>%</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <div style="width:100%;;max-height:700px;overflow-y: auto;display:block;">
+        <table class="table mx-auto" style="width:50%;" forecast-table="true" forecast-alpha="0">
+            <thead>
+                <tr class="bg-dark">
+                    <th class="text-white font-size-22px-2c" fore-title="true">Indice</th>
+                    <th class="text-white font-size-22px-2c" language="true">Pronostico</th>
+                </tr>
+            </thead>
+            <tbody class="bg-light">                                                     
+            </tbody>
+        </table>                    
+    </div>
+    <br>                    
+    <div class="text-center">
+        <button class="btn btn-primary my-2" onclick="downloadChart()" language="true">Descargar Imagen</button>
+        <a href="/pronosticos-alpha/download" link-post='true' line-chart='0' class="btn btn-success" language="true">Descargar Excel</a>
+    </div>            
+    <a href="#" id="link-download" style="visibility:hidden;"></a>
+</div>

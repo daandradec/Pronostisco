@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'obwp!86cqiil0ve1o&9jszyb^jr%2!6ad@$^(rq_4e$!41r@=2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pronostisco.pythonanywhere.com','localhost','127.0.0.1']
 
 
 # Application definition
@@ -120,6 +120,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if DEBUG:
-    import mimetypes
-    mimetypes.add_type("application/javascript", ".js", True)
+CSRF_COOKIE_SECURE = True
+#SESSION_COOKIE_SECURE = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_SSL_REDIRECT = True
+X_FRAME_OPTIONS = 'DENY'

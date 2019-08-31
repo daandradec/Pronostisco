@@ -6,10 +6,10 @@ function startCells(){
 function selectAllTdQueryCellExcel(){
     td_query = document.querySelectorAll("td[cell-excel=true]");
     for(var i = 0; i < td_query.length;++i)
-        td_query[i].addEventListener("click",writeCell,true);
+        td_query[i].addEventListener("click",writeSimpleCell,true);
 }
 
-function writeCell(e){
+function writeSimpleCell(e){
 	var data = e.target.innerHTML;
 	e.target.innerHTML = "<input type='text' class='w-100 h-100 text-center'>";
 	e.target.removeEventListener("click",writeCell);

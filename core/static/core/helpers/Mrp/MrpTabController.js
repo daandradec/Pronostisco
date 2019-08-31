@@ -1,24 +1,20 @@
 var stateTab = 1, new_state;
+var flagEvent_2 = true;
+var flagEvent_3 = true;
 
 function startEvents(){
 
 
     $("button[tab-index]").on('click', function(){
         new_state = $(this).attr("tab-index");
-        update();        
+        updateTab();     
     })
 
 
 }
 
-function update(){
-    switch(stateTab){
-        case 1:
-            $("div[tab-index="+stateTab+"]").addClass("animated faster fadeOut");
-            break;
-        case 2:
-            break;
-    }    
+function updateTab(){
+    $("div[tab-index="+stateTab+"]").addClass("animated faster fadeOut");  
     setTimeout(postUpdate, 700);
 }
 
@@ -26,6 +22,24 @@ function postUpdate(){
     hiddeElement("div[tab-index="+stateTab+"]");
     showElement("div[tab-index="+new_state+"]");
     stateTab = parseInt(new_state);
+    switch(stateTab){
+        case 2:   
+            if(flagEvent_2){
+                startD3Tree();
+                startMrpInput();
+                flagEvent_2 = false;
+            }
+            break;
+        case 3:
+            if(flagEvent_3){
+                fillTableRowsByCurrentPeriod();                
+                selectableSetLabelsAndCallBackFunction(labels_periods, tabsTables);
+                startButtonSelectable();
+                flagEvent_3 = false;
+            }else
+                seeChangeStateMRPToTable();
+            break;
+    }  
 }
 
 function hiddeElement(id){

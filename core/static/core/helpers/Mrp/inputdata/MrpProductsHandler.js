@@ -11,7 +11,7 @@ function updateStateProduct(e){
     }
     saveSelectsStates();
     selectAllSelectsAndSetOptions();
-    updateTree("NAME", undefined);
+    updateTree("SELECT", undefined);
 }
 
 function searchIndexInList(id, list){

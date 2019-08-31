@@ -12,6 +12,7 @@ function startMrpInput(){
         state.producto.title = this.value;
         saveSelectsStates();
         selectAllSelectsAndSetOptions();
+        updateTree("NAME", this.value);  
     })
 
     $("#compo").on("click", function(){
@@ -21,7 +22,7 @@ function startMrpInput(){
         document.querySelector("table[mrptrigger=compo] tbody").innerHTML += 
         "<tr componente_id='"+componentes_counter+"' flag_component='true'>" +
             "<td class='w-20 position-relative'>" +
-            "<button type='button' class='close position-absolute' style='top:0px;right:5px;' onclick='removeRow(this)'>" +
+            "<button type='button' class='close position-absolute' style='top:0px;right:5px;' onclick='removeRowMRP(this)'>" +
             "<span aria-hidden='true'>&times;</span></button>"+
             componentes_counter+"</td>"+
             "<td class='w-40' cell-excel='true'>"+title+"</td>"+
@@ -34,11 +35,12 @@ function startMrpInput(){
                 last_tr_button_footer_compo +
             "</td>"+
         "</tr>";
+        switchOffForms();
         selectAllTdQueryCellExcel(); // añadir evento click a las celdas de la tabla
         createComponent(key, componentes_counter, title, state.producto.key);
         selectAllSelectsAndSetOptions(); // actualizado de los selects
         initializeMrpParentEvents(); // listeners evento boton padre
-        updateTree("CREATE", {name:title, children: [], key: key});
+        updateTree("CREATE", {name:title+" (1)", children: [], key: key});
         ++componentes_counter; 
     })
 
@@ -49,7 +51,7 @@ function startMrpInput(){
         document.querySelector("table[mrptrigger=mater] tbody").innerHTML += 
         "<tr materia_id='"+materia_counter+"' flag_component='false'>"+
             "<td class='w-20 position-relative'>" + 
-            "<button type='button' class='close position-absolute' style='top:0px;right:5px;' onclick='removeRow(this)'>" +
+            "<button type='button' class='close position-absolute' style='top:0px;right:5px;' onclick='removeRowMRP(this)'>" +
             "<span aria-hidden='true'>&times;</span></button>"+            
             materia_counter+"</td>"+
             "<td class='w-40' cell-excel='true'>"+title+"</td>"+
@@ -62,11 +64,12 @@ function startMrpInput(){
                 last_tr_button_footer_mater +
             "</td>"+
         "</tr>";
+        switchOffForms();
         selectAllTdQueryCellExcel(); // añadir evento click a las celdas de la tabla
         createMater(key, materia_counter, title, state.producto.key);
         selectAllSelectsAndSetOptions(); // actualizado de los selects
         initializeMrpMaterParentEvents(); // listeners evento boton padre
-        updateTree("CREATE", {name:title, children: [], key: key});
+        updateTree("CREATE", {name:title+" (1)", children: [], key: key});
         ++materia_counter;
     })
 
@@ -111,12 +114,12 @@ function initializeMrpMaterParentEvents(){
         selectAllSelectsAndSetOptions()
         switchOffForms();
 
-        addParentComponent(parseInt(id), state.producto.key);
+        addParentMater(parseInt(id), state.producto.key);
         updateTree("SELECT", undefined);   
     }); 
 }
 
-window.addEventListener("load", startMrpInput, false);
+//window.addEventListener("load", startMrpInput, false);
 
 
 
@@ -132,7 +135,7 @@ const last_tr_footer =
             "</div>"+
             "<div class='col-12 col-lg-5'>"+
                 "<label class='mr-0-sm mr-md-2'>Cantidad:</label>"+
-                "<input type='number' class='w-40-100-md mp-0' min='1' max='10' value='1'>"+                 
+                "<input type='number' class='w-40-100-md mp-0' min='1' value='1'>"+                 
             "</div>"+
         "</div></div>"+
     "</form>"+
@@ -166,7 +169,7 @@ const form_literal_parent_footer =
             "</div>"+
             "<div class='col-12 col-lg-5'>"+
                 "<label class='mr-0-sm mr-md-2'>Cantidad:</label>"+
-                "<input type='number' class='w-40-100-md mp-0' min='1' max='10' value='1'>"+                 
+                "<input type='number' class='w-40-100-md mp-0' min='1' value='1'>"+                 
             "</div>"+
         "</div></div>"+
     "</form>";

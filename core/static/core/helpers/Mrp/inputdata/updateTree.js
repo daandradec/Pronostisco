@@ -27,6 +27,7 @@ function updateTree(operationEvent, payload){
             break;
         
         case "NAME":
+            tree_mrp.name = payload;
             constructAllNewTree();
             break;
         case "SELECT":
@@ -34,10 +35,9 @@ function updateTree(operationEvent, payload){
             break;
     }
     
-    D3Tree(tree_mrp);
-    console.log(state);
+    D3Tree(tree_mrp);    
 }
-
+/* FUNCION PARA CONSTRUIR EL TREE DE CERO 0 */
 function constructAllNewTree(){
     tree_mrp.children = [];
     keys_counter = {};    
@@ -53,7 +53,7 @@ function constructAllNewTree(){
     takeAllRootChildrens(materia_copy, state.producto.key, tree_mrp.children);
     takeAllMateriaChildChildrens(materia_copy, copy_keys_counter);
 }
-
+/* CREACION DE LOS HIJOS DEL ROOT O FORMA GENERAL DE RECORRER UNA LISTA (COMPONENTES O MATERIAS) ELIMINANDO EN BUSCA DE UNA LLAVE */
 function takeAllRootChildrens(list, key, list_to_push_children){
     while(true){
         var flag = true;
@@ -101,7 +101,7 @@ function takeAllRootMateriaChildrensExtended(list, key, list_to_push_children, k
         }
     }
 }
-
+/* CREAR EL ARBOL DE CHILDRENS PARA TODAS LAS RAMAS DESPUES DE LOS HIJOS DEL ROOT*/
 function takeAllChildChildrens(list, keys_counter){
     var super_children_list = [];    
     
@@ -149,18 +149,17 @@ function takeAllMateriaChildChildrens(list, keys_counter){
 function wasDeletedElement(item, key, list_to_push_children){
     for(var j = 0; j < item.edges.length; ++j){
         if(item.edges[j] === key){
-            list_to_push_children.push({name:item.title, children: [], key: item.key}); // AÑADIR AL ARBOL
+            list_to_push_children.push({name:item.title+" ("+item.amount[key]+")", children: [], key: item.key}); // AÑADIR AL ARBOL
             item.edges.splice(j, 1);
             return true;
         }
     }
     return false;
 }
-
 function wasDeletedElementExtended(item, key, list_to_push_children, keys_counter){
     for(var j = 0; j < item.edges.length; ++j){
         if(item.edges[j] === key){
-            list_to_push_children.push({name:item.title, children: [], key: item.key}); // AÑADIR AL ARBOL
+            list_to_push_children.push({name:item.title+" ("+item.amount[key]+")", children: [], key: item.key}); // AÑADIR AL ARBOL
             --keys_counter[item.key];
             break;
         }
@@ -169,7 +168,7 @@ function wasDeletedElementExtended(item, key, list_to_push_children, keys_counte
 function wasDeletedMateriaElementExtended(item, key, list_to_push_children, keys_counter){
     for(var j = 0; j < item.edges.length; ++j){
         if(item.edges[j] === key){
-            list_to_push_children.push({name:item.title, children: [], key: item.key}); // AÑADIR AL ARBOL
+            list_to_push_children.push({name:item.title+" ("+item.amount[key]+")", children: [], key: item.key}); // AÑADIR AL ARBOL
             --keys_counter[key];
             if(keys_counter[key] < 1){
                 item.edges.splice(j, 1);
@@ -180,7 +179,7 @@ function wasDeletedMateriaElementExtended(item, key, list_to_push_children, keys
     }
 }
 
-
+/* FUNCION PARA GENERAR EL JSON QUE ME DICE CUANTOS VERTICES RECURSIVAMENTE EXISTIRAN PARA TAL KEY */
 function generateJsonKeysParents(list){ 
     const generated_json = {};
     const keys_children = {};

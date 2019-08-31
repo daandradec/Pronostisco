@@ -4,7 +4,8 @@ function createComponent(key, componente_id, componente_title, parent){
         title: componente_title,
         key: key,
         edges: [parent],
-        amount: {[parent]: 1}
+        amount: {[parent]: 1},
+        amount_backup: [1]
     });
 }
 
@@ -14,6 +15,7 @@ function createMater(key, materia_id, materia_title, parent){
         title: materia_title,
         key: key,
         edges: [parent],
-        amount: {[parent]: 1}
+        amount: {[parent]: 1},
+        amount_backup: [1]
     })
 }

@@ -11,7 +11,7 @@ var viewerWidth,viewerHeight,tree,diagonal,svgGroup, baseSvg, root;
 function startD3Tree(){
     const container_tree = document.getElementById("tree-container").parentElement;
     viewerWidth = $(container_tree).width();
-    viewerHeight = $(container_tree).height();
+    viewerHeight = $(container_tree).height();    
 
     tree = d3.layout.tree()
         .size([viewerHeight, viewerWidth]);
@@ -51,4 +51,4 @@ function D3Tree(treeData){
 }
 
 
-window.addEventListener("load", startD3Tree, false);
+//window.addEventListener("load", startD3Tree, false);

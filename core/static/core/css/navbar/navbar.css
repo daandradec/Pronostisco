@@ -1,0 +1,109 @@
+nav{
+    height:50px;
+    width:100%;
+}
+
+
+nav.fixed-top > div.navbar-div{
+    width:70%;
+    height:100%;
+    background:#f2f5fa;
+}
+
+.navbar-brand-fixed{
+    font-size:30px;
+    color:orange;
+    margin-left:6%;
+    margin-right:auto;
+    -webkit-transition: -webkit-transform 0.5s ease;
+    -moz-transition: -moz-transform 0.5s ease;
+    transition: transform 0.5s ease;
+}
+
+a{text-decoration: none !important;}
+a.navbar-brand-fixed:hover{
+    color:orange;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+/*a.navbar-brand-fixed:visited{color: orange;}*/
+
+nav.fixed-top ul.list-inline{
+    width:15% !important;
+    min-width:200px !important;
+    height:50px;
+}
+nav ul.list-inline > li > a{
+    margin:0 7px !important;
+    font-size:16px;
+    font-weight:550;
+    color:#7b7e82;
+}
+nav ul > li > a:hover{
+    color: orange;
+}
+
+
+/* collapse */
+
+#nav-collapse-div{
+    width:70% !important;
+    text-align:center;
+    display:none;
+}
+#nav-collapse-div button{
+    border: 1px solid #d68200;
+    width:100%;
+    height:23px;
+    
+    background:orange;
+    color:white;
+    border-radius:0 !important;
+
+    margin-top: -6px !important;
+    padding-top: 0 !important;
+}
+#div-list-01-collapse{
+    width:70% !important;
+    display:none;
+    text-align: center !important;
+    background:#f2f5fa;
+}
+#div-list-01-collapse ul > li > a{
+    font-size:16px;
+    font-weight:550;
+    color:#7b7e82;
+}
+#div-list-01-collapse ul{
+    padding-left:0 !important;
+    list-style:none;
+    width:100%;
+}
+#div-list-01-collapse ul > li:hover{background:orange;}
+#div-list-01-collapse ul > li:hover a{background:orange;color:#508bbb !important;}
+
+
+
+@media (max-width:742px){
+    nav.fixed-top{
+        height: auto !important;
+        display: block !important;
+    }
+    nav.fixed-top > div{margin: 0 auto;}
+
+    nav.fixed-top ul.list-inline{display:none !important;}
+
+    .navbar-brand-fixed{margin-left:auto;}
+
+    #nav-collapse-div{
+        display:block;
+    }
+}
+
+@media(max-width:480px){
+    .navbar-brand-fixed{
+        font-size: 24px;
+    }
+}

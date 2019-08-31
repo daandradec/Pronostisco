@@ -1,0 +1,33 @@
+/* CSS DOCUMENT */
+table, tbody, tr{
+    width: 100% !important;
+}
+tbody{
+	font-family: 'Quicksand';
+}
+
+thead > tr > th{
+	font-family: 'Jelle';
+	text-align:center;
+	color:#767373;
+
+	
+	border-color: #bdc2ca !important;
+	border-top: none !important;
+	border-bottom: none !important;
+	background: rgb(245, 242, 242);
+}
+
+td{
+	background-color: white;
+	min-height:40px !important;
+	height: 40px !important;
+	padding: 0 !important;
+    border-color: #bdc2ca !important;
+    text-align: center;
+}
+
+tbody > tr> td:first-child{
+	background: rgb(207, 201, 201);
+	color: rgb(87, 80, 80);
+}

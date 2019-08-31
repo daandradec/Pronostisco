@@ -17,18 +17,22 @@ function awake(){
 
 	//td_query = document.querySelectorAll("div.tab-content > div.active > div.table-responsive > table > tbody > tr> td:not(:first-child)");
 	//td_query = document.querySelectorAll("table > tbody > tr> td:not(:first-child)");
-	td_query = document.querySelectorAll("div.table-responsive table tbody tr > td:not(:first-child)");
+	td_query = document.querySelectorAll("div.table-responsive table[table-excel] tbody tr > td:not(:first-child)");
 	addClickEventTD(td_query);
 
 	button_table = document.getElementById("button-table-excel");
-	button_table.addEventListener("click",addNewCell,false);
+	if(button_table !== undefined && button_table !== null)
+		button_table.addEventListener("click",addNewCell,false);
 
 	nav_tab_button_days = document.getElementById("navtab2");
 	nav_tab_button_years = document.getElementById("navtab1");	
 	nav_tab_button_months = document.getElementById("navtab3");	
-	nav_tab_button_days.addEventListener("mouseup",setTableDays,false);
-	nav_tab_button_years.addEventListener("mouseup",setTableYears,false);
-	nav_tab_button_months.addEventListener("mouseup",setTableMonths,false);
+	if(nav_tab_button_days !== undefined && nav_tab_button_days !== null)
+		nav_tab_button_days.addEventListener("mouseup",setTableDays,false);
+	if(nav_tab_button_years !== undefined && nav_tab_button_years !== null)
+		nav_tab_button_years.addEventListener("mouseup",setTableYears,false);
+	if(nav_tab_button_months !== undefined && nav_tab_button_months !== null)
+		nav_tab_button_months.addEventListener("mouseup",setTableMonths,false);
 
 }
 
@@ -80,19 +84,19 @@ function validateCell(e){
 
 function addNewCell(){
 	if(getCurrentCounter() < MAX_LIMIT_ROWS){
-		tbody = document.querySelector("div.active div.table-responsive table tbody");
+		tbody = document.querySelector("div.active div.table-responsive table[table-excel] tbody");
 		var td = "<td></td>";
 		tbody.innerHTML += "<tr>"+td.repeat(columns)+"</tr>";
 		
 		incrementCounterRow();
 		//first_td = document.querySelector("div.tab-content div.active div.table-responsive > table > tbody > tr:last-child > td:first-child");
 		//first_td = document.querySelector("table > tbody > tr:last-child > td:first-child");
-		first_td = document.querySelector("div.active div.table-responsive table tbody tr:last-child > td:first-child");
+		first_td = document.querySelector("div.active div.table-responsive table[table-excel] tbody tr:last-child > td:first-child");
 		first_td.innerHTML = "<button class='btn btn-sm float-left' onclick='removeRow(this)'><i class='fas fa-cut' style='color:red'></i></button>" + getCurrentCounter();
 	
 		//td_query = document.querySelectorAll("div.tab-content div.active div.table-responsive > table > tbody > tr > td:not(:first-child)");
 		//td_query = document.querySelectorAll("table > tbody > tr > td:not(:first-child)");
-		td_query = document.querySelectorAll("div.active div.table-responsive table tbody tr > td:not(:first-child)");
+		td_query = document.querySelectorAll("div.active div.table-responsive table[table-excel] tbody tr > td:not(:first-child)");
 		addClickEventTD(td_query);
 	}
 }
@@ -150,7 +154,7 @@ function removeRow(button){
 	if(getCurrentCounter() > MIN_LIMIT_ROWS){
 		tr_row = button.parentElement.parentElement;
 		$(tr_row).remove();
-		td_query = document.querySelectorAll("div.active div.table-responsive table tbody tr > td:first-child");
+		td_query = document.querySelectorAll("div.active div.table-responsive table[table-excel] tbody tr > td:first-child");
 		for(var i = 0; i < td_query.length;++i)
 			td_query[i].innerHTML = "<button class='btn btn-sm float-left' onclick='removeRow(this)'><i class='fas fa-cut' style='color:red'></i></button>"+(i+1);
 		decrementCounterRow();

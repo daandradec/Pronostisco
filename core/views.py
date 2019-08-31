@@ -11,7 +11,7 @@ import xlwt
 def index(request):
     if 'data' in request.session:
         del request.session['data']
-    return render(request,'core/home.html')
+    return render(request,'core/Home/home.html')
 
 def simple_pronos_input_data(request):
     csrf_token = get_token(request)
@@ -23,9 +23,9 @@ def simple_pronos_input_data(request):
 
     if 'data' in request.session:
         data = request.session['data']
-        return render(request,'core/inputdatapronosimple.html',{'session_message':message,'data':data,'csrf':csrf_token})
+        return render(request,'core/ForecastPages/PronoSimple/inputdatapronosimple.html',{'session_message':message,'data':data,'csrf':csrf_token})
 
-    return render(request,'core/inputdatapronosimple.html',{'session_message':message,'csrf':csrf_token})
+    return render(request,'core/ForecastPages/PronoSimple/inputdatapronosimple.html',{'session_message':message,'csrf':csrf_token})
 
 def simple_pronos_graph_data(request):
     if request.method == "POST":
@@ -36,7 +36,7 @@ def simple_pronos_graph_data(request):
             y = [int(yi) for yi in y]
             if len(data) <= 7 and len(data) >= 1:
                 first_or_create_session(request, data)
-                return render(request,'core/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
+                return render(request,'core/ForecastPages/PronoSimple/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
                 'lineal_corre':lineal_correlation,'expo':expo_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_forecasts,
                 'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
                 'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation,
@@ -50,7 +50,7 @@ def simple_pronos_graph_data(request):
             lineal_forecasts,x,y,y_square,xy,a_lineal,b_lineal,lineal_correlation,expo_forecasts,ln_x,ln_xy,a_expo,b_expo,expo_correlation,cuadra_forecasts,cuadra_correlation,movil_forecast_2,movil_averages,movil_averages_adjust,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation = getSimpleForecasts(data)
             y = [int(yi) for yi in y]
             first_or_create_session(request, data)
-            return render(request,'core/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
+            return render(request,'core/ForecastPages/PronoSimple/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
             'lineal_corre':lineal_correlation,'expo':expo_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_forecasts,
             'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
             'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation,
@@ -62,7 +62,7 @@ def simple_pronos_graph_data(request):
             data = request.session['data']
             lineal_forecasts,x,y,y_square,xy,a_lineal,b_lineal,lineal_correlation,expo_forecasts,ln_x,ln_xy,a_expo,b_expo,expo_correlation,cuadra_forecasts,cuadra_correlation,movil_forecast_2,movil_averages,movil_averages_adjust,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation = getSimpleForecasts(data)
             y = [int(yi) for yi in y]
-            return render(request,'core/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
+            return render(request,'core/ForecastPages/PronoSimple/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
             'lineal_corre':lineal_correlation,'expo':expo_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_forecasts,
             'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
             'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation,
@@ -80,9 +80,9 @@ def alpha_pronos_input_data(request):
 
     if 'data' in request.session:
         data = request.session['data']
-        return render(request,'core/inputdatapronoalpha.html',{'session_message':message,'data':data,'csrf':csrf_token})
+        return render(request,'core/ForecastPages/PronoAlpha/inputdatapronoalpha.html',{'session_message':message,'data':data,'csrf':csrf_token})
 
-    return render(request,'core/inputdatapronoalpha.html',{'session_message':message,'csrf':csrf_token})
+    return render(request,'core/ForecastPages/PronoAlpha/inputdatapronoalpha.html',{'session_message':message,'csrf':csrf_token})
 
 def alpha_pronos_graph_data(request):
     if request.method == "POST":
@@ -92,7 +92,7 @@ def alpha_pronos_graph_data(request):
             if len(data) <= 7 and len(data) > 2:
                 lineal_business_forecasts,lineal_correlation,expo_business_forecasts,expo_correlation,cuadra_business_forecasts,cuadra_correlation,movil_forecast_2,movil_correlation_2,movil_forecast_3,movil_correlation_3,movil_forecast_composed,movil_composed_correlation,movil_forecast_pondered,movil_pondered_correlation,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation,winters_forecast,winters_correlation,jenkin_forecast,jenkin_correlation,simulated_forecast,simulated_correlation = getBusinessForecasts(data)
                 first_or_create_session(request, data)
-                return render(request,'core/graphicspronoalpha.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_business_forecasts,
+                return render(request,'core/ForecastPages/PronoAlpha/graphicspronoalpha.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_business_forecasts,
                 'lineal_corre':lineal_correlation,'expo':expo_business_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_business_forecasts,
                 'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
                 'movil_composed':movil_forecast_composed,'movil_composed_corre':movil_composed_correlation,'movil_pondered':movil_forecast_pondered,'movil_pondered_corre':movil_pondered_correlation,
@@ -102,7 +102,7 @@ def alpha_pronos_graph_data(request):
                 lineal_forecasts,x,y,y_square,xy,a_lineal,b_lineal,lineal_correlation,expo_forecasts,ln_x,ln_xy,a_expo,b_expo,expo_correlation,cuadra_forecasts,cuadra_correlation,movil_forecast_2,movil_averages,movil_averages_adjust,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation = getSimpleForecasts(data)
                 first_or_create_session(request, data)
                 y = [int(yi) for yi in y]
-                return render(request,'core/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
+                return render(request,'core/ForecastPages/PronoSimple/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
                 'lineal_corre':lineal_correlation,'expo':expo_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_forecasts,
                 'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
                 'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation,
@@ -116,7 +116,7 @@ def alpha_pronos_graph_data(request):
             if len(data) <= 7 and len(data) > 2:
                 lineal_business_forecasts,lineal_correlation,expo_business_forecasts,expo_correlation,cuadra_business_forecasts,cuadra_correlation,movil_forecast_2,movil_correlation_2,movil_forecast_3,movil_correlation_3,movil_forecast_composed,movil_composed_correlation,movil_forecast_pondered,movil_pondered_correlation,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation,winters_forecast,winters_correlation,jenkin_forecast,jenkin_correlation,simulated_forecast,simulated_correlation = getBusinessForecasts(data)
                 first_or_create_session(request, data)
-                return render(request,'core/graphicspronoalpha.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_business_forecasts,
+                return render(request,'core/ForecastPages/PronoAlpha/graphicspronoalpha.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_business_forecasts,
                 'lineal_corre':lineal_correlation,'expo':expo_business_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_business_forecasts,
                 'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
                 'movil_composed':movil_forecast_composed,'movil_composed_corre':movil_composed_correlation,'movil_pondered':movil_forecast_pondered,'movil_pondered_corre':movil_pondered_correlation,
@@ -126,7 +126,7 @@ def alpha_pronos_graph_data(request):
                 lineal_forecasts,x,y,y_square,xy,a_lineal,b_lineal,lineal_correlation,expo_forecasts,ln_x,ln_xy,a_expo,b_expo,expo_correlation,cuadra_forecasts,cuadra_correlation,movil_forecast_2,movil_averages,movil_averages_adjust,movil_correlation_2,movil_forecast_3,movil_correlation_3,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation = getSimpleForecasts(data)
                 y = [int(yi) for yi in y]
                 first_or_create_session(request, data)
-                return render(request,'core/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
+                return render(request,'core/ForecastPages/PronoSimple/graphicspronosimple.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_forecasts,
                 'lineal_corre':lineal_correlation,'expo':expo_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_forecasts,
                 'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
                 'simple_soft':simple_softener_forecast,'simple_soft_corre':simple_softener_correlation,'double_soft':double_softener_forecast,'double_soft_corre':double_softener_correlation,
@@ -138,7 +138,7 @@ def alpha_pronos_graph_data(request):
             csrf_token = get_token(request)
             data = request.session['data']
             lineal_business_forecasts,lineal_correlation,expo_business_forecasts,expo_correlation,cuadra_business_forecasts,cuadra_correlation,movil_forecast_2,movil_correlation_2,movil_forecast_3,movil_correlation_3,movil_forecast_composed,movil_composed_correlation,movil_forecast_pondered,movil_pondered_correlation,simple_softener_forecast,simple_softener_correlation,double_softener_forecast,double_softener_correlation,winters_forecast,winters_correlation,jenkin_forecast,jenkin_correlation,simulated_forecast,simulated_correlation = getBusinessForecasts(data)
-            return render(request,'core/graphicspronoalpha.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_business_forecasts,
+            return render(request,'core/ForecastPages/PronoAlpha/graphicspronoalpha.html',{'data':data,'csrf':csrf_token, 'lineal':lineal_business_forecasts,
             'lineal_corre':lineal_correlation,'expo':expo_business_forecasts,'expo_corre':expo_correlation,'cuadra':cuadra_business_forecasts,
             'cuadra_corre':cuadra_correlation,'movil_2':movil_forecast_2,'movil_corre_2':movil_correlation_2,'movil_3':movil_forecast_3,'movil_corre_3':movil_correlation_3,
             'movil_composed':movil_forecast_composed,'movil_composed_corre':movil_composed_correlation,'movil_pondered':movil_forecast_pondered,'movil_pondered_corre':movil_pondered_correlation,
@@ -210,3 +210,9 @@ def get_data_from_request(data_request):
     for content in content_list:
         temp.append([int(x) for x in content.split(',')])
     return temp
+
+
+# MRP
+
+def mrp_input_data(request):
+    return render(request, 'core/Mrp/mrpinputdata.html')

@@ -99,19 +99,18 @@ section.header-section > div > img{
     width:100%;
 }
 
-.body-section > main div.main-div-col-1{
-    width:50%;
+.body-section > main div > div{
+    /*width:50%;*/
     /*height:500px;*/
     min-height: 500px;
 }
 .body-section > main div.main-div-col-2{
-    width:45%;
     margin-left:4%;
 }
-.body-section > main div.main-div-col-2 > h4{
+.body-section > main div h4{
     color:orange;
     margin-bottom:15px;
 }
-.body-section > main div.main-div-col-2 > p{
+.body-section > main div p{
     color:rgb(85, 80, 80);
 }

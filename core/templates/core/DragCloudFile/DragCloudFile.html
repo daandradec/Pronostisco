@@ -1,0 +1,18 @@
+{% load get_request_parameters %}
+{% get_current_parameters as parameters %}
+
+<div id="drag-cloud" class="text-center">
+    <i class="fas fa-cloud-upload-alt mt-4"></i>
+    <p class="mt-1" language="true">Arrastra los archivos .xlsx, .xls, .xlsm, .csv aquí</p>
+    <form action="{% url redirectRoute %}{{parameters}}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group mt-2">
+            <label for="file_input" class="btn btn-info" language="true">Cargar Archivo</label>
+            <input type="file" name="file_input" id="file_input">  
+            <div id="label_output_file"></div>
+        </div>
+        <div class="form-group mt-2">
+            <input type="submit" id="drag-cloud-button" class="btn btn-outline-success" value="Enviar" disabled="disabled">  
+        </div>                        
+    </form>  
+</div>  

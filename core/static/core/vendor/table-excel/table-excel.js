@@ -1,7 +1,7 @@
 counter_table_days = 2;
 counter_table_years = 2;
 counter_table_months = 2;
-flag_counter = false;
+flag_counter = 0;
 
 DAYS_COLUMNS = 8;
 YEARS_COLUMNS = 13;
@@ -20,9 +20,7 @@ function awake(){
 	td_query = document.querySelectorAll("div.table-responsive table[table-excel] tbody tr > td:not(:first-child)");
 	addClickEventTD(td_query);
 
-	button_table = document.getElementById("button-table-excel");
-	if(button_table !== undefined && button_table !== null)
-		button_table.addEventListener("click",addNewCell,false);
+	actiteButtonTableExcel();
 
 	nav_tab_button_days = document.getElementById("navtab2");
 	nav_tab_button_years = document.getElementById("navtab1");	
@@ -159,5 +157,12 @@ function removeRow(button){
 			td_query[i].innerHTML = "<button class='btn btn-sm float-left' onclick='removeRow(this)'><i class='fas fa-cut' style='color:red'></i></button>"+(i+1);
 		decrementCounterRow();
 	}
+}
+
+function actiteButtonTableExcel(){
+	button_table = document.getElementById("button-table-excel");
+	console.log(button_table)
+	if(button_table !== undefined && button_table !== null)
+		button_table.addEventListener("click",addNewCell,false);
 }
 window.addEventListener("load",awake,false);

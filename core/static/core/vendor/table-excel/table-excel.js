@@ -20,7 +20,7 @@ function awake(){
 	td_query = document.querySelectorAll("div.table-responsive table[table-excel] tbody tr > td:not(:first-child)");
 	addClickEventTD(td_query);
 
-	actiteButtonTableExcel();
+	activeButtonTableExcel();
 
 	nav_tab_button_days = document.getElementById("navtab2");
 	nav_tab_button_years = document.getElementById("navtab1");	
@@ -36,7 +36,7 @@ function awake(){
 
 function addClickEventTD(td_query){
 	for(var i = 0;i < td_query.length;++i)
-		td_query[i].addEventListener("click",writeCell,true);
+		td_query[i].addEventListener("click",writeCell,false);
 }
 
 function writeCell(e){
@@ -159,9 +159,8 @@ function removeRow(button){
 	}
 }
 
-function actiteButtonTableExcel(){
-	button_table = document.getElementById("button-table-excel");
-	console.log(button_table)
+function activeButtonTableExcel(){
+	button_table = document.getElementById("button-table-excel");	
 	if(button_table !== undefined && button_table !== null)
 		button_table.addEventListener("click",addNewCell,false);
 }

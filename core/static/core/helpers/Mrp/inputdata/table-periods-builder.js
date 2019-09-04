@@ -7,6 +7,8 @@ var headers_periods = [
 const td = "<td></td>";
 var table_values = [];
 
+var flagGeneralTable = true; /* para ejecutar una sola vez */
+
 function tabsTables(index){    
     for(var i = 0;i < labels_periods.length; ++i){        
         const tables = document.querySelectorAll("table[period-index='"+i+"']");        
@@ -36,7 +38,12 @@ function alterRespectiveTable(table, table_index, index){
             table.children[1].innerHTML = "<tr><td>Demanda</td>"+td.repeat(generateNumberOfPeriod(index))+"</tr>";
             break;
         case 1:
-            table.children[0].innerHTML = "<tr><th>Mrp Tree</th><th>Lead Time</th><th>Stock de Seguridad</th><th>Inventario Inicial</th><th>Q*</th><th>Costo Unitario</th><th>Costo de Mantenimiento</th><th>Costo de ordenar</th></tr>";
+            if(flagGeneralTable){
+                table.children[0].innerHTML = "<tr><th>Mrp Tree</th><th>Lead Time <input type='checkbox' id='toggle-lead' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Stock de Seguridad</th><th>Inventario Inicial</th><th>Q*</th><th>Costo Unitario</th><th>Costo de Mantenimiento</th><th>Costo de ordenar</th></tr>";
+                $('#toggle-lead').bootstrapToggle();
+                $("#toggle-lead").change(toggleMasterEvent);
+                flagGeneralTable = false;
+            }
             fillRemainingTable(table, 7);                            
             break;
         case 2:
@@ -84,6 +91,7 @@ function seeChangeStateMRPToTable(){
     saveStateTableAndReFill(tables[5], 2, 1);
     saveStateTableAndReFill(tables[6], 2, 2);
     awake();
+    changeStatusColDisabled($(tables[3].children[1]).find("tr td:nth-child(2)"));
 }
 
 function saveStateTableAndReFill(table, table_index, index){

@@ -1,3 +1,6 @@
+{% load get_request_parameters %}
+{% get_current_parameters as parameters %}
+
 <section>
     <!-- VISTA 1 -->
     <div class="py-5 px-3 bg-mid-lig-white-gray position-relative" style="min-height:700px;z-index:100;" tab-index="1">
@@ -112,7 +115,7 @@
                     REGRESAR
                 </span>
             </button>        
-            <button class="btn btn-success button-green-darken-1 w-20-50-sm">
+            <button class="btn btn-success button-green-darken-1 w-20-50-sm" id="submit-mrp">
                 <span class="font-size-20px-2c font-weight-bold">
                     CONFIRMAR
                     <i class="fas fa-check"></i>
@@ -122,3 +125,14 @@
         <br>
     </div>
 </section>
+
+<script>
+    var TOKEN = "{{csrf}}"
+    var POST_ROUTE = "{% url 'mrpoutput' %}{{parameters}}"
+
+    window.addEventListener("load", function(){
+        document.getElementById("submit-mrp").onclick = function(){            
+            post(POST_ROUTE,{tree:JSON.stringify(tree_mrp), mrp:JSON.stringify(state)});
+        };
+    })    
+</script>

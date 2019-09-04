@@ -48,6 +48,10 @@ table[table-excel] td:hover:not(:first-child){
 	box-shadow: 0 0 3px 1px #8ec6f5 inset;
 }
 
+table[table-excel] td.disabled{
+	background: rgb(175, 174, 174);
+}
+
 .input-text-excel{
 	width:100%;	
 	text-align: center;

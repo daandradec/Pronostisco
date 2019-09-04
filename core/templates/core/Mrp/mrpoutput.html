@@ -1,0 +1,25 @@
+{% extends "core/App/app.html" %}
+
+{% block title %}MRP{% endblock title %}
+
+{% block styles %}
+    {% load static %} 
+    <link rel="stylesheet" href="{% static 'core/css/header/header.css' %}">
+    <link rel="stylesheet" href="{% static 'core/vendor/table-excel/table-excel.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    {% include 'core/Navbar/Navbar.html' %}
+    {% include "core/Mrp/Header/Header.html" with inputDataFlag=False %}
+    {% include "core/Mrp/MrpSectionOutput/MrpSectionOutput.html" %}
+    {% include 'core/Footer/Footer.html' %}
+{% endblock content %}
+
+{% block scripts %} 
+    <script>
+        var mrp = JSON.parse("{{mrp|escapejs|safe}}")
+        var tree = JSON.parse("{{tree|escapejs|safe}}")
+    </script>
+
+    <script src="{% static 'core/helpers/Navbar/mediaResize.js' %}"></script>
+{% endblock scripts %}

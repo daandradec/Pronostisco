@@ -222,10 +222,17 @@ def mrp_input_data(request):
 def mrp_output(request):
     if(request.method == "POST"):
         mrp = json.loads(request.POST.get('mrp',''))
-        tree = json.loads(request.POST.get('tree',''))
+        tree = json.loads(request.POST.get('tree',''))        
+        tables = json.loads(request.POST.get('tables',''))
+        periods_state = request.POST.get('periods_state')
+        lead = request.POST.get('lead')
+        stock = request.POST.get('stock')
+        Q = request.POST.get('Q')
         mrp = json.dumps(mrp)
         tree = json.dumps(tree)      
-        return render(request, 'core/Mrp/mrpoutput.html', {"mrp": mrp,"tree":tree})  
+        tables = json.dumps(tables)
+        return render(request, 'core/Mrp/mrpoutput.html', {"mrp": mrp,"tree":tree, "tables": tables, "periods_state":periods_state, 
+            "lead":lead, "stock":stock,"Q":Q})  
     return HttpResponseRedirect('/mrp/input-data') 
     
   

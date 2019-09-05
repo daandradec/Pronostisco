@@ -75,7 +75,7 @@ function closeCell(input){
 }
 
 function validateCell(e){
-	e.target.value=this.value.replace(/[^\d]/,'');
+	e.target.value=this.value.replace(/[^\d.,]/,'');
 }
 
 

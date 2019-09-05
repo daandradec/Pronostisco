@@ -1,6 +1,3 @@
-{% load get_request_parameters %}
-{% get_current_parameters as parameters %}
-
 <section>
     <!-- VISTA 1 -->
     <div class="py-5 px-3 bg-mid-lig-white-gray position-relative" style="min-height:700px;z-index:100;" tab-index="1">
@@ -125,14 +122,3 @@
         <br>
     </div>
 </section>
-
-<script>
-    var TOKEN = "{{csrf}}"
-    var POST_ROUTE = "{% url 'mrpoutput' %}{{parameters}}"
-
-    window.addEventListener("load", function(){
-        document.getElementById("submit-mrp").onclick = function(){            
-            post(POST_ROUTE,{tree:JSON.stringify(tree_mrp), mrp:JSON.stringify(state)});
-        };
-    })    
-</script>

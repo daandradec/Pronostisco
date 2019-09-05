@@ -135,7 +135,7 @@ const last_tr_footer =
             "</div>"+
             "<div class='col-12 col-lg-5'>"+
                 "<label class='mr-0-sm mr-md-2'>Cantidad:</label>"+
-                "<input type='number' class='w-40-100-md mp-0' min='1' value='1'>"+                 
+                "<input type='number' class='w-40-100-md mp-0' min='1' step='any' value='1'>"+                 
             "</div>"+
         "</div></div>"+
     "</form>"+
@@ -169,7 +169,7 @@ const form_literal_parent_footer =
             "</div>"+
             "<div class='col-12 col-lg-5'>"+
                 "<label class='mr-0-sm mr-md-2'>Cantidad:</label>"+
-                "<input type='number' class='w-40-100-md mp-0' min='1' value='1'>"+                 
+                "<input type='number' class='w-40-100-md mp-0' min='1' step='any' value='1'>"+                 
             "</div>"+
         "</div></div>"+
     "</form>";

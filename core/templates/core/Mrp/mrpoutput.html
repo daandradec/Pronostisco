@@ -21,9 +21,9 @@
         var tree = JSON.parse("{{tree|escapejs|safe}}")
         var tables = JSON.parse("{{tables|escapejs|safe}}")
         var periods_state = JSON.parse("{{periods_state|escapejs|safe}}")
-        var lead = JSON.parse("{{lead|escapejs|safe}}")
-        var stock = JSON.parse("{{stock|escapejs|safe}}")
-        var Q = JSON.parse("{{Q|escapejs|safe}}")
+        var leadFlag = JSON.parse("{{lead|escapejs|safe}}")
+        var stockFlag = JSON.parse("{{stock|escapejs|safe}}")
+        var QFlag = JSON.parse("{{Q|escapejs|safe}}")
 
         console.log(mrp)
         console.log(tree)
@@ -41,17 +41,19 @@
         const tree = JSON.parse( '{"name":"Producto A","key":"prod_0","children":[{"name":"Componente B (1)","children":[{"name":"Materia Prima D (2)","children":[],"key":"mater_1_1"},{"name":"Materia Prima E (2)","children":[],"key":"mater_2_1"}],"key":"compo_1_1"},{"name":"Componente C (1)","children":[{"name":"Materia Prima D (2)","children":[],"key":"mater_1_1"},{"name":"Materia Prima E (2)","children":[],"key":"mater_2_1"}],"key":"compo_2_1"}]}' )
         const tables = JSON.parse( '{"t_general":[[0,50,560,36,670,50,2100],[0,30,450,41,520,60,1200],[0,25,2000,20,600,65,600],[0,10,1200,35,2000,100,500],[0,15,2500,40,1000,150,500]],"t_forecast":[2850,950,825,500],"t_receptions":[[50,0,0,0],[1200,300,0,0],[500,0,0,0],[700,0,0,0],[0,130,0,0]]}' )
         const periods_state = 0
-        const lead = false
-        const stock = true
-        const Q = true
+        const leadFlag = true
+        const stockFlag = true
+        const QFlag = true
 
         console.log(mrp)
         console.log(tree)
         console.log(tables)        
     </script>
 
+    <script src="{% static 'core/helpers/Mrp/outputdata/fillDinamicMrpTableBody.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/outputdata/fillDinamicMrpTable.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/outputdata/MrpOutputConstants.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/outputdata/MrpAccordionZoneCreator.js' %}"></script>
     <script src="{% static 'core/helpers/Navbar/mediaResize.js' %}"></script>
+    <script src="{% static 'core/js/Prototype/ArraySum.js' %}"></script>
 {% endblock scripts %}

@@ -44,8 +44,7 @@ const collapse_zone =
                     '<td>Recepciones Programadas</td>'+                          
                 '</tr>'+
                 '<tr>'+
-                    '<td>Inventario</td>'+
-                    '<td total="true">Totales</td>'+
+                    '<td>Inventario</td>'+                    
                 '</tr>'+
                 '<tr>'+
                     '<td>Stock de Seguridad</td>'+

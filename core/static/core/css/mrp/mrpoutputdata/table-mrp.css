@@ -25,18 +25,14 @@ table[mrp="true"] tr:not(:nth-child(1)):not(:nth-child(2)) td:first-child{
     width: 15% !important;        
 }
 table[mrp="true"] tr:not(:nth-child(1)) td:first-child{background: #f7f5f5;font-family: 'Segoe UI';font-weight:bold;color:gray;}
-table[mrp="true"] tr:nth-last-child(1) td:first-child{background: #58572c !important;color:rgb(238, 235, 235);}
-table[mrp="true"] tr:nth-last-child(2) td:first-child{background: #58572c !important;color:rgb(238, 235, 235);}
-table[mrp="true"] tr:nth-last-child(3) td:first-child{background: #58572c !important;color:rgb(238, 235, 235);}
-table[mrp="true"] tr:nth-last-child(4) td:first-child{background: #58572c !important;color:rgb(238, 235, 235);}
-table[mrp="true"] tr:nth-last-child(1) td:not(:first-child){background: #c4bf74 !important;}
-table[mrp="true"] tr:nth-last-child(2) td:not(:first-child){background: #c4bf74 !important;}
-table[mrp="true"] tr:nth-last-child(3) td:not(:first-child){background: #c4bf74 !important;}
-table[mrp="true"] tr:nth-last-child(4) td:not(:first-child){background: #c4bf74 !important;}
-table[mrp="true"] tr:nth-last-child(1) td:last-child{background: #e9e16f !important;}
-table[mrp="true"] tr:nth-last-child(2) td:last-child{background: #e9e16f !important;}
-table[mrp="true"] tr:nth-last-child(3) td:last-child{background: #e9e16f !important;}
-table[mrp="true"] tr:nth-last-child(4) td:last-child{background: #e9e16f !important;}
+table[mrp="true"] tr:nth-last-child(1) td:first-child{background: #925012 !important;color:rgb(238, 235, 235);}
+table[mrp="true"] tr:nth-last-child(2) td:first-child{background: #be7009 !important;color:rgb(238, 235, 235);}
+table[mrp="true"] tr:nth-last-child(3) td:first-child{background: #b36a26 !important;color:rgb(238, 235, 235);}
+table[mrp="true"] tr:nth-last-child(4) td:first-child{background: #a7630b !important;color:rgb(238, 235, 235);}
+table[mrp="true"] tr:nth-last-child(1) td:not(:first-child){background: #fafafa !important;}
+table[mrp="true"] tr:nth-last-child(2) td:not(:first-child){background: #fafafa !important;}
+table[mrp="true"] tr:nth-last-child(3) td:not(:first-child){background: #fafafa !important;}
+table[mrp="true"] tr:nth-last-child(4) td:not(:first-child){background: #fafafa !important;}
 
 table[mrp="true"] td[total="true"]{background:rgb(37, 179, 235);color:white;}
 table[mrp="true"] tr td:not(:first-child){text-align: center;}

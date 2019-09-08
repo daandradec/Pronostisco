@@ -70,7 +70,7 @@ function handleInputNumberChange(){
             const tr = this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
             const flag = JSON.parse( tr.getAttribute("flag_component") ); 
             const form = this.parentElement.parentElement.children[0];
-            const value_select_associated = parseInt(form.children[form.children.length-1].value);   
+            const value_select_associated = Number(form.children[form.children.length-1].value);   
             const key = value_select_associated === 0 ? state.producto.key : state.componentes[getIndexWithBinarySearchJson(value_select_associated, state.componentes)].key;        
 
             if(flag){
@@ -145,11 +145,11 @@ function generateNewNumberValue(id, literal_string_selectsquery, value_select_as
     list[index_compo_or_mater].amount_backup = [];
     for(var i = 0; i < values.length; ++i){
         const form = selects[i].parentElement.parentElement.children[1];
-        const number = parseInt(form.children[form.children.length-1].value);
+        const number = Number(form.children[form.children.length-1].value);
         if(values[i] === value_select_associated)
             number_value += number;
         
         list[index_compo_or_mater].amount_backup.push(number);
     }
     return number_value;
-} // falta arreglar que el alterParent de borrar un bicho sume si ya tiene valores como 8 10 200, y testear esta
+}

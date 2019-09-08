@@ -70,6 +70,7 @@
 
 /* HOVERS */
 
+.no-hover{pointer-events: none;}
 .a-hover:hover{color:#54b1e3 !important;}
 .a-hoverGray:hover{color:#c9c8c8 !important;}
 
@@ -79,6 +80,8 @@
 .hov-scale-01:hover{transform: scale(1.25);}
 .hov-back{transition:background 0.3s}
 .hov-back:hover{background:white !important;}
+.hov-back-mid-lig-white-gray{transition: background 0.15s;}
+.hov-back-mid-lig-white-gray:hover{background: #d3d3ce !important;}
 .hov-color-00, .hov-color-00 span{transition:color 0.15s}
 .hov-color-00:hover, .hov-color-00:hover span{color:#f9ab31 !important;}
 .hov-color-01, .hov-color-01 span{transition:color 0.15s}

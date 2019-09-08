@@ -16,3 +16,67 @@
 	background: -ms-linear-gradient(top,  #918484 50%,#677577 50%); /* IE10+ */
 	background: linear-gradient(to bottom,  #918484 50%,#677577 50%); /* W3C */
 }
+
+
+
+
+
+
+/* BOOTSTRAP V 3.3.7 BTN DEFAULT */
+.btn-default {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+  }
+  .btn-default:focus,
+  .btn-default.focus {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #8c8c8c;
+  }
+  .btn-default:hover {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #adadad;
+  }
+  .btn-default:active,
+  .btn-default.active,
+  .open > .dropdown-toggle.btn-default {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #adadad;
+  }
+  .btn-default:active:hover,
+  .btn-default.active:hover,
+  .open > .dropdown-toggle.btn-default:hover,
+  .btn-default:active:focus,
+  .btn-default.active:focus,
+  .open > .dropdown-toggle.btn-default:focus,
+  .btn-default:active.focus,
+  .btn-default.active.focus,
+  .open > .dropdown-toggle.btn-default.focus {
+	color: #333;
+	background-color: #d4d4d4;
+	border-color: #8c8c8c;
+  }
+  .btn-default:active,
+  .btn-default.active,
+  .open > .dropdown-toggle.btn-default {
+	background-image: none;
+  }
+  .btn-default.disabled:hover,
+  .btn-default[disabled]:hover,
+  fieldset[disabled] .btn-default:hover,
+  .btn-default.disabled:focus,
+  .btn-default[disabled]:focus,
+  fieldset[disabled] .btn-default:focus,
+  .btn-default.disabled.focus,
+  .btn-default[disabled].focus,
+  fieldset[disabled] .btn-default.focus {
+	background-color: #fff;
+	border-color: #ccc;
+  }
+  .btn-default .badge {
+	color: #fff;
+	background-color: #333;
+  }

@@ -102,7 +102,7 @@ function fillRowWithData(tr, data){
 
 function fillRowWithMoneyData(tr, data){
     for(var i = 0;i < data.length; ++i)
-        tr.innerHTML += "<td>$ "+data[i]+"</td>";
+        tr.innerHTML += "<td>$ "+formatMoney(data[i])+"</td>";
 }
 
 /* LEAD FUNCTIONS */

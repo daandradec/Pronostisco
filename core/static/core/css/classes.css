@@ -70,6 +70,7 @@
 
 /* HOVERS */
 
+.no-hover{pointer-events: none;}
 .a-hover:hover{color:#54b1e3 !important;}
 .a-hoverGray:hover{color:#c9c8c8 !important;}
 

@@ -12,7 +12,8 @@ function createAccordions(){
     for(var i = 0; i < materia.length; ++i)
         div_zone.innerHTML += createOneAccordion(materia[i].title);   
         
-    fillDinamicMrpTables();        
+    fillDinamicMrpTables();      
+    fillBuyMasterPlan();
 }
 
 function createOneAccordion(nameAccordion){

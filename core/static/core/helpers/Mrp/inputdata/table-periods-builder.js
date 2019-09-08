@@ -171,7 +171,7 @@ function generateJsonTablesMrp(){
     
     return {
         t_general: getValuesOfTable(table_general),
-        t_forecast: getValuesOfTable(table_forecast),
+        t_forecast: getValuesSimpleOfTable(table_forecast),
         t_receptions: getValuesOfTable(table_receptions)
     };
 }

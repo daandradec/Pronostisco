@@ -1,151 +1,28 @@
-<section>
-    <div class="py-5" style="min-height:700px;" accordion-zone="true">
-        <div class="accordion" id="accordionExample">                            
-            <div style="height:40px">
-                <div class="w-100 h-100 bg-low-gray hov-back-mid-lig-white-gray" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <div class="pt-1 px-4 font-size-21px-2c">
-                        <p class="font-signika color-light-dark-gray mp-0 d-inline-block">
-                            Producto
-                        </p>
-                        <i class="fas fa-angle-down float-right mt-2"></i>  
-                    </div>                
-                </div>                                
-            </div>
-        </div>
-
-        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="bg-semi-white border table-responsive pb-5">          
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr orange="true">
-                            <td title="true">Cantidad</td>
-                            <td>1</td>
-                            <td title="true">Tamaño Optimo Q*</td>
-                            <td>36</td>
-                            <td title="true">Tiempo de anticipación</td>
-                            <td>0</td>
-                            <td title="true">Deficit</td>
-                            <td>0</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table table-bordered" mrp="true">
-                    <tbody>
-                        <tr blue="true">
-                            <td>Mes/Semana</td>
-                            <td>Semana 4</td>
-                            <td>Semana 1</td>
-                            <td>Semana 2</td>
-                            <td>Semana 3</td>
-                            <td>Semana 4</td>
-                        </tr>
-                        <tr white="true">
-                            <td>Demanda</td>
-                            <td>0</td>
-                            <td>2850</td>
-                            <td>950</td>
-                            <td>825</td>
-                            <td>500</td>
-                        </tr>                    
-                        <tr>
-                            <td>Requerimiento Bruto</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>                            
-                        </tr>
-                        <tr>
-                            <td>Recepciones Programadas</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>                            
-                        </tr>
-                        <tr>
-                            <td>Inventario</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td total="true">Totales</td>
-                        </tr>
-                        <tr>
-                            <td>Stock de Seguridad</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Requerimiento Neto</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Plan Recibir Ordenes</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>                            
-                        </tr>
-                        <tr>
-                            <td>Plan Colocar Ordenes</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>                            
-                        </tr>
-                        <tr>
-                            <td>Costo Ord. Producto</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Costo m/to inv</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Costo de la compra</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Costo total</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
+<section>    
+    <h3 class="font-quicksand font-size-28px color-light-light-gray mt-5 ml-3" style="text-shadow: 0px 0px 1px #8ec6f5;">Resultados MRP</h3>
+    <hr>
+    <div accordion-zone="true">
     </div>
+    
+    <div>
+        <h3 class="font-quicksand font-size-28px color-light-light-gray mt-5 ml-3" style="text-shadow: 0px 0px 1px #8ec6f5;">Plan de compras</h3>
+        <hr>
+        <div class="table-responsive">
+            <table id="buy" class="table no-hover" table-excel>
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="mb-5">
+        <h3 class="font-quicksand font-size-28px color-light-light-gray mt-5 ml-3" style="text-shadow: 0px 0px 1px #8ec6f5;">Plan maestro de producción</h3>
+        <hr> 
+        <div class="table-responsive">
+            <table id="master" class="table no-hover" table-excel>
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>       
 </section>

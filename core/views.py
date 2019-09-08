@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.middleware.csrf import get_token
 from core.forecasts import *
+import json
 # Create your views here.
 import pandas
 import xlrd
@@ -215,4 +216,23 @@ def get_data_from_request(data_request):
 # MRP
 
 def mrp_input_data(request):
-    return render(request, 'core/Mrp/mrpinputdata.html')
+    csrf_token = get_token(request)
+    return render(request, 'core/Mrp/mrpinputdata.html',{'csrf':csrf_token})
+
+def mrp_output(request):
+    if(request.method == "POST"):
+        mrp = json.loads(request.POST.get('mrp',''))
+        tree = json.loads(request.POST.get('tree',''))        
+        tables = json.loads(request.POST.get('tables',''))
+        periods_state = request.POST.get('periods_state')
+        lead = request.POST.get('lead')
+        stock = request.POST.get('stock')
+        Q = request.POST.get('Q')
+        mrp = json.dumps(mrp)
+        tree = json.dumps(tree)      
+        tables = json.dumps(tables)
+        return render(request, 'core/Mrp/mrpoutput.html', {"mrp": mrp,"tree":tree, "tables": tables, "periods_state":periods_state, 
+            "lead":lead, "stock":stock,"Q":Q})  
+    return HttpResponseRedirect('/mrp/input-data') 
+    
+  

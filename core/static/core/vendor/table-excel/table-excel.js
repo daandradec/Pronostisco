@@ -1,7 +1,7 @@
 counter_table_days = 2;
 counter_table_years = 2;
 counter_table_months = 2;
-flag_counter = false;
+flag_counter = 0;
 
 DAYS_COLUMNS = 8;
 YEARS_COLUMNS = 13;
@@ -20,9 +20,7 @@ function awake(){
 	td_query = document.querySelectorAll("div.table-responsive table[table-excel] tbody tr > td:not(:first-child)");
 	addClickEventTD(td_query);
 
-	button_table = document.getElementById("button-table-excel");
-	if(button_table !== undefined && button_table !== null)
-		button_table.addEventListener("click",addNewCell,false);
+	activeButtonTableExcel();
 
 	nav_tab_button_days = document.getElementById("navtab2");
 	nav_tab_button_years = document.getElementById("navtab1");	
@@ -38,7 +36,7 @@ function awake(){
 
 function addClickEventTD(td_query){
 	for(var i = 0;i < td_query.length;++i)
-		td_query[i].addEventListener("click",writeCell,true);
+		td_query[i].addEventListener("click",writeCell,false);
 }
 
 function writeCell(e){
@@ -77,7 +75,7 @@ function closeCell(input){
 }
 
 function validateCell(e){
-	e.target.value=this.value.replace(/[^\d]/,'');
+	e.target.value=this.value.replace(/[^\d.,]/,'');
 }
 
 
@@ -159,5 +157,11 @@ function removeRow(button){
 			td_query[i].innerHTML = "<button class='btn btn-sm float-left' onclick='removeRow(this)'><i class='fas fa-cut' style='color:red'></i></button>"+(i+1);
 		decrementCounterRow();
 	}
+}
+
+function activeButtonTableExcel(){
+	button_table = document.getElementById("button-table-excel");	
+	if(button_table !== undefined && button_table !== null)
+		button_table.addEventListener("click",addNewCell,false);
 }
 window.addEventListener("load",awake,false);

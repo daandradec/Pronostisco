@@ -7,6 +7,8 @@ var headers_periods = [
 const td = "<td></td>";
 var table_values = [];
 
+var flagGeneralTable = true; /* para ejecutar una sola vez */
+
 function tabsTables(index){    
     for(var i = 0;i < labels_periods.length; ++i){        
         const tables = document.querySelectorAll("table[period-index='"+i+"']");        
@@ -36,7 +38,18 @@ function alterRespectiveTable(table, table_index, index){
             table.children[1].innerHTML = "<tr><td>Demanda</td>"+td.repeat(generateNumberOfPeriod(index))+"</tr>";
             break;
         case 1:
-            table.children[0].innerHTML = "<tr><th>Mrp Tree</th><th>Lead Time</th><th>Stock de Seguridad</th><th>Inventario Inicial</th><th>Q*</th><th>Costo Unitario</th><th>Costo de Mantenimiento</th><th>Costo de ordenar</th></tr>";
+            if(flagGeneralTable){
+                table.children[0].innerHTML = "<tr><th>Mrp Tree</th><th>Lead Time <input type='checkbox' id='toggle-lead' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th>"+
+                                              "<th>Stock de Seguridad <input type='checkbox' id='toggle-stock' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Inventario Inicial</th>"+
+                                              "<th>Q* <input type='checkbox' id='toggle-q' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Costo Unitario</th><th>Costo de Mantenimiento</th><th>Costo de ordenar</th></tr>";
+                $('#toggle-lead').bootstrapToggle();
+                $("#toggle-lead").change(toggleMasterEvent);
+                $('#toggle-stock').bootstrapToggle();
+                $("#toggle-stock").change(toggleMasterEventStock);
+                $('#toggle-q').bootstrapToggle();
+                $("#toggle-q").change(toggleMasterEventQStar);                                
+                flagGeneralTable = false;
+            }
             fillRemainingTable(table, 7);                            
             break;
         case 2:
@@ -84,6 +97,9 @@ function seeChangeStateMRPToTable(){
     saveStateTableAndReFill(tables[5], 2, 1);
     saveStateTableAndReFill(tables[6], 2, 2);
     awake();
+    changeStatusColDisabled($(tables[3].children[1]).find("tr td:nth-child(2)"), toggleFlagLead);
+    changeStatusColDisabled($(tables[3].children[1]).find("tr td:nth-child(3)"), toggleFlagStock);
+    changeStatusColDisabled($(tables[3].children[1]).find("tr td:nth-child(5)"), toggleFlagQstar);
 }
 
 function saveStateTableAndReFill(table, table_index, index){
@@ -140,4 +156,22 @@ function generateNumberOfPeriod(index){
         case 1: return 7;
         case 2: return 12;
     }
+}
+
+
+
+
+/* GENERAR JSON DE SALIDA CON LOS VALORES DE LAS TABLAS */
+
+function generateJsonTablesMrp(){
+    const tables = document.querySelectorAll("table[table-excel]");  
+    const table_general = tables[3];
+    const table_forecast = tables[current_index];
+    const table_receptions = tables[current_index + 4];
+    
+    return {
+        t_general: getValuesOfTable(table_general),
+        t_forecast: getValuesSimpleOfTable(table_forecast),
+        t_receptions: getValuesOfTable(table_receptions)
+    };
 }

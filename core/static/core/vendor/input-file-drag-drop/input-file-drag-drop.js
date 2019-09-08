@@ -1,6 +1,6 @@
 drop_complete_flag = false;
 
-function awake(){
+function awakeInputFileDragDrop(){
     file_input = document.getElementById("file_input");
     cloud_drag_drop = document.getElementById("drag-cloud");
     initDrop(cloud_drag_drop);
@@ -44,4 +44,4 @@ function drop_complete(e){
     }
     
 }
-window.addEventListener("load",awake,false);
+window.addEventListener("load",awakeInputFileDragDrop,false);

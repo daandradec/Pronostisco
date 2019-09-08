@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'core/vendor/d3-tree/D3Tree.css' %}">
     <link rel="stylesheet" href="{% static 'core/vendor/table-excel/table-excel.css' %}">
     <link rel="stylesheet" href="{% static 'core/vendor/btn-selectable/btn-selectable.css' %}">
+    <link rel="stylesheet" href="{% static 'core/vendor/bootstrap-toggle-master/css/bootstrap2-toggle.min.css' %}">
 {% endblock styles %}
 
 
@@ -25,10 +26,19 @@
     {% include "core/Modal/Modal.html" with modalId="modalExample" modalBasePath="core/Modal/" modalHeaderPath="ModalExampleMrp/ModalExampleMrpHeader.html" modalBodyPath="ModalExampleMrp/ModalExampleMrp.html" %}
 {% endblock %}
 
+{% load get_request_parameters %}
+{% get_current_parameters as parameters %}
+
 {% block scripts %}    
+    <script>
+        var TOKEN = "{{csrf}}"
+        var POST_ROUTE = "{% url 'mrpoutput' %}{{parameters}}"
+    </script>
     <script src="{% static 'core/vendor/d3-v3/d3.v3.min.js' %}"></script>
     <script src="{% static 'core/helpers/Modal/modal-hidden.js' %}"></script>
-    <script src="{% static 'core/js/Triggers/unSubmitForms.js' %}"></script>    
+    <script src="{% static 'core/js/Triggers/getValuesOfTable.js' %}"></script>
+    <script src="{% static 'core/js/Triggers/unSubmitForms.js' %}"></script>
+    <script src="{% static 'core/js/Triggers/postMrpInputData.js' %}"></script>    
     <script src="{% static 'core/js/Http/post-request-as-form.js' %}"></script>
     <script src="{% static 'core/js/Triggers/dataToggleCollapse.js' %}"></script>
     <script src="{% static 'core/helpers/Navbar/mediaResize.js' %}"></script>
@@ -42,10 +52,12 @@
     <script src="{% static 'core/helpers/Mrp/inputdata/deleteComponenteMateria.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/inputdata/addParentComponent.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/inputdata/MrpInput.js' %}"></script>
+    <script src="{% static 'core/helpers/Mrp/inputdata/toggleMasterDeactivateCol.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/inputdata/updateTree.js' %}"></script>
     <script src="{% static 'core/vendor/d3-tree/D3TreeUtils.js' %}"></script>
     <script src="{% static 'core/vendor/d3-tree/D3Tree.js' %}"></script>
     <script src="{% static 'core/vendor/table-excel/cell-excel.js' %}"></script>
     <script src="{% static 'core/vendor/table-excel/table-excel.js' %}"></script>
     <script src="{% static 'core/vendor/btn-selectable/btn-selectable.js' %}"></script>
+    <script src="{% static 'core/vendor/bootstrap-toggle-master/js/bootstrap-toggle.min.js' %}"></script>
 {% endblock scripts %}

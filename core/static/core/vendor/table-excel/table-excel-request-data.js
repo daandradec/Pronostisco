@@ -1,5 +1,5 @@
 
-function start(){
+function startTableExcelRequest(){
     $('#button-send-table').on('click',postRequestData);
 }
 
@@ -24,5 +24,5 @@ function postRequestData(){
 }
 
 
-window.addEventListener("load",start,false);
+window.addEventListener("load",startTableExcelRequest,false);
 

@@ -1,41 +1,37 @@
-var labels_periods = ["Mes/Semana","Semana/Dia","Año/Mes"];
-var headers_periods = [
-    ["Semana 1", "Semana 2","Semana 3", "Semana 4"],
-    ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"],
-    ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"]
-]; 
 const td = "<td></td>";
 var table_values = [];
 
 var flagGeneralTable = true; /* para ejecutar una sola vez */
 
-function tabsTables(index){    
-    for(var i = 0;i < labels_periods.length; ++i){        
-        const tables = document.querySelectorAll("table[period-index='"+i+"']");        
-        if(i === index)
-            $(tables).removeClass("d-none");
-        else
-            $(tables).addClass("d-none");
-    }    
+function tabsTables(state, flagAdd, flagDelete){
+    const tables = document.querySelectorAll("table[table-excel]");
+    switch(state){
+        case 0:
+            if(flagDelete){ // borrar columna
+                removeColumn(tables[0]);removeColumn(tables[2]);awake();
+            }
+            break;
+        case 1:
+            if(flagAdd){ // añadir columna
+                addColumn(tables[0]);addColumn(tables[2]);awake();
+            }
+            break;            
+    }  
 }
 
 function fillTableRowsByCurrentPeriod(){
     const tables = document.querySelectorAll("table[table-excel]");  
-    alterRespectiveTable(tables[0], 0, 0);
-    alterRespectiveTable(tables[1], 0, 1);
-    alterRespectiveTable(tables[2], 0, 2);
-    alterRespectiveTable(tables[3], 1, 0);
-    alterRespectiveTable(tables[4], 2, 0);
-    alterRespectiveTable(tables[5], 2, 1);
-    alterRespectiveTable(tables[6], 2, 2);        
+    alterRespectiveTable(tables[0], 0);
+    alterRespectiveTable(tables[1], 1);
+    alterRespectiveTable(tables[2], 2);      
     awake();
 }
 
-function alterRespectiveTable(table, table_index, index){    
+function alterRespectiveTable(table, table_index){      
     switch(table_index){
         case 0:
-            table.children[0].innerHTML = "<tr><th>"+labels_periods[index]+"</th>"+generateTHPeriod(index)+"</tr>";
-            table.children[1].innerHTML = "<tr><td>Demanda</td>"+td.repeat(generateNumberOfPeriod(index))+"</tr>";
+            table.children[0].innerHTML = "<tr><th>PERIODOS</th>"+generateTHPeriod(current_index)+"</tr>";
+            table.children[1].innerHTML = "<tr><td>Demanda</td>"+td.repeat(current_index)+"</tr>";
             break;
         case 1:
             if(flagGeneralTable){
@@ -53,8 +49,8 @@ function alterRespectiveTable(table, table_index, index){
             fillRemainingTable(table, 7);                            
             break;
         case 2:
-            table.children[0].innerHTML = "<tr><th>Mrp Tree</th>"+generateTHPeriod(index)+"</tr>";
-            fillRemainingTable(table, generateNumberOfPeriod(index));            
+            table.children[0].innerHTML = "<tr><th>Mrp Tree</th>"+generateTHPeriod(current_index)+"</tr>";
+            fillRemainingTable(table, current_index);            
             break;
     }
 }
@@ -92,17 +88,15 @@ function fillRemainingTable(table, replays){
 /* LLAMADO CUANDO SE HACE UN FADE DE LA VENTANA DEL ARBOL A LA DE LAS TABLAS */
 function seeChangeStateMRPToTable(){
     const tables = document.querySelectorAll("table[table-excel]");
-    saveStateTableAndReFill(tables[3], 1, 0);
-    saveStateTableAndReFill(tables[4], 2, 0);
-    saveStateTableAndReFill(tables[5], 2, 1);
-    saveStateTableAndReFill(tables[6], 2, 2);
+    saveStateTableAndReFill(tables[1], 1);
+    saveStateTableAndReFill(tables[2], 2);
     awake();
-    changeStatusColDisabled($(tables[3].children[1]).find("tr td:nth-child(2)"), toggleFlagLead);
-    changeStatusColDisabled($(tables[3].children[1]).find("tr td:nth-child(3)"), toggleFlagStock);
-    changeStatusColDisabled($(tables[3].children[1]).find("tr td:nth-child(5)"), toggleFlagQstar);
+    changeStatusColDisabled($(tables[1].children[1]).find("tr td:nth-child(2)"), toggleFlagLead);
+    changeStatusColDisabled($(tables[1].children[1]).find("tr td:nth-child(3)"), toggleFlagStock);
+    changeStatusColDisabled($(tables[1].children[1]).find("tr td:nth-child(5)"), toggleFlagQstar);
 }
 /* GUARDAR EN UN JSON LOS VALORES QUE TIENEN LAS TABLAS ANTES DE RELLENARLAS DE NUEVO */
-function saveStateTableAndReFill(table, table_index, index){
+function saveStateTableAndReFill(table, table_index){
     const producto = $(table).find("tr[producto]")[0];    
     const componentes = $(table).find("tr[componente_id]");
     const materias = $(table).find("tr[materia_id]");
@@ -116,46 +110,30 @@ function saveStateTableAndReFill(table, table_index, index){
     table_values.push({[state.producto.id]:producto.innerHTML.substring(producto.innerHTML.indexOf("</td>")+5,producto.innerHTML.length)})
     table_values.push(state_componentes);
     table_values.push(state_materias);        
-    alterRespectiveTable(table, table_index, index);
+    alterRespectiveTable(table, table_index);
 }
 
-function generateTHPeriod(index){
-    switch(index){
-        case 0:
-            return  "<th>"+headers_periods[0][0]+"</th>"+
-                    "<th>"+headers_periods[0][1]+"</th>"+
-                    "<th>"+headers_periods[0][2]+"</th>"+
-                    "<th>"+headers_periods[0][3]+"</th>"
-        case 1:
-            return  "<th>"+headers_periods[1][0]+"</th>"+
-                    "<th>"+headers_periods[1][1]+"</th>"+
-                    "<th>"+headers_periods[1][2]+"</th>"+
-                    "<th>"+headers_periods[1][3]+"</th>"+
-                    "<th>"+headers_periods[1][4]+"</th>"+
-                    "<th>"+headers_periods[1][5]+"</th>"+
-                    "<th>"+headers_periods[1][6]+"</th>"
-        case 2:
-            return  "<th>"+headers_periods[2][0]+"</th>"+
-                    "<th>"+headers_periods[2][1]+"</th>"+
-                    "<th>"+headers_periods[2][2]+"</th>"+
-                    "<th>"+headers_periods[2][3]+"</th>"+
-                    "<th>"+headers_periods[2][4]+"</th>"+
-                    "<th>"+headers_periods[2][5]+"</th>"+
-                    "<th>"+headers_periods[2][6]+"</th>"+
-                    "<th>"+headers_periods[2][7]+"</th>"+
-                    "<th>"+headers_periods[2][8]+"</th>"+
-                    "<th>"+headers_periods[2][9]+"</th>"+
-                    "<th>"+headers_periods[2][10]+"</th>"+
-                    "<th>"+headers_periods[2][11]+"</th>"
-    }
+function generateTHPeriod(repeats){
+    var th = "";
+    for(var i = 1; i <= repeats; ++i)
+        th += "<th>"+i+"</th>";
+    return th;
 }
 
-function generateNumberOfPeriod(index){
-    switch(index){
-        case 0: return 4;
-        case 1: return 7;
-        case 2: return 12;
-    }
+function addColumn(table){
+    const thead = table.children[0].children[0];
+    const trows = table.children[1].children;
+    thead.innerHTML += "<th>"+current_index+"</th>";
+    for(var i = 0; i < trows.length; ++i)
+        trows[i].innerHTML += "<td></td>";
+}
+
+function removeColumn(table){
+    const thead = table.children[0].children[0];
+    const trows = table.children[1].children;
+    thead.innerHTML = thead.innerHTML.substring(0,thead.innerHTML.lastIndexOf("<th>"))
+    for(var i = 0; i < trows.length; ++i)
+        trows[i].innerHTML = trows[i].innerHTML.substring(0,trows[i].innerHTML.lastIndexOf("<td>"))
 }
 
 
@@ -165,9 +143,9 @@ function generateNumberOfPeriod(index){
 
 function generateJsonTablesMrp(){
     const tables = document.querySelectorAll("table[table-excel]");  
-    const table_general = tables[3];
-    const table_forecast = tables[current_index];
-    const table_receptions = tables[current_index + 4];
+    const table_forecast = tables[0];
+    const table_general = tables[1];
+    const table_receptions = tables[2];
     
     return {
         t_general: getValuesOfTable(table_general),

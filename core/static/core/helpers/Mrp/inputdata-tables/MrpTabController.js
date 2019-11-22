@@ -32,9 +32,9 @@ function postUpdate(){
             break;
         case 3:
             if(flagEvent_3){
-                fillTableRowsByCurrentPeriod();                
                 selectableSetCallbackFunction(tabsTables);
                 startButtonSelectable();
+                fillTableRowsByCurrentPeriod();
                 flagEvent_3 = false;
             }else
                 seeChangeStateMRPToTable();

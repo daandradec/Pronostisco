@@ -43,6 +43,16 @@
     <script src="{% static 'core/vendor/bootstrap-4.1.3/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'core/js/Algorithms/BinarySearch.js' %}"></script>
     <script src="{% static 'core/js/Prototype/ArrayEquals.js' %}"></script>
+    <script src="{% static 'core/js/Prototype/Clamp.js' %}"></script>
+    <script>
+        $(document).on('keydown',function(e){
+            var $target = $(e.target||e.srcElement);
+            if(e.keyCode == 8 && !$target.is('input,[contenteditable="true"],textarea'))
+            {
+                e.preventDefault();
+            }
+        })    
+    </script>
     {% block scripts %}{% endblock scripts %}
 </body>
 </html>

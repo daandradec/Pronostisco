@@ -8,6 +8,8 @@ var i = 0, duration = 750;
 
 var viewerWidth,viewerHeight,tree,diagonal,svgGroup, baseSvg, root;
 
+const CIRCLE_SIZE_PIXELS = 20;
+
 function startD3Tree(){
     const container_tree = document.getElementById("tree-container").parentElement;
     viewerWidth = $(container_tree).width();
@@ -27,7 +29,7 @@ function startD3Tree(){
         .attr("class", "overlay")
         .call(zoomListener);        
     svgGroup = baseSvg.append("g");
-    zoomListener.scale(2);
+    zoomListener.scale(3);
 
     D3Tree(tree_mrp);
 }
@@ -43,9 +45,9 @@ function D3Tree(treeData){
     });
 
     root = copy_tree;
-    root.x0 = viewerHeight / 2;
+    root.x0 = viewerHeight;
     root.y0 = 0;
-    
+
     update(root);
     centerNode(root);
 }

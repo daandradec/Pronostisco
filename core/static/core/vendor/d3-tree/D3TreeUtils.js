@@ -1,9 +1,12 @@
 
 /* ZOOM */
-var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
+var zoomListener = d3.behavior.zoom().scaleExtent([0.9, 3]).on("zoom", zoom);
 
 function zoom() {
-    svgGroup.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    const array = Array.from(d3.event.translate);
+    array[0] = Math.clip(array[0], 0 + CIRCLE_SIZE_PIXELS, viewerWidth - CIRCLE_SIZE_PIXELS);
+    array[1] = Math.clip(array[1], 0, viewerHeight - CIRCLE_SIZE_PIXELS*3);
+    svgGroup.attr("transform", "translate(" + array + ")scale(" + d3.event.scale + ")");
 }
 
 
@@ -79,7 +82,7 @@ function centerNode(source) {
     scale = zoomListener.scale();
     x = -source.y0;
     y = -source.x0;
-    x = x * scale + viewerWidth / 2;
+    x = x * scale + viewerWidth / 4;
     y = y * scale + viewerHeight / 2;
     d3.select('g').transition()
         .duration(duration)
@@ -152,13 +155,17 @@ function update(source) {
     var nodeEnter = node.enter().append("g")
         //.call(dragListener) ################################################################
         .attr("class", "node")
-        .attr("transform", function(d) {
+        .attr("transform", function(d) {            
             return "translate(" + source.y0 + "," + source.x0 + ")";
         })
         .on('click', click);
 
-    nodeEnter.append("circle")
-        .attr('class', 'nodeCircle')
+    nodeEnter.append("circle")//d.color
+        .attr('class', function(d){
+            // COLOR COMPONENTE O MATERIA
+            const color = (d.key.indexOf("mater") !== -1) ? 2 : (d.key.indexOf("compo") !== -1 ? 1 : 0);
+            return 'nodeCircle' + (color === 1 ? " nodeComponente" : (color === 0 ? " nodeProducto" : ""))
+        })
         .attr("r", 0)
         .style("fill", function(d) {
             return d._children ? "lightsteelblue" : "#fff";
@@ -279,6 +286,6 @@ function update(source) {
     // Stash the old positions for transition.
     nodes.forEach(function(d) {
         d.x0 = d.x;
-        d.y0 = d.y;
+        d.y0 = d.y;        
     });
 }

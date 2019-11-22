@@ -33,7 +33,7 @@ function postUpdate(){
         case 3:
             if(flagEvent_3){
                 fillTableRowsByCurrentPeriod();                
-                selectableSetLabelsAndCallBackFunction(labels_periods, tabsTables);
+                selectableSetCallbackFunction(tabsTables);
                 startButtonSelectable();
                 flagEvent_3 = false;
             }else

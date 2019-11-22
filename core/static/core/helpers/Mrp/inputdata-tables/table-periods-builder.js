@@ -58,7 +58,7 @@ function alterRespectiveTable(table, table_index, index){
             break;
     }
 }
-
+/* LLENAR LA TABLA CON LA INFORMACIÓN ALMACENADA DESPUES DE LA LIMPIEZA O CON UNOS TD.REPEAT VACIOS */
 function fillRemainingTable(table, replays){
 
     /* PRIMERA FILA DEL PRODUCTO */
@@ -89,7 +89,7 @@ function fillRemainingTable(table, replays){
             table.children[1].innerHTML += "<tr materia_id='"+state.materia[i].id+"'><td>"+state.materia[i].title+"</td>"+td.repeat(replays)+"</tr>";
     }        
 }
-
+/* LLAMADO CUANDO SE HACE UN FADE DE LA VENTANA DEL ARBOL A LA DE LAS TABLAS */
 function seeChangeStateMRPToTable(){
     const tables = document.querySelectorAll("table[table-excel]");
     saveStateTableAndReFill(tables[3], 1, 0);
@@ -101,7 +101,7 @@ function seeChangeStateMRPToTable(){
     changeStatusColDisabled($(tables[3].children[1]).find("tr td:nth-child(3)"), toggleFlagStock);
     changeStatusColDisabled($(tables[3].children[1]).find("tr td:nth-child(5)"), toggleFlagQstar);
 }
-
+/* GUARDAR EN UN JSON LOS VALORES QUE TIENEN LAS TABLAS ANTES DE RELLENARLAS DE NUEVO */
 function saveStateTableAndReFill(table, table_index, index){
     const producto = $(table).find("tr[producto]")[0];    
     const componentes = $(table).find("tr[componente_id]");

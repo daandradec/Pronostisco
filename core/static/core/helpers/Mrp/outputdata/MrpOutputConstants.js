@@ -72,5 +72,34 @@ const collapse_zone =
                 '</tr>'+
             '</tbody>'+
         '</table>'+
+        '<br/><br/>'+
+        '<div class="center">'+
+            '<table class="table table-bordered" mrp-average="true">'+
+                '<thead>'+
+                    '<tr>'+
+                        '<th>COSTO PROMEDIO UNITARIO</th>'+
+                        '<th>VALOR</th>'+
+                    '</tr>'+
+                '</thead>'+
+                '<tbody>'+
+                    '<tr>'+
+                        '<td>Unitario por compra</td>'+
+                        '<td>$1000</td>'+
+                    '</tr>'+
+                    '<tr>'+
+                        '<td>Unitario por mantenimiento</td>'+
+                        '<td>$1000</td>'+
+                    '</tr>'+
+                    '<tr>'+
+                        '<td>Unitario por setup</td>'+
+                        '<td>$1000</td>'+
+                    '</tr>'+    
+                    '<tr>'+
+                        '<td>Total Promedio por unidad</td>'+
+                        '<td>$1000</td>'+
+                    '</tr>'+                                                          
+                '</tbody>'+
+            '</table>'+
+        '</div>'+
     '</div>'+
 '</div>';

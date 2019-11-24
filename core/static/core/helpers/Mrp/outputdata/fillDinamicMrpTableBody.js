@@ -89,12 +89,13 @@ function fillBodyMrpTable(table, table_averages, object, index){
     const uni_per_compr = cost_ord_prod.sum() / pla_col_ord.sum();
     const uni_per_mant = cost_m_inv.sum() / (invent.sum() + stock.sum());
     const uni_per_setup = cost_compr.sum() / pla_col_ord.sum();
+    const total_uni_ave = uni_per_compr + uni_per_mant + uni_per_setup;
     const tr_ave_list = table_averages.children[1].children;
 
     tr_ave_list[0].children[1].innerHTML = "$"+formatMoney(uni_per_compr);
     tr_ave_list[1].children[1].innerHTML = "$"+formatMoney(uni_per_mant);
     tr_ave_list[2].children[1].innerHTML = "$"+formatMoney(uni_per_setup);
-    tr_ave_list[3].children[1].innerHTML = "$"+formatMoney(uni_per_compr + uni_per_mant + uni_per_setup);
+    tr_ave_list[3].children[1].innerHTML = "$"+formatMoney(total_uni_ave);
 
 
 
@@ -109,7 +110,8 @@ function fillBodyMrpTable(table, table_averages, object, index){
         cost_ord_prod: cost_ord_prod,
         cost_m_inv: cost_m_inv,
         cost_compr: cost_compr,
-        cost_total: cost_total
+        cost_total: cost_total,
+        total_uni_ave: total_uni_ave,
     }; 
 
     forecast_keys[object.key] = pla_col_ord;

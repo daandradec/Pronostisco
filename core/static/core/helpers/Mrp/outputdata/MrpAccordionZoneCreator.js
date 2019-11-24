@@ -1,4 +1,5 @@
 var accordion_counter = -1;
+var flagAccordionButton = false;
 
 function createAccordions(){
     const div_zone = document.querySelector("div[accordion-zone='true']");
@@ -14,6 +15,7 @@ function createAccordions(){
         
     fillDinamicMrpTables();      
     fillBuyMasterPlan();
+    activeAccordionButton();
 }
 
 function createOneAccordion(nameAccordion, bg_param, hov_param){
@@ -21,6 +23,24 @@ function createOneAccordion(nameAccordion, bg_param, hov_param){
     return accordion_head.replace("accordionExample","accordion"+accordion_counter) + 
         accordion_body.replace("collapseOne","collapse"+accordion_counter).replace("bg-low-gray", bg_param).replace("hov-bg-mid-lig-white-gray", hov_param) + nameAccordion + accordion_footer +
         collapse_zone.replace("collapseOne","collapse"+accordion_counter).replace("accordionExample","accordion"+accordion_counter).replace("collapseMrpIndex",accordion_counter);    
+}
+
+function activeAccordionButton(){
+    $("#accordion-button").on('click',function(e){
+        flagAccordionButton = !flagAccordionButton;
+        const i_tag = e.target.children[0];
+        const accordions = document.querySelector("div[accordion-zone='true']").children;
+
+        if(flagAccordionButton){
+            $(i_tag).removeClass("fa-arrow-circle-down");$(i_tag).addClass("fa-arrow-circle-up");
+            for(var i = 0; i < periods_state; ++i)
+                $(accordions[2*i+1]).collapse('show');            
+        }else{
+            $(i_tag).removeClass("fa-arrow-circle-up");$(i_tag).addClass("fa-arrow-circle-down");
+            for(var i = 0; i < periods_state; ++i)
+                $(accordions[2*i+1]).collapse('hide');            
+        }
+    })
 }
 
 window.addEventListener("load", createAccordions, false);

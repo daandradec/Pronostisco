@@ -203,7 +203,7 @@
 
 .text-shadow-05{text-shadow: 0px 0px 1px black;}
 .text-shadow-06{text-shadow: 0px 0px 2px black;}
-.text-shadow-07{text-shadow: 0px 0px 3px black;}
+.text-shadow-07{text-shadow: 0px 0px 3px black !important;}
 .text-shadow-08{text-shadow: 0px 0px 4px black;}
 .text-shadow-09{text-shadow: 0px 0px 5px black;}
 

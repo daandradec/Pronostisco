@@ -8,18 +8,15 @@ function fillBuyMasterPlan(){
     fillHeaderPeriods(table_cost);
     
     fillPlan(table_master, table_cost, mrp.producto.title, all_info_mrp_keys[mrp.producto.key]["pla_col_ord"], all_info_mrp_keys[mrp.producto.key]["total_uni_ave"]);
-    var new_counter = 1;
     
     const components = mrp.componentes;
     for(var i = 0; i < components.length; ++i){
         fillPlan(table_master, table_cost, components[i].title, all_info_mrp_keys[components[i].key]["pla_col_ord"], all_info_mrp_keys[components[i].key]["total_uni_ave"])
-        ++new_counter;
     }
 
     const materia = mrp.materia;
     for(var i = 0; i < materia.length; ++i){
         fillPlan(table_buy, table_cost, materia[i].title, all_info_mrp_keys[materia[i].key]["pla_col_ord"], all_info_mrp_keys[materia[i].key]["total_uni_ave"])
-        ++new_counter;
     } 
 }
 

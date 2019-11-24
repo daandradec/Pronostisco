@@ -2,7 +2,7 @@ const accordion_head =
 '<div class="accordion" id="accordionExample">';
 const accordion_body = 
     '<div style="height:40px">'+
-        '<div class="w-100 h-100 bg-low-gray hov-back-mid-lig-white-gray" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">'+
+        '<div class="w-100 h-100 bg-low-gray hov-bg-mid-lig-white-gray" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">'+
             '<div class="pt-1 px-4 font-size-21px-2c">'+
                 '<p class="font-signika color-light-dark-gray mp-0 d-inline-block">';
 const accordion_footer = 

@@ -12,3 +12,7 @@ textarea{
 .card-header{
   background:rgba(16, 117, 131, 0.85);
 }
+
+button i{
+  pointer-events: none;
+}

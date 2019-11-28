@@ -108,9 +108,16 @@ function fillBodyMrpTable(table, table_averages, object, index){
         pla_rec_ord: pla_rec_ord,
         pla_col_ord: pla_col_ord,
         cost_ord_prod: cost_ord_prod,
+        total_cost_ord_prod: cost_ord_prod.sum(),
         cost_m_inv: cost_m_inv,
+        total_cost_m_inv: cost_m_inv.sum(),
         cost_compr: cost_compr,
+        total_cost_compr: cost_compr.sum(),
         cost_total: cost_total,
+        total_cost_total: cost_total.sum(),
+        uni_per_compr: uni_per_compr,
+        uni_per_mant: uni_per_mant,
+        uni_per_setup: uni_per_setup,
         total_uni_ave: total_uni_ave,
     }; 
 

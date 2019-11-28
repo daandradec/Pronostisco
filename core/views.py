@@ -231,8 +231,16 @@ def mrp_output(request):
         mrp = json.dumps(mrp)
         tree = json.dumps(tree)      
         tables = json.dumps(tables)
+        csrf_token = get_token(request)
         return render(request, 'core/Mrp/mrpoutput.html', {"mrp": mrp,"tree":tree, "tables": tables, "periods_state":periods_state, 
-            "lead":lead, "stock":stock,"Q":Q})  
+            "lead":lead, "stock":stock,"Q":Q, 'csrf':csrf_token})  
     return HttpResponseRedirect('/mrp/input-data') 
     
-  
+
+def mrp_download(request):
+    pass
+def mrp_download_all(request):
+    
+    all_info_mrp_keys = json.loads(request.POST.get('all_info_mrp_keys',''))
+    all_info_mrp_keys = json.dumps(all_info_mrp_keys)
+    print(all_info_mrp_keys)

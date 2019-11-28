@@ -5,7 +5,9 @@ const forecast_keys = {};
 const all_info_mrp_keys = {};
 var deficit = 0;
 
-function fillDinamicMrpTables(){    
+function fillDinamicMrpTables(){  
+    all_info_mrp_keys["periods"] = periods_state;
+
     const div_product_table_zone = document.querySelector("div[mrp-index='0']");
     fillDinamicMrpTable(div_product_table_zone, mrp.producto, 0)
     

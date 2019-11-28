@@ -1,6 +1,11 @@
 <section>  
     <div class="d-flex mt-5">
-        <h3 class="font-quicksand font-size-28px color-light-light-gray ml-3 mr-auto" style="text-shadow: 0px 0px 1px #8ec6f5;">Resultados MRP</h3>
+        <h3 class="font-quicksand font-size-28px color-light-light-gray ml-3 mr-auto" style="text-shadow: 0px 0px 1px #8ec6f5;">
+            Resultados MRP
+            <button class="rounded-circle c-pointer ml-4 mt-1 p-0" style="border:none;background:transparent;" type="button" data-toggle="modal" data-target="#modalTables">
+                <i class="fas fa-question-circle font-size-23px color-dark-gray"></i>
+            </button>             
+        </h3>
         <button class="button-teal-lighten-5 text-shadow-07" id="accordion-button">Desplegar Todos <i class="fas fa-arrow-circle-down"></i></span>
     </div>
     <hr>
@@ -38,5 +43,9 @@
                 <tbody></tbody>
             </table>
         </div>
-    </div>          
+    </div>  
+
+    <div class="py-4 center">
+        <a href="/mrp/download/all" link-mrp-all="true" class="btn btn-success">Descargar Mrp en Excel</a>
+    </div>        
 </section>

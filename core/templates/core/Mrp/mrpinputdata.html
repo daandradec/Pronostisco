@@ -23,7 +23,8 @@
 {% endblock content %}
 
 {% block modal %}
-    {% include "core/Modal/Modal.html" with modalId="modalExample" modalBasePath="core/Modal/" modalHeaderPath="ModalExampleMrp/ModalExampleMrpHeader.html" modalBodyPath="ModalExampleMrp/ModalExampleMrp.html" %}
+    {% include "core/Modal/Modal.html" with modalId="modalExample" modalBasePath="core/Modal/" modalHeaderPath="ModalMrp/ModalExampleMrpHeader.html" modalBodyPath="ModalMrp/ModalExampleMrp.html" %}
+    {% include "core/Modal/Modal.html" with modalId="modalData" modalBasePath="core/Modal/" modalHeaderPath="ModalMrp/ModalExampleMrpHeader.html" modalBodyPath="ModalMrp/ModalHistoricDataMrp.html" %}    
 {% endblock %}
 
 {% load get_request_parameters %}

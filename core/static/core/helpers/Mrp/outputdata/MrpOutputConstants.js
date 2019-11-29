@@ -99,7 +99,10 @@ const collapse_zone =
                         '<td>$1000</td>'+
                     '</tr>'+                                                          
                 '</tbody>'+
-            '</table>'+
+            '</table>'+            
+        '</div>'+
+        '<div class="center">'+
+            '<a href="/mrp/download" link-mrp="true" mrp-key="mrpnone" mrp-name="mrpname" class="btn btn-success">Descargar Mrp del item</a>'+
         '</div>'+
     '</div>'+
 '</div>';

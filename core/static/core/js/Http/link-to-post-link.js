@@ -25,7 +25,14 @@ function linkStart(){
         $(this).on('click',function(e){
             e.preventDefault();            
             console.log({all_info_mrp_keys: all_info_mrp_keys})
-            postNewTab($(this).attr("href"),{all_info_mrp_keys: JSON.stringify(all_info_mrp_keys)});
+            postNewTab($(this).attr("href"),{all_info_mrp_keys: JSON.stringify(all_info_mrp_keys), periods: periods_state, mrp: JSON.stringify(mrp)});
+        })
+    })
+
+    $("a[link-mrp='true']").each(function(){
+        $(this).on('click',function(e){
+            e.preventDefault();
+            postNewTab($(this).attr("href"),{all_info_mrp_keys: JSON.stringify(all_info_mrp_keys), key: $(this).attr("mrp-key"), name: $(this).attr("mrp-name")});
         })
     })
 }

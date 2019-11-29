@@ -103,10 +103,13 @@ function fillBodyMrpTable(table, table_averages, object, index){
         req_brut: req_brut,
         recep_prog: recep_prog,           
         invent: invent,
+        total_invent: invent.sum(),
         stock: stock,
+        total_stock: stock.sum(),
         req_net: req_net,
         pla_rec_ord: pla_rec_ord,
         pla_col_ord: pla_col_ord,
+        total_pla_col_ord: pla_col_ord.sum(),
         cost_ord_prod: cost_ord_prod,
         total_cost_ord_prod: cost_ord_prod.sum(),
         cost_m_inv: cost_m_inv,
@@ -119,6 +122,7 @@ function fillBodyMrpTable(table, table_averages, object, index){
         uni_per_mant: uni_per_mant,
         uni_per_setup: uni_per_setup,
         total_uni_ave: total_uni_ave,
+        labels: labels
     }; 
 
     forecast_keys[object.key] = pla_col_ord;

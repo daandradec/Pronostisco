@@ -22,9 +22,9 @@ function fillBuyMasterPlan(){
 
 function fillPlan(table, table_cost, object_title, data, total_uni_average){
     const new_data = data.slice(-1*periods_state);    
-    table.children[1].innerHTML += "<tr><td>"+object_title+"</td>"+displayContentRow(new_data)+"<tr>";
+    table.children[1].innerHTML += "<tr><td>"+object_title+"</td>"+displayContentRow(new_data)+"<td>"+formatMoney(new_data.sum())+"</td></tr>";
     const plan_master_cost = new_data.map(function(value){return formatMoney(value*total_uni_average)});
-    table_cost.children[1].innerHTML += "<tr><td>"+object_title+"</td>"+displayContentRow(plan_master_cost)+"<tr>";
+    table_cost.children[1].innerHTML += "<tr><td>"+object_title+"</td>"+displayContentRow(plan_master_cost)+"<td>"+formatMoney(new_data.map(function(value){return value*total_uni_average}).sum())+"</td></tr>";
 }
 
 function displayContentRow(data){
@@ -38,7 +38,7 @@ function displayContentRow(data){
 
 
 function fillHeaderPeriods(table){
-    table.children[0].innerHTML = "<tr><th>Periodos</th>"+displayContentRowH(headers_periods)+"</tr>"
+    table.children[0].innerHTML = "<tr><th>Periodos</th>"+displayContentRowH(headers_periods)+"<th>Total</th></tr>"
 }
 
 function displayContentRowH(data){

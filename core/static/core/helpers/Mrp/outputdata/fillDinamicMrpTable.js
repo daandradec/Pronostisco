@@ -4,9 +4,9 @@ const td = "<td></td>";
 const forecast_keys = {};
 const all_info_mrp_keys = {};
 var deficit = 0;
+var amount, Q, lead, labels;
 
 function fillDinamicMrpTables(){  
-    all_info_mrp_keys["periods"] = periods_state;
 
     const div_product_table_zone = document.querySelector("div[mrp-index='0']");
     fillDinamicMrpTable(div_product_table_zone, mrp.producto, 0)
@@ -38,7 +38,7 @@ function fillDinamicMrpTable(div_table_zone, object, index){
 function fillHeadTable(table, object, index){    
     const tr = table.children[0].children[0];
     const t_general = tables.t_general[index];
-    var amount = "1", Q = t_general[3], lead = t_general[0];
+    amount = 1, Q = t_general[3], lead = t_general[0];
     if(object.hasOwnProperty("edges"))
         amount = getAmount(object);
     
@@ -48,6 +48,11 @@ function fillHeadTable(table, object, index){
     tr.children[3].innerHTML = Q;
     tr.children[5].innerHTML = lead;
     tr.children[7].innerHTML = deficit;
+
+    all_info_mrp_keys[object.key]["amount"] = amount;
+    all_info_mrp_keys[object.key]["Q"] = Q;
+    all_info_mrp_keys[object.key]["lead"] = lead;
+    all_info_mrp_keys[object.key]["deficit"] = deficit;
 }
 
 function getAmount(object){
@@ -64,7 +69,7 @@ function getAmount(object){
 function fillDemandTable(table, object, index){
     const tr_list = table.children[0].children;
 
-    const labels = Array.from(headers_periods);    
+    labels = Array.from(headers_periods);    
     labels.unshift("-1");
     labels.unshift("Periodo");
     leadFunction(leadLabels, index, labels);

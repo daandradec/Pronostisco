@@ -44,9 +44,11 @@ function fillBodyMrpTable(table, table_averages, object, index){
     fillRowWithData(tr_list[4], invent);  
     fillRowWithData(tr_list[6], req_net);  
     fillRowWithData(tr_list[7], pla_rec_ord);  
-    tr_list[3].innerHTML += '<td total="true">Totales</td>';
-    tr_list[4].innerHTML += "<td>"+invent.sum()+"</td>";
-    tr_list[5].innerHTML += "<td>"+stock.sum()+"</td>";
+    const sum_invent = invent.sum();
+    const sum_stock = stock.sum();
+    tr_list[3].innerHTML += (getCurrentLanguage() === 'ES' ? '<td total="true">Totales</td>' : '<td total="true">Totals</td>') ;
+    tr_list[4].innerHTML += "<td>"+sum_invent+"</td>";
+    tr_list[5].innerHTML += "<td>"+sum_stock+"</td>";
 
 
     /* PLAN COLOCAR ORDENES */
@@ -57,7 +59,8 @@ function fillBodyMrpTable(table, table_averages, object, index){
         pla_col_ord.push(val_pla_col_ord)        
     }
     fillRowWithData(tr_list[8], pla_col_ord);  
-    tr_list[8].innerHTML += "<td>"+pla_col_ord.sum()+"</td>"
+    const sum_pla_col_ord = pla_col_ord.sum();
+    tr_list[8].innerHTML += "<td>"+sum_pla_col_ord+"</td>"
 
     /* COSTO ORDENAR EL PRODUCTO */
     const cost_ord_prod = [];
@@ -86,9 +89,9 @@ function fillBodyMrpTable(table, table_averages, object, index){
     tr_list[12].innerHTML += "<td>$ "+formatMoney(cost_total.sum())+"</td>"
 
     /* PROMEDIOS UNITARIOS */
-    const uni_per_compr = cost_ord_prod.sum() / pla_col_ord.sum();
-    const uni_per_mant = cost_m_inv.sum() / (invent.sum() + stock.sum());
-    const uni_per_setup = cost_compr.sum() / pla_col_ord.sum();
+    const uni_per_compr = cost_ord_prod.sum() / (sum_pla_col_ord === 0 ? 1 : sum_pla_col_ord);
+    const uni_per_mant = cost_m_inv.sum() / (sum_invent + sum_stock === 0 ? 1 : (sum_invent + sum_stock));
+    const uni_per_setup = cost_compr.sum() / (sum_pla_col_ord === 0 ? 1 : sum_pla_col_ord);
     const total_uni_ave = uni_per_compr + uni_per_mant + uni_per_setup;
     const tr_ave_list = table_averages.children[1].children;
 

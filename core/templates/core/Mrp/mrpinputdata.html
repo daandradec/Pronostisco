@@ -33,7 +33,7 @@
 {% block scripts %}    
     <script>
         var TOKEN = "{{csrf}}"
-        var POST_ROUTE = "{% url 'mrpoutput' %}{{parameters}}"
+        var POST_ROUTE = "{% url 'mrpoutput' %}";        
     </script>
     <script src="{% static 'core/vendor/canvg/rgbcolor.js' %}"></script>
     <script src="{% static 'core/vendor/canvg/StackBlur.js' %}"></script>

@@ -119,11 +119,11 @@ const collapse_zone_eng =
         '<table class="table table-bordered">'+
             '<tbody>'+
                 '<tr orange="true">'+
-                    '<td title="true">Cantidad</td>'+
+                    '<td title="true">Amount</td>'+
                     '<td></td>'+
-                    '<td title="true">Tamaño Optimo Q*</td>'+
+                    '<td title="true">Optimal Size Q*</td>'+
                     '<td></td>'+
-                    '<td title="true">Tiempo de anticipación</td>'+
+                    '<td title="true">Anticipation time</td>'+
                     '<td></td>'+
                     '<td title="true">Deficit</td>'+
                     '<td></td>'+
@@ -135,40 +135,40 @@ const collapse_zone_eng =
                 '<tr blue="true">'+
                 '</tr>'+
                 '<tr white="true">'+
-                    '<td>Demanda</td>'+
+                    '<td>Demand</td>'+
                 '</tr>'+        
                 '<tr>'+
-                    '<td>Requerimiento Bruto</td>'+                          
+                    '<td>Gross Requirement</td>'+                          
                 '</tr>'+
                 '<tr>'+
-                    '<td>Recepciones Programadas</td>'+                          
+                    '<td>Scheduled Receptions</td>'+                          
                 '</tr>'+
                 '<tr>'+
-                    '<td>Inventario</td>'+                    
+                    '<td>Inventory</td>'+                    
                 '</tr>'+
                 '<tr>'+
-                    '<td>Stock de Seguridad</td>'+
+                    '<td>Security stock</td>'+
                 '</tr>'+
                 '<tr>'+
-                    '<td>Requerimiento Neto</td>'+
+                    '<td>Net Requirement</td>'+
                 '</tr>'+
                 '<tr>'+
-                    '<td>Plan Recibir Ordenes</td>'+                           
+                    '<td>Receive Orders Plan</td>'+                           
                 '</tr>'+
                 '<tr>'+
-                    '<td>Plan Colocar Ordenes</td>'+                       
+                    '<td>Place Orders Plan</td>'+                       
                 '</tr>'+
                 '<tr>'+
-                    '<td>Costo Ord. Producto</td>'+
+                    '<td>Ord. Cost Product</td>'+
                 '</tr>'+
                 '<tr>'+
-                    '<td>Costo m/to inv</td>'+
+                    '<td>Cost m/to inv</td>'+
                 '</tr>'+
                 '<tr>'+
-                    '<td>Costo de la compra</td>'+
+                    '<td>Purchase cost</td>'+
                 '</tr>'+
                 '<tr>'+
-                    '<td>Costo total</td>'+
+                    '<td>Total cost</td>'+
                 '</tr>'+
             '</tbody>'+
         '</table>'+
@@ -177,32 +177,32 @@ const collapse_zone_eng =
             '<table class="table table-bordered" mrp-average="true">'+
                 '<thead>'+
                     '<tr>'+
-                        '<th>COSTO PROMEDIO UNITARIO</th>'+
-                        '<th>VALOR</th>'+
+                        '<th>AVERAGE UNIT COST</th>'+
+                        '<th>VALUE</th>'+
                     '</tr>'+
                 '</thead>'+
                 '<tbody>'+
                     '<tr>'+
-                        '<td>Unitario por compra</td>'+
+                        '<td>Unitary per purchase</td>'+
                         '<td>$1000</td>'+
                     '</tr>'+
                     '<tr>'+
-                        '<td>Unitario por mantenimiento</td>'+
+                        '<td>Unitary for maintenance</td>'+
                         '<td>$1000</td>'+
                     '</tr>'+
                     '<tr>'+
-                        '<td>Unitario por setup</td>'+
+                        '<td>Unitary by setup</td>'+
                         '<td>$1000</td>'+
                     '</tr>'+    
                     '<tr>'+
-                        '<td>Total Promedio por unidad</td>'+
+                        '<td>Total Average per unit</td>'+
                         '<td>$1000</td>'+
                     '</tr>'+                                                          
                 '</tbody>'+
             '</table>'+            
         '</div>'+
         '<div class="center">'+
-            '<a href="/mrp/download" link-mrp="true" mrp-key="mrpnone" mrp-name="mrpname" class="btn btn-success">Descargar Mrp del item</a>'+
+            '<a href="/mrp/download" link-mrp="true" mrp-key="mrpnone" mrp-name="mrpname" class="btn btn-success">Download item Mrp</a>'+
         '</div>'+
     '</div>'+
 '</div>';

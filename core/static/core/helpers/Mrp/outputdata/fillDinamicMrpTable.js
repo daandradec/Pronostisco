@@ -71,7 +71,7 @@ function fillDemandTable(table, object, index){
 
     labels = Array.from(headers_periods);    
     labels.unshift("-1");
-    labels.unshift("Periodo");
+    labels.unshift((getCurrentLanguage() === 'ES' ? "Periodo" : "Period"));
     leadFunction(leadLabels, index, labels);
     fillRowWithData(tr_list[0], labels);
 

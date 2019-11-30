@@ -20,9 +20,13 @@ function createAccordions(){
 
 function createOneAccordion(nameAccordion, key, bg_param, hov_param){
     ++accordion_counter;
+    var collapse_zone_selected = collapse_zone;    
+    if(getCurrentLanguage() === 'EN')
+        collapse_zone_selected = collapse_zone_eng;
+    
     return accordion_head.replace("accordionExample","accordion"+accordion_counter) + 
         accordion_body.replace("collapseOne","collapse"+accordion_counter).replace("bg-low-gray", bg_param).replace("hov-bg-mid-lig-white-gray", hov_param) + nameAccordion + accordion_footer +
-        collapse_zone.replace("collapseOne","collapse"+accordion_counter).replace("accordionExample","accordion"+accordion_counter).replace("collapseMrpIndex",accordion_counter).replace("mrpnone", key).replace("mrpname", nameAccordion);    
+        collapse_zone_selected.replace("collapseOne","collapse"+accordion_counter).replace("accordionExample","accordion"+accordion_counter).replace("collapseMrpIndex",accordion_counter).replace("mrpnone", key).replace("mrpname", nameAccordion);    
 }
 
 function activeAccordionButton(){

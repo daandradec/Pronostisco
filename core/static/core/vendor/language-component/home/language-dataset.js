@@ -6,7 +6,7 @@ language_dataset = [
 
     ["PRONÓSTICOS SIMPLES","SIMPLE PROGNOSTICS"],
     ["PRONÓSTICOS ESTILO ALPHA","PROGNOSTICS ALPHA STYLE"],
-    ["Bienvenido a PRONOSAURICO","Welcome to PRONOSAURICO"],
+    ["Bienvenido a GUACA","Welcome to GUACA"],
     ["Un sitio único en donde usted podrá realizar predicciones de ","A unique site where you can make predictions of "],
     ["ventas para su negocio","sales for your business"],
 

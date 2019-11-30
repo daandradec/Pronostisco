@@ -8,6 +8,8 @@ function hiddenAllModal(){
     $('#modal_expo').modal('hide')      
     $('#modal_movil').modal('hide')  
     $('#modalFull').modal('hide')
+    $('#modalData').modal('hide')
+    $('#modalTables').modal('hide')
 }
 
 

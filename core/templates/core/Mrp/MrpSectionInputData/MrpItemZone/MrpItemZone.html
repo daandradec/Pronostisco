@@ -1,6 +1,16 @@
 <br><br><br>
-<h3 class="font-alegreya-sans font-weight-semi-bold letter-spacing-2px text-muted"> {{title}} </h3>
+<h3 class="font-alegreya-sans font-weight-semi-bold letter-spacing-2px text-muted" language="true"> {{title}} </h3>
 <hr/>
+<table class="table-bordered" >
+    <thead>
+        <tr>
+            <th class="w-20" language="true">Indice</th>
+            <th class="w-40" language="true">Nombre</th>
+            <th class="w-40" language="true">Coneccion y Cantidad</th>
+        </tr>
+    </thead>
+</table>
+
 <table class="table-bordered" mrptrigger="{{button_id}}">
     <tbody>
     </tbody>
@@ -8,6 +18,6 @@
 
 <button class="btn {{btn_class}} btn-block mt-4" id="{{button_id}}">
     <span class="font-size-18px-2c font-weight-semi-bold">
-        Añadir {{button_text}}  <i class="fas fa-plus"></i>  
+        <span language="true">Añadir {{button_text}}</span>  <i class="fas fa-plus"></i>  
     </span>
 </button>

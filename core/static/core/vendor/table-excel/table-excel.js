@@ -11,13 +11,14 @@ columns = YEARS_COLUMNS;
 MAX_LIMIT_ROWS = 7;
 MIN_LIMIT_ROWS = 1;
 
+var input;
+
 function awake(){
-	//$('body *:not(td)').on('click',function(e){closeActiveCells();},true);
-	document.body.addEventListener('click',function(){closeActiveCells()},true);
+	document.body.addEventListener('click',closeActiveCells,true);
 
 	//td_query = document.querySelectorAll("div.tab-content > div.active > div.table-responsive > table > tbody > tr> td:not(:first-child)");
 	//td_query = document.querySelectorAll("table > tbody > tr> td:not(:first-child)");
-	td_query = document.querySelectorAll("div.table-responsive table[table-excel] tbody tr > td:not(:first-child)");
+	td_query = document.querySelectorAll("div.table-responsive table[table-excel] tbody tr > td:not([cell-excel=true])");
 	addClickEventTD(td_query);
 
 	activeButtonTableExcel();
@@ -44,7 +45,7 @@ function writeCell(e){
 	var data = e.target.innerHTML;
 	e.target.innerHTML = "<input type='text' name='entrada' class='input-text-excel'>";
 	e.target.removeEventListener("click",writeCell);
-	var input = e.target.childNodes[0];
+	input = e.target.childNodes[0];
 
 	if(data.length)
 		input.value = data;
@@ -62,10 +63,12 @@ function confirmCell(event){
 	}
 }
 
-function closeActiveCells(){
-	cells = document.querySelectorAll("td > input")
-	if(cells.length)
-		closeCell(cells[0]);
+function closeActiveCells(e){
+	if(e.target !== input){
+		cells = document.querySelectorAll("table[table-excel] td > input")
+		if(cells.length)
+			closeCell(cells[0]);
+	}
 }
 
 function closeCell(input){

@@ -14,9 +14,12 @@ stroke: steelblue;
 stroke-width: 1.5px;
 }
 
+.nodeProducto{stroke: rgb(219, 204, 63) !important;}
+.nodeComponente{stroke: rgb(214, 71, 52) !important;}
+
 .node text {
-font-size:10px; 
-font-family:sans-serif;
+    font-size:10px; 
+    font-family:sans-serif;
 }
 
 .link {

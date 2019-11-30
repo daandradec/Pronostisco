@@ -20,6 +20,21 @@ function linkStart(){
             postNewTab($(this).attr("href"),{content: getListDataVariable(number),compare : flag ? data_django_last_row : django_list_data_chart_01, corre : getCorrelationVariable(number).toString(), period: django_x_label_chart_03, yearlabel: year_label, pronolabel : prono_label, correlabel : corre_label });
         })
     })
+
+    $("a[link-mrp-all='true']").each(function(){
+        $(this).on('click',function(e){
+            e.preventDefault();            
+            console.log({all_info_mrp_keys: all_info_mrp_keys})
+            postNewTab($(this).attr("href"),{all_info_mrp_keys: JSON.stringify(all_info_mrp_keys), periods: periods_state, mrp: JSON.stringify(mrp)});
+        })
+    })
+
+    $("a[link-mrp='true']").each(function(){
+        $(this).on('click',function(e){
+            e.preventDefault();
+            postNewTab($(this).attr("href"),{all_info_mrp_keys: JSON.stringify(all_info_mrp_keys), key: $(this).attr("mrp-key"), name: $(this).attr("mrp-name")});
+        })
+    })
 }
 
 window.addEventListener("load",linkStart,false);

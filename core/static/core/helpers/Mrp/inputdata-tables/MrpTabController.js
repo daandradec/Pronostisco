@@ -10,7 +10,9 @@ function startEvents(){
         updateTab();     
     })
 
-
+    /* PARA IGNORAR LA PRIMERA VISTA */
+    new_state = 2;
+    postUpdate();  
 }
 
 function updateTab(){
@@ -32,9 +34,9 @@ function postUpdate(){
             break;
         case 3:
             if(flagEvent_3){
-                fillTableRowsByCurrentPeriod();                
-                selectableSetLabelsAndCallBackFunction(labels_periods, tabsTables);
+                selectableSetCallbackFunction(tabsTables);
                 startButtonSelectable();
+                fillTableRowsByCurrentPeriod();
                 flagEvent_3 = false;
             }else
                 seeChangeStateMRPToTable();

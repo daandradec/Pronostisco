@@ -1,0 +1,41 @@
+language_dataset = [
+    ["ESPAÑOL","SPANISH"],
+    ["INGLES","ENGLISH"],
+    ["ESPAÑOL","SPANISH"],
+    ["INGLES","ENGLISH"],
+
+    ["Entrada de Datos","Data entry"],
+    ["Resultados","Results"],
+
+    ["Bienvenido Usuario, para el MRP ingrese toda la información solicitada y cree su arbol de producto ", "Welcome User, for the MRP enter all the requested information and create your product tree"],
+    ["Nombre del producto:","Product name:"],
+    ["Componentes","Components"],    
+    ["Indice","Index"],
+    ["Nombre","Name"],
+    ["Conección y Cantidad","Connection and Quantity"],
+    ["Añadir Componente","Add Component"],
+    ["Materia Prima", "Raw material"],
+    ["Indice","Index"],
+    ["Nombre","Name"],
+    ["Conección y Cantidad","Connection and Quantity"],
+    ["Añadir Materia Prima","Add Raw Material"],
+    ["CONFIRMAR","CONFIRM"],
+    ["Arbol MRP","Mrp Tree"],
+
+    ["A continuación ingrese en las tablas los datos que disponga (si no tiene el dato se tomara como Cero)","Then enter the data you have in the tables (if you do not have the data, it will be taken as Zero)"],
+    ["Periodos de Tiempo","Periods of time"],
+    ["PRONOSTICOS DE DEMANDA","DEMAND FORECASTS"],
+    ["REGISTRO DE INFORMACIÓN GENERAL","GENERAL INFORMATION REGISTRATION"],
+    ["RECEPCIONES PROGRAMADAS","SCHEDULED RECEPTIONS"],
+    ["REGRESAR","TO RETURN"],
+    ["CONFIRMAR","CONFIRM"],
+
+    ["Una gran alternativa para hacer tus pronósticos","A great alternative to make your predictions."],
+    ["Nuestros Métodos","Our Methods"],
+    ["pronósticos simples","simple forecasts"],
+    ["pronósticos estilo alpha","style alpha forecasts"],
+    ["Contacto","Contact"],
+    ["Correo:","Email"],
+
+    ["Copyright © 2018 Todos los derechos reservados","Copyright © 2018 All rights reserved"],
+]

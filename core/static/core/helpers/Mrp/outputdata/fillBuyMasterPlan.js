@@ -38,7 +38,8 @@ function displayContentRow(data){
 
 
 function fillHeaderPeriods(table){
-    table.children[0].innerHTML = "<tr><th>Periodos</th>"+displayContentRowH(headers_periods)+"<th>Total</th></tr>"
+    const label = getCurrentLanguage() == 'ES' ? "Periodos" : "Periods";
+    table.children[0].innerHTML = "<tr><th>"+label+"</th>"+displayContentRowH(headers_periods)+"<th>Total</th></tr>"
 }
 
 function displayContentRowH(data){

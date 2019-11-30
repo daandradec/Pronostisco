@@ -10,7 +10,9 @@ function startEvents(){
         updateTab();     
     })
 
-
+    /* PARA IGNORAR LA PRIMERA VISTA */
+    new_state = 2;
+    postUpdate();  
 }
 
 function updateTab(){

@@ -26,9 +26,11 @@ function createOneAccordion(nameAccordion, key, bg_param, hov_param){
 }
 
 function activeAccordionButton(){
+
     $("#accordion-button").on('click',function(e){
+        e.stopPropagation();
         flagAccordionButton = !flagAccordionButton;
-        const i_tag = e.target.children[0];
+        const i_tag = e.target.children[1];
         const accordions = document.querySelector("div[accordion-zone='true']").children;
 
         if(flagAccordionButton){
@@ -41,6 +43,7 @@ function activeAccordionButton(){
                 $(accordions[2*i+1]).collapse('hide');            
         }
     })
+    
 }
 
 window.addEventListener("load", createAccordions, false);

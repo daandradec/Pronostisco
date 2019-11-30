@@ -35,9 +35,12 @@ function alterRespectiveTable(table, table_index){
             break;
         case 1:
             if(flagGeneralTable){
-                table.children[0].innerHTML = "<tr><th>Mrp Tree</th><th>Lead Time <input type='checkbox' id='toggle-lead' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th>"+
+                table.children[0].innerHTML = getCurrentLanguage() == 'ES' ? "<tr><th>Mrp Tree</th><th>Lead Time <input type='checkbox' id='toggle-lead' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th>"+
                                               "<th>Stock de Seguridad <input type='checkbox' id='toggle-stock' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Inventario Inicial</th>"+
-                                              "<th>Q* <input type='checkbox' id='toggle-q' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Costo Unitario</th><th>Costo de Mantenimiento</th><th>Costo de ordenar</th></tr>";
+                                              "<th>Q* <input type='checkbox' id='toggle-q' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Costo Unitario</th><th>Costo de Mantenimiento</th><th>Costo de Ordenar</th></tr>"
+                                              : "<tr><th>Mrp Tree</th><th>Lead Time <input type='checkbox' id='toggle-lead' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th>"+
+                                              "<th>Security Stock<input type='checkbox' id='toggle-stock' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Initial Inventory</th>"+
+                                              "<th>Q* <input type='checkbox' id='toggle-q' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Unit cost</th><th>Maintenance Cost</th><th>Ordering Cost</th></tr>";
                 $('#toggle-lead').bootstrapToggle();
                 $("#toggle-lead").change(toggleMasterEvent);
                 $('#toggle-stock').bootstrapToggle();

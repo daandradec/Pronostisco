@@ -231,8 +231,11 @@ def mrp_output(request):
         tree = json.dumps(tree)      
         tables = json.dumps(tables)
         csrf_token = get_token(request)
+        request.session['mrp'] = {"mrp": mrp,"tree":tree, "tables": tables, "periods_state":periods_state, "lead":lead, "stock":stock,"Q":Q, 'csrf':csrf_token}
         return render(request, 'core/Mrp/mrpoutput.html', {"mrp": mrp,"tree":tree, "tables": tables, "periods_state":periods_state, 
             "lead":lead, "stock":stock,"Q":Q, 'csrf':csrf_token})  
+    elif('mrp' in request.session):
+        return render(request, 'core/Mrp/mrpoutput.html', request.session['mrp'])  
     return HttpResponseRedirect('/mrp/input-data') 
     
 

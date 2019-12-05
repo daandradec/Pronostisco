@@ -44,7 +44,7 @@ function fillBodyMrpTable(table, table_averages, object, index){
     fillRowWithData(tr_list[4], invent);  
     fillRowWithData(tr_list[6], req_net);  
     fillRowWithData(tr_list[7], pla_rec_ord);  
-    const sum_invent = invent.sum();
+    const sum_invent = invent.slice(-1*periods_state).sum();
     const sum_stock = stock.sum();
     tr_list[3].innerHTML += (getCurrentLanguage() === 'ES' ? '<td total="true">Totales</td>' : '<td total="true">Totals</td>') ;
     tr_list[4].innerHTML += "<td>"+sum_invent+"</td>";
@@ -71,22 +71,22 @@ function fillBodyMrpTable(table, table_averages, object, index){
             cost_ord_prod.push(0);
     }
     fillRowWithMoneyData(tr_list[9], cost_ord_prod);
-    tr_list[9].innerHTML += "<td>$ "+formatMoney(cost_ord_prod.sum())+"</td>"
+    tr_list[9].innerHTML += "<td>$ "+formatMoney(cost_ord_prod.slice(-1*periods_state).sum())+"</td>"
 
     /* COSTO M/TO INV */
     const cost_m_inv = invent.map(function(value, index_map){ return (value+stock[index_map])*tables.t_general[index][5]});    
     fillRowWithMoneyData(tr_list[10], cost_m_inv);
-    tr_list[10].innerHTML += "<td>$ "+formatMoney(cost_m_inv.sum())+"</td>"
+    tr_list[10].innerHTML += "<td>$ "+formatMoney(cost_m_inv.slice(-1*periods_state).sum())+"</td>"
 
     /* COSTO DE LA COMPRA */
     const cost_compr = pla_col_ord.map(function(value){ return value*tables.t_general[index][4]});
     fillRowWithMoneyData(tr_list[11], cost_compr);
-    tr_list[11].innerHTML += "<td>$ "+formatMoney(cost_compr.sum())+"</td>"   
+    tr_list[11].innerHTML += "<td>$ "+formatMoney(cost_compr.slice(-1*periods_state).sum())+"</td>"   
 
     /* COSTO TOTAL */
     const cost_total = cost_compr.map(function(value, index){return value + cost_m_inv[index] + cost_ord_prod[index]});
     fillRowWithMoneyData(tr_list[12], cost_total);
-    tr_list[12].innerHTML += "<td>$ "+formatMoney(cost_total.sum())+"</td>"
+    tr_list[12].innerHTML += "<td>$ "+formatMoney(cost_total.slice(-1*periods_state).sum())+"</td>"
 
     /* PROMEDIOS UNITARIOS */
     const uni_per_compr = cost_ord_prod.sum() / (sum_pla_col_ord === 0 ? 1 : sum_pla_col_ord);

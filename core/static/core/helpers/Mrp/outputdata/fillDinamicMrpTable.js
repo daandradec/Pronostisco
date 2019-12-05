@@ -1,5 +1,5 @@
 var labels_periods = ["Mes/Semana","Semana/Dia","Año/Mes"];
-var headers_periods = Object.keys(Array.apply(0,Array(periods_state))).map(Number).map(function(x){return x+1});
+var headers_periods = tables.t_labels;//Object.keys(Array.apply(0,Array(periods_state))).map(Number).map(function(x){return x+1});
 const td = "<td></td>";
 const forecast_keys = {};
 const all_info_mrp_keys = {};
@@ -96,7 +96,7 @@ function fillDemandTable(table, object, index){
                 requeriment_list = forecast.map(function(value, index){return requeriment_list[index] + value;})
         }
         forecast_keys[object.key] = requeriment_list; 
-        fillRowWithData(tr_list[1], requeriment_list);        
+        fillRowWithData(tr_list[1], forecast);        
     }    
 }
 

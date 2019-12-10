@@ -151,6 +151,9 @@
         var best_corre = Math.max(lineal_corre,expo_corre,cuadra_corre,movil_2_corre,movil_3_corre,movil_composed_corre,movil_pondered_corre,
         simple_soft_corre,double_soft_corre,winters_corre,jenkin_corre,simu_corre)
 
+        var best_index_forecast = get_best_index_forecast(best_corre,
+            [lineal_corre, expo_corre, cuadra_corre, movil_2_corre, movil_3_corre, movil_composed_corre,
+            movil_pondered_corre, simple_soft_corre, double_soft_corre, winters_corre, jenkin_corre, simu_corre])
         var dict_best_forecast = get_best_forecast(best_corre,
             [simu_corre,jenkin_corre,winters_corre,double_soft_corre,simple_soft_corre,movil_pondered_corre,movil_composed_corre,movil_3_corre,movil_2_corre,cuadra_corre,expo_corre,lineal_corre],
             [simu,jenkin,winters,double_soft,simple_soft,movil_pondered,movil_composed,movil_3,movil_2,cuadra,expo,lineal],
@@ -215,6 +218,9 @@
         django_list_data_chart_15 = simu
         django_list_labels_chart_15 = django_list_labels_chart_02      
 
+        function get_best_index_forecast(best_corre,list_correlations){
+            return list_correlations.indexOf(best_corre)
+        }
         function get_best_forecast(best_corre,list_correlations,list_forecasts,names_forecasts,flag_language){
             var index = list_correlations.indexOf(best_corre)
             return {"forecast" : list_forecasts[index],"name":names_forecasts[index][flag_language & 1]}
@@ -223,4 +229,5 @@
 
     <script src="{% static 'core/helpers/ForecastPages/PronoAlpha/chartCreation.js' %}"></script>
     <script src="{% static 'core/helpers/ForecastPages/PronoAlpha/fillTableBestForecast.js' %}"></script>
+    <script src="{% static 'core/helpers/Modal/bestModalForecastModalAlpha.js' %}"></script>
 {% endblock %}

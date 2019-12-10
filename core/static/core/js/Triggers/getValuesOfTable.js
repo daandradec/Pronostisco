@@ -21,3 +21,11 @@ function getValuesSimpleOfTable(table){
     
     return values;
 }
+
+function getLabelsOfTable(table){
+    const th_list = $(table).find("thead tr").find("th:not(:first-child)");
+    const labels = [];
+    for(var i = 0; i < th_list.length; ++i)
+        labels.push(th_list[i].innerHTML);
+    return labels;
+}

@@ -2,18 +2,19 @@ const td = "<td></td>";
 var table_values = [];
 
 var flagGeneralTable = true; /* para ejecutar una sola vez */
+var flagRewriteTH = true;
 
 function tabsTables(state, flagAdd, flagDelete){
     const tables = document.querySelectorAll("table[table-excel]");
     switch(state){
         case 0:
             if(flagDelete){ // borrar columna
-                removeColumn(tables[0]);removeColumn(tables[2]);awake();
+                removeColumn(tables[0]);removeColumn(tables[2]);awake();selectAllTdQueryCellExcelTH();
             }
             break;
         case 1:
             if(flagAdd){ // añadir columna
-                addColumn(tables[0]);addColumn(tables[2]);awake();
+                addColumn(tables[0]);addColumn(tables[2]);awake();selectAllTdQueryCellExcelTH();
             }
             break;            
     }  
@@ -25,6 +26,7 @@ function fillTableRowsByCurrentPeriod(){
     alterRespectiveTable(tables[1], 1);
     alterRespectiveTable(tables[2], 2);      
     awake();
+    selectAllTdQueryCellExcelTH();
 }
 
 function alterRespectiveTable(table, table_index){      
@@ -51,9 +53,13 @@ function alterRespectiveTable(table, table_index){
             }
             fillRemainingTable(table, 7);                            
             break;
-        case 2:
-            table.children[0].innerHTML = "<tr><th>Mrp Tree</th>"+generateTHPeriod(current_index)+"</tr>";
-            fillRemainingTable(table, current_index);            
+        case 2:      
+            if(flagRewriteTH){
+                table.children[0].innerHTML = "<tr><th>Mrp Tree</th>"+generateTHPeriod(current_index)+"</tr>";    
+                flagRewriteTH = false;         
+            }            
+                
+            fillRemainingTable(table, current_index);   
             break;
     }
 }
@@ -94,6 +100,7 @@ function seeChangeStateMRPToTable(){
     saveStateTableAndReFill(tables[1], 1);
     saveStateTableAndReFill(tables[2], 2);
     awake();
+    selectAllTdQueryCellExcelTH();
     changeStatusColDisabled($(tables[1].children[1]).find("tr td:nth-child(2)"), toggleFlagLead);
     changeStatusColDisabled($(tables[1].children[1]).find("tr td:nth-child(3)"), toggleFlagStock);
     changeStatusColDisabled($(tables[1].children[1]).find("tr td:nth-child(5)"), toggleFlagQstar);
@@ -119,14 +126,14 @@ function saveStateTableAndReFill(table, table_index){
 function generateTHPeriod(repeats){
     var th = "";
     for(var i = 1; i <= repeats; ++i)
-        th += "<th>"+i+"</th>";
+        th += "<th cell-excel-th='true' cell-index='"+i+"'>"+i+"</th>";
     return th;
 }
 
 function addColumn(table){
     const thead = table.children[0].children[0];
     const trows = table.children[1].children;
-    thead.innerHTML += "<th>"+current_index+"</th>";
+    thead.innerHTML += "<th cell-excel-th='true' cell-index='"+current_index+"'>"+current_index+"</th>";
     for(var i = 0; i < trows.length; ++i)
         trows[i].innerHTML += "<td></td>";
 }
@@ -134,7 +141,7 @@ function addColumn(table){
 function removeColumn(table){
     const thead = table.children[0].children[0];
     const trows = table.children[1].children;
-    thead.innerHTML = thead.innerHTML.substring(0,thead.innerHTML.lastIndexOf("<th>"))
+    thead.innerHTML = thead.innerHTML.substring(0,thead.innerHTML.lastIndexOf("<th cell-excel-th"))
     for(var i = 0; i < trows.length; ++i)
         trows[i].innerHTML = trows[i].innerHTML.substring(0,trows[i].innerHTML.lastIndexOf("<td>"))
 }
@@ -153,6 +160,7 @@ function generateJsonTablesMrp(){
     return {
         t_general: getValuesOfTable(table_general),
         t_forecast: getValuesSimpleOfTable(table_forecast),
-        t_receptions: getValuesOfTable(table_receptions)
+        t_receptions: getValuesOfTable(table_receptions),
+        t_labels: getLabelsOfTable(table_forecast)
     };
 }

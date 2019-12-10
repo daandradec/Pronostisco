@@ -35,7 +35,7 @@ def build_excel_book_mrp_complete(all_info_mrp_keys, mrp, periods, response, ws,
     rows_count = 16
     for componente in mrp["componentes"]:
         mrp_table = all_info_mrp_keys[componente["key"]]
-        ws = build_excel_book_mrp_item(counter*12 + 4, componente, mrp_table, ws, font_style)
+        ws = build_excel_book_mrp_item(counter*16 + 4, componente, mrp_table, ws, font_style)
         plan_master_production.append( (componente["title"], mrp_table["pla_col_ord"][-1*periods:]) )
         plan_master_costs.append( (componente["title"], mrp_table["total_uni_ave"], mrp_table["pla_col_ord"][-1*periods:]) )
         counter += 1
@@ -43,7 +43,7 @@ def build_excel_book_mrp_complete(all_info_mrp_keys, mrp, periods, response, ws,
 
     for materia in mrp["materia"]:
         mrp_table = all_info_mrp_keys[materia["key"]]
-        ws = build_excel_book_mrp_item(counter*12 + 4, materia, mrp_table, ws, font_style)
+        ws = build_excel_book_mrp_item(counter*16 + 4, materia, mrp_table, ws, font_style)
         plan_master_compr.append( (materia["title"], mrp_table["pla_col_ord"][-1*periods:]) )
         plan_master_costs.append( (materia["title"], mrp_table["total_uni_ave"], mrp_table["pla_col_ord"][-1*periods:]) )
         counter += 1

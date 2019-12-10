@@ -87,8 +87,22 @@ function centerNode(source) {
     d3.select('g').transition()
         .duration(duration)
         .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
-    zoomListener.scale(scale);
+
+    // nuevo para manejar el zoom que siempre lo mantiene ajustado
+    const nodes_n = totalNodes - oldTotalNodes;    
+    if(nodes_n >= 5){
+        oldCocienteNodes = cocienteNodes;
+        cocienteNodes = Math.clip(Math.floor(nodes_n/5), 2, 20);
+        scale = zoom_max/(cocienteNodes - cocienteNodes/5)
+        if(cocienteNodes !== oldCocienteNodes)
+            zoomListener.scaleExtent([zoom_max/(cocienteNodes  - cocienteNodes/5), 3]);         
+    }
+   
+        
+    
+    zoomListener.scale(scale); // console.log(totalNodes - oldTotalNodes);
     zoomListener.translate([x, y]);
+    
 }
 
 /* TOGGLE */
@@ -185,6 +199,7 @@ function update(source) {
         })
         .style("fill-opacity", 0);
 
+    /*
     // phantom node to give us mouseover in a radius around it
     nodeEnter.append("circle")
         .attr('class', 'ghostCircle')
@@ -198,6 +213,7 @@ function update(source) {
         .on("mouseout", function(node) {
             outCircle(node);
         });
+    */
 
     // Update the text to reflect whether node has children or not.
     node.select('text')

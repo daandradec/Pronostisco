@@ -4150,3 +4150,22 @@
 }
 
 /*# sourceMappingURL=hover.css.map */
+
+
+
+/* PROPIOS */
+.box-text p{  
+  opacity: 0;
+  transition:opacity 0.5s;
+}
+.box-text:hover p{  
+  opacity: 1;
+}
+
+.hov-traslated-down-up{
+  transform: translateY(50px);
+  transition: transform 0.5s;
+}
+.hov-traslated-down-up:hover{
+  transform: translateY(0px);
+}

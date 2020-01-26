@@ -13,7 +13,7 @@
 .color-dark-gray{color:#6d6b65 !important;}
 .color-darken-gray{color:#423f3f !important;}
 .color-black{color:black !important;}
-
+                                                                                                                          .hov-bg-white{transition: background 0.15s;}.hov-bg-white:hover{background:white;}
 .bg-semi-white{background:#fbfbfb !important;}                                                                          .hov-bg-semi-white{transition: background 0.15s;}.hov-bg-semi-white:hover{background: #fbfbfb !important;}
 .bg-milk{background:#f0ece3 !important;}                                                                                .hov-bg-milk{transition: background 0.15s;}.hov-bg-milk:hover{background: #f0ece3 !important;}
 .bg-low-gray{background:#e9e8e8 !important;}                                                                            .hov-bg-low-gray{transition: background 0.15s;}.hov-bg-low-gray:hover{background: #e9e8e8 !important;}
@@ -24,7 +24,7 @@
 .bg-light-dark-gray{background:#868680 !important;}                                                                     .hov-bg-light-dark-gray{transition: background 0.15s;}.hov-bg-light-dark-gray:hover{background: #868680 !important;}
 .bg-dark-gray{background:#6d6b65 !important;}                                                                           .hov-bg-dark-gray{transition: background 0.15s;}.hov-bg-dark-gray:hover{background: #6d6b65 !important;}
 .bg-darken-gray{background:#423f3f !important;}                                                                         .hov-bg-darken-gray{transition: background 0.15s;}.hov-bg-darken-gray:hover{background: #423f3f !important;}
-
+.bg-black{background:black !important;}
 /*.bg-darken-gray-alpha04{background:rgba(68,63,63,0.4)} */
 
 

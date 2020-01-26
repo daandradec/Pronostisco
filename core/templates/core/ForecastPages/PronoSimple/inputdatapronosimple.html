@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="{% static 'core/css/pronosimple/inputdatapronosimple.css' %}">
     <link rel="stylesheet" href="{% static 'core/vendor/table-excel/table-excel.css' %}">
     <link rel="stylesheet" href="{% static 'core/vendor/bootstrap-4.1.3/css/btn.css' %}">  
-    <link rel="stylesheet" href="{% static 'core/vendor/input-file-drag-drop/input-file-drag-drop.css' %}">
+    <link rel="stylesheet" href="{% static 'core/vendor/input-file-drag-drop/input-file-drag-drop.css' %}">    
 {% endblock styles %}
 
 
 
 
 {% block content %}
-    {% include 'core/Navbar/Navbar.html' %}
+    {% include 'core/Navbar/NavbarNew.html' %}
     {% include "core/ForecastPages/Header/Header.html" with inputDataFlag=True %}
     {% include "core/ForecastPages/InputDataPronoBody/inputdatapronotbody.html" with redirectRoute="simplepronosgraph" %}
     {% include 'core/Footer/Footer.html' %}

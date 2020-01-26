@@ -13,7 +13,7 @@
                 <li class="center"><a href="{% url 'simplepronosinputdata' %}{{parameters}}" class="px-4 border-right" style="border-color:#3c3c3c !important;">PRONÓSTICO SIMPLE</a></li>
                 <li class="center"><a href="{% url 'alphapronosinputdata' %}{{parameters}}" class="px-4 border-right" style="border-color:#3c3c3c !important;">PRONÓSTICO ALPHA</a></li>
                 <li class="center"><a href="{% url 'mrpinputdata' %}{{parameters}}" class="px-4 border-right" style="border-color:#3c3c3c !important;">MRP</a></li>
-                <li class="center"><a href="#" class="px-4">¿QUIENES SOMOS?</a></li>
+                <li class="center"><a href="{% url 'aboutus' %}{{parameters}}" class="px-4">¿QUIENES SOMOS?</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="{% static 'core/img/español.png' %}" style="width:20px;margin-top: -3px !important;" language-image="true">

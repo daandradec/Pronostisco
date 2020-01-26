@@ -257,3 +257,8 @@ def mrp_download_all(request):
     response = build_excel_book_mrp_complete(all_info_mrp_keys, mrp, periods, response, ws, wb, font_style)
 
     return response
+
+
+
+def about_us(request):
+    return render(request, 'core/AboutUs/AboutUs.html')

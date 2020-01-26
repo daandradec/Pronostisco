@@ -1,9 +1,28 @@
 {% load static %}
 
-<header class="text-white" style="padding-top:75px;">
-    <div class="container">
-        <div class="row">
+<header class="text-white" style="padding-top:75px;height:100vh !important;">
+    
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="col-12 col-md-5">
+                <h1 class="font-jelle font-size-50px-3c header-title text-shadow-07 text-center">RESOURCE BEACON</h1> 
+                <p class="font-size-19px-2c pl-0 pl-lg-5 w-80 mx-auto" >
+                    Un sitio único que le ayudara a planificar diferentes operaciones que mejoraran el desempeño e ingresos de su empresa. 
+                    Le facilitara la realización de un plan agregado de producción y un plan maestro de producción.                
+                </p>           
+            </div>
+            <div class="col-6 col-md-5 center header-graphics">
+                <img src="{% static 'core/img/home-graphics.png' %}" height="80%" class="hvr-grow">
+            </div> 
+            <div class="col-6 col-md-2 text-center">
+                <img src="{% static 'core/img/LogoC.png' %}" class="img-fluid hvr-grow" style="max-height:180px;">
+            </div>           
+        </div>
+    </div>
 
+
+
+            {% comment %}
             <div class="col-4 pt-5 mt-5">
                 <h2 class="font-signika font-size-52px-2c letter-spacing-1px">Bienvenido a Resource Beacon</h2>
                 <p class="font-quicksand font-size-18px-2c letter-spacing-1px text-justify mt-5">
@@ -15,14 +34,6 @@
             <div class="col-5 mt-3">
                 <img src="{% static 'core/img/home-graphics.png' %}" class="img-fluid">
             </div>
+            {% endcomment %}
 
-            <div class="col-3 pt-5 mt-5">
-                <h2 class="font-jelle font-size-20px-2c letter-spacing-1px mt-5">Correo</h2>
-                <p class="font-quicksand font-size-13px letter-spacing-1px">guacastrategy@gmail.com</p>    
-                <h2 class="font-jelle font-size-20px-2c letter-spacing-1px mt-5">Dirección</h2>
-                <p class="font-quicksand font-size-13px letter-spacing-1px">Calle 39 Bis B #29-22</p>                       
-            </div>
-
-        </div>
-    </div>
 </header>

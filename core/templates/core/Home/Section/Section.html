@@ -1,13 +1,14 @@
+{% load static %}
 <div class="container p-0 mt-5">
     <div class="container-fluid mp-0">
         <div class="row">
-            <div class="col-4 center bg-white hov-bg-mid-lig-white-gray border c-pointer box-text">
+            <div class="col-12 col-sm-4 center bg-white hov-bg-mid-lig-white-gray border c-pointer box-text">
                 <a href="{% url 'simplepronosinputdata' %}{{parameters}}" class="text-dark">
                     <div style="height:275px;" class="center hov-traslated-down-up">
                         <div>
                             <h5 class="font-weight-bold">Pronosticos Simples</h5>
                             <i class="fas fa-chart-bar font-size-26px"></i>
-                            <p class="font-size-14px">
+                            <p class="font-size-14px-2c">
                                 En esta sección podrá realizar pronósticos encontrando 
                                 el resultado más asertivo analizando todos los datos 
                                 históricos en una sola línea temporal. 
@@ -17,13 +18,13 @@
                 </a>          
             </div>
 
-            <div class="col-4 center bg-white hov-bg-mid-lig-white-gray border c-pointer box-text">
+            <div class="col-12 col-sm-4 center bg-white hov-bg-mid-lig-white-gray border c-pointer box-text">
                 <a href="{% url 'alphapronosinputdata' %}{{parameters}}" class="text-dark">
                     <div style="height:275px;" class="center hov-traslated-down-up">
                         <div>
                             <h5 class="font-weight-bold">Pronosticos Alpha</h5>
                             <i class="fas fa-balance-scale font-size-26px"></i>
-                            <p class="font-size-14px">
+                            <p class="font-size-14px-2c">
                                 En esta sección podrá realizar pronósticos que analizan los 
                                 datos según los periodos establecidos en el mismo (Meses, semanas, días)
                                 brindando un pronóstico que proyecta mejores resultados                      
@@ -33,13 +34,13 @@
                 </a>                      
             </div>
 
-            <div class="col-4 center bg-white hov-bg-mid-lig-white-gray border c-pointer box-text">
+            <div class="col-12 col-sm-4 center bg-white hov-bg-mid-lig-white-gray border c-pointer box-text">
                 <a href="{% url 'mrpinputdata' %}{{parameters}}" class="text-dark">                
                     <div style="height:275px;" class="center hov-traslated-down-up">
                         <div>
                             <h5 class="font-weight-bold">Mrp</h5>
                             <i class="fas fa-bezier-curve font-size-26px"></i>
-                            <p class="font-size-14px">
+                            <p class="font-size-14px-2c">
                                 Es un sistema el cual establece las cantidades y costos de producción en un
                                 horizonte de planeacion, realizando un procedimiento que establece los 
                                 componentes y materias primas en unos tiempos determinados.                        
@@ -52,12 +53,17 @@
         </div>    
     </div>
 </div>
-<div>
-    <div class="center py-5">
-        <div style="width:90%;max-width:920px;background:rgba(255,255,255,0.9);">
-            Talk to us! We promise we can help you!
-            You Can Trust Us To Get You The justice You Deserve.
-            Call now +1234 5677 89
+
+{% include 'core/Home/Section/Explanation/Explanation.html' with title="PRONÓSTICOS SIMPLES" text="En esta sección podrá realizar pronósticos encontrando el resultado más asertivo analizando todos los datos históricos en una sola línea temporal. Brindándole una prospectiva o visión a futuro basada en cálculos matemáticos y estocásticos." video="core/video/Video_Pronostico_Simple.mp4" inverse=False %}
+{% include 'core/Home/Section/Explanation/Explanation.html' with title="PRONÓSTICOS ALPHA" text="En esta sección podrá realizar pronósticos que analizan los datos según los periodos establecidos en el mismo (Meses, semanas, días) brindando un pronóstico que proyecta mejores resultados cuando se presentan estacionalidad y ciclicidad en el tiempo. Ayudándolo a realizar una mejor planificación y toma de decisiones." video="core/video/Video_Pronostico_Alpha.mp4" inverse=True %}
+{% include 'core/Home/Section/Explanation/Explanation.html' with title="MRP" text="Es un sistema el cual establece las cantidades y costos de producción en un horizonte de planeacion, realizando un procedimiento que establece los componentes y materias primas en unos tiempos determinados. Dando como resultado un plan de compras y un plan maestro de producción. Le brindara una planificación en la cual usted pobra controlar las cantidades de inventario, requerimientos netos, stocks de seguridad, recepciones programadas, lead time, PRO, PCO, entre otros." video="core/video/Video_Mrp.mp4" inverse=False %}
+
+<br/><br/><br/><br/><br/>
+
+<div style="height:400px;" class="home-image-bg-stock">
+    <div class="w-100 center" style="height:400px;">
+        <div class="font-exo2 font-weight-bold font-italic letter-spacing-2px font-size-28px-4c w-100 px-5 center" style="max-width:700px;background:rgba(255,255,255,0.7);height:200px;">
+            Creamos herramientas que le permitan planificar su tiempo, sus recursos físicos y económicos, ayudándole a tomar mejores decisiones. 
         </div>
     </div>
 </div>

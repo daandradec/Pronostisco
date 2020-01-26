@@ -1,14 +1,2 @@
-footer{
-	background:#1e232a;
-	position:relative;
-	padding-top: 30px;
-	padding-bottom: 85px;
-}
-
-footer > section h4{
-	color:orange;
-	margin-bottom:15px;
-}
-
-footer > section a{color:white;}
-footer > section a:hover{color:#8ec6f5;}
+footer a{color:white !important;}
+footer a:hover{color:#8ec6f5 !important;}

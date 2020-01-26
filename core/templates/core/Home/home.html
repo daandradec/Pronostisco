@@ -5,12 +5,8 @@
 {% block styles %}
     {% load static %}       
     <link rel="stylesheet" href="{% static 'core/css/navbar/navbarNew.css' %}">
-    {% comment %}
-    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/home/home.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/home/home-media.css' %}">
-    {% endcomment %}
+    <link rel="stylesheet" href="{% static 'core/css/header/headerNew.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/home/home.css' %}">     
 {% endblock %}
 
 
@@ -20,22 +16,7 @@
     <section style="background-color:#152335;">
         {% include 'core/Home/Header/HeaderNew.html' %}
         {% include 'core/Home/Section/Section.html' %}
-
-        <footer class="bg-white text-dark" style="height:440px;">
-            <div class="container pt-4">
-                <div class="row">
-                    <div class="col-4">
-                        We approach each problem with three essential elements: strategic thinking, creative solutions, proven results.
-                    </div>
-                    <div class="col-4">
-                        Links
-                    </div>
-                    <div class="col-4">
-                        hello@themis.com
-                    </div>
-                </div>
-            </div>
-        </footer>
+        {% include 'core/Home/Footer/Footer.html' %}
     </section>
     
 {% endblock content %}
@@ -63,5 +44,18 @@
 
     Footer como en el ejemplo (lo mismo con la barra de inicio) y simbolo de facebook y twitter, correo electronco y una direccion fisica
     (mirar si color blanco o background de piedras)
+
+
+    <div class="col-3 pt-5 mt-5">
+        <h2 class="font-jelle font-size-20px-2c letter-spacing-1px mt-5">Correo</h2>
+        <p class="font-quicksand font-size-13px letter-spacing-1px">guacastrategy@gmail.com</p>    
+        <h2 class="font-jelle font-size-20px-2c letter-spacing-1px mt-5">Dirección</h2>
+        <p class="font-quicksand font-size-13px letter-spacing-1px">Calle 39 Bis B #29-22</p>                       
+    </div>
+
+    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     {% endcomment %}
 {% endblock scripts %}

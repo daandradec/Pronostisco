@@ -551,6 +551,7 @@
 
 .font-size-60px-4c{font-size: 60px;}
 .font-size-40px-4c{font-size: 40px;}
+.font-size-28px-4c{font-size: 28px;}
 
 .font-size-60px-5c{font-size: 60px;}
 .font-size-40px-5c{font-size: 40px;}
@@ -568,6 +569,7 @@
 
   .font-size-60px-4c{font-size:57px;}
   .font-size-40px-4c{font-size:37px;}
+  .font-size-28px-4c{font-size: 25px;}
 }
 
 @media (max-width: 1200px){
@@ -576,6 +578,7 @@
 
   .font-size-60px-4c{font-size:54px;}
   .font-size-40px-4c{font-size:34px;}
+  .font-size-28px-4c{font-size: 23px;}
 
   .font-size-80px-3c{font-size:77px;}
   .font-size-79px-3c{font-size:76px;}
@@ -725,6 +728,7 @@
 
   .font-size-60px-4c{font-size:51px;}
   .font-size-40px-4c{font-size:31px;}
+  .font-size-28px-4c{font-size: 20px;}
 
 
 
@@ -873,6 +877,7 @@
 @media (max-width: 800px){
   .font-size-60px-4c{font-size:48px;}
   .font-size-40px-4c{font-size:28px;}
+  .font-size-28px-4c{font-size: 17px;}
 
 
   .font-size-80px-3c{font-size:71px;}
@@ -952,24 +957,21 @@
 .font-responsive{
   font-size: 1em;
 }
-.font-responsive-sm{font-size: 1em;}
-.font-responsive-1-5-sm{font-size: 1.45em;}
-.font-responsive-2-sm{font-size: 2em;}
+.font-responsive-2{font-size:2em;}
 
 @media (max-width: 1400px){
   .font-responsive{font-size:90%;}
-  .font-responsive-1-5-sm{font-size: 85%;}
+  .font-responsive-2{font-size:90%;}
 }
 @media (max-width: 1200px){
   .font-responsive{font-size:85%;}
-
+  .font-responsive-2{font-size:85%;}
 }
 @media (max-width: 1090px){
   .font-responsive{font-size:80%;}
+  .font-responsive-2{font-size:80%;}
 }
 @media (max-width: 800px){
   .font-responsive{font-size:65%;}
-  .font-responsive-sm{font-size:80%;}
-  .font-responsive-1-5-sm{font-size: 75%;}
-  .font-responsive-2-sm{font-size:70%;}
+  .font-responsive-2{font-size:65%;}
 }

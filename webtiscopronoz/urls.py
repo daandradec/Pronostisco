@@ -30,7 +30,8 @@ urlpatterns = [
     path('mrp/input-data', core_views.mrp_input_data, name="mrpinputdata"),
     path('mrp/output', core_views.mrp_output, name="mrpoutput"),
     path('mrp/download', core_views.mrp_download, name="mrpdownload"),
-    path('mrp/download/all', core_views.mrp_download_all, name="mrpdownloadall")
+    path('mrp/download/all', core_views.mrp_download_all, name="mrpdownloadall"),
+    path('about-us/', core_views.about_us, name="aboutus"),
     # Admin URLS
     ##path('admin/', admin.site.urls),
 ]

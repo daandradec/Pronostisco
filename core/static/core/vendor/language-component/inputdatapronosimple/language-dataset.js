@@ -1,17 +1,17 @@
 language_dataset = [
-    ["ESPAÑOL","SPANISH"],
-    ["INGLES","ENGLISH"],
+    ["PRONÓSTICO SIMPLE","SIMPLE FORECAST"],
+    ["PRONÓSTICO ALPHA","ALPHA FORECAST"],
     ["ESPAÑOL","SPANISH"],
     ["INGLES","ENGLISH"],
 
     ["Entrada de Datos","Data entry"],
     ["Pronósticos","Forecasts"],
 
-    ["Bienvenido Usuario, en esta sección tendrá la posibilidad de hacer el ingreso de sus registros de venta para poder hacer el pronostico","Welcome User, in this section you will have the possibility of entering your sales records to be able to make the forecast"],
+    ["Bienvenido a Pronósticos, esta sección analiza todos los datos históricos en una sola línea temporal.","Welcome to Forecasts, this section analyzes all historical data on a single timeline."],    
     ["Arrastra los archivos .xlsx, .xls, .xlsm, .csv aquí ","Drag the .xlsx, .xls, .xlsm, .csv files here"],
     ["Cargar Archivo","Load file"],
     ["¡ IMPORTANTE !","¡ IMPORTANT !"],
-    ["El formato de los datos debe ser una hoja de excel donde a cada celda le corresponda un valor en pesos","The format of the data must be an excel sheet where each cell corresponds a value in pesos"],
+    ["El formato de los datos debe ser una hoja de Excel donde a cada celda le corresponda un valor","The data format must be an Excel sheet where each cell corresponds to a value"],
     ["Ver Ejemplo","See Example"],
     ["Si no dispones de un archivo de Excel puedes optar por crear tu entrada de datos a partir de nuestra tabla","If you do not have an Excel file you can choose to create your data entry from our table"],
     ["CREAR LA TABLA","CREATE THE TABLE"],
@@ -49,15 +49,15 @@ language_dataset = [
 
     ["CREAR ENTRADA DE DATOS","CREATE DATA ENTRY"],
 
-    ["Una gran alternativa para hacer tus pronósticos","A great alternative to make your predictions."],
-    ["Nuestros Métodos","Our Methods"],
-    ["pronósticos simples","simple forecasts"],
-    ["pronósticos estilo alpha","style alpha forecasts"],
-    ["Contacto","Contact"],
+    ["Somos una página web única, la cual pone a su disposición herramientas de ingeniería, que le permitirán realizar un mejor análisis de los datos. Mejorando la efectividad y planificación de los recursos, con el fin de poder tomar mejores decisiones. ", "We are a unique web page, which puts at your disposal engineering tools, which allows you to perform a better analysis of the data. Improving the planning and planning of resources, in order to make better decisions."],
+    ["Pronósticos Simples","Simple Forecast"],
+    ["Pronósticos Alpha","Alpha Forecast"],
+    ["¿Quienes Somos?","About us?"],
+    ["CONTACTO Y REDES","NETWORKS AND CONTACT"],
     ["Correo:","Email"],
-
+    ["Dirección:","Address:"],
     ["Copyright © 2018 Todos los derechos reservados","Copyright © 2018 All rights reserved"],
-
+ 
     ["EJEMPLO ENTRADA","EXAMPLE ENTRY"],
     ["Ejemplo de Entrada 1","Example of Entry 1"],
     ["Ejemplo de Entrada 2","Example of Entry 2"],

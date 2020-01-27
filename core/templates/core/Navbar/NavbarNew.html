@@ -10,8 +10,8 @@
         <div class="collapse navbar-collapse" id="navbarRB">
             <ul class="navbar-nav font-alegreya letter-spacing-2px font-weight-bold ml-auto text-center pr-2">                
                 <li class="center"><a href="{% url 'index' %}{{parameters}}" class="px-4 border-right" style="border-color:#3c3c3c !important;">HOME</a></li>
-                <li class="center"><a href="{% url 'simplepronosinputdata' %}{{parameters}}" class="px-4 border-right" style="border-color:#3c3c3c !important;">PRONÓSTICO SIMPLE</a></li>
-                <li class="center"><a href="{% url 'alphapronosinputdata' %}{{parameters}}" class="px-4 border-right" style="border-color:#3c3c3c !important;">PRONÓSTICO ALPHA</a></li>
+                <li class="center"><a href="{% url 'simplepronosinputdata' %}{{parameters}}" class="px-4 border-right" style="border-color:#3c3c3c !important;" language="true">PRONÓSTICO SIMPLE</a></li>
+                <li class="center"><a href="{% url 'alphapronosinputdata' %}{{parameters}}" class="px-4 border-right" style="border-color:#3c3c3c !important;" language="true">PRONÓSTICO ALPHA</a></li>
                 <li class="center"><a href="{% url 'mrpinputdata' %}{{parameters}}" class="px-4 border-right" style="border-color:#3c3c3c !important;">MRP</a></li>
                 <li class="center"><a href="{% url 'aboutus' %}{{parameters}}" class="px-4">¿QUIENES SOMOS?</a></li>
                 <li class="dropdown">
@@ -19,8 +19,8 @@
                         <img src="{% static 'core/img/español.png' %}" style="width:20px;margin-top: -3px !important;" language-image="true">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                        <button class="dropdown-item" style="cursor:pointer;" onclick="changeLanguage('ES')">Español <img src="{% static 'core/img/español.png' %}" width="32px"></button>
-                        <button class="dropdown-item" style="cursor:pointer;" onclick="changeLanguage('EN')">Ingles <img src="{% static 'core/img/ingles.png' %}" width="32px"></button>
+                        <button class="dropdown-item" style="cursor:pointer;" language="true" onclick="changeLanguage('ES')">Español <img src="{% static 'core/img/español.png' %}" width="32px"></button>
+                        <button class="dropdown-item" style="cursor:pointer;" language="true" onclick="changeLanguage('EN')">Ingles <img src="{% static 'core/img/ingles.png' %}" width="32px"></button>
                     </div>
                 </li>
             </ul>

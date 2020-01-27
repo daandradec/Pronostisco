@@ -1,13 +1,13 @@
 language_dataset = [
-    ["ESPAÑOL","SPANISH"],
-    ["INGLES","ENGLISH"],
+    ["PRONÓSTICO SIMPLE","SIMPLE FORECAST"],
+    ["PRONÓSTICO ALPHA","ALPHA FORECAST"],
     ["ESPAÑOL","SPANISH"],
     ["INGLES","ENGLISH"],
 
     ["Entrada de Datos","Data entry"],
     ["Resultados","Results"],
 
-    ["Bienvenido Usuario, para el MRP ingrese toda la información solicitada y cree su arbol de producto ", "Welcome User, for the MRP enter all the requested information and create your product tree"],
+    ["Bienvenido a MRP, esta sección le ayudara a saber ¿Qué?, ¿Cuándo?, ¿Cuánto? Y ¿Cómo? Realizar la producción de cada uno de sus productos.", "Welcome to MRP, this section will help you know What ?, When ?, How much? And how? Perform the production of each of its products."],
     ["Nombre del producto:","Product name:"],
     ["Componentes","Components"],    
     ["Indice","Index"],
@@ -30,12 +30,14 @@ language_dataset = [
     ["REGRESAR","TO RETURN"],
     ["CONFIRMAR","CONFIRM"],
 
-    ["Una gran alternativa para hacer tus pronósticos","A great alternative to make your predictions."],
-    ["Nuestros Métodos","Our Methods"],
-    ["pronósticos simples","simple forecasts"],
-    ["pronósticos estilo alpha","style alpha forecasts"],
-    ["Contacto","Contact"],
-    ["Correo:","Email"],
 
+
+    ["Somos una página web única, la cual pone a su disposición herramientas de ingeniería, que le permitirán realizar un mejor análisis de los datos. Mejorando la efectividad y planificación de los recursos, con el fin de poder tomar mejores decisiones. ", "We are a unique web page, which puts at your disposal engineering tools, which allows you to perform a better analysis of the data. Improving the planning and planning of resources, in order to make better decisions."],
+    ["Pronósticos Simples","Simple Forecast"],
+    ["Pronósticos Alpha","Alpha Forecast"],
+    ["¿Quienes Somos?","About us?"],
+    ["CONTACTO Y REDES","NETWORKS AND CONTACT"],
+    ["Correo:","Email"],
+    ["Dirección:","Address:"],
     ["Copyright © 2018 Todos los derechos reservados","Copyright © 2018 All rights reserved"],
 ]

@@ -7,7 +7,7 @@ language_dataset = [
     ["Entrada de Datos","Data entry"],
     ["Pronósticos","Forecasts"],
 
-    ["Bienvenido a Pronósticos, esta sección analiza todos los datos históricos en una sola línea temporal.","Welcome to Forecasts, this section analyzes all historical data on a single timeline."],    
+    ["Bienvenido a Pronósticos Alpha, esta sección analiza todos los datos según los periodos establecidos en el mismo (Meses, semanas, días).","Welcome to Alpha Forecasts, this section analyzes all the data according to the periods established in it (Months, weeks, days)."],    
     ["Arrastra los archivos .xlsx, .xls, .xlsm, .csv aquí ","Drag the .xlsx, .xls, .xlsm, .csv files here"],
     ["Cargar Archivo","Load file"],
     ["¡ IMPORTANTE !","¡ IMPORTANT !"],

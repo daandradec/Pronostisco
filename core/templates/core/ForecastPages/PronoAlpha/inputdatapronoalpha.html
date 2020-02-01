@@ -22,6 +22,7 @@
 
 {% block modal %}
     {% include 'core/Modal/ModalExampleForecast/ModalExampleForecast.html' %}
+    {% include "core/Modal/Modal.html" with modalId="modalTable" modalBasePath="core/Modal/" modalHeaderPath="ModalExampleForecastTable/ModalExampleForecastTableHeader.html" modalBodyPath="ModalExampleForecastTableAlpha/ModalExampleForecastTableAlpha.html" %}
 {% endblock %}
 
 {% block scripts %}

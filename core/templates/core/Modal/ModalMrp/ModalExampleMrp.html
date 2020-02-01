@@ -1,15 +1,25 @@
 {% load static %}
 <section class="py-4 px-2">
     <div class="container-fluid display-no-lg">
+        <p class="font-quicksand font-size-18px-2c text-muted text-justify px-4">
+            MRP (Planeación del requerimiento de materiales) es un sistema el cual establece las cantidades y costos de una producción, 
+            realizando un procedimiento que establece los componentes y materias primas en unos tiempos determinados. Dando como resultado 
+            un plan de compras y un plan maestro de producción. Le brindara una planificación en la cual usted pobra controlar las 
+            cantidades de inventario, requerimientos netos, stocks de seguridad, recepciones programadas, lead time, PRO, PCO, entre otros. 
+            El procedimiento inicia mediante una descomposición del producto en componentes y materias primas, las cuales se reflejaran a 
+            través de un árbol de fabricación denominado BOM del producto.
+        </p>
         <div class="row py-3">
             <div class="col-lg-6 center">
                 <div>
                     <h2 class="font-weight-bold color-orange-lighten-1">Paso 1</h2>
                     <p class="font-quicksand font-size-18px-2c text-muted text-justify">
-                        Una MRP (sistema de planificación de recursos), es una herramienta para la gestión de sus recursos para sus procesos de producción,
-                        así que el paso 1 para usar nuestro sistema es abstraer su Producto principal y subdividirlo en componentes y materias primas, que junto
-                        a datos que pueda ingresar usted obtendra unos resultados para tomar decisiones. Por ejemplo si quiere saber cuanto le cuesta hacer una camisa,
-                        crea el producto camisa y sus partes, e ingresa datos como costos, y obtiene los resultados.
+                        <b>Componentes:</b> Generalmente son subsiguientes al producto, tienden a ser partes conformadas por materias primas o que sufren una
+                        transformación. Ejemplo: En una camisa (Producto), puede estar conformada por mangas, pecho, espalda, cuello, entre otros. 
+                        Estas partes son componentes debido que están fabricadas por materias primas (Tela, hilo, botones, entre otros). <br/>
+                        <b>Materias Primas:</b> Estos son los insumos que generalmente son comprados o que no tiene ninguna intervención antes de ser 
+                        utilizados. Ejemplo: En una camisa (Producto), las materias primas obtenidas de un proveedor y necesarias para la fabricación 
+                        son: Tela, hilo, botones, entre otros. 
                     </p>
                 </div>
             </div>
@@ -20,14 +30,18 @@
 
         <div class="row py-3">
             <div class="col-lg-6 center">
-                <img src="{% static 'core/img/example_mrp_2.PNG' %}" alt="camisa">
+                <img src="{% static 'core/img/example_mrp_3.PNG' %}">
             </div>
             <div class="col-lg-6 center">
                 <div>
                     <h2 class="font-weight-bold color-orange-lighten-1">Paso 2</h2>
                     <p class="font-quicksand font-size-18px-2c text-muted text-justify">
-                        Usted dispone de un grafico de arbol para ver como se compone su producto. Tambien dispone de un campo de texto
-                        para modificar el nombre de su producto como desee, y mas abajo los bloques de creacion de componentes y materias primas.
+                        En la imagen 2, se puede apreciar el formato para ingresar los componentes y materias primas necesarios para la fabricación de un producto. <br/>
+                        <b>Nombre:</b> Digite el nombre del componente o materia prima.<br/>
+                        <b>Padre (Antecesor):</b> Es el producto o componente que se encuentra anteriormente del flujo de producción. Ver Imagen 3. 
+                        Añadir padre: Se utiliza cuando varios de los componentes utilicen la misma materia prima 
+                        (No es necesario crear varias veces la misma materia prima).<br/>
+                        <b>Cantidad:</b> Digite la cantidad específica necesaria para la fabricación de un componente o un producto.
                     </p>                    
                 </div>
             </div>            
@@ -38,46 +52,58 @@
                 <div>
                     <h2 class="font-weight-bold color-orange-lighten-1">Paso 3</h2>
                     <p class="font-quicksand font-size-18px-2c text-muted text-justify">
-                        Utilice los botones para crear componentes y materias primas que conforman su producto, haga click en el nombre para modificar
-                        el nombre de ese componente o materia, y tambien utiliza el campo numerico para definir la cantidad de ese componente o materia prima
-                        que tiene con respecto al padre al que esta asociado.
+                        En el icono <img src="{% static 'core/img/instr-mrp-icon-button.PNG' %}"> podrá descargar el árbol de fabricación BOM, realizando una captura de como este el grafo al momento de dar clic, por lo tanto es necesario ajustarlo según como desee que se descargue. 
+                        Una vez ingresados todos los componentes y materias primas con sus correspondientes datos, y verificar que el árbol de fabricación BOM siga un flujo lógico y acertado de Clic en confirmar. 
                     </p>                    
                 </div>
             </div>
             <div class="col-lg-6 center">
-                <img src="{% static 'core/img/example_mrp_3.PNG' %}" alt="camisa">
+                <img src="{% static 'core/img/example_mrp_2.PNG' %}">
             </div>
         </div>
 
     </div>    
 
     <div class="display-only-lg">
+        <p class="font-quicksand font-size-18px-2c text-muted text-justify px-4">
+            MRP (Planeación del requerimiento de materiales) es un sistema el cual establece las cantidades y costos de una producción, 
+            realizando un procedimiento que establece los componentes y materias primas en unos tiempos determinados. Dando como resultado 
+            un plan de compras y un plan maestro de producción. Le brindara una planificación en la cual usted pobra controlar las 
+            cantidades de inventario, requerimientos netos, stocks de seguridad, recepciones programadas, lead time, PRO, PCO, entre otros. 
+            El procedimiento inicia mediante una descomposición del producto en componentes y materias primas, las cuales se reflejaran a 
+            través de un árbol de fabricación denominado BOM del producto.
+        </p>    
         <div>
             <h2 class="font-weight-bold color-orange-lighten-1">Paso 1</h2>
             <p class="font-quicksand font-size-18px-2c text-muted text-justify">
-                Una MRP (sistema de planificación de recursos), es una herramienta para la gestión de sus recursos para sus procesos de producción,
-                así que el paso 1 para usar nuestro sistema es abstraer su Producto principal y subdividirlo en componentes y materias primas, que junto
-                a datos que pueda ingresar usted obtendra unos resultados para tomar decisiones. Por ejemplo si quiere saber cuanto le cuesta hacer una camisa,
-                crea el producto camisa y sus partes, e ingresa datos como costos, y obtiene los resultados.
+                <b>Componentes:</b> Generalmente son subsiguientes al producto, tienden a ser partes conformadas por materias primas o que sufren una
+                transformación. Ejemplo: En una camisa (Producto), puede estar conformada por mangas, pecho, espalda, cuello, entre otros. 
+                Estas partes son componentes debido que están fabricadas por materias primas (Tela, hilo, botones, entre otros). <br/>
+                <b>Materias Primas:</b> Estos son los insumos que generalmente son comprados o que no tiene ninguna intervención antes de ser 
+                utilizados. Ejemplo: En una camisa (Producto), las materias primas obtenidas de un proveedor y necesarias para la fabricación 
+                son: Tela, hilo, botones, entre otros.
             </p>
             <img src="{% static 'core/img/example_mrp.jpg' %}" class="img-fluid" alt="camisa">
         </div>
         <div>
             <h2 class="font-weight-bold color-orange-lighten-1">Paso 2</h2>
             <p class="font-quicksand font-size-18px-2c text-muted text-justify">
-                Usted dispone de un grafico de arbol para ver como se compone su producto. Tambien dispone de un campo de texto
-                para modificar el nombre de su producto como desee, y mas abajo los bloques de creacion de componentes y materias primas.
+                En la imagen 2, se puede apreciar el formato para ingresar los componentes y materias primas necesarios para la fabricación de un producto. <br/>
+                <b>Nombre:</b> Digite el nombre del componente o materia prima.<br/>
+                <b>Padre (Antecesor):</b> Es el producto o componente que se encuentra anteriormente del flujo de producción. Ver Imagen 3. 
+                Añadir padre: Se utiliza cuando varios de los componentes utilicen la misma materia prima 
+                (No es necesario crear varias veces la misma materia prima).<br/>
+                <b>Cantidad:</b> Digite la cantidad específica necesaria para la fabricación de un componente o un producto.
             </p> 
-            <img src="{% static 'core/img/example_mrp_2.PNG' %}" class="img-fluid" alt="camisa">                   
+            <img src="{% static 'core/img/example_mrp_3.PNG' %}" class="img-fluid">                   
         </div>        
         <div>
             <h2 class="font-weight-bold color-orange-lighten-1">Paso 3</h2>
             <p class="font-quicksand font-size-18px-2c text-muted text-justify">
-                Utilice los botones para crear componentes y materias primas que conforman su producto, haga click en el nombre para modificar
-                el nombre de ese componente o materia, y tambien utiliza el campo numerico para definir la cantidad de ese componente o materia prima
-                que tiene con respecto al padre al que esta asociado.
+                En el icono <img src="{% static 'core/img/instr-mrp-icon-button.PNG' %}"> podrá descargar el árbol de fabricación BOM, realizando una captura de como este el grafo al momento de dar clic, por lo tanto es necesario ajustarlo según como desee que se descargue. 
+                        Una vez ingresados todos los componentes y materias primas con sus correspondientes datos, y verificar que el árbol de fabricación BOM siga un flujo lógico y acertado de Clic en confirmar. 
             </p>   
-            <img src="{% static 'core/img/example_mrp_3.PNG' %}" class="img-fluid" alt="camisa">            
+            <img src="{% static 'core/img/example_mrp_2.PNG' %}" class="img-fluid">            
         </div>        
     </div>
 </section>

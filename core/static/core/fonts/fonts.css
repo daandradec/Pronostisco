@@ -34,6 +34,11 @@
   src: url('Exo2/7cHmv4okm5zmbtYsK-4E4Q.woff2');
 }
 @font-face{
+  font-family: 'Gadugi';
+  font-style: normal;  
+  src: url('Gadugi/gadugi.ttf');
+}
+@font-face{
   font-family: 'Jelle';
   font-style: normal;  
   src: url('Jelle/Jellee-Roman.ttf');
@@ -112,6 +117,9 @@
 .font-exo2{
   font-family: 'Exo2';
   font-weight: 450;
+}
+.font-gadugi{
+  font-family: 'Gadugi';
 }
 .font-jelle{
   font-family: 'Jelle';

@@ -1,7 +1,7 @@
 /* CSS DOCUMENT */
 
 header{
-    background-image: linear-gradient(to right,rgba(153, 146, 143, 0.8) 0%,rgba(55, 66, 168,0.7) 100%),url('../../img/background-05.jpg');
+    background-image: linear-gradient(to right,rgba(153, 146, 143, 0.8) 0%,rgba(55, 66, 168,0.7) 100%),url('../../img/stock_1.jpg');
     background-size: cover;   
     background-blend-mode: multiply; 
 }

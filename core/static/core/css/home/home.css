@@ -1,7 +1,7 @@
 
 .home-image-bg-stock{
-    background-image: linear-gradient(to right,rgb(194, 192, 113) 0%,rgb(0, 148, 148) 100%),url('../../img/stock_1.jpg');
-    background-position: center;
+    background-image: linear-gradient(to right,rgb(194, 192, 113) 0%,rgb(0, 148, 148) 100%),url('../../img/background-05.jpg');
+    background-position: 50% 80%;
     background-blend-mode: multiply;
     position:relative;
 }

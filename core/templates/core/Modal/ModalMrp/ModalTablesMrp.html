@@ -1,7 +1,36 @@
 {% load static %}
 <section class="py-3 px-2">
     <p class="font-quicksand font-size-18px-2c text-muted text-justify text-center">
-        En esta salida del MRP encontraras 2 secciones, la 1era son unos items desplegables con el analisis completo del MRP 
-        individual para cada componente, materia prima y producto, mientras que la 2da son los planes de compras pronosticados.
-    </p>   
+        Esta sección muestra todos los resultados de la planeación de los requerimientos de materiales, los cuales van a ser mostrados
+        siguiendo la fluidez de la fabricación del producto, iniciando por el producto terminado, posteriormente componentes y materias
+        primas. 
+        Los resultados muestran diferentes ítems importantes para comprender la planificación de la producción según el horizonte de 
+        planeación. A continuación se realiza una descripción de cada uno de los ítems que se muestran  en las tablas de MRP. 
+    </p> 
+    <p class="font-quicksand font-size-18px-2c text-muted text-justify px-3 mt-5 mb-3">
+        •	<b>Déficit:</b> Son las cantidades que por causa del lead time no son entregadas las órdenes de compra (PRO) debido al tiempo que se solicitaron (PCO). <br/>
+        •	<b>Demanda del producto:</b> Son las cantidades a fabricar durante el horizonte de planeación. Generalmente son pronósticos de demanda o presupuestos del área de ventas. <br/>
+        •	<b>Requerimiento bruto:</b> Son las cantidades calculadas según los requerimientos de los componentes y materias primas. <br/>
+        •	<b>Inventario:</b> Son las existencias en inventario disponibles correspondientes a cada periodo según las necesidades establecidas en el periodo anterior. <br/>
+        •	<b>Requerimiento neto:</b> Son las cantidades calculadas después de discriminar inventarios, stock de seguridad y recepciones programadas, según los requerimientos brutos. <br/> 
+        •	<b>Plan de recibir órdenes (PRO):</b> Son los requerimientos necesarios para cumplir con la demanda establecida.<br/>
+        •	<b>Plan de colocar órdenes (PCO):</b> Son los requerimientos necesarios para cumplir con la demanda establecida teniendo en cuenta los tiempos de entrega por el proveedor. <br/>
+        •	<b>Costo de ordenar:</b> Los costos de ordenar se hallarán a partir de las actividades en el proceso logístico de gestión de compras.<br/>
+        •	<b>Costos de mantenimiento de inventario:</b> Los costos de mantenimiento se establecen según los componentes involucrados en el proceso de inventario de existencias. <br/>
+        •	<b>Costo de compra:</b> El costo de compra o costo unitario es en el que se incurre para obtener una unidad de producto por los requerimientos netos necesarios. <br/>
+        •	<b>Costo total:</b> Es la suma total de todos los costos asociados a la planificación del producto terminado, componentes y materias primas.  
+    </p>
+    <h2 class="font-quicksand text-left mt-5">COSTO PROMEDIO UNITARIO</h2>
+    <p class="font-quicksand font-size-18px-2c text-muted text-justify mb-5 px-3">
+        •	<b>Costo unitario de compra:</b> Es el costo asociado según los requerimientos netos durante todo el horizonte de planeación. <br/>
+        •	<b>Costos de mantenimiento:</b> Es el costo asociado según los inventarios establecidos durante todo el horizonte de planeación. <br/>
+        •	<b>Costo unitario por Setup:</b> Es el costo asociado según los costos de pedido durante todo el horizonte de planeación. <br/>
+    </p>
+    <p class="font-quicksand font-size-18px-2c text-muted text-justify">
+        <b>Plan de compras:</b> Se establecen las cantidades a comprar de materias primas para realizar la fabricación de las unidades a producir. <br/>
+        <b>Plan maestro de producción:</b> Establece las cantidades de producto terminado y componentes necesarios para cumplir con los requerimientos netos de producción. <br/>
+        <b>Plan maestro de costos:</b> Muestra los costos totales de toda la gestión de producción. <br/>
+
+        <b>*Nota:</b> Descarga de archivos Excel: Se pueden realizar las descarga al final de cada una de las tablas de MRP o la descarga de toda la gestión del MRP al final del modelo.     
+    </p>
 </section>

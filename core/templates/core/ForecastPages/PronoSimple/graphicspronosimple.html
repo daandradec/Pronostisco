@@ -14,6 +14,8 @@
 
     <section class="my-4">
 
+        <div class="my-3 text-center"> <span>{% include "core/Modal/ModalButton.html" with modalId="#modalResults" %} </span></div>
+        
         {% include 'core/ForecastPages/TagBlock/tag-block.html' %}
 
         <div class="container-fluid">
@@ -74,6 +76,7 @@
 
 {% block modal %}
     {% include "core/Modal/Modal.html" with modalId="modalExample" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecast/ModalForecastBody.html" %}
+    {% include "core/Modal/Modal.html" with modalId="modalResults" modalBasePath="core/Modal/" modalHeaderPath="ModalExampleResultForecast/ModalExampleResultForecastHeader.html" modalBodyPath="ModalExampleResultForecast/ModalExampleResultForecast.html" %}
 {% endblock %} 
 
 {% block modal_fore_lin %}
@@ -89,7 +92,8 @@
 {% endblock %} 
 
 {% block modal_graph_complete %}
-    {% include "core/Modal/Modal.html" with modalId="modalFull" modalBasePath="core/Modal/" modalHeaderPath="ModalHeader.html" modalBodyPath="ModalGraphComplete/ModalGraphComplete.html" %}
+    {% include "core/Modal/Modal.html" with modalId="modalFull" modalBasePath="core/Modal/" modalHeaderPath="ModalHeader.html" modalBodyPath="ModalGraphComplete/ModalGraphComplete.html" %}    
+    
 {% endblock %}
 
 {% block scripts %}
@@ -103,6 +107,7 @@
     <script src="{% static 'core/vendor/chartjs-2.7.3/line-chart-global.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/line-chart-02.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/download-chart.js' %}"></script>
+    <script src="{% static 'core/helpers/Modal/modal-hidden.js' %}"></script>
     <script src="{% static 'core/helpers/Modal/modal-graphic.js' %}"></script>
     <script src="{% static 'core/js/Http/link-to-post-link.js' %}"></script>
     <script src="{% static 'core/helpers/ForecastPages/ActivateTable/show-table.js' %}"></script>

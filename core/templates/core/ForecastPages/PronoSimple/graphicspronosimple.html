@@ -76,7 +76,6 @@
 
 {% block modal %}
     {% include "core/Modal/Modal.html" with modalId="modalExample" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecast/ModalForecastBody.html" %}
-    {% include "core/Modal/Modal.html" with modalId="modalResults" modalBasePath="core/Modal/" modalHeaderPath="ModalExampleResultForecast/ModalExampleResultForecastHeader.html" modalBodyPath="ModalExampleResultForecast/ModalExampleResultForecast.html" %}
 {% endblock %} 
 
 {% block modal_fore_lin %}
@@ -93,7 +92,7 @@
 
 {% block modal_graph_complete %}
     {% include "core/Modal/Modal.html" with modalId="modalFull" modalBasePath="core/Modal/" modalHeaderPath="ModalHeader.html" modalBodyPath="ModalGraphComplete/ModalGraphComplete.html" %}    
-    
+    {% include "core/Modal/Modal.html" with modalId="modalResults" modalBasePath="core/Modal/" modalHeaderPath="ModalExampleResultForecast/ModalExampleResultForecastHeader.html" modalBodyPath="ModalExampleResultForecast/ModalExampleResultForecast.html" %}
 {% endblock %}
 
 {% block scripts %}

@@ -1,6 +1,7 @@
 language_dataset = [
     ["PRONÓSTICO SIMPLE","SIMPLE FORECAST"],
     ["PRONÓSTICO ALPHA","ALPHA FORECAST"],
+    ["¿Quienes Somos?","ABOUT US?"],
     ["ESPAÑOL","SPANISH"],
     ["INGLES","ENGLISH"],
 

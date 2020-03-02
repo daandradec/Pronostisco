@@ -1,6 +1,7 @@
 language_dataset = [
     ["PRONÓSTICO SIMPLE","SIMPLE FORECAST"],
     ["PRONÓSTICO ALPHA","ALPHA FORECAST"],
+    ["¿Quienes Somos?","ABOUT US?"],
     ["ESPAÑOL","SPANISH"],
     ["INGLES","ENGLISH"],
 
@@ -58,10 +59,16 @@ language_dataset = [
     ["Dirección:","Address:"],
     ["Copyright © 2018 Todos los derechos reservados","Copyright © 2018 All rights reserved"],
  
-    ["EJEMPLO ENTRADA","EXAMPLE ENTRY"],
+    ["EJEMPLO ENTRADA","ENTRY EXAMPLE"],
+    ["Es necesario que los datos sean ordenados desde la columna A y la fila 1 en su archivo de Excel (En donde en la columna A irán la especificación de los datos). Solamente se aceptan periodos de Años/Meses, Mes/Semanas o Semanas/Días (Imagen 1 e imagen 2). Es importante completar cada una de las celdas (Imagen 3) según el formato de periodo seleccionado porque o sino el programa no lo leera “arrojara Server Error (500)” Los Formatos de Archivos Permitidos son .xls, .xlsm, .xlsx, y .csv", "It is necessary that the data be sorted from column A and row 1 in your Excel file (where in column A will go the specification of the data). Only periods of Years / Months, Month / Weeks or Weeks / Days are accepted (Image 1 and image 2). It is important to complete each of the cells (Image 3) according to the format of the selected period because the program will not read “Server error thrown (500)” The Permitted File Formats are .xls, .xlsm, .xlsx, and. csv"],
     ["Ejemplo de Entrada 1","Example of Entry 1"],
-    ["Ejemplo de Entrada 2","Example of Entry 2"],
-    ["Información Importante","Important information"],
-    ["Primer cosa a considerar es que por el momento solo se aceptan periodos de Años/Meses o Semanas/Días tal y como se muestra en las imágenes de ejemplo, se aconseja empezar desde la columna A y la fila 1 en su archivo de excel, y solo se acepta un limite mínimo de 2 filas ya sea en años o semanas y un máximo de 7, ademas los Formatos de Archivos de Excel Permitidos son .xls, .xlsm,.xlsx, y .csv","First thing to consider is that for the moment only periods of Years / Months or Weeks / Days are accepted as shown in the example images, it is advisable to start from column A and row 1 in your excel file, and only a minimum limit of 2 rows is accepted either in years or weeks and a maximum of 7, plus the Excel File Formats Allowed are .xls, .xlsm, .xlsx, and .csv"],
+    ["Ejemplo de Entrada 2","Example of Entry 2"],  
+    ["Ejemplo de Entrada 3","Example of Entry 3"],
 
+    ["EJEMPLO USO","USE EXAMPLE"],
+    ["Crear tabla de datos:","Create data table:"],
+    ["Seleccione el formato de periodo deseado Años/Meses, Mes/Semanas o Semana/Días. Es importante ingresar los datos históricos en cada una de las celdas, delo contrario las celdas en blanco se tomaran como cero (0), si no va a utilizar una fila puede eliminarla dando clic en","Select the desired period format Years / Months, Month / Weeks or Week / Days. It is important to enter the historical data in each of the cells, otherwise the blank cells will be taken as zero (0), if you are not going to use a row you can delete it by clicking on"],
+    ["Una vez ingresado los datos de clic en crear entrada de datos.","Once you have entered the data click on create data entry."],
+    ["*Nota:","*Note:"],
+    ["el número máximo de filas que se pueden ingresar son siente (7).","the maximum number of rows that can be entered is felt (7)."]
 ]

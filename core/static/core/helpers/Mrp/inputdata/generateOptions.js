@@ -64,7 +64,7 @@ function setAllEdgesAndNumbersFromSelect(select){
 }
 
 function handleInputNumberChange(){
-    const inputs = document.querySelectorAll("input[type=number]");
+    const inputs = document.querySelectorAll("input[type=number]");    
     for(var i = 0; i< inputs.length; ++i){
         inputs[i].onchange = function(e){
             const tr = this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
@@ -75,13 +75,16 @@ function handleInputNumberChange(){
 
             if(flag){
                 const id = parseInt(tr.getAttribute("componente_id"));            
-                
-                state.componentes[id-1].amount[key] = generateNewNumberValue(id, "tr[componente_id='"+id+"'] select", value_select_associated, state.componentes);
+                const index_componente = getIndexWithBinarySearchJson(id, state.componentes);
+
+                state.componentes[index_componente].amount[key] = generateNewNumberValue(id, "tr[componente_id='"+id+"'] select", value_select_associated, state.componentes);
             }else{
                 const id = parseInt(tr.getAttribute("materia_id")); 
+                const index_materia = getIndexWithBinarySearchJson(id, state.materia);
                 //const key = value_select_associated === 0 ? state.producto.key : state.materia[getIndexWithBinarySearchJson(value_select_associated, state.materia)].key;                        
-                state.materia[id-1].amount[key] = generateNewNumberValue(id, "tr[materia_id='"+id+"'] select", value_select_associated, state.materia);
+                state.materia[index_materia].amount[key] = generateNewNumberValue(id, "tr[materia_id='"+id+"'] select", value_select_associated, state.materia);
             }    
+
             updateTree("SELECT", undefined);
         }
     }
@@ -150,6 +153,6 @@ function generateNewNumberValue(id, literal_string_selectsquery, value_select_as
             number_value += number;
         
         list[index_compo_or_mater].amount_backup.push(number);
-    }
+    }    
     return number_value;
 }

@@ -155,7 +155,6 @@ def alpha_pronos_download_data(request):
     corre_label = request.POST.get('correlabel','')
     corre = request.POST.get('corre','')
 
-    print("nombre archivo: ",prono_label, period)
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="'+'Resource_Beacon_' + prono_label + '.xls' + '"'
     wb = xlwt.Workbook(encoding='utf-8')

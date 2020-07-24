@@ -33,7 +33,7 @@ function getChartConfiguration(labels,data){
 		            xAxes: [{
 		                scaleLabel: {
 		                	display: true,
-		                	labelString:django_x_label_chart_02,
+		                	labelString:forecasts_labels_x,
 		                	fontSize: 16,
 		                }
 		            }]

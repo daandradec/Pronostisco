@@ -18,7 +18,7 @@ function awake(){
 
 	//td_query = document.querySelectorAll("div.tab-content > div.active > div.table-responsive > table > tbody > tr> td:not(:first-child)");
 	//td_query = document.querySelectorAll("table > tbody > tr> td:not(:first-child)");
-	td_query = document.querySelectorAll("div.table-responsive table[table-excel] tbody tr > td:not([cell-excel=true])");
+	td_query = document.querySelectorAll("div.table-responsive table[table-excel] tbody tr > td:not([cell-excel=true]):not(:first-child)");
 	addClickEventTD(td_query);
 
 	activeButtonTableExcel();

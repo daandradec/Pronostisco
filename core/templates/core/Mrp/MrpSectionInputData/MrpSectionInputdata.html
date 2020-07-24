@@ -1,3 +1,4 @@
+{% load static %}
 <section>
     <!-- VISTA 1 -->
     <div class="py-5 px-3 bg-mid-lig-white-gray position-relative" style="opacity:0;min-height:700px;z-index:100;" tab-index="1">
@@ -47,10 +48,8 @@
                             <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 center">
                                 <input type="text" name="producto" id="nombre-producto" class="form-control font-size-20px-2c w-100 py-3" value="Producto">
                             </div>
-                            <div class="d-flex-no-md col-md-4 center-vertical">
-                                <button class="rounded-circle c-pointer ml-4 mt-1 p-0" style="border:none;background:transparent;" type="button" data-toggle="modal" data-target="#modalExample">
-                                    <i class="fas fa-question-circle font-size-23px color-dark-gray"></i>
-                                </button>                    
+                            <div class="d-flex-no-md col-md-4 center-vertical">  
+                                {% include "core/Modal/ModalButton.html" with modalId="#modalExample" %}               
                             </div>
                         </div>
                     </div> 
@@ -88,9 +87,7 @@
         <div class="text-center my-4">
             <h5 class="font-alegreya-sans font-size-24px" style="color:#898989;">
                 <span language="true">A continuación ingrese en las tablas los datos que disponga (si no tiene el dato se tomara como Cero)</span>
-                <button class="rounded-circle c-pointer ml-4 mt-1 p-0" style="border:none;background:transparent;" type="button" data-toggle="modal" data-target="#modalData">
-                    <i class="fas fa-question-circle font-size-23px color-dark-gray"></i>
-                </button> 
+                {% include "core/Modal/ModalButton.html" with modalId="#modalData" %}   
             </h5>
         </div>
 

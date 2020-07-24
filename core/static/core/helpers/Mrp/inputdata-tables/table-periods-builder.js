@@ -33,7 +33,7 @@ function alterRespectiveTable(table, table_index){
     switch(table_index){
         case 0:
             table.children[0].innerHTML = "<tr><th>PERIODOS</th>"+generateTHPeriod(current_index)+"</tr>";
-            table.children[1].innerHTML = "<tr><td>Demanda</td>"+td.repeat(current_index)+"</tr>";
+            table.children[1].innerHTML = "<tr><td>Datos Historicos</td>"+td.repeat(current_index)+"</tr>";
             break;
         case 1:
             if(flagGeneralTable){

@@ -155,8 +155,9 @@ def alpha_pronos_download_data(request):
     corre_label = request.POST.get('correlabel','')
     corre = request.POST.get('corre','')
 
+    print("nombre archivo: ",prono_label, period)
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="' + prono_label + '.xls' + '"'
+    response['Content-Disposition'] = 'attachment; filename="'+'Resource_Beacon_' + prono_label + '.xls' + '"'
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet("sheet1",cell_overwrite_ok=True)
     font_style = xlwt.XFStyle()
@@ -243,7 +244,7 @@ def mrp_download(request):
     all_info_mrp_keys = json.loads(request.POST.get('all_info_mrp_keys',''))  
     key = request.POST.get('key','')
     name = request.POST.get('name','')
-    response, ws, wb, font_style = instanciate_excel_response("MrpItem.xls")
+    response, ws, wb, font_style = instanciate_excel_response("Resource_Beacon_MrpItem.xls")
     response = build_excel_book_mrp_unique(all_info_mrp_keys, key, name, response, ws, wb, font_style)
 
     return response
@@ -253,7 +254,7 @@ def mrp_download_all(request):
     all_info_mrp_keys = json.loads(request.POST.get('all_info_mrp_keys',''))  
     mrp = json.loads(request.POST.get('mrp',''))
     periods = int(request.POST.get('periods'))        
-    response, ws, wb, font_style = instanciate_excel_response("MrpCompleto.xls")
+    response, ws, wb, font_style = instanciate_excel_response("Resource_Beacon_MrpCompleto.xls")
     response = build_excel_book_mrp_complete(all_info_mrp_keys, mrp, periods, response, ws, wb, font_style)
 
     return response

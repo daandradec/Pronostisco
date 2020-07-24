@@ -35,7 +35,7 @@ const collapse_zone =
                 '<tr blue="true">'+
                 '</tr>'+
                 '<tr white="true">'+
-                    '<td>Demanda</td>'+
+                    '<td>Datos Historicos</td>'+
                 '</tr>'+        
                 '<tr>'+
                     '<td>Requerimiento Bruto</td>'+                          

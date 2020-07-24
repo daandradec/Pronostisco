@@ -56,7 +56,7 @@ function getChartConfiguration(labels,data){
 	for(var i = 0;i < data.length; ++i){
 		config.data.datasets.push(
 			{
-				label: singular_label_chart_02 + (i+1)+" "+(getCurrentLanguage() == 'ES' ? 'Demanda': 'DEMAND'),
+				label: singular_label_chart_02 + (i+1)+" "+(getCurrentLanguage() == 'ES' ? 'Datos Historicos': 'Historic Data'),
 				backgroundColor: window.chartColorsList[i],
 				borderColor: window.chartColorsList[i],
 				pointRadius: 7,

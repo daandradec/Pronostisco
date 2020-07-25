@@ -23,13 +23,14 @@ function awake(){
 
 	activeButtonTableExcel();
 
-	nav_tab_button_days = document.getElementById("navtab2");
-	nav_tab_button_years = document.getElementById("navtab1");	
-	nav_tab_button_months = document.getElementById("navtab3");	
-	if(nav_tab_button_days !== undefined && nav_tab_button_days !== null)
-		nav_tab_button_days.addEventListener("mouseup",setTableDays,false);
+	nav_tab_button_years = document.getElementById("navtab1");
+	nav_tab_button_months = document.getElementById("navtab2");
+	nav_tab_button_days = document.getElementById("navtab3");	
+
 	if(nav_tab_button_years !== undefined && nav_tab_button_years !== null)
 		nav_tab_button_years.addEventListener("mouseup",setTableYears,false);
+	if(nav_tab_button_days !== undefined && nav_tab_button_days !== null)
+		nav_tab_button_days.addEventListener("mouseup",setTableDays,false);
 	if(nav_tab_button_months !== undefined && nav_tab_button_months !== null)
 		nav_tab_button_months.addEventListener("mouseup",setTableMonths,false);
 
@@ -108,10 +109,10 @@ function incrementCounterRow(){
 			++counter_table_years
 			break;
 		case 1:
-			++counter_table_days
+			++counter_table_months;			
 			break;
-		case 2:
-			++counter_table_months;
+		case 2:	
+			++counter_table_days
 			break;
 	}
 }
@@ -121,10 +122,10 @@ function decrementCounterRow(){
 			--counter_table_years
 			break;
 		case 1:
-			--counter_table_days
+			--counter_table_months;			
 			break;
-		case 2:
-			--counter_table_months;
+		case 2:	
+			--counter_table_days
 			break;
 	}
 }
@@ -133,13 +134,13 @@ function getCurrentCounter(){
 		case 0:
 			return counter_table_years
 		case 1:
-			return counter_table_days
-		case 2:
 			return counter_table_months
+		case 2:
+			return counter_table_days
 	}
 }
 function setTableDays() {
-	flag_counter = 1;
+	flag_counter = 2;
 	columns = DAYS_COLUMNS;
 }
 function setTableYears(){
@@ -147,7 +148,7 @@ function setTableYears(){
 	columns = YEARS_COLUMNS;
 }
 function setTableMonths(){
-	flag_counter = 2;
+	flag_counter = 1;
 	columns = MONTHS_COLUMNS;
 }
 

@@ -21,7 +21,8 @@ language_dataset = [
     ["Conección y Cantidad","Connection and Quantity"],
     ["Añadir Materia Prima","Add Raw Material"],
     ["CONFIRMAR","CONFIRM"],
-    ["Arbol MRP","Mrp Tree"],
+    ["Arbol De Fabricación BOM","BOM Manufacturing Tree"],
+    ["Descargar","Download"],
 
     ["A continuación ingrese en las tablas los datos que disponga (si no tiene el dato se tomara como Cero)","Then enter the data you have in the tables (if you do not have the data, it will be taken as Zero)"],
     ["Periodos de Tiempo","Periods of time"],

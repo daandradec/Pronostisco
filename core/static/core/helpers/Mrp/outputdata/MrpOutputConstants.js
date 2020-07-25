@@ -123,7 +123,7 @@ const collapse_zone_eng =
                     '<td></td>'+
                     '<td title="true">Lot Size</td>'+
                     '<td></td>'+
-                    '<td title="true">Anticipation time</td>'+
+                    '<td title="true">Lead Time</td>'+
                     '<td></td>'+
                     '<td title="true">Deficit</td>'+
                     '<td></td>'+

@@ -43,7 +43,7 @@ function addClickEventTD(td_query){
 function writeCell(e){
 	//closeActiveCells();
 	var data = e.target.innerHTML;
-	e.target.innerHTML = "<input type='text' name='entrada' class='input-text-excel'>";
+	e.target.innerHTML = "<input type='text' name='entrada' class='input-text-excel' style='border: 1px solid orange;'>";
 	e.target.removeEventListener("click",writeCell);
 	input = e.target.childNodes[0];
 
@@ -64,7 +64,7 @@ function confirmCell(event){
 }
 
 function closeActiveCells(e){
-	if(e.target !== input){
+	if(e !== undefined && e.target !== input){
 		cells = document.querySelectorAll("table[table-excel] td > input")
 		if(cells.length)
 			closeCell(cells[0]);

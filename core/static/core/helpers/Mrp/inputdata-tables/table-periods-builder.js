@@ -33,16 +33,16 @@ function alterRespectiveTable(table, table_index){
     switch(table_index){
         case 0:
             table.children[0].innerHTML = "<tr><th>PERIODOS</th>"+generateTHPeriod(current_index)+"</tr>";
-            table.children[1].innerHTML = "<tr><td>Datos Historicos</td>"+td.repeat(current_index)+"</tr>";
+            table.children[1].innerHTML = "<tr><td>Demanda Producto</td>"+td.repeat(current_index)+"</tr>";
             break;
         case 1:
             if(flagGeneralTable){
                 table.children[0].innerHTML = getCurrentLanguage() == 'ES' ? "<tr><th>Mrp Tree</th><th>Lead Time <input type='checkbox' id='toggle-lead' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th>"+
                                               "<th>Stock de Seguridad <input type='checkbox' id='toggle-stock' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Inventario Inicial</th>"+
-                                              "<th>Q* <input type='checkbox' id='toggle-q' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Costo Unitario</th><th>Costo de Mantenimiento</th><th>Costo de Ordenar</th></tr>"
+                                              "<th>Tamaño De Lote <input type='checkbox' id='toggle-q' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Costo Unitario</th><th>Costo de Mantenimiento</th><th>Costo de Ordenar</th></tr>"
                                               : "<tr><th>Mrp Tree</th><th>Lead Time <input type='checkbox' id='toggle-lead' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th>"+
                                               "<th>Security Stock<input type='checkbox' id='toggle-stock' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Initial Inventory</th>"+
-                                              "<th>Q* <input type='checkbox' id='toggle-q' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Unit cost</th><th>Maintenance Cost</th><th>Ordering Cost</th></tr>";
+                                              "<th>Tamaño De Lote <input type='checkbox' id='toggle-q' checked data-toggle='toggle' data-width='40' data-height='25' data-style='bootstrap-toggle-mrp'></th><th>Unit cost</th><th>Maintenance Cost</th><th>Ordering Cost</th></tr>";
                 $('#toggle-lead').bootstrapToggle();
                 $("#toggle-lead").change(toggleMasterEvent);
                 $('#toggle-stock').bootstrapToggle();
@@ -154,13 +154,21 @@ function removeColumn(table){
 function generateJsonTablesMrp(){
     const tables = document.querySelectorAll("table[table-excel]");  
     const table_forecast = tables[0];
-    const table_general = tables[1];
+    const table_general = setQto1(getValuesOfTable(tables[1]));
     const table_receptions = tables[2];
-    
+
     return {
-        t_general: getValuesOfTable(table_general),
+        t_general: table_general,
         t_forecast: getValuesSimpleOfTable(table_forecast),
         t_receptions: getValuesOfTable(table_receptions),
         t_labels: getLabelsOfTable(table_forecast)
     };
+}
+
+function setQto1(general_table){
+    for(var i = 0;i < general_table.length; ++i){
+        if(general_table[i][3] === 0)
+            general_table[i][3] = 1
+    }
+    return general_table
 }

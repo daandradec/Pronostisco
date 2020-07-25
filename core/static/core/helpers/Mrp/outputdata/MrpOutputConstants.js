@@ -21,9 +21,9 @@ const collapse_zone =
                 '<tr orange="true">'+
                     '<td title="true">Cantidad</td>'+
                     '<td></td>'+
-                    '<td title="true">Tamaño Optimo Q*</td>'+
+                    '<td title="true">Tamaño De Lote</td>'+
                     '<td></td>'+
-                    '<td title="true">Tiempo de anticipación</td>'+
+                    '<td title="true">Lead Time</td>'+
                     '<td></td>'+
                     '<td title="true">Deficit</td>'+
                     '<td></td>'+
@@ -121,7 +121,7 @@ const collapse_zone_eng =
                 '<tr orange="true">'+
                     '<td title="true">Amount</td>'+
                     '<td></td>'+
-                    '<td title="true">Optimal Size Q*</td>'+
+                    '<td title="true">Lot Size</td>'+
                     '<td></td>'+
                     '<td title="true">Anticipation time</td>'+
                     '<td></td>'+

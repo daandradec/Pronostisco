@@ -4,7 +4,7 @@ function getValuesOfTable(table){
     for(var i = 0; i < tr_list.length; ++i){ 
         const sub_list = [];
         const td_list = $(tr_list[i]).find("td:not(:first-child)");
-        for(var j = 0; j < td_list.length; ++j){
+        for(var j = 0; j < td_list.length; ++j){            
             const number = Number(td_list[j].innerHTML.replace(",","."));
             sub_list.push(number);    
         }        

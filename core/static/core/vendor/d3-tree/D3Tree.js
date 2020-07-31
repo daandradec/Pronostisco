@@ -11,6 +11,7 @@ var viewerWidth,viewerHeight,tree,diagonal,svgGroup, baseSvg, root;
 const CIRCLE_SIZE_PIXELS = 20;
 
 var cocienteNodes = 0, oldCocienteNodes = 0, zoom_max = 3;
+var zoom_current = 3;
 
 function startD3Tree(){
     const container_tree = document.getElementById("tree-container").parentElement;
@@ -36,7 +37,7 @@ function startD3Tree(){
     D3Tree(tree_mrp);
 
 
-
+	/* BOTONES */
     document.querySelector("button[tree-download='true']").addEventListener("click",function(e){
         e.stopPropagation();
 
@@ -49,7 +50,49 @@ function startD3Tree(){
 
     }, false);
 
+    document.querySelector("button[tree-reload='true']").addEventListener("click",function(e){
+		e.stopPropagation();
 
+		scale = zoomListener.scale();
+		x = -root.y0 * scale + viewerWidth / 4;
+		y = -root.x0 * scale + viewerHeight / 2;
+		svgGroup.attr("transform", "translate(" + x+","+y + ")scale(" + 3 + ")");
+		zoomListener.scale(3);
+		zoomListener.translate([x, y]);
+
+		// doble vez para corregir el bug de que a la 1era no se centra del todo
+		scale = zoomListener.scale();
+		x = -root.y0 * scale + viewerWidth / 4;
+		y = -root.x0 * scale + viewerHeight / 2;
+		svgGroup.attr("transform", "translate(" + x+","+y + ")scale(" + 3 + ")");
+		zoomListener.scale(3);
+		zoomListener.translate([x, y]);		
+	}, false);
+	
+	
+    document.querySelector("button[tree-plus='true']").addEventListener("click",function(e){
+		e.stopPropagation();
+		zoom_current = Math.clip(zoom_current + zoom_max/5, zoom_min, zoom_max); 	
+		scale = zoomListener.scale();
+		x = -root.y0 * scale + viewerWidth / 4;
+		y = -root.x0 * scale + viewerHeight / 2;
+		var t = [x, y]	
+		svgGroup.attr("transform", "translate(" + t + ")scale(" + zoom_current + ")");
+		zoomListener.scale(zoom_current);
+		zoomListener.translate(t);
+	}, false);	
+	
+    document.querySelector("button[tree-minus='true']").addEventListener("click",function(e){
+		e.stopPropagation();
+		zoom_current = Math.clip(zoom_current - zoom_max/5, zoom_min, zoom_max); 
+		scale = zoomListener.scale();
+		x = -root.y0 * scale + viewerWidth / 4;
+		y = -root.x0 * scale + viewerHeight / 2;
+		var t = [x, y]
+		svgGroup.attr("transform", "translate(" + t + ")scale(" + zoom_current + ")");
+		zoomListener.scale(zoom_current);	
+		zoomListener.translate(t);
+    }, false);	
 }
 
 function D3Tree(treeData){

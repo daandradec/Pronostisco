@@ -76,6 +76,12 @@ function closeCell(input){
 	td_element = input.parentElement;
 	td_element.innerHTML = input.value;
 	td_element.addEventListener("click",writeCell,false);
+
+	// LOCAL STORAGE AL PRESIONAR UNA TECLA
+	if(stateTab !== undefined){
+		if(stateTab == 3)
+			saveStateLocalStorage()
+	}	
 }
 
 function validateCell(e){

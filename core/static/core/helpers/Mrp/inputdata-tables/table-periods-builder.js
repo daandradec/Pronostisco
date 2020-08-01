@@ -119,8 +119,8 @@ function saveStateTableAndReFill(table, table_index){
     
     table_values.push({[state.producto.id]:producto.innerHTML.substring(producto.innerHTML.indexOf("</td>")+5,producto.innerHTML.length)})
     table_values.push(state_componentes);
-    table_values.push(state_materias);        
-    alterRespectiveTable(table, table_index);
+    table_values.push(state_materias);           
+    alterRespectiveTable(table, table_index);    
 }
 
 function generateTHPeriod(repeats){
@@ -171,4 +171,33 @@ function setQto1(general_table){
             general_table[i][3] = 1
     }
     return general_table
+}
+
+function saveStateLocalStorage(){
+    const tables = document.querySelectorAll("table[table-excel]");
+    table_forecast = tables[0].children[1].innerHTML
+    table_general = saveStateTable(tables[1])
+    table_receptions = saveStateTable(tables[2])
+
+    sessionStorage.setItem("table_forecast",table_forecast)
+    sessionStorage.setItem("table_general",JSON.stringify(table_general))
+    sessionStorage.setItem("table_receptions",JSON.stringify(table_receptions))
+}
+
+function saveStateTable(table){
+    var values = [];
+    const producto = $(table).find("tr[producto]")[0];    
+    const componentes = $(table).find("tr[componente_id]");
+    const materias = $(table).find("tr[materia_id]");
+    const state_componentes = {};
+    const state_materias = {};
+    for(var i = 0; i < componentes.length; ++i){
+        state_componentes[parseInt($(componentes[i]).attr("componente_id"))] = componentes[i].innerHTML.substring(componentes[i].innerHTML.indexOf("</td>")+5,componentes[i].innerHTML.length);}
+    for(var i = 0; i< materias.length; ++i)
+        state_materias[parseInt($(materias[i]).attr("materia_id"))] = materias[i].innerHTML.substring(materias[i].innerHTML.indexOf("</td>")+5,materias[i].innerHTML.length);
+    
+    values.push({[state.producto.id]:producto.innerHTML.substring(producto.innerHTML.indexOf("</td>")+5,producto.innerHTML.length)})
+    values.push(state_componentes);
+    values.push(state_materias);
+    return values
 }

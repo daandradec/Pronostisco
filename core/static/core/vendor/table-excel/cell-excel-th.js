@@ -48,7 +48,7 @@ function closeSimpleCellTH(input){
     for(var i = 0;i < th_elements.length;++i)
         th_elements[i].innerHTML = input.value;
 
-	td_element.addEventListener("click",writeSimpleCellTH,false);
+	td_element.addEventListener("click",writeSimpleCellTH,false);	
 }
 
 window.addEventListener("load", startCellsTH, false);

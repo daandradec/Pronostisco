@@ -13,10 +13,13 @@ function generateOptions(id){
 /* RESCRIBIR EN TODOS LOS SELECTS SUS OPTIONS ALMACENANDO SU VALOR POR DEFECTO */
 function selectAllSelectsAndSetOptions(){
     var selects = document.querySelectorAll("select[select-mrp]");
+
     for(var i = 0; i < selects.length; ++i){
         var default_value = selects[i].getAttribute("key");
         default_value = old_selecteds.filter(function(item){ return item.key === default_value});
-        handleSelectChange(selects[i]);        
+    
+        handleSelectChange(selects[i]);    
+        
         if(default_value === undefined || default_value.length === 0){
             $(selects[i]).val(0);
             continue;        
@@ -26,9 +29,10 @@ function selectAllSelectsAndSetOptions(){
         }
         
         var id = parseInt($(selects[i].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement).attr("componente_id"));
+
         selects[i].innerHTML = generateOptions(id);
         $(selects[i]).val(default_value[0].value);        
-    }        
+    }
     handleInputNumberChange();
     restoreInputNumberValues();
 }
@@ -155,4 +159,13 @@ function generateNewNumberValue(id, literal_string_selectsquery, value_select_as
         list[index_compo_or_mater].amount_backup.push(number);
     }    
     return number_value;
+}
+
+function getIdFromKey(key, list){
+    for(var i = 0; i < list.length; ++i){
+        const object = list[i]
+        if(object.key === key)
+            return object.id
+    }
+    return 0; // id del producto principal    
 }

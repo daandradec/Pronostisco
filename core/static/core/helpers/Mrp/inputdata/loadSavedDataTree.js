@@ -118,3 +118,22 @@ function loadSavedDataTree(){
     materia_counter = state.materia.length ? state.materia[state.materia.length-1].id+1 : 1
 
 }
+
+
+
+
+
+
+
+
+//// LIMPIAR SESION MRP
+function cleanMRPSession(){
+    $("button[refresh-mrp]").on('click',function(){
+        sessionStorage.removeItem("tree_mrp")
+        sessionStorage.removeItem("state_mrp")
+        sessionStorage.removeItem("table_forecast")
+        sessionStorage.removeItem("table_general")
+        sessionStorage.removeItem("table_receptions")
+        window.location.reload(true)
+    });
+}

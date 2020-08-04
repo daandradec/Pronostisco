@@ -32,6 +32,7 @@ function postUpdate(){
                 flagEvent_2 = false;
 
                 loadSavedDataTree()
+                cleanMRPSession();
             }
             break;
         case 3:
@@ -41,7 +42,7 @@ function postUpdate(){
                 fillTableRowsByCurrentPeriod();
                 flagEvent_3 = false;
 
-                loadSavedDataTables()
+                loadSavedDataTables();                
             }else
                 seeChangeStateMRPToTable();
             break;

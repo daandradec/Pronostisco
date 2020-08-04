@@ -10,6 +10,7 @@ language_dataset = [
 
     ["Bienvenido a MRP, esta sección le ayudara a saber ¿Qué?, ¿Cuándo?, ¿Cuánto? Y ¿Cómo? Realizar la producción de cada uno de sus productos.", "Welcome to MRP, this section will help you know What ?, When ?, How much? And how? Perform the production of each of its products."],
     ["Nombre del producto:","Product name:"],
+    ["Nueva Sesión MRP","MRP New Session"],
     ["Componentes","Components"],    
     ["Indice","Index"],
     ["Nombre","Name"],

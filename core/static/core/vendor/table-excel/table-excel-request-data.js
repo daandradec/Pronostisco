@@ -4,7 +4,7 @@ function startTableExcelRequest(){
 }
 
 function postRequestData(){
-    closeActiveCells();
+    closeActiveCells(input);
     td_query = document.querySelectorAll("div.active div.table-responsive table tbody tr > td:not(:first-child)");
     var final_array = []
     var array = []

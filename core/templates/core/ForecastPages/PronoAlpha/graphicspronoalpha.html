@@ -9,11 +9,13 @@
 {% endblock %}
 
 {% block content %}
-    {% include 'core/Navbar/Navbar.html' %}
+    {% include 'core/Navbar/NavbarNew.html' %}
     {% include "core/ForecastPages/Header/HeaderAlpha.html" %}
 
 
     <section class="my-4">
+
+        <div class="my-3 text-center"> <span> {% include "core/Modal/ModalButton.html" with modalId="#modalResults" %} </span> </div>
 
         {% include 'core/ForecastPages/TagBlock/tag-block.html' %}
 
@@ -95,6 +97,7 @@
 
 {% block modal %}
     {% include "core/Modal/Modal.html" with modalId="modalExample" modalBasePath="core/Modal/" modalHeaderPath="/ModalForecast/ModalForecastHeader.html" modalBodyPath="ModalForecast/ModalForecastBody.html" %}
+    {% include "core/Modal/Modal.html" with modalId="modalResults" modalBasePath="core/Modal/" modalHeaderPath="ModalExampleResultForecast/ModalExampleResultForecastHeader.html" modalBodyPath="ModalExampleResultForecastAlpha/ModalExampleResultForecastAlpha.html" %}
 {% endblock %} 
 
 {% block modal_graph_complete %}
@@ -103,15 +106,16 @@
 
 {% block scripts %}
     {% load static %}
-    <script src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
     <script src="{% static 'core/vendor/language-component/graphicspronoalpha/language-dataset.js' %}"></script>
-    <script src="{% static 'core/vendor/language-component/dist/getLanguageText.js' %}"></script>
+    <script src="{% static 'core/vendor/language-component/helpers/getLanguageText.js' %}"></script>
+    <script src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
     <script src="{% static 'core/helpers/ForecastPages/TagBlock/tag-graphic.js' %}"></script>    
     <script src="{% static 'core/vendor/chartjs-2.7.3/utils.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/Chart.min.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/line-chart-global.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/line-chart-02.js' %}"></script>
     <script src="{% static 'core/vendor/chartjs-2.7.3/download-chart.js' %}"></script>
+    <script src="{% static 'core/helpers/Modal/modal-hidden.js' %}"></script>
     <script src="{% static 'core/helpers/Modal/modal-graphic.js' %}"></script>
     <script src="{% static 'core/js/Http/link-to-post-link.js' %}"></script>
 
@@ -151,6 +155,9 @@
         var best_corre = Math.max(lineal_corre,expo_corre,cuadra_corre,movil_2_corre,movil_3_corre,movil_composed_corre,movil_pondered_corre,
         simple_soft_corre,double_soft_corre,winters_corre,jenkin_corre,simu_corre)
 
+        var best_index_forecast = get_best_index_forecast(best_corre,
+            [lineal_corre, expo_corre, cuadra_corre, movil_2_corre, movil_3_corre, movil_composed_corre,
+            movil_pondered_corre, simple_soft_corre, double_soft_corre, winters_corre, jenkin_corre, simu_corre])
         var dict_best_forecast = get_best_forecast(best_corre,
             [simu_corre,jenkin_corre,winters_corre,double_soft_corre,simple_soft_corre,movil_pondered_corre,movil_composed_corre,movil_3_corre,movil_2_corre,cuadra_corre,expo_corre,lineal_corre],
             [simu,jenkin,winters,double_soft,simple_soft,movil_pondered,movil_composed,movil_3,movil_2,cuadra,expo,lineal],
@@ -215,6 +222,9 @@
         django_list_data_chart_15 = simu
         django_list_labels_chart_15 = django_list_labels_chart_02      
 
+        function get_best_index_forecast(best_corre,list_correlations){
+            return list_correlations.indexOf(best_corre)
+        }
         function get_best_forecast(best_corre,list_correlations,list_forecasts,names_forecasts,flag_language){
             var index = list_correlations.indexOf(best_corre)
             return {"forecast" : list_forecasts[index],"name":names_forecasts[index][flag_language & 1]}
@@ -223,4 +233,5 @@
 
     <script src="{% static 'core/helpers/ForecastPages/PronoAlpha/chartCreation.js' %}"></script>
     <script src="{% static 'core/helpers/ForecastPages/PronoAlpha/fillTableBestForecast.js' %}"></script>
+    <script src="{% static 'core/helpers/Modal/bestModalForecastModalAlpha.js' %}"></script>
 {% endblock %}

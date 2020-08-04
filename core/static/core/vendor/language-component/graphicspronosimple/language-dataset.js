@@ -1,11 +1,14 @@
 language_dataset = [
-    ["ESPAÑOL","SPANISH"],
-    ["INGLES","ENGLISH"],
+    ["PRONÓSTICO SIMPLE","SIMPLE FORECAST"],
+    ["PRONÓSTICO ALPHA","ALPHA FORECAST"],   
+    ["¿Quienes Somos?","ABOUT US?"],
     ["ESPAÑOL","SPANISH"],
     ["INGLES","ENGLISH"],
 
     ["Entrada de Datos","Data entry"],
     ["Pronósticos","Forecasts"],
+    ["Etiqueta Actual","Current Tag"],
+    ["Cambiar Etiqueta","Change Tag"],
 
     ["GRÁFICA COMPLETA","COMPLETE GRAPH"],
     ["GRÁFICA POR PERIODOS","GRAPH FOR PERIODS"],
@@ -25,14 +28,16 @@ language_dataset = [
     ["SUAVIZACIÓN EXPONENCIAL DOBLE","DOUBLE EXPONENTIAL SOFTENING"],
     ["Ver Detalles","See Details"],
 
-    ["Una gran alternativa para hacer tus pronósticos","A great alternative to make your predictions."],
-    ["Nuestros Métodos","Our Methods"],
-    ["pronósticos simples","simple forecasts"],
-    ["pronósticos estilo alpha","style alpha forecasts"],
-    ["Contacto","Contact"],
+    
+    ["Somos una página web única, la cual pone a su disposición herramientas de ingeniería, que le permitirán realizar un mejor análisis de los datos. Mejorando la efectividad y planificación de los recursos, con el fin de poder tomar mejores decisiones. ", "We are a unique web page, which puts at your disposal engineering tools, which allows you to perform a better analysis of the data. Improving the planning and planning of resources, in order to make better decisions."],
+    ["Pronósticos Simples","Simple Forecast"],
+    ["Pronósticos Alpha","Alpha Forecast"],
+    ["¿Quienes Somos?","About us?"],
+    ["CONTACTO Y REDES","NETWORKS AND CONTACT"],
     ["Correo:","Email"],
-
+    ["Dirección:","Address:"],
     ["Copyright © 2018 Todos los derechos reservados","Copyright © 2018 All rights reserved"],
+
 
     ["Nivel de Certeza","Level of Certainty"],
     ["Pronóstico","Forecast"],
@@ -56,4 +61,13 @@ language_dataset = [
     ["Ajustado","Average"],
     ["Descargar Imagen","Download Image"],
     ["Descargar Excel","Download Excel"],
+
+    ["RESULTADOS","RESULTS"],
+    ["En esta sección podrá observar siete (7) modelos diferentes de pronósticos, los cuales le permitirán realizar un mejor análisis prospectivo. Utilizamos un valor de certeza que le permita conocer cuál es el mejor pronóstico estadísticamente hablando. Sin embargo debido a la aleatoriedad de los sucesos que puedan ocurrir a futuro, es claro que los datos obtenidos no son completamente confiables. Es necesario interpretar los datos pronosticados, con la experticia y conocimientos sobre el tema que se esté trabajando.","In this section you can see seven (7) different forecast models, which will allow you to perform a better prospective analysis. We use a certainty value that allows you to know the best prognosis statistically speaking. However, due to the randomness of future events, it is clear that the data obtained is not completely reliable. It is necessary to interpret the forecasted data, with the expertise and knowledge on the subject being worked on."],
+    ["Gráfica completa:","Full graphic:"],
+    ["Muestra todos los datos en una sola línea temporal.","Show all data on a single timeline."],
+    ["Gráfica por periodos:","Graph by periods:"],
+    ["Muestra los datos según su periodicidad (Meses, Semana, días)","It shows the data according to its periodicity (Months, Week, days)"],
+    ["Gráfica mejor pronóstico:","Better forecast graph:"],
+    ["Muestra la gráfica del mejor pronóstico.","Shows the graph of the best forecast."]    
 ]

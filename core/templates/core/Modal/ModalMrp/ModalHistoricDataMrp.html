@@ -1,0 +1,43 @@
+{% load static %}
+<section class="py-3 px-2">
+    <div class="my-5">
+        <p class="font-quicksand font-size-18px-2c text-muted my-5" language="true">Ingrese los datos solicitados, las celdas que se dejen en blanco se tomaran como cero (0).</p>
+        <img src="{% static 'core/img/mrp-modal-04.PNG' %}" class="img-fluid" alt="camisa">
+        <p class="font-quicksand font-size-18px-2c text-muted text-justify text-center">
+            <b language="true">Periodos de tiempo:</b> <span language="true">Con los botones (- y +) usted podrá aumentar o disminuir la cantidad de periodos necesarios (Imagen 1), desde un mínimo de 4 hasta un máximo de 24 periodos. Usted podrá cambiar el nombre de los periodos dando clic sobre estos. </span>
+        </p>
+    </div>
+    <hr/>
+
+    <div class="my-5">
+        <img src="{% static 'core/img/mrp-modal-05.PNG' %}" class="img-fluid" alt="camisa">
+        <p class="font-quicksand font-size-18px-2c text-muted text-justify">
+            <b language="true">Demanda:</b> <span language="true">Ingrese los datos preestablecidos de las demandas, pronósticos o ventas a futuro que va a producir en cada periodo determinado. Inscriba números enteros.</span>
+        </p>
+    </div>
+    <hr/>
+
+    <div class="my-5">
+        <img src="{% static 'core/img/mrp-modal-06.PNG' %}" class="img-fluid" alt="camisa">
+        <p class="font-quicksand font-size-18px-2c text-muted text-justify mx-3">
+            <span language="true">Registro de información general: Estos datos son necesarios para poder asociar la mayor cantidad de variables, que le permitan realizar su producción de manera más detallada y eficiente.</span><br/>            
+            •	<b language="true">Lead time (Tiempo de entrega):</b> <span language="true">Es el tiempo que transcurre desde que se emite la orden de compra hasta que el proveedor la entrega a la empresa.</span><br/>
+            •	<b language="true">Stock de seguridad:</b> <span language="true">Es un nivel extra de inventario que se mantienen en almacén para hacer frente a las variaciones de la oferta, demanda o desabastecimiento de materias primas.</span><br/> 
+            •	<b language="true">Inventario inicial:</b> <span language="true">Son las existencias en inventario disponibles antes de iniciar la producción o la planificación ya sea de materias primas, componentes o producto terminado.</span><br/> 
+            •	<b language="true">Tamaño de lote:</b> <span language="true">Son las cantidades que describen un lote de producción, según las características propias de fabricación, donde el valor mínimo seria 1, siendo esta la fabricación de un producto a la vez. Otro caso puede ser una inyectora en la cual en una sola operación se fabriquen varias unidades. También se pueden aplicar tamaños óptimos de lote como EOQ.</span><br/> 
+            •	<b language="true">Costo Unitario:</b> <span language="true">Es el costo en el que se incurre para producir una unidad de producto terminado. Generalmente es conformado por los costos de materia prima, mano de obra y costos indirectos de fabricación.</span><br/> 
+            •	<b language="true">Costo de mantenimiento:</b> <span language="true">Son los costos en los que se incurre en almacenamiento en inventario de una unidad de producto, componente o materia prima. Pueden estar asociados costos como arriendo de bodega, energía, mano de obra (almacenista), aseo, entre otros.</span><br/>  
+            •	<b language="true">Costo de ordenar:</b> <span language="true">Son los costos que surgen en el proceso de pedido o de ordenar. Se hallarán a partir de las actividades descritas en el proceso logístico de gestión de compras. Algunos de estas actividades pueden ser: ordenes de pedido, órdenes de compra, contactar proveedores, recepción de pedidos, entre otras.</span>
+        </p>
+    </div>
+    <hr/>
+
+
+    <img src="{% static 'core/img/mrp-modal-07.PNG' %}" class="img-fluid" alt="camisa">
+    <p class="font-quicksand font-size-18px-2c text-muted text-justify">
+        <b language="true">Recepciones programadas:</b> <span language="true">En este apartado podrá inscribir las recepciones pre – programadas ya sea de materias primas, componentes o productos terminados, en los tiempos determinados de entrega.</span>        
+    </p>      
+    <p class="font-quicksand font-size-18px-2c text-muted my-3 text-center" language="true">
+        Una vez ingresados todos los datos solicitados anteriormente de clic en confirmar. 
+    </p>
+</section>

@@ -3,11 +3,10 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.middleware.csrf import get_token
 from core.forecasts import *
+from core.excel import *
 import json
 # Create your views here.
 import pandas
-import xlrd
-import xlwt
 
 def index(request):
     if 'data' in request.session:
@@ -157,7 +156,7 @@ def alpha_pronos_download_data(request):
     corre = request.POST.get('corre','')
 
     response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="' + prono_label + '.xls' + '"'
+    response['Content-Disposition'] = 'attachment; filename="'+'Resource_Beacon_' + prono_label + '.xls' + '"'
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet("sheet1",cell_overwrite_ok=True)
     font_style = xlwt.XFStyle()
@@ -231,8 +230,35 @@ def mrp_output(request):
         mrp = json.dumps(mrp)
         tree = json.dumps(tree)      
         tables = json.dumps(tables)
+        csrf_token = get_token(request)
+        request.session['mrp'] = {"mrp": mrp,"tree":tree, "tables": tables, "periods_state":periods_state, "lead":lead, "stock":stock,"Q":Q, 'csrf':csrf_token}
         return render(request, 'core/Mrp/mrpoutput.html', {"mrp": mrp,"tree":tree, "tables": tables, "periods_state":periods_state, 
-            "lead":lead, "stock":stock,"Q":Q})  
+            "lead":lead, "stock":stock,"Q":Q, 'csrf':csrf_token})  
+    elif('mrp' in request.session):
+        return render(request, 'core/Mrp/mrpoutput.html', request.session['mrp'])  
     return HttpResponseRedirect('/mrp/input-data') 
     
-  
+
+def mrp_download(request):
+    all_info_mrp_keys = json.loads(request.POST.get('all_info_mrp_keys',''))  
+    key = request.POST.get('key','')
+    name = request.POST.get('name','')
+    response, ws, wb, font_style = instanciate_excel_response("Resource_Beacon_MrpItem.xls")
+    response = build_excel_book_mrp_unique(all_info_mrp_keys, key, name, response, ws, wb, font_style)
+
+    return response
+
+def mrp_download_all(request):
+    
+    all_info_mrp_keys = json.loads(request.POST.get('all_info_mrp_keys',''))  
+    mrp = json.loads(request.POST.get('mrp',''))
+    periods = int(request.POST.get('periods'))        
+    response, ws, wb, font_style = instanciate_excel_response("Resource_Beacon_MrpCompleto.xls")
+    response = build_excel_book_mrp_complete(all_info_mrp_keys, mrp, periods, response, ws, wb, font_style)
+
+    return response
+
+
+
+def about_us(request):
+    return render(request, 'core/AboutUs/AboutUs.html')

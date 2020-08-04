@@ -3,10 +3,10 @@
 
 <div id="drag-cloud" class="text-center">
     <i class="fas fa-cloud-upload-alt mt-4"></i>
-    <p class="mt-1" language="true">Arrastra los archivos .xlsx, .xls, .xlsm, .csv aquí</p>
+    <p class="my-1" language="true">Arrastra los archivos .xlsx, .xls, .xlsm, .csv aquí</p>
     <form action="{% url redirectRoute %}{{parameters}}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="form-group mt-2">
+        <div class="form-group m-0">
             <label for="file_input" class="btn btn-info" language="true">Cargar Archivo</label>
             <input type="file" name="file_input" id="file_input">  
             <div id="label_output_file"></div>

@@ -10,11 +10,15 @@
 {% endblock styles %}
 
 {% block content %}
-    {% include 'core/Navbar/Navbar.html' %}
+    {% include 'core/Navbar/NavbarNew.html' %}
     {% include "core/Mrp/Header/Header.html" with inputDataFlag=False %}
     {% include "core/Mrp/MrpSectionOutput/MrpSectionOutput.html" %}
     {% include 'core/Footer/Footer.html' %}
 {% endblock content %}
+
+{% block modal %}    
+    {% include "core/Modal/Modal.html" with modalId="modalTables" modalBasePath="core/Modal/" modalHeaderPath="ModalMrp/ModalTablesMrpHeader.html" modalBodyPath="ModalMrp/ModalTablesMrp.html" %}
+{% endblock %}
 
 {% block scripts %} 
     <script>
@@ -25,6 +29,7 @@
         var leadFlag = JSON.parse("{{lead|escapejs|safe}}")
         var stockFlag = JSON.parse("{{stock|escapejs|safe}}")
         var QFlag = JSON.parse("{{Q|escapejs|safe}}")
+        var TOKEN = "{{csrf}}"
 
         console.log(mrp)
         console.log(tree)
@@ -37,24 +42,18 @@
         console.log(JSON.stringify(mrp))
         console.log(JSON.stringify(tree))
         console.log(JSON.stringify(tables))
-        
-        /*
-        const mrp = JSON.parse( '{"producto":{"id":0,"title":"Producto A","key":"prod_0"},"componentes":[{"id":1,"title":"Componente B","key":"compo_1_1","edges":["prod_0"],"amount":{"prod_0":1},"amount_backup":[1]},{"id":2,"title":"Componente C","key":"compo_2_1","edges":["prod_0"],"amount":{"prod_0":1},"amount_backup":[1]}],"materia":[{"id":1,"title":"Materia Prima D","key":"mater_1_1","edges":["compo_1_1","compo_2_1"],"amount":{"compo_1_1":2,"compo_2_1":2},"amount_backup":[2,2]},{"id":2,"title":"Materia Prima E","key":"mater_2_1","edges":["compo_1_1","compo_2_1"],"amount":{"compo_1_1":2,"compo_2_1":2},"amount_backup":[2,2]}]}')
-        const tree = JSON.parse( '{"name":"Producto A","key":"prod_0","children":[{"name":"Componente B (1)","children":[{"name":"Materia Prima D (2)","children":[],"key":"mater_1_1"},{"name":"Materia Prima E (2)","children":[],"key":"mater_2_1"}],"key":"compo_1_1"},{"name":"Componente C (1)","children":[{"name":"Materia Prima D (2)","children":[],"key":"mater_1_1"},{"name":"Materia Prima E (2)","children":[],"key":"mater_2_1"}],"key":"compo_2_1"}]}' )
-        const tables = JSON.parse( '{"t_general":[[0,50,560,36,670,50,2100],[0,30,450,41,520,60,1200],[0,25,2000,20,600,65,600],[0,10,1200,35,2000,100,500],[0,15,2500,40,1000,150,500]],"t_forecast":[2850,950,825,500],"t_receptions":[[50,0,0,0],[1200,300,0,0],[500,0,0,0],[700,0,0,0],[0,130,0,0]]}' )
-        const periods_state = 0
-        const leadFlag = true
-        const stockFlag = true
-        const QFlag = true
-        */
     </script>
 
+    <script src="{% static 'core/vendor/language-component/mrpoutputdata/language-dataset.js' %}"></script>
+    <script src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
+    <script src="{% static 'core/helpers/Modal/modal-hidden.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/outputdata/fillDinamicMrpTableBody.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/outputdata/fillDinamicMrpTable.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/outputdata/fillBuyMasterPlan.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/outputdata/MrpOutputConstants.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/outputdata/MrpAccordionZoneCreator.js' %}"></script>
     <script src="{% static 'core/helpers/Navbar/mediaResize.js' %}"></script>
+    <script src="{% static 'core/js/Http/link-to-post-link.js' %}"></script>
     <script src="{% static 'core/js/Prototype/ArraySum.js' %}"></script>
     <script src="{% static 'core/js/Triggers/formatMoney.js' %}"></script>
 {% endblock scripts %}

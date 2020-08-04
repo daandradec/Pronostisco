@@ -1,9 +1,19 @@
 
 /* ZOOM */
-var zoomListener = d3.behavior.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
+var zoom_min = 0.9
+var zoomListener = d3.behavior.zoom().scaleExtent([zoom_min, 3]).on("zoom", zoom);
 
 function zoom() {
-    svgGroup.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    const array = Array.from(d3.event.translate);
+
+    //if(d3.event.scale === zoom_min){
+    //    console.log("ABIERTO")
+    //}else{
+    //    array[0] = Math.clip(array[0], 0 + CIRCLE_SIZE_PIXELS, viewerWidth - CIRCLE_SIZE_PIXELS);
+    //    array[1] = Math.clip(array[1], 0, viewerHeight - CIRCLE_SIZE_PIXELS*3);
+    //}
+    zoom_current = d3.event.scale;
+    svgGroup.attr("transform", "translate(" + array + ")scale(" + zoom_current + ")");
 }
 
 
@@ -29,7 +39,7 @@ function pan(domNode, direction) {
         clearTimeout(panTimer);
         translateCoords = d3.transform(svgGroup.attr("transform"));
         if (direction == 'left' || direction == 'right') {
-            translateX = direction == 'left' ? translateCoords.translate[0] + speed : translateCoords.translate[0] - speed;
+            translateX = direction == 'left' ? translateCoords.translate[0] + speed : translateCoords.translate[0] - speed;            
             translateY = translateCoords.translate[1];
         } else if (direction == 'up' || direction == 'down') {
             translateX = translateCoords.translate[0];
@@ -77,10 +87,32 @@ var outCircle = function(d) {
 /* CENTER */
 function centerNode(source) {
     scale = zoomListener.scale();
-    x = -source.y0;
-    y = -source.x0;
-    x = x * scale + viewerWidth / 2;
-    y = y * scale + viewerHeight / 2;
+    x = -source.y0 * scale + viewerWidth / 4;
+    y = -source.x0 * scale + viewerHeight / 2;
+    d3.select('g').transition()
+        .duration(duration)
+        .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
+    
+    // nuevo para manejar el zoom que siempre lo mantiene ajustado
+    const nodes_n = totalNodes - oldTotalNodes;    
+    if(nodes_n >= 4){
+        //oldCocienteNodes = cocienteNodes;
+        //cocienteNodes = Math.clip(Math.floor(nodes_n/5), 2, 20);
+        //scale = zoom_max/(cocienteNodes - cocienteNodes/5)
+        //scale = zoom_max/(2^(nodes_n) - 2^(nodes_n-1))
+        zoom_min = zoom_max/(Math.floor(Math.sqrt(nodes_n))-1)
+        //if(cocienteNodes !== oldCocienteNodes)
+        zoomListener.scaleExtent([zoom_min, 3]);         
+    }
+    zoomListener.scale(scale);
+    zoomListener.translate([x, y]);
+    miniCenterNode(source)
+}
+
+function miniCenterNode(source){
+    scale = zoomListener.scale();
+    x = -source.y0 * scale + viewerWidth / 4;
+    y = -source.x0 * scale + viewerHeight / 2;
     d3.select('g').transition()
         .duration(duration)
         .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
@@ -152,13 +184,17 @@ function update(source) {
     var nodeEnter = node.enter().append("g")
         //.call(dragListener) ################################################################
         .attr("class", "node")
-        .attr("transform", function(d) {
+        .attr("transform", function(d) {            
             return "translate(" + source.y0 + "," + source.x0 + ")";
         })
         .on('click', click);
 
-    nodeEnter.append("circle")
-        .attr('class', 'nodeCircle')
+    nodeEnter.append("circle")//d.color
+        .attr('class', function(d){
+            // COLOR COMPONENTE O MATERIA
+            const color = (d.key.indexOf("mater") !== -1) ? 2 : (d.key.indexOf("compo") !== -1 ? 1 : 0);
+            return 'nodeCircle' + (color === 1 ? " nodeComponente" : (color === 0 ? " nodeProducto" : ""))
+        })
         .attr("r", 0)
         .style("fill", function(d) {
             return d._children ? "lightsteelblue" : "#fff";
@@ -178,6 +214,7 @@ function update(source) {
         })
         .style("fill-opacity", 0);
 
+    /*
     // phantom node to give us mouseover in a radius around it
     nodeEnter.append("circle")
         .attr('class', 'ghostCircle')
@@ -191,6 +228,7 @@ function update(source) {
         .on("mouseout", function(node) {
             outCircle(node);
         });
+    */
 
     // Update the text to reflect whether node has children or not.
     node.select('text')
@@ -279,6 +317,6 @@ function update(source) {
     // Stash the old positions for transition.
     nodes.forEach(function(d) {
         d.x0 = d.x;
-        d.y0 = d.y;
+        d.y0 = d.y;        
     });
 }

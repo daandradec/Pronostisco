@@ -13,10 +13,13 @@ function generateOptions(id){
 /* RESCRIBIR EN TODOS LOS SELECTS SUS OPTIONS ALMACENANDO SU VALOR POR DEFECTO */
 function selectAllSelectsAndSetOptions(){
     var selects = document.querySelectorAll("select[select-mrp]");
+
     for(var i = 0; i < selects.length; ++i){
         var default_value = selects[i].getAttribute("key");
         default_value = old_selecteds.filter(function(item){ return item.key === default_value});
-        handleSelectChange(selects[i]);        
+    
+        handleSelectChange(selects[i]);    
+        
         if(default_value === undefined || default_value.length === 0){
             $(selects[i]).val(0);
             continue;        
@@ -26,9 +29,10 @@ function selectAllSelectsAndSetOptions(){
         }
         
         var id = parseInt($(selects[i].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement).attr("componente_id"));
+
         selects[i].innerHTML = generateOptions(id);
         $(selects[i]).val(default_value[0].value);        
-    }        
+    }
     handleInputNumberChange();
     restoreInputNumberValues();
 }
@@ -64,7 +68,7 @@ function setAllEdgesAndNumbersFromSelect(select){
 }
 
 function handleInputNumberChange(){
-    const inputs = document.querySelectorAll("input[type=number]");
+    const inputs = document.querySelectorAll("input[type=number]");    
     for(var i = 0; i< inputs.length; ++i){
         inputs[i].onchange = function(e){
             const tr = this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
@@ -75,13 +79,16 @@ function handleInputNumberChange(){
 
             if(flag){
                 const id = parseInt(tr.getAttribute("componente_id"));            
-                
-                state.componentes[id-1].amount[key] = generateNewNumberValue(id, "tr[componente_id='"+id+"'] select", value_select_associated, state.componentes);
+                const index_componente = getIndexWithBinarySearchJson(id, state.componentes);
+
+                state.componentes[index_componente].amount[key] = generateNewNumberValue(id, "tr[componente_id='"+id+"'] select", value_select_associated, state.componentes);
             }else{
                 const id = parseInt(tr.getAttribute("materia_id")); 
+                const index_materia = getIndexWithBinarySearchJson(id, state.materia);
                 //const key = value_select_associated === 0 ? state.producto.key : state.materia[getIndexWithBinarySearchJson(value_select_associated, state.materia)].key;                        
-                state.materia[id-1].amount[key] = generateNewNumberValue(id, "tr[materia_id='"+id+"'] select", value_select_associated, state.materia);
+                state.materia[index_materia].amount[key] = generateNewNumberValue(id, "tr[materia_id='"+id+"'] select", value_select_associated, state.materia);
             }    
+
             updateTree("SELECT", undefined);
         }
     }
@@ -150,6 +157,15 @@ function generateNewNumberValue(id, literal_string_selectsquery, value_select_as
             number_value += number;
         
         list[index_compo_or_mater].amount_backup.push(number);
-    }
+    }    
     return number_value;
+}
+
+function getIdFromKey(key, list){
+    for(var i = 0; i < list.length; ++i){
+        const object = list[i]
+        if(object.key === key)
+            return object.id
+    }
+    return 0; // id del producto principal    
 }

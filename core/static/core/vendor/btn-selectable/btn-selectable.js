@@ -1,49 +1,40 @@
-var labels = [];
-var current_label,current_index;
+var current_index;
 var callback_function;
-
+var flagAdd, flagDelete;
 
 function startButtonSelectable(){
-    current_index = 0;
-    current_label = labels[current_index];
+    current_index = 4;
 
     $("button[selector-left]").click(function(){
         labelShiftLeft();
         updateTextSelector();
-        callback_function(current_index);
+        callback_function(0, flagAdd, flagDelete);
     });
 
     $("button[selector-right]").click(function(){
         labelShiftRight();
         updateTextSelector();
-        callback_function(current_index);
+        callback_function(1, flagAdd, flagDelete);
     });
 }
 
 function labelShiftLeft(){
-    current_index = (current_index-1)+((current_index===0)*labels.length );
-    current_label = labels[current_index];
+    const old_value = current_index;
+    current_index = Math.clip(current_index-1, 4 , 24);
+    flagDelete = old_value !== 4;
 }
 
 function labelShiftRight(){
-    current_index = (current_index+1)%labels.length;
-    current_label = labels[current_index];
+    const old_value = current_index;
+    current_index = Math.clip(current_index+1, 4, 24);
+    flagAdd = old_value !== 24;
 }
 
 function updateTextSelector(){
-    document.querySelector("p[selector]").innerHTML = current_label;
+    document.querySelector("p[selector]").innerHTML = current_index + " Periodos";
 }
 
-
-function selectableSetLabels(labels){
-    labels = labels;
-}
 
 function selectableSetCallbackFunction(func){
-    callback_function = func;
-}
-
-function selectableSetLabelsAndCallBackFunction(new_labels, func){
-    labels = new_labels;
     callback_function = func;
 }

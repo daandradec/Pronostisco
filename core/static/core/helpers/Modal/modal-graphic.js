@@ -10,6 +10,9 @@ function modal_chart(id_modal,id_canvas,target){
     var a = $("a[link-post][line-chart]")
     a.attr('line-chart',number)
     a.attr('flag-chart',flag)
+    var button = $("button[image-chart]")
+    button.attr('image-chart',number);
+
     // habilitar modal
     $(id_modal).modal('show')
     return createChar(id_canvas, getListLabelVariable(number), getListDataVariable(number),flag ? data_django_last_row : django_list_data_chart_01);
@@ -51,6 +54,8 @@ function modal_chart_extended(number,flag){
     var a = $("a[link-post][line-chart]")
     a.attr('line-chart',number)
     a.attr('flag-chart',flag)
+    var button = $("button[image-chart]")
+    button.attr('image-chart',number);    
 }
 
 /* INICIALIZAR EVENTOS DE BOTONES QUE ACTIVARAN LOS MODALS LLAMANDO LAS FUNCIONES MODAL_CHART() */

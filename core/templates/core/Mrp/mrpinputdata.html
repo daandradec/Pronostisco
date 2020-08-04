@@ -16,14 +16,15 @@
 
 
 {% block content %}
-    {% include 'core/Navbar/Navbar.html' %}
+    {% include 'core/Navbar/NavbarNew.html' %}
     {% include "core/Mrp/Header/Header.html" with inputDataFlag=True %}
     {% include "core/Mrp/MrpSectionInputData/MrpSectionInputdata.html" %}
     {% include 'core/Footer/Footer.html' %}
 {% endblock content %}
 
 {% block modal %}
-    {% include "core/Modal/Modal.html" with modalId="modalExample" modalBasePath="core/Modal/" modalHeaderPath="ModalExampleMrp/ModalExampleMrpHeader.html" modalBodyPath="ModalExampleMrp/ModalExampleMrp.html" %}
+    {% include "core/Modal/Modal.html" with modalId="modalExample" modalBasePath="core/Modal/" modalHeaderPath="ModalMrp/ModalExampleMrpHeader.html" modalBodyPath="ModalMrp/ModalExampleMrp.html" %}
+    {% include "core/Modal/Modal.html" with modalId="modalData" modalBasePath="core/Modal/" modalHeaderPath="ModalMrp/ModalExampleMrpHeader.html" modalBodyPath="ModalMrp/ModalHistoricDataMrp.html" %}    
 {% endblock %}
 
 {% load get_request_parameters %}
@@ -32,8 +33,15 @@
 {% block scripts %}    
     <script>
         var TOKEN = "{{csrf}}"
-        var POST_ROUTE = "{% url 'mrpoutput' %}{{parameters}}"
+        var POST_ROUTE = "{% url 'mrpoutput' %}";        
     </script>
+    <script src="{% static 'core/vendor/canvg/rgbcolor.js' %}"></script>
+    <script src="{% static 'core/vendor/canvg/StackBlur.js' %}"></script>
+    <script src="{% static 'core/vendor/canvg/canvg.js' %}"></script>
+    
+    
+    <script src="{% static 'core/vendor/language-component/mrpinputdata/language-dataset.js' %}"></script>
+    <script src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
     <script src="{% static 'core/vendor/d3-v3/d3.v3.min.js' %}"></script>
     <script src="{% static 'core/helpers/Modal/modal-hidden.js' %}"></script>
     <script src="{% static 'core/js/Triggers/getValuesOfTable.js' %}"></script>
@@ -42,8 +50,8 @@
     <script src="{% static 'core/js/Http/post-request-as-form.js' %}"></script>
     <script src="{% static 'core/js/Triggers/dataToggleCollapse.js' %}"></script>
     <script src="{% static 'core/helpers/Navbar/mediaResize.js' %}"></script>
-    <script src="{% static 'core/helpers/Mrp/inputdata/table-periods-builder.js' %}"></script>
-    <script src="{% static 'core/helpers/Mrp/MrpTabController.js' %}"></script>
+    <script src="{% static 'core/helpers/Mrp/inputdata-tables/table-periods-builder.js' %}"></script>
+    <script src="{% static 'core/helpers/Mrp/inputdata-tables/MrpTabController.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/inputdata/MrpProductsHandler.js' %}"></script>    
     <script src="{% static 'core/helpers/Mrp/inputdata/generateOptions.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/inputdata/removeTableRowSelect.js' %}"></script>
@@ -52,12 +60,18 @@
     <script src="{% static 'core/helpers/Mrp/inputdata/deleteComponenteMateria.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/inputdata/addParentComponent.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/inputdata/MrpInput.js' %}"></script>
-    <script src="{% static 'core/helpers/Mrp/inputdata/toggleMasterDeactivateCol.js' %}"></script>
+    <script src="{% static 'core/helpers/Mrp/inputdata-tables/toggleMasterDeactivateCol.js' %}"></script>
     <script src="{% static 'core/helpers/Mrp/inputdata/updateTree.js' %}"></script>
+    <script src="{% static 'core/helpers/Mrp/inputdata/loadSavedDataTree.js' %}"></script>
+    <script src="{% static 'core/helpers/Mrp/inputdata-tables/loadSavedDataTables.js' %}"></script>
     <script src="{% static 'core/vendor/d3-tree/D3TreeUtils.js' %}"></script>
     <script src="{% static 'core/vendor/d3-tree/D3Tree.js' %}"></script>
+    <script src="{% static 'core/vendor/table-excel/cell-excel-th.js' %}"></script>
     <script src="{% static 'core/vendor/table-excel/cell-excel.js' %}"></script>
     <script src="{% static 'core/vendor/table-excel/table-excel.js' %}"></script>
     <script src="{% static 'core/vendor/btn-selectable/btn-selectable.js' %}"></script>
     <script src="{% static 'core/vendor/bootstrap-toggle-master/js/bootstrap-toggle.min.js' %}"></script>
+
+    <script src="{% static 'core/vendor/d3-tree/canvas-toBlob.js' %}"></script>
+    <script src="{% static 'core/vendor/d3-tree/FileSaver.min.js' %}"></script>
 {% endblock scripts %}

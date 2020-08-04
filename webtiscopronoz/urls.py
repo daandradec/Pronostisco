@@ -28,7 +28,10 @@ urlpatterns = [
     path('pronosticos-alpha/graphics',core_views.alpha_pronos_graph_data,name="alphapronosgraph"),
     path('pronosticos-alpha/download',core_views.alpha_pronos_download_data,name="alphapronosdownload"),
     path('mrp/input-data', core_views.mrp_input_data, name="mrpinputdata"),
-    path('mrp/output', core_views.mrp_output, name="mrpoutput")
+    path('mrp/output', core_views.mrp_output, name="mrpoutput"),
+    path('mrp/download', core_views.mrp_download, name="mrpdownload"),
+    path('mrp/download/all', core_views.mrp_download_all, name="mrpdownloadall"),
+    path('about-us/', core_views.about_us, name="aboutus"),
     # Admin URLS
     ##path('admin/', admin.site.urls),
 ]

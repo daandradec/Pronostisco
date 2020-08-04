@@ -76,7 +76,7 @@ function getChartConfigurationZ(labels,data,x_label){
 		        labels: labels,
 		        datasets: [
 			        {
-			            label: getCurrentLanguage() == 'ES' ? 'Demanda': 'Demand',
+			            label: getCurrentLanguage() == 'ES' ? 'Datos Historicos': 'Historic Data',
 			            backgroundColor: window.chartColors.green,
 						borderColor: window.chartColors.green,
 						pointRadius: 5,

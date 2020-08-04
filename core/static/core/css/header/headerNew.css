@@ -1,0 +1,27 @@
+/* CSS DOCUMENT */
+
+header{
+    background-image: linear-gradient(to right,rgba(153, 146, 143, 0.8) 0%,rgba(55, 66, 168,0.7) 100%),url('../../img/stock_1.jpg');
+    background-size: cover;   
+    background-blend-mode: multiply; 
+}
+
+.header-title{
+    padding-top:25%;
+}
+
+div.header-graphics{
+    height:100% !important;
+}
+
+@media (max-width:1046px){
+    div.header-graphics{
+        height:80% !important;
+    }
+}
+
+@media (max-width:770px){
+    div.header-graphics{
+        height:50% !important;
+    }
+}

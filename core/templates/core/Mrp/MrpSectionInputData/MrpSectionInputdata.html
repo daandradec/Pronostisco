@@ -1,7 +1,9 @@
+{% load static %}
 <section>
     <!-- VISTA 1 -->
-    <div class="py-5 px-3 bg-mid-lig-white-gray position-relative" style="min-height:700px;z-index:100;" tab-index="1">
-
+    <div class="py-5 px-3 bg-mid-lig-white-gray position-relative" style="opacity:0;min-height:700px;z-index:100;" tab-index="1">
+        {% comment %}
+        
         {% include "core/Shadow/Shadow.html" with location="top:8px" blur="8px" spread="3px" color="gray" %}
 
         <div class="center" style="min-height:700px;">
@@ -10,11 +12,7 @@
                     <h2 class="font-signika font-size-50px-3c text-muted mp-0 c-default hvr-wobble-horizontal"> 
                         No tienes una sesion de producto activa
                     </h2>
-                    <div class="center">
-                    <button class="rounded-circle c-pointer ml-4 mt-1 p-0" style="border:none;background:transparent;" type="button" data-toggle="modal" data-target="#modalExample">
-                        <i class="fas fa-question-circle font-size-23px color-dark-gray"></i>
-                    </button>                    
-                    </div>
+
                 </div>
                 <button class="btn btn-secondary px-5 py-1 rounded" tab-index="2">
                     <span class="font-alegreya-sans font-size-25px-2c text-white">
@@ -26,7 +24,8 @@
         </div>
 
         {% include "core/Shadow/Shadow.html" with location="bottom:5px" blur="8px" spread="3px" color="#423f3f" %}
-
+        
+        {% endcomment %}
     </div>
 
 
@@ -44,13 +43,13 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 center">
-                                <label for="producto" class="font-alegreya-sans font-size-30px-3c color-dark-gray pb-1"> Nombre del producto: </label>
+                                <label for="producto" class="font-alegreya-sans font-size-30px-3c color-dark-gray pb-1" language="true"> Nombre del producto: </label>
                             </div>
                             <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 center">
                                 <input type="text" name="producto" id="nombre-producto" class="form-control font-size-20px-2c w-100 py-3" value="Producto">
                             </div>
-                            <div class="d-flex-no-md col-md-4 center-vertical">
-                                <i class="fas fa-box text-muted font-size-18px ml-5"></i>
+                            <div class="d-flex-no-md col-md-4 center-vertical">  
+                                {% include "core/Modal/ModalButton.html" with modalId="#modalExample" %}               
                             </div>
                         </div>
                     </div> 
@@ -58,13 +57,13 @@
             </div>
         </div>
 
-        <div class="mt-5">
-            <h2 class="font-signika font-italic font-size-25px font-weight-semi-bold text-muted">Arbol MRP</h2>
-            <div class="d3-tree">
-                <div id="tree-container"></div>
-            </div>        
+        <br>
+        <br>
+        <div class="center">
+            <button class="btn btn-info font-weight-bold" refresh-mrp="true"><i class="fas fa-retweet mr-1"></i><span language="true">Nueva Sesión MRP</span></button>
         </div>
-
+        <br>
+        <br>
 
         {% include "core/Mrp/MrpSectionInputData/MrpItemZone/MrpItemZone.html" with title="Componentes" button_text="Componente" btn_class="btn-info" button_id="compo" %}
         {% include "core/Mrp/MrpSectionInputData/MrpItemZone/MrpItemZone.html" with title="Materia Prima" button_text="Materia Prima" btn_class="btn-secondary btn-secondary-gradient" button_id="mater" %}
@@ -72,27 +71,41 @@
         <div class="text-center">
             <button class="btn btn-success button-green-darken-1 w-20-50-sm" tab-index="3">
                 <span class="font-size-20px-2c font-weight-bold">
-                    CONFIRMAR
+                    <span language="true">CONFIRMAR</span>
                     <i class="fas fa-check"></i>
                 </span>
             </button>
         </div>
-        <br>
+        <div class="mt-5">
+            <div class="d-flex">
+                <h2 class="font-signika font-italic font-size-25px font-weight-semi-bold text-muted mr-auto" language="true">Arbol De Fabricación BOM</h2>
+                <button class="btn btn-primary button-blue-lighten-3 px-3 mr-1" tree-reload="true">Restablecer <i class="fas fa-redo-alt"></i></button>
+                <button class="btn btn-primary button-blue-lighten-1 mx-0" tree-plus="true"><span class="font-size-22px mp-0">+</span></button>
+                <button class="btn btn-primary button-blue-lighten-1 mr-1" tree-minus="true"><span class="font-size-24px mp-0">-</span></button>
+                <button class="btn btn-primary button-blue-lighten-3 px-3 mr-1" tree-download="true"><span language="true">Descargar</span><i class="fas fa-download"></i></button>
+            </div>
+            <div class="d3-tree">
+                <div id="tree-container"></div>
+            </div>        
+        </div>        
     </div>
 
     <!-- VISTA 3 -->
     <div class="px-2 d-none" style="min-height:550px;opacity:0;" tab-index="3">
 
         <div class="text-center my-4">
-            <h5 class="font-alegreya-sans font-size-24px" style="color:#898989;" language="true">A continuación ingrese en las tablas los datos que disponga (si no tiene el dato se tomara como Cero) </h5>
+            <h5 class="font-alegreya-sans font-size-24px" style="color:#898989;">
+                <span language="true">A continuación ingrese en las tablas los datos que disponga (si no tiene el dato se tomara como Cero)</span>
+                {% include "core/Modal/ModalButton.html" with modalId="#modalData" %}   
+            </h5>
         </div>
 
         <div>
-            <h4 class="font-quicksand color-light-light-gray text-center">Periodo de Tiempo</h4>
+            <h4 class="font-quicksand color-light-light-gray text-center" language="true">Periodos de Tiempo</h4>
             <div class="center">
-                <button class="btn-primary btn-selectable" selector-left><i class="fas fa-angle-left"></i></button>
-                <p class="font-quicksand text-muted mx-3 mt-3" selector>Mes/Semana</p>              
-                <button class="btn-primary btn-selectable" selector-right><i class="fas fa-angle-right"></i></button>
+                <button class="btn-primary btn-selectable" selector-left><i class="fas fa-minus"></i></button>
+                <p class="font-quicksand text-muted mx-3 mt-3" selector>4 Periodos</p>              
+                <button class="btn-primary btn-selectable" selector-right><i class="fas fa-plus"></i></button>
             </div>        
         </div>
 
@@ -109,12 +122,12 @@
             <button class="btn btn-danger button-color-orange-lighten-1 w-20-50-sm" tab-index="2">
                 <span class="font-size-20px-2c font-weight-bold">
                     <i class="fas fa-angle-left"></i>
-                    REGRESAR
+                    <span language="true">REGRESAR</span>
                 </span>
             </button>        
             <button class="btn btn-success button-green-darken-1 w-20-50-sm" id="submit-mrp">
                 <span class="font-size-20px-2c font-weight-bold">
-                    CONFIRMAR
+                    <span language="true">CONFIRMAR</span>
                     <i class="fas fa-check"></i>
                 </span>
             </button>

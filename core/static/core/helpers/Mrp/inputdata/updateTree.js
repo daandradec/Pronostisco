@@ -17,7 +17,7 @@ var keys_counter;
 
 /* FUNCION PARA REHACER EL ARBOL RESPECTO A CUALQUIER CAMBIO QUE OCURRA */
 function updateTree(operationEvent, payload){
- 
+
     switch(operationEvent){
         case "CREATE": // push
             tree_mrp.children.push(payload);            
@@ -36,6 +36,8 @@ function updateTree(operationEvent, payload){
     }
     
     D3Tree(tree_mrp);    
+    sessionStorage.setItem("tree_mrp",JSON.stringify(tree_mrp))
+    sessionStorage.setItem("state_mrp",JSON.stringify(state))    
 }
 /* FUNCION PARA CONSTRUIR EL TREE DE CERO 0 */
 function constructAllNewTree(){

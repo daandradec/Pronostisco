@@ -3,47 +3,38 @@
 {% block title %}Home{% endblock %}
 
 {% block styles %}
-    {% load static %}   
-    <link rel="stylesheet" href="{% static 'core/css/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/home/home.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/home/home-media.css' %}">
+    {% load static %}    
+    <link rel="stylesheet" href="{% static 'core/css/header/headerNew.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/home/home.css' %}">     
 {% endblock %}
 
 
 {% block content %}
+    {% include 'core/Navbar/NavbarNew.html' %}
 
-    {% include 'core/Navbar/Navbar.html' %}
-    {% include 'core/Home/Header/Header.html' %}
-
-    <section class="body-section container-fluid mp-0">
-        <hr>
-        <main class="row mp-0">
-            <div class="col-12 col-lg-6 mp-0 center">
-                <div class="w-100 h-100 rounded" style="background-image:url({% static 'core/img/background-01.jpg' %});background-size: 100% 100%;"></div>
-            </div>
-            <div class="col-12 col-lg-6 pl-4 pl-xl-5 mt-3 mt-lg-0">
-                <h4 language="true">1. Información antes de usar nuestra página</h4>
-                <p class="text-justify font-size-17px" language="true">Sea cual sea el pronostico no le garantizamos la veracidad completa de los resultados dado que siempre todo en esta vida será probabilístico, así que no haga nada arriesgado que comprometa su capital.</p>
-                <br><br>
-                <h4 language="true">2. Idioma</h4>
-                <p class="text-justify font-size-17px" language="true">Por el momento solo se encuentra disponible para el idioma español e ingles, si desea que se agreguen otros idiomas puede escribir al correo dado en la zona de contacto y haremos lo posible.</p>
-                <br><br>
-                <h4 language="true">3. Por último</h4>
-                <p class="text-justify font-size-17px" language="true">Le estamos muy agradecidos por elegirnos para hacer sus pronósticos y demás servicios para su negocio, esperamos que le sea útil.</p>
-                <br><br>
-            </div>
-        </main>
-        <hr>
+    <section style="background-color:#152335;">
+        {% include 'core/Home/Header/HeaderNew.html' %}
+        {% include 'core/Home/Section/Section.html' %}
+        {% include 'core/Home/Footer/Footer.html' %}
     </section>
-
-    {% include 'core/Footer/Footer.html' %}
-
+    
 {% endblock content %}
 
 {% block scripts %}
+    {% load static %}
+    <script src="{% static 'core/vendor/language-component/home/language-dataset.js' %}"></script>
     <script src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
+    {% comment %}
     <script src="{% static 'core/vendor/language-component/home/language-dataset.js' %}"></script>
     <script src="{% static 'core/helpers/Navbar/mediaResize.js' %}"></script>
     <script src="{% static 'core/js/Triggers/dataToggleCollapse.js' %}"></script>
+
+
+
+
+    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    {% endcomment %}
 {% endblock scripts %}

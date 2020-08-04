@@ -15,11 +15,11 @@ function createDownload(id,canvas_id,button){
     img.onload = function (){
         new_canvas.width += 300;
         new_ctx.drawImage(img, 0, 0);
-        new_ctx.font = (data.length > 25 ? '15px serif' : '20px serif');
+        new_ctx.font = (data.length > 25 ? (data.length > 50 ? '12px serif' : '15px serif') : '20px serif');
         fillForecastTextOnImage(data, new_canvas, new_ctx, (data.length > 7 ? Math.floor(canvas.height/(data.length+1)) : 20));     
 
         a.setAttribute('href',new_canvas.toDataURL("image/png") );
-        a.setAttribute('download', getCurrentLanguage() == 'ES' ? "grafico" : "graph" +".png");
+        a.setAttribute('download', "Resource_Beacon_"+(getCurrentLanguage() == 'ES' ? "grafico" : "graph" +".png") );
         a.click();
     }
     
@@ -48,6 +48,6 @@ function downloadChartMovil(button){
 function fillForecastTextOnImage(data, canvas, ctx, space){
     ctx.fillText("Pronosticos", canvas.width - 275, space);
     for(var i = 1; i < data.length+1; ++i){
-        ctx.fillText(data[i-1], canvas.width - 275, i*space + space);
+        ctx.fillText(i.toString()+". "+data[i-1], canvas.width - 275, i*space + space);
     }
 }

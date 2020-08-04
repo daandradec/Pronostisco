@@ -18,8 +18,8 @@ language_dataset = [
     ["CREAR LA TABLA","CREATE THE TABLE"],
     ["PERIODO DE TIEMPO","TIME FRAME"],
     ["Año/Mes","Year/Month"],
-    ["Semana/Dia","Week/Day"],
     ["Mes/Semana","Month/Week"],
+    ["Semana/Dia","Week/Day"],    
     
     ["Año / Mes","Year / Month"],
     ["Enero","January"],
@@ -34,6 +34,11 @@ language_dataset = [
     ["Octubre","October"],
     ["Noviembre","November"],
     ["Diciembre","December"],
+    ["Mes / Semana","Month / Week"],
+    ["Semana 1","Week 1"],
+    ["Semana 2","Week 2"],
+    ["Semana 3","Week 3"],
+    ["Semana 4","Week 4"],
     ["Semana / Día","Week / Day"],
     ["Lunes","Monday"],
     ["Martes","Tuesday"],
@@ -42,11 +47,6 @@ language_dataset = [
     ["Viernes","Friday"],
     ["Sábado","Saturday"],
     ["Domingo","Sunday"],
-    ["Mes / Semana","Month / Week"],
-    ["Semana 1","Week 1"],
-    ["Semana 2","Week 2"],
-    ["Semana 3","Week 3"],
-    ["Semana 4","Week 4"],
 
     ["CREAR ENTRADA DE DATOS","CREATE DATA ENTRY"],
 

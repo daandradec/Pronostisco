@@ -21,6 +21,8 @@
 {% endblock content %}
 
 {% block scripts %}
+    {% load static %}
+    <script src="{% static 'core/vendor/language-component/home/language-dataset.js' %}"></script>
     <script src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
     {% comment %}
     <script src="{% static 'core/vendor/language-component/home/language-dataset.js' %}"></script>

@@ -42,6 +42,6 @@
 
     <script>
         var TOKEN = "{{csrf}}"
-        var POST_ROUTE = "{% url 'alphapronosgraph' %}{{parameters}}"
+        var POST_ROUTE = "{% url 'alphapronosgraph' %}"+document.location.search
     </script>
 {% endblock %}

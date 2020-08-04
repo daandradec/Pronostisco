@@ -8,14 +8,14 @@ function startCells(){
 function selectAllTdQueryCellExcel(){
     td_query = document.querySelectorAll("td[cell-excel=true]");
     for(var i = 0; i < td_query.length;++i)
-		td_query[i].addEventListener("dblclick",writeSimpleCell,true);		
+		td_query[i].addEventListener("click",writeSimpleCell,true);		
 	
 }
 
 function writeSimpleCell(e){
 	var data = e.target.innerHTML;
 	e.target.innerHTML = "<input type='text' class='w-100 h-100 text-center'>";
-	e.target.removeEventListener("dblclick",writeSimpleCell);
+	e.target.removeEventListener("click",writeSimpleCell);
 	input = e.target.childNodes[0];
 
 	if(data.length)
@@ -35,7 +35,7 @@ function confirmSimpleCell(event){
 }
 
 function closeActiveSimpleCells(e){
-	if(e.target !== input){
+	if(e !== undefined && e.target !== input){
 		cells = document.querySelectorAll("table[mrptrigger] td > input")
 		if(cells.length)
 			closeSimpleCell(cells[0]);
@@ -45,7 +45,7 @@ function closeActiveSimpleCells(e){
 function closeSimpleCell(input){
 	td_element = input.parentElement;
 	td_element.innerHTML = input.value;
-	td_element.addEventListener("dblclick",writeSimpleCell,false);
+	td_element.addEventListener("click",writeSimpleCell,false);
 }
 
 window.addEventListener("load", startCells, false);

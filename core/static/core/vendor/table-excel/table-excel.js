@@ -18,18 +18,19 @@ function awake(){
 
 	//td_query = document.querySelectorAll("div.tab-content > div.active > div.table-responsive > table > tbody > tr> td:not(:first-child)");
 	//td_query = document.querySelectorAll("table > tbody > tr> td:not(:first-child)");
-	td_query = document.querySelectorAll("div.table-responsive table[table-excel] tbody tr > td:not([cell-excel=true])");
+	td_query = document.querySelectorAll("div.table-responsive table[table-excel] tbody tr > td:not([cell-excel=true]):not(:first-child)");
 	addClickEventTD(td_query);
 
 	activeButtonTableExcel();
 
-	nav_tab_button_days = document.getElementById("navtab2");
-	nav_tab_button_years = document.getElementById("navtab1");	
-	nav_tab_button_months = document.getElementById("navtab3");	
-	if(nav_tab_button_days !== undefined && nav_tab_button_days !== null)
-		nav_tab_button_days.addEventListener("mouseup",setTableDays,false);
+	nav_tab_button_years = document.getElementById("navtab1");
+	nav_tab_button_months = document.getElementById("navtab2");
+	nav_tab_button_days = document.getElementById("navtab3");	
+
 	if(nav_tab_button_years !== undefined && nav_tab_button_years !== null)
 		nav_tab_button_years.addEventListener("mouseup",setTableYears,false);
+	if(nav_tab_button_days !== undefined && nav_tab_button_days !== null)
+		nav_tab_button_days.addEventListener("mouseup",setTableDays,false);
 	if(nav_tab_button_months !== undefined && nav_tab_button_months !== null)
 		nav_tab_button_months.addEventListener("mouseup",setTableMonths,false);
 
@@ -43,7 +44,7 @@ function addClickEventTD(td_query){
 function writeCell(e){
 	//closeActiveCells();
 	var data = e.target.innerHTML;
-	e.target.innerHTML = "<input type='text' name='entrada' class='input-text-excel'>";
+	e.target.innerHTML = "<input type='text' name='entrada' class='input-text-excel' style='border: 1px solid orange;'>";
 	e.target.removeEventListener("click",writeCell);
 	input = e.target.childNodes[0];
 
@@ -64,7 +65,7 @@ function confirmCell(event){
 }
 
 function closeActiveCells(e){
-	if(e.target !== input){
+	if(e !== undefined && e.target !== input){
 		cells = document.querySelectorAll("table[table-excel] td > input")
 		if(cells.length)
 			closeCell(cells[0]);
@@ -75,6 +76,12 @@ function closeCell(input){
 	td_element = input.parentElement;
 	td_element.innerHTML = input.value;
 	td_element.addEventListener("click",writeCell,false);
+
+	// LOCAL STORAGE AL PRESIONAR UNA TECLA
+	if(stateTab !== undefined){
+		if(stateTab == 3)
+			saveStateLocalStorage()
+	}	
 }
 
 function validateCell(e){
@@ -108,10 +115,10 @@ function incrementCounterRow(){
 			++counter_table_years
 			break;
 		case 1:
-			++counter_table_days
+			++counter_table_months;			
 			break;
-		case 2:
-			++counter_table_months;
+		case 2:	
+			++counter_table_days
 			break;
 	}
 }
@@ -121,10 +128,10 @@ function decrementCounterRow(){
 			--counter_table_years
 			break;
 		case 1:
-			--counter_table_days
+			--counter_table_months;			
 			break;
-		case 2:
-			--counter_table_months;
+		case 2:	
+			--counter_table_days
 			break;
 	}
 }
@@ -133,13 +140,13 @@ function getCurrentCounter(){
 		case 0:
 			return counter_table_years
 		case 1:
-			return counter_table_days
-		case 2:
 			return counter_table_months
+		case 2:
+			return counter_table_days
 	}
 }
 function setTableDays() {
-	flag_counter = 1;
+	flag_counter = 2;
 	columns = DAYS_COLUMNS;
 }
 function setTableYears(){
@@ -147,7 +154,7 @@ function setTableYears(){
 	columns = YEARS_COLUMNS;
 }
 function setTableMonths(){
-	flag_counter = 2;
+	flag_counter = 1;
 	columns = MONTHS_COLUMNS;
 }
 

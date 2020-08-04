@@ -30,6 +30,9 @@ function postUpdate(){
                 startD3Tree();
                 startMrpInput();
                 flagEvent_2 = false;
+
+                loadSavedDataTree()
+                cleanMRPSession();
             }
             break;
         case 3:
@@ -38,6 +41,8 @@ function postUpdate(){
                 startButtonSelectable();
                 fillTableRowsByCurrentPeriod();
                 flagEvent_3 = false;
+
+                loadSavedDataTables();                
             }else
                 seeChangeStateMRPToTable();
             break;

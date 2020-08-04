@@ -1,12 +1,19 @@
 
 /* ZOOM */
-var zoomListener = d3.behavior.zoom().scaleExtent([0.9, 3]).on("zoom", zoom);
+var zoom_min = 0.9
+var zoomListener = d3.behavior.zoom().scaleExtent([zoom_min, 3]).on("zoom", zoom);
 
 function zoom() {
     const array = Array.from(d3.event.translate);
-    array[0] = Math.clip(array[0], 0 + CIRCLE_SIZE_PIXELS, viewerWidth - CIRCLE_SIZE_PIXELS);
-    array[1] = Math.clip(array[1], 0, viewerHeight - CIRCLE_SIZE_PIXELS*3);
-    svgGroup.attr("transform", "translate(" + array + ")scale(" + d3.event.scale + ")");
+
+    //if(d3.event.scale === zoom_min){
+    //    console.log("ABIERTO")
+    //}else{
+    //    array[0] = Math.clip(array[0], 0 + CIRCLE_SIZE_PIXELS, viewerWidth - CIRCLE_SIZE_PIXELS);
+    //    array[1] = Math.clip(array[1], 0, viewerHeight - CIRCLE_SIZE_PIXELS*3);
+    //}
+    zoom_current = d3.event.scale;
+    svgGroup.attr("transform", "translate(" + array + ")scale(" + zoom_current + ")");
 }
 
 
@@ -32,7 +39,7 @@ function pan(domNode, direction) {
         clearTimeout(panTimer);
         translateCoords = d3.transform(svgGroup.attr("transform"));
         if (direction == 'left' || direction == 'right') {
-            translateX = direction == 'left' ? translateCoords.translate[0] + speed : translateCoords.translate[0] - speed;
+            translateX = direction == 'left' ? translateCoords.translate[0] + speed : translateCoords.translate[0] - speed;            
             translateY = translateCoords.translate[1];
         } else if (direction == 'up' || direction == 'down') {
             translateX = translateCoords.translate[0];
@@ -80,29 +87,37 @@ var outCircle = function(d) {
 /* CENTER */
 function centerNode(source) {
     scale = zoomListener.scale();
-    x = -source.y0;
-    y = -source.x0;
-    x = x * scale + viewerWidth / 4;
-    y = y * scale + viewerHeight / 2;
+    x = -source.y0 * scale + viewerWidth / 4;
+    y = -source.x0 * scale + viewerHeight / 2;
     d3.select('g').transition()
         .duration(duration)
         .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
-
+    
     // nuevo para manejar el zoom que siempre lo mantiene ajustado
     const nodes_n = totalNodes - oldTotalNodes;    
-    if(nodes_n >= 5){
-        oldCocienteNodes = cocienteNodes;
-        cocienteNodes = Math.clip(Math.floor(nodes_n/5), 2, 20);
-        scale = zoom_max/(cocienteNodes - cocienteNodes/5)
-        if(cocienteNodes !== oldCocienteNodes)
-            zoomListener.scaleExtent([zoom_max/(cocienteNodes  - cocienteNodes/5), 3]);         
+    if(nodes_n >= 4){
+        //oldCocienteNodes = cocienteNodes;
+        //cocienteNodes = Math.clip(Math.floor(nodes_n/5), 2, 20);
+        //scale = zoom_max/(cocienteNodes - cocienteNodes/5)
+        //scale = zoom_max/(2^(nodes_n) - 2^(nodes_n-1))
+        zoom_min = zoom_max/(Math.floor(Math.sqrt(nodes_n))-1)
+        //if(cocienteNodes !== oldCocienteNodes)
+        zoomListener.scaleExtent([zoom_min, 3]);         
     }
-   
-        
-    
-    zoomListener.scale(scale); // console.log(totalNodes - oldTotalNodes);
+    zoomListener.scale(scale);
     zoomListener.translate([x, y]);
-    
+    miniCenterNode(source)
+}
+
+function miniCenterNode(source){
+    scale = zoomListener.scale();
+    x = -source.y0 * scale + viewerWidth / 4;
+    y = -source.x0 * scale + viewerHeight / 2;
+    d3.select('g').transition()
+        .duration(duration)
+        .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
+    zoomListener.scale(scale);
+    zoomListener.translate([x, y]);
 }
 
 /* TOGGLE */

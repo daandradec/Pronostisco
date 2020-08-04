@@ -1,4 +1,4 @@
-const state = {
+var state = {
     producto: {id:0, title: "Producto", key: "prod_0"},
     componentes: [],
     materia: [],

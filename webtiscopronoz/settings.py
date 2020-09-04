@@ -25,7 +25,7 @@ SECRET_KEY = 'obwp!86cqiil0ve1o&9jszyb^jr%2!6ad@$^(rq_4e$!41r@=2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['pronostisco.pythonanywhere.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*','pronostisco.pythonanywhere.com','localhost','127.0.0.1','resource-beacon.herokuapp.com','resource-beacon.com']
 
 
 # Application definition
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'webtiscopronoz.urls'
@@ -118,7 +119,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+# opcion 1
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+#STATICFILES_DIR = (os.path.join(BASE_DIR,'static'))
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# opcion 2
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_URL = '/static/'
+#STATICFILES_DIR = (os.path.join(BASE_DIR,'staticfiles'))
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CSRF_COOKIE_SECURE = True
 #SESSION_COOKIE_SECURE = True

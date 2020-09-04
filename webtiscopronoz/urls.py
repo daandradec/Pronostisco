@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from core import views as core_views
-#from django.conf import settings # Heroku
+from django.conf import settings # Heroku - no lo uso sino esta descomentado el resto
 #from django.conf.urls.static import static # Heroku
 
 urlpatterns = [

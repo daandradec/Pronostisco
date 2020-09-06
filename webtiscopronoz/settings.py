@@ -56,7 +56,7 @@ ROOT_URLCONF = 'webtiscopronoz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'core/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,9 +131,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIR = (os.path.join(BASE_DIR,'staticfiles'))
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CSRF_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
 #SESSION_COOKIE_SECURE = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_SSL_REDIRECT = True
-X_FRAME_OPTIONS = 'DENY'
+#SECURE_CONTENT_TYPE_NOSNIFF = True
+#SECURE_BROWSER_XSS_FILTER = True
+#SECURE_SSL_REDIRECT = True
+#X_FRAME_OPTIONS = 'DENY'

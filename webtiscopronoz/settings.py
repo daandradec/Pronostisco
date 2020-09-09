@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'webtiscopronoz.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd3t7avaa2kl08m'
+        'NAME': 'd3t7avaa2kl08m',
         'HOST': 'ec2-54-204-26-236.compute-1.amazonaws.com',
         'PORT': '5432',
-        'USER': '',
-        'PASSWORD':'',
+        'USER': 'kdydeabjyhzcuo',
+        'PASSWORD':'4f7467dd7c1a2735150133c04e5605a249b92d9e05af6d70af461a24c0c0db31',
     }
 }
 

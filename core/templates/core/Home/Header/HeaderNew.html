@@ -1,6 +1,6 @@
 {% load static %}
 
-<header class="text-white" style="padding-top:75px;height:100vh !important;">
+<header class="text-white background-responsive" style="padding-top:75px;">
     
     <div class="container-fluid h-100">
         <div class="row h-100">
@@ -12,7 +12,16 @@
                 </p>           
             </div>
             <div class="col-6 col-md-5 center header-graphics">
-                <img src="{% static 'core/img/home-graphics.png' %}" height="80%" class="hvr-grow">
+                <div class="display-no-sm h-100">
+                    <div class="h-100 center">
+                        <img src="{% static 'core/img/home-graphics.png' %}" height="80%" style="min-height:300px;" class="hvr-grow">
+                    </div>                    
+                </div>
+                <div class="display-only-sm">
+                    <div class="h-100 center">
+                        <img src="{% static 'core/img/home-graphics.png' %}" width="100%" style="min-height:300px;" class="hvr-grow">
+                    </div>  
+                </div>
             </div> 
             <div class="col-6 col-md-2 text-center">
                 <img src="{% static 'core/img/Logo.png' %}" class="img-fluid hvr-grow" style="max-height:180px;">

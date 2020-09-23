@@ -77,13 +77,26 @@
             </button>
         </div>
         <div class="mt-5">
-            <div class="d-flex">
-                <h2 class="font-signika font-italic font-size-25px font-weight-semi-bold text-muted mr-auto" language="true">Arbol De Fabricación BOM</h2>
-                <button class="btn btn-primary button-blue-lighten-3 px-3 mr-1" tree-reload="true">Restablecer <i class="fas fa-redo-alt"></i></button>
-                <button class="btn btn-primary button-blue-lighten-1 mx-0" tree-plus="true"><span class="font-size-22px mp-0">+</span></button>
-                <button class="btn btn-primary button-blue-lighten-1 mr-1" tree-minus="true"><span class="font-size-24px mp-0">-</span></button>
-                <button class="btn btn-primary button-blue-lighten-3 px-3 mr-1" tree-download="true"><span language="true">Descargar</span><i class="fas fa-download"></i></button>
+            <div class="display-no-sm">
+                <div class="d-flex">
+                    <h2 class="font-signika font-italic font-size-25px font-weight-semi-bold text-muted mr-auto" language="true">Arbol De Fabricación BOM</h2>
+                    <button class="btn btn-primary button-blue-lighten-3 px-3 mr-1" tree-reload="true">Restablecer <i class="fas fa-redo-alt"></i></button>
+                    <button class="btn btn-primary button-blue-lighten-1 mx-0" tree-plus="true"><span class="font-size-22px mp-0">+</span></button>
+                    <button class="btn btn-primary button-blue-lighten-1 mr-1" tree-minus="true"><span class="font-size-24px mp-0">-</span></button>
+                    <button class="btn btn-primary button-blue-lighten-3 px-3 mr-1" tree-download="true"><span language="true">Descargar</span><i class="fas fa-download"></i></button>
+                </div>
             </div>
+            
+            <div class="display-only-sm">
+                <h2 class="font-signika font-italic font-size-25px font-weight-semi-bold text-muted mr-auto" language="true">Arbol De Fabricación BOM</h2>
+                <div>
+                    <button class="btn btn-primary button-blue-lighten-3 px-3 mr-1" tree-reload="true">Restablecer <i class="fas fa-redo-alt"></i></button>
+                    <button class="btn btn-primary button-blue-lighten-1 mx-0" tree-plus="true"><span class="font-size-24px mp-0">+</span></button>
+                    <button class="btn btn-primary button-blue-lighten-1 mr-1" tree-minus="true"><span class="font-size-24px mp-0">-</span></button>
+                    <button class="btn btn-primary button-blue-lighten-3 px-3 mr-1" tree-download="true"><span language="true">Descargar</span><i class="fas fa-download"></i></button>
+                </div>
+            </div>            
+
             <div class="d3-tree">
                 <div id="tree-container"></div>
             </div>        

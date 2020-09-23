@@ -95,7 +95,7 @@ function centerNode(source) {
     
     // nuevo para manejar el zoom que siempre lo mantiene ajustado
     const nodes_n = totalNodes - oldTotalNodes;    
-    if(nodes_n >= 4){
+    if(nodes_n >= 9){
         //oldCocienteNodes = cocienteNodes;
         //cocienteNodes = Math.clip(Math.floor(nodes_n/5), 2, 20);
         //scale = zoom_max/(cocienteNodes - cocienteNodes/5)

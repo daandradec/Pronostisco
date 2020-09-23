@@ -262,3 +262,5 @@ def mrp_download_all(request):
 
 def about_us(request):
     return render(request, 'core/AboutUs/AboutUs.html')
+def contact_us(request):
+    return render(request, 'core/ContactUs/ContactUs.html')

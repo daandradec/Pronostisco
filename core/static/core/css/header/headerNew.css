@@ -14,6 +14,10 @@ div.header-graphics{
     height:100% !important;
 }
 
+header.background-responsive{
+    height:100vh !important;
+}
+
 @media (max-width:1046px){
     div.header-graphics{
         height:80% !important;
@@ -23,5 +27,9 @@ div.header-graphics{
 @media (max-width:770px){
     div.header-graphics{
         height:50% !important;
+    }
+
+    header.background-responsive{
+        min-height:100vh !important;
     }
 }

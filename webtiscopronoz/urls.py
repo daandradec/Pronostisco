@@ -34,6 +34,7 @@ urlpatterns = [
     path('mrp/download/all', core_views.mrp_download_all, name="mrpdownloadall"),
     path('about-us/', core_views.about_us, name="aboutus"),
     path('contact-us/', core_views.contact_us, name="contactus"),
+    path('email', core_views.email, name="email"),
     # Admin URLS
     ##path('admin/', admin.site.urls),
 ]

@@ -263,4 +263,13 @@ def mrp_download_all(request):
 def about_us(request):
     return render(request, 'core/AboutUs/AboutUs.html')
 def contact_us(request):
-    return render(request, 'core/ContactUs/ContactUs.html')
+    csrf_token = get_token(request)
+    return render(request, 'core/ContactUs/ContactUs.html',{"csrf":csrf_token})
+
+def email(request):
+    if(request.method == "POST"):
+        data = json.loads(request.POST.get('data',''))
+        email = data["email"]
+        message = data["message"]
+        return HttpResponse(status=200)
+    return HttpResponse(status=400)

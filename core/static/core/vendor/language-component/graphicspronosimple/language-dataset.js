@@ -1,7 +1,8 @@
 language_dataset = [
     ["PRONÓSTICO SIMPLE","SIMPLE FORECAST"],
     ["PRONÓSTICO ALPHA","ALPHA FORECAST"],   
-    ["¿Quienes Somos?","ABOUT US?"],
+    ["¿QUIENES SOMOS?","ABOUT US?"],
+    ["CONTACTO","CONTACT US"],
     ["ESPAÑOL","SPANISH"],
     ["INGLES","ENGLISH"],
 
@@ -33,6 +34,7 @@ language_dataset = [
     ["Pronósticos Simples","Simple Forecast"],
     ["Pronósticos Alpha","Alpha Forecast"],
     ["¿Quienes Somos?","About us?"],
+    ["Contacto","Contact us"],
     ["CONTACTO Y REDES","NETWORKS AND CONTACT"],
     ["Correo:","Email"],
     ["Dirección:","Address:"],

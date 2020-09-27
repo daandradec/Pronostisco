@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.middleware.csrf import get_token
+from django.core.mail import EmailMessage
 from core.forecasts import *
 from core.excel import *
 import json
@@ -271,5 +272,10 @@ def email(request):
         data = json.loads(request.POST.get('data',''))
         email = data["email"]
         message = data["message"]
+        try:
+            emailObject = EmailMessage('ResourceBeacon Contacto', message+"\nMensaje proveniente de: "+email, email, to=['resourcebeaconinfo@gmail.com'])
+            emailObject.send()
+        except:
+            return HttpResponse(status=400)
         return HttpResponse(status=200)
     return HttpResponse(status=400)

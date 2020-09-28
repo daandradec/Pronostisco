@@ -5,7 +5,14 @@ function contactUs(){
         form = e.target;
         email = $(form).find("input[name='email']")[0].value;
         message = $(form).find("textarea")[0].value;
-        requestEmail(email, message)
+        if(email === ""){
+          alert("El correo no puede ser vacio");
+        }else if(email.indexOf("@") === -1 || email.indexOf(".") === -1){
+          alert("No es un correo correcto");
+        }else if(email.indexOf("@") > email.indexOf(".")){
+          alert("No es un correo correcto");
+        }else
+          requestEmail(email, message)
     })
 }
 
@@ -14,10 +21,8 @@ function requestEmail(email, message){
   xhr.open("POST", "/email", true);
   xhr.onload = function (e) {
     if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        alert("respondio correcto")
-      } else {
-        alert("Error en la solicitud")
+      if (xhr.status === 200) {} else {
+        alert("ERROR: Envio de correo no realizado, Hubo un Fallo en la entrada de datos, o la red");
       }
     }
   };
@@ -27,7 +32,8 @@ function requestEmail(email, message){
 
   var data = new FormData();
   data.append('data', JSON.stringify({"email":email,"message":message})  );
-  data.append("csrfmiddlewaretoken", TOKEN)
+  data.append("csrfmiddlewaretoken", TOKEN);
+  alert("CORREO ENVIADO EXITOSAMENTE");
   xhr.send(data);
 }
 

@@ -2,7 +2,7 @@
 
 <header class="text-white background-responsive" style="padding-top:75px;">
     
-    <div class="container-fluid h-100">
+    <div class="container-fluid">
         <div class="row h-100">
             <div class="col-12 col-md-5" style="background:rgba(30,40,23,0.2);">
                 <h1 class="font-gadugi font-size-50px-3c letter-spacing-2px header-title text-shadow-07 text-center">RESOURCE BEACON</h1> 
@@ -11,7 +11,17 @@
                     Le facilitara la realización de un plan agregado de producción y un plan maestro de producción.                
                 </p>           
             </div>
-            <div class="col-6 col-md-5 center header-graphics">
+
+            <div class="col-12 col-md-7 mp-0">
+                <div class="display-no-md div-column-no-complete h-100">
+                    <div class="center bg-primary h-100">
+                        <img src="{% static 'core/img/home-graphics.png' %}" class="hvr-grow header-image">
+                    </div>                 
+                </div>
+            </div>
+
+            {% comment %}
+            <div class="col-12 col-md-7 center header-graphics">
                 <div class="display-no-sm h-100">
                     <div class="h-100 center">
                         <img src="{% static 'core/img/home-graphics.png' %}" height="80%" style="min-height:300px;" class="hvr-grow">
@@ -23,9 +33,7 @@
                     </div>  
                 </div>
             </div> 
-            <div class="col-6 col-md-2 text-center">
-                <img src="{% static 'core/img/Logo-nombre.jpg' %}" class="img-fluid hvr-grow mt-4" style="max-height:180px;">
-            </div>           
+            {% endcomment %}
         </div>
     </div>
 

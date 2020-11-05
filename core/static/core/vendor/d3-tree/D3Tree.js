@@ -92,7 +92,35 @@ function startD3Tree(){
 		svgGroup.attr("transform", "translate(" + t + ")scale(" + zoom_current + ")");
 		zoomListener.scale(zoom_current);	
 		zoomListener.translate(t);
-    }, false);	
+	}, false);	
+	
+	window.addEventListener("resize", resetD3TreeOnResize, false);
+}
+function resetD3TreeOnResize(){
+	// CLEAN ALL THE CONTENT INSIDE
+	document.getElementById("tree-container").innerHTML = "";
+	
+	const container_tree = document.getElementById("tree-container").parentElement;
+    viewerWidth = $(container_tree).width();
+    viewerHeight = $(container_tree).height();    
+
+    tree = d3.layout.tree()
+        .size([viewerHeight, viewerWidth]);
+    
+    diagonal = d3.svg.diagonal()
+        .projection(function(d) {
+            return [d.y, d.x];
+        });
+
+    baseSvg = d3.select("#tree-container").append("svg")
+        .attr("width", viewerWidth)
+        .attr("height", viewerHeight)
+        .attr("class", "overlay")
+        .call(zoomListener);        
+    svgGroup = baseSvg.append("g");
+    zoomListener.scale(3);
+
+    D3Tree(tree_mrp);
 }
 
 function D3Tree(treeData){

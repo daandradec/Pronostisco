@@ -31,7 +31,7 @@ header div.container-fluid, header div.row, header div.row > div:nth-child(1), d
 
 @media (max-width: 767px){
     .header-title{padding-top: 50px;}
-    div.display-no-md{display:none !important;}
+    header div.display-no-md{display:none !important;}
     div.center-header-md{
         display: flex;
         display : -webkit-flex;

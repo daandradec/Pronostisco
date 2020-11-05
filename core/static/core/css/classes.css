@@ -264,8 +264,8 @@
 /* MD */
 @media(max-width:720px){
 	/* DISPLAYS */
-	.display-no-md{display:none;}
-	.display-only-md{display:block;}
+	.display-no-md{display:none !important;}
+	.display-only-md{display:block !important;}
     .d-flex-no-md{display:none;}
 
 	/* HEIGHTS */
@@ -320,3 +320,10 @@
 .display-no-620{display:initial;}
 .display-only-620{display:none;}
 @media(max-width:620px){.display-no-620{display:none;}.display-only-620{display:block;}}
+
+.display-no-md-bootstrap{display:block;}
+.display-only-md-bootstrap{display:none;}
+@media (max-width: 767px){
+	.display-no-md-bootstrap{display:none;}
+	.display-only-md-bootstrap{display:block;}
+}

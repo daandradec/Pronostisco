@@ -1,2 +1,26 @@
 footer a{color:white !important;}
 footer a:hover{color:#8ec6f5 !important;}
+
+footer {
+    height:auto;
+    min-height:500px;
+    border-top:4px double #a5a4a0;
+}
+
+@media (max-width:768px){
+    footer{
+        height: 600px !important;
+    }
+}
+
+@media (max-width:650px){
+    footer{
+        height: 700px !important;
+    }
+}
+
+@media (max-width:540px){
+    footer{
+        height: 900px !important;
+    }
+}

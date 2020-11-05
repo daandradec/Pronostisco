@@ -6,7 +6,7 @@ header{
     background-blend-mode: multiply;
 }
 
-header div.container-fluid, header div.row{
+header div.container-fluid, header div.row, header div.row > div:nth-child(1), div.center-header-md{
     min-height: calc(100vh - 75px) !important;
 }
 
@@ -14,11 +14,6 @@ header div.container-fluid, header div.row{
     padding-top:200px;
 }
 
-
-
-@media (max-width: 768px){
-    .header-title{padding-top: 50px;}
-}
 
 .div-column-no-complete{
     width: 70% !important;
@@ -28,4 +23,21 @@ header div.container-fluid, header div.row{
     height: 80%;
     min-height: 300px;
     max-height: 700px;
+}
+
+@media(max-width:1140px){
+    .div-column-no-complete{width:100% !important;}
+}
+
+@media (max-width: 767px){
+    .header-title{padding-top: 50px;}
+    div.display-no-md{display:none !important;}
+    div.center-header-md{
+        display: flex;
+        display : -webkit-flex;
+        vertical-align: middle;
+        justify-content: center;
+        align-items: center;
+        text-align: center;        
+    }
 }

@@ -35,8 +35,11 @@ function startD3Tree(){
     zoomListener.scale(3);
 
     D3Tree(tree_mrp);
-
-
+	
+	d3buttonslisteners();
+	window.addEventListener("resize", resetD3TreeOnResize, false);
+}
+function d3buttonslisteners(){
 	/* BOTONES */
     document.querySelector("button[tree-download='true']").addEventListener("click",function(e){
         e.stopPropagation();
@@ -92,9 +95,7 @@ function startD3Tree(){
 		svgGroup.attr("transform", "translate(" + t + ")scale(" + zoom_current + ")");
 		zoomListener.scale(zoom_current);	
 		zoomListener.translate(t);
-	}, false);	
-	
-	window.addEventListener("resize", resetD3TreeOnResize, false);
+	}, false);
 }
 function resetD3TreeOnResize(){
 	// CLEAN ALL THE CONTENT INSIDE
@@ -120,7 +121,8 @@ function resetD3TreeOnResize(){
     svgGroup = baseSvg.append("g");
     zoomListener.scale(3);
 
-    D3Tree(tree_mrp);
+	D3Tree(tree_mrp);
+	d3buttonslisteners();
 }
 
 function D3Tree(treeData){

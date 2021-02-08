@@ -24,7 +24,11 @@ language_dataset = [
     ["Añadir Materia Prima","Add Raw Material"],
     ["CONFIRMAR","CONFIRM"],
     ["Arbol De Fabricación BOM","BOM Manufacturing Tree"],
+    ["Restablecer","Restore"],
     ["Descargar","Download"],
+    ["Arbol De Fabricación BOM","BOM Manufacturing Tree"],
+    ["Restablecer","Restore"],
+    ["Descargar","Download"],    
 
     ["A continuación ingrese en las tablas los datos que disponga (si no tiene el dato se tomara como Cero)","Then enter the data you have in the tables (if you do not have the data, it will be taken as Zero)"],
     ["Periodos de Tiempo","Periods of time"],

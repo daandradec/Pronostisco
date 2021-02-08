@@ -9,13 +9,13 @@ footer {
 
 @media (max-width:768px){
     footer{
-        height: 600px !important;
+        height: 700px !important;
     }
 }
 
 @media (max-width:650px){
     footer{
-        height: 700px !important;
+        height: 850px !important;
     }
 }
 

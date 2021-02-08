@@ -10,6 +10,9 @@ language_dataset = [
     ["Pronósticos","Forecasts"],
 
     ["Bienvenido a Pronósticos, esta sección analiza todos los datos históricos en una sola línea temporal.","Welcome to Forecasts, this section analyzes all historical data on a single timeline."],    
+    ["INSTRUCCIONES","INSTRUCTIONS"],
+    ["Si no Dispone de un Excel puede crear una tabla automatica","If you do not have an Excel you can create an automatic table"],
+    ["Crear TABLA Manual","Create Table Manually"],
     ["Arrastra los archivos .xlsx, .xls, .xlsm, .csv aquí ","Drag the .xlsx, .xls, .xlsm, .csv files here"],
     ["Cargar Archivo","Load file"],
     ["¡ IMPORTANTE !","¡ IMPORTANT !"],

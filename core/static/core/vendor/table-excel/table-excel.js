@@ -78,10 +78,13 @@ function closeCell(input){
 	td_element.addEventListener("click",writeCell,false);
 
 	// LOCAL STORAGE AL PRESIONAR UNA TECLA
-	if(stateTab !== undefined){
-		if(stateTab == 3)
-			saveStateLocalStorage()
-	}	
+	try{
+		if(typeof(stateTab) !== 'undefined'){
+			if(stateTab == 3)
+				saveStateLocalStorage()
+		}	
+	}
+	catch(e){}
 }
 
 function validateCell(e){

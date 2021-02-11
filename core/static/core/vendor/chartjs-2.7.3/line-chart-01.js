@@ -2,11 +2,11 @@ window.addEventListener("load",createCharX,false);
 
 function createCharX(){
 	var canvas = document.getElementById('line-chart-01').getContext('2d');
-	var chart = new Chart(canvas,getChartConfigurationX(django_list_labels_chart_01,
+	var chart = new Chart(canvas,getChartConfigurationOne(django_list_labels_chart_01,
 		django_list_data_chart_01))
 }
 
-function getChartConfigurationX(labels,data){
+function getChartConfigurationOne(labels,data){
 	return {
 		type: 'line',
 

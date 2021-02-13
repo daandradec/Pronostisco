@@ -1,7 +1,8 @@
 {% load static %}
-<div class="container p-0 mt-5">
-    <h2 class="font-weight-bold text-center text-white my-5" language="true">Nuestros Metodos</h2>
-    <div class="container-fluid mp-0 bg-primary">
+<section class="py-5 w-100" style="background-image:url({% static 'core/img/a/k.jpg' %});background-size: 50% 100%;">
+<div class="container p-0 my-0">
+    <h2 class="font-weight-bold text-center text-white mt-0 mb-5" language="true">Nuestros Metodos</h2>
+    <div class="container-fluid mp-0">
         <div class="row mp-0">
             <div class="col-12 col-sm-4 center bg-white hov-bg-mid-lig-white-gray border c-pointer box-text">
                 <a href="{% url 'simplepronosinputdata' %}{{parameters}}" class="text-dark">
@@ -54,6 +55,8 @@
         </div>    
     </div>
 </div>
+</section>
+
 
 <div style="background-image:url({% static 'core/img/a/h.jpg' %});background-size: 25% 100%;">
 {% include 'core/Home/Section/Explanation/Explanation.html' with title="PRONÓSTICOS SIMPLES" text="En esta sección podrá realizar pronósticos encontrando el resultado más asertivo analizando todos los datos históricos en una sola línea temporal. Brindándole una prospectiva o visión a futuro basada en cálculos matemáticos y estocásticos." video="core/video/Video_Pronostico_Simple.mp4" inverse=False %}
@@ -70,7 +73,7 @@
 <div style="background-image:url({% static 'core/img/a/f.jpg' %});background-size: 25% 100%;">
 {% include 'core/Home/Section/Explanation/Explanation.html' with title="MRP" text="Es un sistema el cual establece las cantidades y costos de producción en un horizonte de planeacion, realizando un procedimiento que establece los componentes y materias primas en unos tiempos determinados. Dando como resultado un plan de compras y un plan maestro de producción. Le brindara una planificación en la cual usted pobra controlar las cantidades de inventario, requerimientos netos, stocks de seguridad, recepciones programadas, lead time, PRO, PCO, entre otros." video="core/video/Video_Mrp.mp4" inverse=False %}
 </div>
-<br/><br/><br/><br/><br/>
+<br/>
 
 <div style="height:400px;" class="home-image-bg-stock">
     <div class="w-100 center" style="height:400px;">
@@ -79,3 +82,4 @@
         </div>
     </div>
 </div>
+<br/>

@@ -3,24 +3,24 @@ footer a:hover{color:#8ec6f5 !important;}
 
 footer {
     height:auto;
-    min-height:500px;
+    min-height:404px;
     border-top:4px double #a5a4a0;
 }
 
 @media (max-width:768px){
     footer{
-        height: 700px !important;
+        height: 600px !important;
     }
 }
 
 @media (max-width:650px){
     footer{
-        height: 850px !important;
+        height: 600px !important;
     }
 }
 
 @media (max-width:540px){
     footer{
-        height: 900px !important;
+        height: 800px !important;
     }
 }

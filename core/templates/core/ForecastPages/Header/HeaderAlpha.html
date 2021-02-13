@@ -5,9 +5,9 @@
         <div style="position:absolute;bottom:3px;width:100%;" class="text-center">
             <p style="margin: 0 0 !important;padding: 0 0 !important;">
                 {% if inputDataFlag  %}
-                    <a href="{% url 'alphapronosinputdata' %}{{parameters}}" class="active" language="true">Entrada de Datos</a> <i class="fas fa-angle-double-right"></i> <a href="{% url 'alphapronosgraph' %}{{parameters}}" class="{% if not data %}disabled{% endif %}" language="true">Pronósticos</a>
+                    <a href="{% url 'alphapronosinputdata' %}{{parameters}}" class="active" language="true">Entrada de Datos</a> <i class="fas fa-angle-double-right"></i> <a href="{% url 'alphapronosgraph' %}{{parameters}}" class="{% if not data %}disabled{% endif %}" language="true">Pronóstico Alpha</a>
                 {% else %}
-                    <a href="{% url 'alphapronosinputdata' %}{{parameters}}" language="true">Entrada de Datos</a> <i class="fas fa-angle-double-right"></i> <a href="" class="active" language="true">Pronósticos</a>
+                    <a href="{% url 'alphapronosinputdata' %}{{parameters}}" language="true">Entrada de Datos</a> <i class="fas fa-angle-double-right"></i> <a href="" class="active" language="true">Pronóstico Alpha</a>
                 {% endif %}
             </p>
         </div>

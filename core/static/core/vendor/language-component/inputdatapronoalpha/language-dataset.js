@@ -7,19 +7,21 @@ language_dataset = [
     ["INGLES","ENGLISH"],
 
     ["Entrada de Datos","Data entry"],
-    ["Pronósticos","Forecasts"],
+    ["Pronósticos Alpha","Alpha Forecasts"],
 
     ["Bienvenido a Pronósticos Alpha, esta sección analiza todos los datos según los periodos establecidos en el mismo (Meses, semanas, días).","Welcome to Alpha Forecasts, this section analyzes all the data according to the periods established in it (Months, weeks, days)."],
-    ["INSTRUCCIONES","INSTRUCTIONS"],
-    ["Si no Dispone de un Excel puede crear una tabla automatica","If you do not have an Excel you can create an automatic table"],
-    ["Crear TABLA Manual","Create Table Manually"],
-    ["Arrastra los archivos .xlsx, .xls, .xlsm, .csv aquí ","Drag the .xlsx, .xls, .xlsm, .csv files here"],
-    ["Cargar Archivo","Load file"],
     ["¡ IMPORTANTE !","¡ IMPORTANT !"],
     ["El formato de los datos debe ser una hoja de Excel donde a cada celda le corresponda un valor","The data format must be an Excel sheet where each cell corresponds to a value"],
     ["Ver Ejemplo","See Example"],
+    ["Arrastra los archivos .xlsx, .xls, .xlsm, .csv aquí ","Drag the .xlsx, .xls, .xlsm, .csv files here"],
+    ["Cargar Archivo","Load file"],
+    ["INSTRUCCIONES","INSTRUCTIONS"],
+    ["Si no Dispone de un Excel puede crear una tabla automatica","If you do not have an Excel you can create an automatic table"],
+    ["Crear TABLA Manual","Create Table Manually"],
+
     ["Si no dispones de un archivo de Excel puedes optar por crear tu entrada de datos a partir de nuestra tabla","If you do not have an Excel file you can choose to create your data entry from our table"],
     ["CREAR LA TABLA","CREATE THE TABLE"],
+
     ["PERIODO DE TIEMPO","TIME FRAME"],
     ["Año/Mes","Year/Month"],
     ["Mes/Semana","Month/Week"],

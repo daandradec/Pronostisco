@@ -12,3 +12,30 @@
     left:0;
     background:rgba(255,255,255,0.25);
 }
+
+.home-section0-img{
+    background-image:url('../../img/a/k.jpg');
+    background-size: 50% 100%;
+}
+.home-section1-img{
+    background-image:url('../../img/a/h.jpg');
+    background-size: 25% 100%;
+}
+.home-section2-img{
+    background-image:url('../../img/a/Pronosticos simples.jpg');
+}
+.home-section3-img{
+    background-image:url('../../img/a/f.jpg');
+    background-size: 25% 100%;
+}
+
+@media (max-width: 1140px){
+    .home-section1-img{background-size:50% 100%;}
+    .home-section3-img{background-size:100% 100%;}
+    .home-section0-img{background-size:100% 100%;}
+}
+@media (max-width: 720px){
+    .home-section1-img{background-size:100% 100%;}
+    .home-section3-img{background-size:auto;background-repeat: repeat;}
+    .home-section0-img{background-size:auto;background-repeat: repeat;}
+}

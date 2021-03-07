@@ -11,7 +11,7 @@ language_dataset = [
 
     ["Bienvenido a Pronósticos, esta sección analiza todos los datos históricos en una sola línea temporal.","Welcome to Forecasts, this section analyzes all historical data on a single timeline."],    
     ["¡ IMPORTANTE !","¡ IMPORTANT !"],
-    ["El formato de los datos debe ser una hoja de Excel donde a cada celda le corresponda un valor","The data format must be an Excel sheet where each cell corresponds to a value"],
+    ["El formato de los datos debe ser una hoja de Excel donde a cada celda le corresponda un dato historico","The data format must be an Excel sheet where each cell corresponds to a historic value"],
     ["Ver Ejemplo","See Example"],
     ["Arrastra los archivos .xlsx, .xls, .xlsm, .csv aquí ","Drag the .xlsx, .xls, .xlsm, .csv files here"],
     ["Cargar Archivo","Load file"],

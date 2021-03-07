@@ -11,7 +11,7 @@ language_dataset = [
 
     ["Bienvenido a Pronósticos Alpha, esta sección analiza todos los datos según los periodos establecidos en el mismo (Meses, semanas, días).","Welcome to Alpha Forecasts, this section analyzes all the data according to the periods established in it (Months, weeks, days)."],
     ["¡ IMPORTANTE !","¡ IMPORTANT !"],
-    ["El formato de los datos debe ser una hoja de Excel donde a cada celda le corresponda un valor","The data format must be an Excel sheet where each cell corresponds to a value"],
+    ["El formato de los datos debe ser una hoja de Excel donde a cada celda le corresponda un dato historico","The data format must be an Excel sheet where each cell corresponds to a historic value"],
     ["Ver Ejemplo","See Example"],
     ["Arrastra los archivos .xlsx, .xls, .xlsm, .csv aquí ","Drag the .xlsx, .xls, .xlsm, .csv files here"],
     ["Cargar Archivo","Load file"],

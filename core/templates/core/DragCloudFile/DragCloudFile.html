@@ -12,7 +12,11 @@
             <div id="label_output_file"></div>
         </div>
         <div class="form-group mt-2">
-            <input type="submit" id="drag-cloud-button" class="btn btn-outline-success" value="Enviar" disabled="disabled">  
+            {% if parameters == "?lang=EN" %}
+                <input type="submit" id="drag-cloud-button" class="btn btn-outline-success" value="Send" disabled="disabled">  
+            {% else %}
+                <input type="submit" id="drag-cloud-button" class="btn btn-outline-success" value="Enviar" disabled="disabled">  
+            {% endif %}
         </div>                        
     </form>  
 </div>  

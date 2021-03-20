@@ -24,6 +24,11 @@
   src: url('Arvo/tDbD2oWUg0MKqScQ7Q.woff2');
 }
 @font-face{
+  font-family: 'Berlin';
+  font-style: normal;
+  src: url('Berlin/berlin.ttf');
+}
+@font-face{
   font-family: 'Bree-Serif';
   font-style: normal;  
   src: url('Bree-Serif/BreeSerif-Regular.ttf');
@@ -109,6 +114,9 @@
 .font-arvo{
   font-family: 'Arvo';
   font-weight: 450;
+}
+.font-berlin{
+  font-family: 'Berlin';
 }
 .font-bree-serif{
   font-family: 'Bree-Serif';

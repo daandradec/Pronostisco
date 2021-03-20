@@ -1,31 +1,38 @@
 {% load static %}
+{% load get_request_parameters %}
+{% get_current_parameters as parameters %}
 
 <header class="text-white background-responsive" style="padding-top:52px;">
     
     <div class="container py-5">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-5 p-1">
+            <div class="col-12 col-sm-12 col-md-5 p-5">
                 <h2 class="header-blue-title text-center font-weight-bold font-size-40px-3c"><span language="true">Gratis</span> </br> <span language="true">Sin inscripciones</span> </br> <span language="true">Facil de usar y Rapido</span></h2>
-                <img src="{% static 'core/img/home1img.png'%}" width="100%"/>
+                <img src="{% static 'core/img/home1img.png'%}" width="100%" class="hov-scale"/>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-7 p-1">
+            <div class="col-12 col-sm-12 col-md-7 p-5">
                 <div class="center h-100">
                     <div class="display-no-sm">
                         <h2 class="header-blue-title  font-weight-bold font-size-40px-3c">MRP (MATERIAL REQUIREMENT PLANNING)</h2>
-                        <img src="{% static 'core/img/home2img.png'%}" width="100%" />
+                                                
+                        {% if parameters == "?lang=EN" %}
+                            <img src="{% static 'core/img/home2imgen.PNG'%}" width="100%" class="hov-scale"/>
+                        {% else %}
+                            <img src="{% static 'core/img/home2img.png'%}" width="100%" class="hov-scale"/>
+                        {% endif %}                        
                     </div>
                 </div>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-6 p-1">
-                <h2 class="header-blue-title  font-weight-bold font-size-40px-3c" language="true">19 Modelos de Pronosticos</h2>
-                <img src="{% static 'core/img/home3img.png'%}" width="100%" />
+            <div class="col-12 col-sm-12 col-md-6 p-5">
+                <h2 class="header-blue-title  font-weight-bold font-size-40px-3c text-center" language="true">19 Modelos de Pronosticos</h2>
+                <img src="{% static 'core/img/home3img.png'%}" width="100%" class="hov-scale"/>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-6 p-1">
-                <h2 class="header-blue-title  font-weight-bold font-size-40px-3c" language="true">2 Formas de Evaluar Pronosticos (Continua y Por Periodos)</h2>
-                <img src="{% static 'core/img/home4img.png'%}" width="100%" />
+            <div class="col-12 col-sm-12 col-md-6 p-5">
+                <h2 class="header-blue-title  font-weight-bold font-size-40px-3c text-center" language="true">2 Formas de Evaluar Pronosticos (Continua y Por Periodos)</h2>
+                <img src="{% static 'core/img/home4img.png'%}" width="100%" class="hov-scale"/>
             </div>            
 
         </div>

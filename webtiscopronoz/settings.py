@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',    
 ]
 
 ROOT_URLCONF = 'webtiscopronoz.urls'
@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'webtiscopronoz.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd3t7avaa2kl08m',
-        'HOST': 'ec2-54-204-26-236.compute-1.amazonaws.com',
+        'NAME': 'resourcebeacon',
+        'HOST': 'dpg-cg792ad269v5l60m43t0-a',
         'PORT': '5432',
-        'USER': 'kdydeabjyhzcuo',
-        'PASSWORD':'4f7467dd7c1a2735150133c04e5605a249b92d9e05af6d70af461a24c0c0db31',
+        'USER': 'resourcebeacon',
+        'PASSWORD':'ne5cQHoOQlMwXiUGsgyDBMFQzutJGFxv',
     }
 }
 
@@ -124,7 +124,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Following settings only make sense on production and may break development environments.
+if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
+    # in your application directory on Render.
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # Turn on WhiteNoise storage backend that takes care of compressing static files
+    # and creating unique names for each version so they can safely be cached forever.
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

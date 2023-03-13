@@ -1,0 +1,18 @@
+databases:
+  - name: resourcebeacon
+    databaseName: resourcebeacon
+    user: resourcebeacon
+
+services:
+  - type: web
+    name: resourcebeacon
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn webtiscopronoz.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: resourcebeacon
+          property: connectionString
+      - key: WEB_CONCURRENCY
+        value: 4

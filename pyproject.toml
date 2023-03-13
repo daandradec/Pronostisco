@@ -6,8 +6,7 @@ authors = ["daandradec <daandradec@unal.edu.co>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "3.10"
-django = "2.1.1"
+python = "3.6.6"
 
 
 [build-system]

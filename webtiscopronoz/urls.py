@@ -17,8 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from core import views as core_views
-#from django.conf import settings # Heroku - no lo uso sino esta descomentado el resto
-#from django.conf.urls.static import static # Heroku
+
 
 urlpatterns = [
     # CORE URLS
@@ -34,9 +33,11 @@ urlpatterns = [
     path('mrp/download', core_views.mrp_download, name="mrpdownload"),
     path('mrp/download/all', core_views.mrp_download_all, name="mrpdownloadall"),
     path('about-us/', core_views.about_us, name="aboutus"),
+    path('contact-us/', core_views.contact_us, name="contactus"),
+    path('email', core_views.email, name="email"),
     # Admin URLS
     ##path('admin/', admin.site.urls),
-] #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # Heroku
+]
 """
 path('input-data',core_views.inputdata,name="inputdata"),
 path('chart',core_views.chart,name="chart"),

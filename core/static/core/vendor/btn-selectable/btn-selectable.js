@@ -3,18 +3,26 @@ var callback_function;
 var flagAdd, flagDelete;
 
 function startButtonSelectable(){
-    current_index = 4;
+    if(sessionStorage.getItem("time_periods")){
+        current_index = sessionStorage.getItem("time_periods")
+        updateTextSelector();
+    }else{
+        current_index = 4;
+        sessionStorage.setItem("time_periods", current_index);
+    }    
 
     $("button[selector-left]").click(function(){
         labelShiftLeft();
         updateTextSelector();
         callback_function(0, flagAdd, flagDelete);
+        sessionStorage.setItem("time_periods", current_index);
     });
 
     $("button[selector-right]").click(function(){
         labelShiftRight();
         updateTextSelector();
         callback_function(1, flagAdd, flagDelete);
+        sessionStorage.setItem("time_periods", current_index);
     });
 }
 

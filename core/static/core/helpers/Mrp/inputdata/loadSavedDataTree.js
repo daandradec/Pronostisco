@@ -129,6 +129,7 @@ function loadSavedDataTree(){
 //// LIMPIAR SESION MRP
 function cleanMRPSession(){
     $("button[refresh-mrp]").on('click',function(){
+        sessionStorage.removeItem("time_periods")
         sessionStorage.removeItem("tree_mrp")
         sessionStorage.removeItem("state_mrp")
         sessionStorage.removeItem("table_forecast")

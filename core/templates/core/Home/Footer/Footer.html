@@ -1,6 +1,6 @@
 {% load static %}
-<footer class="bg-white" style="height:440px;border-top:4px double #a5a4a0;">
-    <div class="container pt-5">
+<footer class="bg-white" style="background-image:url({% static 'core/img/a/b.jpg' %});background-size: 100% 100%;">
+    <div class="container pt-3">
         <div class="row mt-5">
             
             <div class="col-12 col-sm-12 col-md-4">
@@ -23,17 +23,18 @@
             <div class="col-12 col-sm-6 col-md-4">
                 <ul class="list-no-decorator pt-2">
                     <li class="font-signika font-size-19px-2c font-weight-bold text-dark mb-3">LINKS</li>
-                    <li class="font-alegreya-sans font-size-18px-2c mb-4"><a href="{% url 'simplepronosinputdata' %}{{parameters}}" class="text-muted" language="true">Pronósticos Simples</a></li>
-                    <li class="font-alegreya-sans font-size-18px-2c my-4"><a href="{% url 'alphapronosinputdata' %}{{parameters}}" class="text-muted" language="true">Pronósticos Alpha</a></li>
-                    <li class="font-alegreya-sans font-size-18px-2c my-4"><a href="{% url 'mrpinputdata' %}{{parameters}}" class="text-muted">MRP</a></li>
-                    <li class="font-alegreya-sans font-size-18px-2c mt-4"><a href="{% url 'aboutus' %}{{parameters}}" class="text-muted" language="true">¿Quienes Somos?</a></li>
+                    <li class="font-alegreya-sans font-size-18px-2c mb-2"><a href="{% url 'simplepronosinputdata' %}{{parameters}}" class="text-muted" language="true">Pronósticos Simples</a></li>
+                    <li class="font-alegreya-sans font-size-18px-2c my-2"><a href="{% url 'alphapronosinputdata' %}{{parameters}}" class="text-muted" language="true">Pronósticos Alpha</a></li>
+                    <li class="font-alegreya-sans font-size-18px-2c my-2"><a href="{% url 'mrpinputdata' %}{{parameters}}" class="text-muted">MRP</a></li>
+                    <li class="font-alegreya-sans font-size-18px-2c mt-2"><a href="{% url 'aboutus' %}{{parameters}}" class="text-muted" language="true">¿Quienes Somos?</a></li>
+                    <li class="font-alegreya-sans font-size-18px-2c mt-2"><a href="{% url 'contactus' %}{{parameters}}" class="text-muted" language="true">Contacto</a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-6 col-md-4">
-                <div class="font-quicksand font-size-14px-2c pt-2">
+                <div class="font-quicksand font-size-13px-2c pt-2">
                     <h6 class="font-signika font-size-19px-2c font-weight-bold text-dark mb-3" language="true">CONTACTO Y REDES</h6>
                     <img src="{% static 'core/img/gmail.png' %}" width="30px">
-                    <strong language="true">Correo:</strong> guacastrategy@gmail.com
+                    <strong language="true">Correo:</strong> resourcebeaconinfo@gmail.com
 
                     <br/><br/>
                     <img src="{% static 'core/img/address.png' %}" width="30px">
@@ -44,10 +45,10 @@
                 </div>
             </div>
         </div>
-        <hr>
+        
         <div>
             <p class="font-size-13px float-left" language="true">Copyright © 2018 Todos los derechos reservados </p>
-            <p class="font-size-13px float-right">Developed by Aico CC</p>
+            <p class="font-size-13px float-right">Developed by Aicoh Colombia</p>
         </div>
     </div>
 </footer>

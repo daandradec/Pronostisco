@@ -1,0 +1,9 @@
+.aboutusheader{
+    background-image:url('../../img/a/q.jpg');
+    background-size: 50% 50%;
+    min-height:800px;
+}
+
+@media (max-width: 720px){
+    .aboutusheader{background-size:auto;background-repeat: repeat;min-height: 1100px;}
+}

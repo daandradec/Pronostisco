@@ -38,10 +38,12 @@ function activeAccordionButton(){
         const accordions = document.querySelector("div[accordion-zone='true']").children;
 
         if(flagAccordionButton){
+            $(e.target.children[0]).text("Plegar Todos");
             $(i_tag).removeClass("fa-arrow-circle-down");$(i_tag).addClass("fa-arrow-circle-up");
             for(var i = 0; i < periods_state; ++i)
                 $(accordions[2*i+1]).collapse('show');            
         }else{
+            $(e.target.children[0]).text("Desplegar Todos");
             $(i_tag).removeClass("fa-arrow-circle-up");$(i_tag).addClass("fa-arrow-circle-down");
             for(var i = 0; i < periods_state; ++i)
                 $(accordions[2*i+1]).collapse('hide');            

@@ -1,7 +1,8 @@
 language_dataset = [
     ["PRONÓSTICO SIMPLE","SIMPLE FORECAST"],
     ["PRONÓSTICO ALPHA","ALPHA FORECAST"],
-    ["¿Quienes Somos?","ABOUT US?"],
+    ["¿QUIENES SOMOS?","ABOUT US?"],
+    ["CONTACTO","CONTACT US"],
     ["ESPAÑOL","SPANISH"],
     ["INGLES","ENGLISH"],
 
@@ -23,7 +24,11 @@ language_dataset = [
     ["Añadir Materia Prima","Add Raw Material"],
     ["CONFIRMAR","CONFIRM"],
     ["Arbol De Fabricación BOM","BOM Manufacturing Tree"],
+    ["Restablecer","Restore"],
     ["Descargar","Download"],
+    ["Arbol De Fabricación BOM","BOM Manufacturing Tree"],
+    ["Restablecer","Restore"],
+    ["Descargar","Download"],    
 
     ["A continuación ingrese en las tablas los datos que disponga (si no tiene el dato se tomara como Cero)","Then enter the data you have in the tables (if you do not have the data, it will be taken as Zero)"],
     ["Periodos de Tiempo","Periods of time"],
@@ -39,6 +44,7 @@ language_dataset = [
     ["Pronósticos Simples","Simple Forecast"],
     ["Pronósticos Alpha","Alpha Forecast"],
     ["¿Quienes Somos?","About us?"],
+    ["Contacto","Contact us"],
     ["CONTACTO Y REDES","NETWORKS AND CONTACT"],
     ["Correo:","Email"],
     ["Dirección:","Address:"],

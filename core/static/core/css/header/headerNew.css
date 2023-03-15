@@ -1,27 +1,58 @@
 /* CSS DOCUMENT */
 
 header{
-    background-image: linear-gradient(to right,rgba(153, 146, 143, 0.8) 0%,rgba(55, 66, 168,0.7) 100%),url('../../img/stock_1.jpg');
+    /*background-image: linear-gradient(to right,rgba(153, 146, 143, 0.8) 0%,rgba(55, 66, 168,0.7) 100%),url('../../img/stock_1.jpg');*/
+    background-image: url('../../img/stock_1.jpg');
     background-size: cover;   
-    background-blend-mode: multiply; 
+    background-blend-mode: multiply;
 }
+
+/*
+header div.container-fluid, header div.row, header div.row > div:nth-child(1), div.center-header-md{
+    min-height: calc(100vh - 75px) !important;
+}*/
 
 .header-title{
-    padding-top:25%;
+    padding-top:200px;
 }
 
-div.header-graphics{
-    height:100% !important;
+
+.div-column-no-complete{
+    width: 70% !important;
+    height: 100%;
+}
+.header-image{
+    height: 80%;
+    min-height: 300px;
+    max-height: 700px;
 }
 
-@media (max-width:1046px){
-    div.header-graphics{
-        height:80% !important;
-    }
+.header-blue-title{
+    font-family: 'Berlin'; 
+    -webkit-text-stroke: 1px black;
+    color: #00fff0;
+    text-shadow:
+        3px 3px 0 #000,
+      -1px -1px 0 #000,  
+       1px -1px 0 #000,
+       -1px 1px 0 #000,
+        1px 1px 0 #000;    
+
 }
 
-@media (max-width:770px){
-    div.header-graphics{
-        height:50% !important;
+@media(max-width:1140px){
+    .div-column-no-complete{width:100% !important;}
+}
+
+@media (max-width: 767px){
+    .header-title{padding-top: 50px;}
+    header div.display-no-md{display:none !important;}
+    div.center-header-md{
+        display: flex;
+        display : -webkit-flex;
+        vertical-align: middle;
+        justify-content: center;
+        align-items: center;
+        text-align: center;        
     }
 }

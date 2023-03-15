@@ -1,0 +1,29 @@
+{% extends 'core/App/app.html' %}
+
+{% block title %}ContactUs{% endblock %}
+
+{% block  styles %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/contactus/contactus.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'core/Navbar/NavbarNew.html' %}
+
+    <section style="background-color:#152335;">
+        {% include 'core/ContactUs/Form/Form.html' %}        
+        {% include 'core/Home/Footer/Footer.html' %}
+    </section>
+    
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'core/vendor/language-component/contactus/language-dataset.js' %}"></script>
+    <script src="{% static 'core/vendor/language-component/language-component.js' %}"></script>
+    <script src="{% static 'core/vendor/autosize/autosize.min.js' %}"></script>
+    <script src="{% static 'core/helpers/ContactUs/contactUs.js' %}"></script>
+    <script>
+        var TOKEN = "{{csrf}}"        
+        autosize(document.querySelectorAll('#area'));
+    </script>
+{% endblock scripts %}

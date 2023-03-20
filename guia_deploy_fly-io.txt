@@ -7,7 +7,8 @@ el paso a paso para desplegar esta aplicacion en fly.io es:
 3. fly launch eligiendo ubicacion brazil y dandole nombre a la app
 4. podemos crear la base de datos de una vez pero si no vamos a usar postgress ni redis le damos : N y creamos manualmente (sqlite, mysql, postgress, redis, ...) con fly [comando de bd] create
 5. flyctl postgres attach --app <app-name> <postgres-app-name> --databaseuser=...
-6. fly deploy (teniendo bien configurado el archivo de settings.py)
+6. en el dockerfile ir a la ultima linea y remplazar el app.wgsi con el nombre de la app, en este caso webtiscopronoz.wgsi
+7. fly deploy (teniendo bien configurado el archivo de settings.py)
 
 urls:
 https://fly.io/docs/django/getting-started/

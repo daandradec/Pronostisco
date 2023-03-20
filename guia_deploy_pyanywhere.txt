@@ -1,0 +1,6 @@
+mkvirtualenv --python=3.6 django2
+git clone https://github.com/daandradec/Pronostisco.git
+creencial -> -> -> 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
+cd Pronostisco/
+git checkout -b develop origin/develop
+pip install -r requirements.txt
